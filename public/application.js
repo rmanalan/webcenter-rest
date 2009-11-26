@@ -1,3 +1,4 @@
+var log = console.log;
 var dump;
 var mb;
 var utils = function(){
@@ -13,12 +14,12 @@ var msgBoard = function() {
   var serviceProxyStr = "/rest";
   var resourceURL = null;
   var util = utils();
-
-  var getEntries = function(){
-    if(resourceURL){
-      $.getJSON(resourceURL,function(data){ return data });
-    } else { // wait until resourceURL is available
-      setTimeout(getEntries, 100);
+  
+  var getEntries = function(callback){
+    if(resourceURL) {
+      $.getJSON(resourceURL, callback);
+    } else {
+      setTimeout(function(){getEntries(callback)},100);
     }
   }
 
@@ -27,17 +28,18 @@ var msgBoard = function() {
       resourceURL = util.getResourceURL('urn:oracle:webcenter:messageBoard', json);
     });
   }
-  
+
   setResourceURL();
 
   return {
     resourceURL: function(){return resourceURL},
-    getMessages: function(){return getEntries()}
+    getMessages: function(callback){return getEntries(callback)}
   }
 };
 
 $(function(){
-  mb = msgBoard();
-  var items = mb.getMessages();
-  console.log("after get" + items);
+  mb = msgBoard(); //initialize and get resourceURL
+  mb.getMessages(function(data){
+    console.log(data.items)
+  });
 });
