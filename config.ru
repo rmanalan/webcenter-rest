@@ -3,6 +3,7 @@ require 'sinatra/base'
 require 'net/http'
 
 class ProxyApp < Sinatra::Default
+  set :public, File.dirname(__FILE__) + '/public'
 
   REQUEST_HEADERS = %w[ ACCEPT
                         ACCEPT_LANGUAGE
@@ -22,7 +23,7 @@ class ProxyApp < Sinatra::Default
 
 
   def initialize
-    @uri = URI('http://www.google.com')
+    @uri = URI('http://stajj18.us.oracle.com:8911')
   end
 
   get "/env" do
@@ -53,6 +54,7 @@ class ProxyApp < Sinatra::Default
   def set_response(response)
     status(response.code)
     headers response.each{|k,v|}
+    p response.each{|k,v|}.inspect
     response.body
   end
 
