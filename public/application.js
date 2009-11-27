@@ -1,35 +1,37 @@
 var log = console.log;
-var dump;
-var mb;
-var utils = function(){
-  function getResourceURL(urn, json) {
-    return $.grep(json.links, function(n){
+var mb, wc;
+
+// Main WebCenter resource module
+var webCenter = function(){
+  var resourceIndexURL = "/rest/api/resourceIndex";
+  var resourceIndex = null;
+
+  var getResourceIndex = function(){
+    if(!resourceIndex) {
+      $.getJSON(resourceIndexURL, function(data){
+        resourceIndex = data;
+      });
+    }
+  };
+  var getResourceURL = function(urn) {
+    return $.grep(resourceIndex.links, function(n){
         return n.resourceType == urn;
       })[0].href;
+  };
+
+  getResourceIndex();
+
+  return {
+    resourceIndex : getResourceIndex,
+    getResourceURL : getResourceURL
   }
-  return {getResourceURL: getResourceURL}
 };
-var msgBoard = function() {
-  var resourceIndexURL = "/rest/api/resourceIndex";
-  var serviceProxyStr = "/rest";
-  var resourceURL = null;
-  var util = utils();
-  
+
+// MessageBoard module
+var msgBoard = function(resourceURL) {
   var getEntries = function(callback){
-    if(resourceURL) {
-      $.getJSON(resourceURL, callback);
-    } else {
-      setTimeout(function(){getEntries(callback)},100);
-    }
+    $.getJSON(resourceURL, callback);
   }
-
-  var setResourceURL = function(){
-    $.getJSON(resourceIndexURL, function(json){
-      resourceURL = util.getResourceURL('urn:oracle:webcenter:messageBoard', json);
-    });
-  }
-
-  setResourceURL();
 
   return {
     resourceURL: function(){return resourceURL},
@@ -38,8 +40,8 @@ var msgBoard = function() {
 };
 
 $(function(){
-  mb = msgBoard(); //initialize and get resourceURL
-  mb.getMessages(function(data){
-    console.log(data.items)
-  });
+  wc = webCenter();
+  mb = msgBoard(mb.wc.getResourceURL('urn:oracle:webcenter:messageBoard'));
+  mb.getEntries(function(data){console.log(data)});
+  
 });
