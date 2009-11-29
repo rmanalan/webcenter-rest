@@ -1,47 +1,66 @@
 var log = console.log;
-var mb, wc;
 
 // Main WebCenter resource module
-var webCenter = function(){
+var webCenter = function(callback){
   var resourceIndexURL = "/rest/api/resourceIndex";
-  var resourceIndex = null;
+  var resourceIndex = [];
 
-  var getResourceIndex = function(){
-    if(!resourceIndex) {
+  function getResourceIndex(callback){
+    if(resourceIndex.length == 0) {
       $.getJSON(resourceIndexURL, function(data){
         resourceIndex = data;
+	callback();
       });
     }
-  };
-  var getResourceURL = function(urn) {
-    return $.grep(resourceIndex.links, function(n){
-        return n.resourceType == urn;
-      })[0].href;
+    return resourceIndex;
   };
 
-  getResourceIndex();
+  function getResourceURL(links, urn) {
+    var results = $.grep(links, function(n){
+        return n.resourceType == urn;
+      });
+    if(results.length>0){
+      return results[0].href;
+    } else {
+      return null;
+    }
+  };
 
   return {
-    resourceIndex : getResourceIndex,
+    init : getResourceIndex,
+    getResourceIndex : getResourceIndex,
     getResourceURL : getResourceURL
   }
-};
+}();
 
 // MessageBoard module
-var msgBoard = function(resourceURL) {
-  var getEntries = function(callback){
-    $.getJSON(resourceURL, callback);
+var msgBoard = function() {
+  function getMessages(callback){
+    $.getJSON(webCenter.getResourceURL(webCenter.getResourceIndex().links,'urn:oracle:webcenter:messageBoard'), callback);
+  }
+  function createMessage(msg) {
   }
 
   return {
-    resourceURL: function(){return resourceURL},
-    getMessages: function(callback){return getEntries(callback)}
+    getMessages: getMessages,
+    createMessage: createMessage
   }
-};
+}();
 
 $(function(){
-  wc = webCenter();
-  mb = msgBoard(mb.wc.getResourceURL('urn:oracle:webcenter:messageBoard'));
-  mb.getEntries(function(data){console.log(data)});
-  
+  webCenter.init(function(){
+    msgBoard.getMessages(function(data){
+      log(data);
+      var HTML = "";
+      $.each(data.items,function(){
+	HTML += "<div>" +
+	  "<a href='" + webCenter.getResourceURL(this.author.links, 'urn:oracle:webcenter:people:person') + "'>" +
+	  this.author.displayName +
+	  "</a> " +
+	  this.body +
+	  "</div>"
+      });
+      $('#results').html(HTML);
+    });
+  });
 });
