@@ -8,27 +8,24 @@ var webCenter = function(){
 
   var getResourceIndex = function(callback){
     if(!resourceIndex) {
-      $.getJSON(resourceIndexURL, theCallback(callback));
+      $.getJSON(resourceIndexURL, function(data) {
+		resourceIndex = data;
+		callback(data);
+	  })
     } else {
-	theCallback(callback)();
+      callback(resourceIndex);
     }
   };
-  var theCallback = function(callback) {
-      resourceIndex = data;
-      callback();
-  }
+
   var getResourceURL = function(urn, callback) {
-      getResourceIndex(theCallback2(callback));
+      var resourceURL = null;
+      getResourceIndex(function(data) {
+	resourceURL = $.grep(data.links, function(n){
+          return n.resourceType == urn;
+	    });
+	callback(resourceURL);
+	  });
   };
-
-  var theCallback2 = function(callback) {
-    var resourceURL = $.grep(resourceIndex.links, function(n){
-        return n.resourceType == urn;
-      })[0].href;
-    callback();
-    return resourceURL;
-
-  }
 
   //getResourceIndex();
 
@@ -45,13 +42,12 @@ var msgBoard = function(wc) {
   var defaultResourceURL = 'urn:oracle:webcenter:messageBoard';
   var getEntries = function(callback){
     if (!resourceURL) {
-      wc.getResourceURL(defaultResourceURL, theCallback(callback));
+	wc.getResourceURL(defaultResourceURL, function(data) {
+	$.getJSON(data, callback);
+	    });
     } else {
-	theCallback(callback);
+	$.getJSON(resourceURL, callback);
     }
-  }
-  var theCallback = function(callback) {
-    $.getJSON(resourceURL, callback);
   }
 
   return {
