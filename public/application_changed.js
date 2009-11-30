@@ -52,7 +52,7 @@ var msgBoard = function(wc) {
 
   return {
     resourceURL: function(){return resourceURL},
-    defaultResourceURL: function() { defaultResourceURL },
+    defaultResourceURL: function() { return defaultResourceURL },
     getMessages: getEntries
   }
 };
