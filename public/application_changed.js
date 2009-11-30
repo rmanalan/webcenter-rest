@@ -39,13 +39,13 @@ var webCenter = function(){
 };
 
 // MessageBoard module
-var msgBoard = function(wc, resURL) {
+var msgBoard = function(wc) {
   var wcInstance = wc;
   var resourceURL = null;
   var defaultResourceURL = 'urn:oracle:webcenter:messageBoard';
   var getEntries = function(callback){
     if (!resourceURL) {
-      wc.getResourceURL(resourceURL, theCallback(callback));
+      wc.getResourceURL(defaultResourceURL, theCallback(callback));
     } else {
 	theCallback(callback);
     }
@@ -63,7 +63,7 @@ var msgBoard = function(wc, resURL) {
 
 $(function(){
   wc = webCenter();
-  mb = msgBoard(wc, 'urn:oracle:webcenter:messageBoard');
+  mb = msgBoard(wc);
   mb.getEntries(function(data){console.log(data)});
   
 });
