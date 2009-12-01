@@ -120,7 +120,7 @@ button:hover, .button:hover {
 	text-shadow:#fff 1px 1px 0;
 	margin-left:7px;
 	padding-left:12px;
-	background:url(file.png) no-repeat 0 1px;
+	background:url(css/file.png) no-repeat 0 1px;
 }
 #pub1-attachment:hover {
 	text-decoration:underline;
@@ -167,4 +167,6 @@ button:hover, .button:hover {
 	border-top:1px solid #333;
 }
 
-/* vim:ts=2:sw=2: */
+/*
+vim:ts=2:sw=2
+ */
