@@ -143,6 +143,7 @@ var userProfile = function(){
 $(function(){
 
   webCenter.init(function(){
+
     // setup posting widget
     $('#pub-form').submit(function(){
       var msg = $('#pub-text').val();
@@ -174,8 +175,10 @@ $(function(){
       return false;
     });
 
+    // Render initial activities
     activityStream.renderActivities(0,$('li.messages:first'));
 
+    // Infinite scroll pager
     $(window).scroll(function(){
       if($(window).scrollTop() == $(document).height() - $(window).height()){
         activityStream.renderActivities(activityStream.currentActivityId(),
