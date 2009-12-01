@@ -2,12 +2,59 @@
   lang="en">
   <head>
     <script src="jquery.js" type="text/javascript" language="javascript"></script>
-    <script src="application.js" type="text/javascript" language="javascript"></script>
+		<script src="pure.js" type="text/javascript" language="javascript"></script>
+		<script src="timeago.js" type="text/javascript" language="javascript"></script>
+		<script src="application.js" type="text/javascript" language="javascript"></script>
+		<link href="screen.css" type="text/css" media="screen" rel="stylesheet"/>
+		<link href="style.css" type="text/css" media="screen" rel="stylesheet"/>
+		<title>WebCenter Activities</title>
   </head>
-  <body>
-    <h1>WebCenter REST API Tester</h1>
-    <div id="msg"></div>
-    <div id="results">
-    </div>
+	<body>
+		<div id="msg"></div>
+		<div class="container">
+      <!-- begin div.publisher -->
+      <div id="publisher" class="section clearfix">
+				<div id="pub1" class="span-16 first">
+					<div id="pub1-share" class="loud">
+						Share something with
+						<span id="pub1-group" class="pub1-dd">
+							<span id="pub1-selected-group">everyone</span> &#x25BE;
+							<ul id="pub1-groups" class="hide">
+								<li>Group A</li>
+								<li>Group B</li>
+								<li>Group C</li>
+								<li>Group D</li>
+								<li>Group E</li>
+								<li class="list-option">Join a group &raquo;</li>
+							</ul>
+						</span>
+					</div>
+					<div id="pub1-text" class="clearfix">
+						<form id="pub-form" method="post">						
+							<textarea id="pub-text" name="body"></textarea>
+							<input id="share" type="submit" value="Share"/>
+						</form>
+					</div>
+					<a href="#" id="pub1-attachment" class="no-underline">Attach file</a>
+				</div>
+
+      </div>
+      <!-- end div.publisher -->
+
+			<div id="contents">
+				<ol class="results" class="span-16">
+					<li class="messages clearfix">
+						<div class="span-avatar column first">
+							<img class="avatar@src" src=""/>
+						</div>
+						<div class="span-14 last">
+							<span class="activity"></span>
+							<div class="detail">Loading...</div>
+							<div class="reltime"></div>
+						</div>
+					</li>
+				</ol>
+			</div>
+		</div>
   </body>
 </html>
