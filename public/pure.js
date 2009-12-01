@@ -1,2 +1,639 @@
-/* PURE Unobtrusive Rendering Engine for HTML - revision: 1.35 - Licensed under the MIT licenses. - Copyright (c) 2009 Michael Cvilic - BeeBole.com */
-eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('o $p,19;$p=19={15:u(a,b){1P{q(b||V).1A(a)}1Q(e){5.12(\'2L\')}},3t:u(){o a=[\'o $p, 19;$p = 19 = {\',\'$22:\',5.$22.1f(),\',\',\'$c:\',5.$c.1f(),\',\',\'F:\',5.F.1f(),\',\',\'P:[], 12:\'+5.12.1f()+\'};\'];L(o b 1g 5.P){m(5.P.23(b)){o c=\'$p.P[\\\'\'+b+\'\\\']\';a.v(c+\'={};\'+c+\'.1B=\');a.v(5.P[b].1B.1f()+\';\');L(o d 1g 5.P[b]){m(d!=\'1B\'){a.v(\'$p.P[\\\'\'+b+\'\\\'].\'+d+\'=\'+5.P[b][d].1f()+\';\')}}}}o e=V.2M(\'2n\');m(e){e.3u=a.13(\'\');e.2N()}y{5.12(\'2O\')}},$f:{1R:0},$c:u(a,b,c){m(b==\'J\'){q a}m(C a==\'3v\'){o d=b.1o(/\\./);o e=a[d[0]];L(o i=1;i<d.z;i++){m(!e){2o}e=e[d[i]]}}m(!e&&e!=0){e=c?1h:\'\'}q e},F:u(){o a,1p,J,2p=1C[2];m(C 1C[1]===\'1D\'){1p=1C[1];J=1C[0]}y{1p=1C[0];J=1C[1]}m(C 1p!=\'1D\'){o b=2p?5.1S(2p,1p):1p.1E(G);a=5.P.z||0;5.N(b,a,J,K)}y{a=1p}m(5.P[a]){q 5.P[a].1B(J)}y{5.12(\'2P\',a)}},W:u(a,b,c){m(C a!=\'1D\'){m(!a){5.12(\'2Q\');q K}a.1q(5.B.1F,\'G\')}q 5.F(a,b,c)},P:{},$22:u(a){(/\\"/).D(a[1])&&(a[1]=a[1].E(/\\\\\\"|\\"/g,\'&1G;\'));o b=a.13(\'\');q(/\\=\\"\\"/.D(b))?\'\':b},B:{1H:/1r\\s+(6|7|8)/.D(1s.1t)?\'2q\':\'1u\',1v:/1r/.D(1s.1t)?\'3w\':\'19:\',2R:/1r/.D(1s.1t)?\'3x\':\'19:1u\',1F:/1r/.D(1s.1t)?\'3y\':\'19:W\',1i:/1r/.D(1s.1t)?\'3z\':\'19:24\',1w:/1r/.D(1s.1t)?\'3A\':\'19:1j\',1T:[],1U:[],3B:[],2S:u(a){q C a.z===\'2r\'&&!(a.2T(\'z\'))&&C a.2U===\'u\'},2V:u(n,a,b,c){o d,k,j,H,1V,Z,x,1a;m(a==\'G\'){x=n.14(5.1H);m(x){d=x.E(/^\\d|\\s\\d/g,\'\').1o(/\\s+/);L(j=0;j<d.z;j++){1V=\'\';1a=5.2s(d[j]);H=1a.2t.1o(/@/);m(c.z>0){L(k=c.z-1;k>=0;k--){Z=c[k]==\'J\'?$p.$c(b[0],H[0],G):$p.$c(b[c[k]][0],H[0],G);m((Z||Z==0)&&H[0]!==\'J\'){1V=c[k];2o}}}m(!Z&&Z!=0){Z=H[0]!=\'J\'?$p.$c(b,H[0],G):!(/J/).D(c.13(\'\'))?b:G}m(Z||Z==0){m(C Z.z===\'2r\'&&!(Z.2T(\'z\'))&&C Z.2U===\'u\'){c.v(H[0]);n.1q(5.1i,H[0]+\'<-\'+H[0])}y{m(1V!==\'\'){H[0]=1V+\'[\\\'\'+H[0].E(/\\./g,\'\\\'][\\\'\')+\'\\\']\'}m(!H[1]){H.v(\'1j\')}m(1a.25){H[0]=5.2u(H[0],H[1],n,1a.25)}m(H[1]!=\'1j\'){5.26(n,H[1])}m(!n.14(5.1v+H[1])){n.1q(5.1v+H[1],H[0])}}}}m(n.14(5.2R)&&n.14(5.1H)){n.1W(5.1H)}}}o e=n.14(5.1w);m(e){5.1T.v(n)}o f=n.14(5.1i);m(f){5.1U.v(n)}},2W:u(a,b){o d=5.1F;5.1U=[];5.1T=[];o f=a.14(d);a.1W(d);o g=[];o c=a,n=1h;2X{m(c.1I==1){5.2V(c,f,b,g)}n=c.3C;m(n===1h){n=c.2v}o h=c;m(n===1h){h=c;2X{n=h.1X?h.1X:a;m(n==a){2o}h=n;n=n.2v}2w(n===1h)}c=n}2w(c!=a);o k,1J,27,1x,28=K;L(o j=5.1T.z-1;j>=0;j--){1P{n=5.1T[j];1x=n.14(5.1w);m(1x){o l=1x.16(/\\|(a|p)\\|/);m(l){m(l[1]==\'a\'){n.1k+=5.1w+\'="\'+1x.S(l.17+3)+\'"\'}y{n.1k=5.1w+\'="\'+1x.S(l.17+3)+\'"\'+n.1k}}y{n.1k=5.1w+\'="\'+1x+\'"\'}n.1W(5.1w)}}1Q(e){}}L(o i=5.1U.z-1;i>=0;i--){n=5.1U[i];1P{27=n.14(5.1i);m(27){k=n.1E(G);k.1W(5.1i);1J=V.2x(5.1i);1J.2Y(k);1J.1q(\'2Z\',""+27);m(a==n){28=5.29(1J)}y{n.1X.3D(1J,n)}}}1Q(3E){}}q(28)?28:K},2u:u(a,b,c,d){m(d){m(!b){b=\'1j\'}o e=b==\'1u\'?5.1H:b;o f=c.14(e)||(\'1j\'==b?\'1j\':1h);m(f){q f+\'|\'+d+\'|\'+a}}q a},2s:u(a){o b,2y;a=(b=/^\\+/.D(a))?a.30(1):(2y=/\\+$/.D(a))?a.30(0,-1):a;q{25:(2y)?\'a\':(b)?\'p\':K,2t:a}},26:u(a,b){m(b==\'1u\'){b=5.1H}1P{a[b]=\'\';a.1W(b)}1Q(e){}},31:u(a){q[\'2a.v(\',a,\');\'].13(\'\')},1Y:u(a){q[\'2a.v(\',"\'",a,"\');"].13(\'\')},32:u(a,b){m(b){q a+\'({J:J, 3F:\'+b+\',3G:\'+b+\'1b==\\\'0\\\'?0:33(\'+b+\'1b)||\'+b+\'1b, 3H:\'+b+\'[\'+b+\'1b==\\\'0\\\'?0:33(\'+b+\'1b)||\'+b+\'1b]})\'}y{q a+\'({J:J})\'}},34:u(a){q\'$p.$c(J, \'+a+\')\'},2z:u(a,b){o c=/\\[[^\\]]*\\]/.D(a);o d=a.E(/(")|(\')/g,\'\').1o(/\\./);q c||b[d[0]]?G:K},2A:u(a){o b=a.16(/\\w*/)[0]||\'\';o c=a.S(b.z).E(/\\[\\s*\\]/,\'\');m(/\\./.D(c)){c=c.E(/^\\./,\'[\\\'\').E(/\\./g,\'\\\'][\\\'\')+\'\\\']\'}q b+\'[\'+b+\'1b]\'+c.E(/\\\\\\\'/g,"\'")},2B:[{1l:2b?2C 35(2b.2D.1f().S(0,2b.2D.1f().2c(2b.2D.3I)),\'g\'):\'\',1m:\'\'},{1l:/\\>\\s+</g,1m:\'> <\'},{1l:/\\r|\\n/g,1m:\'\'},{1l:/\\\\\\\'|\\\'/g,1m:\'\\\\\\\'\'},{1l:/\\s+[^\\s]+\\=\\"\\"(?=[^\\>]|\\>)/3J,1m:\'\'},{1l:/^\\s+/,1m:\'\'}],29:u(c){q c.29||(u(a){o b=V.2x(\'36\');b.2Y(a);q b.1k})(c)},37:u(a,b){o c=a[0]&&!a.1I?a[0].1E(G):a.1E(G);o d=5.2W(c,b);m(!d){d=5.29(c)}d=d.E(2C 35(\'<\\/?:?\'+5.1i,\'38\'),5.1i);o e=5.2B;L(o i=0;i<e.z;i++){d=d.E(e[i].1l||\'\',e[i].1m)}q d.1o(5.1v)}},3K:u(a,b,c,d){a.1q(5.B.1F,\'G\');q 5.N(a,b,c,d)},N:u(a,b,c,d){o f=5.B.37(a,c);m(!b&&C b!=\'2r\'){5.12(\'39\',f.13(\'\'),a);q K}o g,M,1K=K,1L,1n=[],1R=1,2d=\'\',1M,1y,1N,1c,T,2e,2f,2g,1Z,2E,O=\'\',x=\'\',1d=[],1z,Q;5.P[b]={};o h=[\'{o 2a = [];\'];m(f[0]!==""){h.v(5.B.1Y(f[0]))}L(o j=1;j<f.z;j++){M=f[j];m(/^24[^\\>]*\\>/i.D(M)){1K=M.16(/^24[^\\>]*>/i);1L=1K[0].16(/"[^"]*"/);m(1L){1L=1L[0].E(/&3L;/,\'<\').E(/"/g,\'\').E(/\\s/g,\'\');2d=1L.1o(/<-/);T=2d[0];1z=2d[1]||\'\';m(5.B.2z(1z,1n)){h.v(\'o \'+T+\'=\'+5.B.2A(1z)+\';\')}y{m(/J/i.D(1z)||1z.z==0){m(!(/J/i).D(T)){h.v(\'o \'+T+\'= J;\')}}y{h.v(\'o \'+T+\'= $p.$c(J, "\'+1z+\'");\')}}h.v(\'L(o \'+T+\'1b 1g \'+T+\'){m (\'+T+\'.23(\'+T+\'1b)){\');h.v(5.B.1Y(M.S(1K[0].z)));1n[T]=1R++}y{h.v(\'}}\');3a 1n[T];2f=0;L(1Z 1g 1n){m(1n.23(1Z)){2g=1n[1Z];m(2g>2f){2f=2g;T=1Z}}}h.v(5.B.1Y(M.S(1K[0].z,M.z)))}1K=K;3M}y{O=M.S(0,M.2c(\'=\'));x=M.16(/\\=""?[^"]*""?/)[0].2h(2).E(/"$/,\'\');2E=O.z+x.z+3;m(/&1G;/.D(x)){x=x.E(/&1G;/g,\'"\');M=M.E(/&1G;/,\'"\').E(/&1G;/,\'"\')}2e=/^1j/i.D(M);Q=2e?[]:[\'\\\'\'+O+\'="\\\'\'];1y=x.16(/\\|(a|p)\\|/);1c=\'\';1N=O!==\'1u\'?\'\':\' \';m(1y){m(1y[1]==\'a\'){Q.v(\'\\\'\'+x.S(0,1y.17)+1N+\'\\\'\')}y{1c=x.S(0,1y.17)}x=x.S(1y.17+3)}m(/\\$f\\[(f[0-9]+)\\]/.D(x)){1M=x.16(/\\[(f[0-9]+)/)[1];5.P[b][\'$\'+1M]=5.$f[1M];3a 5.$f[1M];5.$f.1R--;Q.v(5.B.32(\'5.$\'+1M,T));m(1c!==\'\'){Q.v(\'\\\'\'+1N+1c+\'\\\'\')}}y m(/^\\\\\\\'|&1G;/.D(x)){Q.v(\'\\\'\'+x.E(/^\\\\\\\'|\\\\\\\'$/g,\'\')+\'\\\'\');m(1c!==\'\'){Q.v(\'\\\'\'+1N+1c+\'\\\'\')}}y{m(!(/1r/).D(1s.1t)){1d=x.1o(/(#\\{[^\\}]*\\})/g)}y{o i=x.16(/#\\{[^\\}]*\\}/);1d=i?[]:[x];2w(i){m(i.17>0){1d.v(x.S(0,i.17))}1d.v(i[0]);x=x.S(i.3N);i=x.16(/#\\{[^\\}]*\\}/);m(!i&&x!==\'\'){1d.v(x)}}}L(o k=0;k<1d.z;k++){x=1d[k];m(/\\#\\{/.D(x)||1d.z==1){x=x.E(/^\\#\\{/,\'\').E(/\\}$/,\'\');m(5.B.2z(x,1n)){Q.v(5.B.2A(x))}y{Q.v(5.B.34("\'"+x+"\'"))}}y m(x!==\'\'){Q.v(\'\\\'\'+x+\'\\\'\')}m(1c!==\'\'){Q.v(\'\\\'\'+1N+1c+\'\\\'\')}}}m(!2e){Q.v(\'\\\'"\\\'\')}}h.v(5.B.31(Q.z>1?\'$p.$22([\'+Q.13(\',\')+\'])\':Q[0]));M=M.2h(2E);m(M!==\'\'){h.v(5.B.1Y(M))}}h.v(\'q 2a.13("");}\');g=h.13(\'\');m(!d){1P{5.P[b].1B=2C 3O(\'J\',g)}1Q(e){5.12(\'3b\',[e.3P,g]);q K}}q g},1S:u(a,b,c){m(!b[0]&&b.z==0){5.12(\'3c\');q K}o d,1O=[],R,U,1a,1e,18,O,2i,20,X,i,W,21=[];m(c){U=b[0]&&!b.1I?b[0]:b}y{U=b[0]&&!b.1I?b[0].1E(G):b.1E(G)}W=U.14(5.B.1F)||K;L(X 1g a){m(a.23(X)){R=a[X];m(5.B.2S(R)){1O=R}y{1O=[];1O.v(R)}L(i=0;i<1O.z;i++){R=1O[i];1a=5.B.2s(X);X=1a.2t;1e=X.16(/\\[[^\\]]*\\]/);m(/^\\[|^\\.$/.D(X)){18=U}y{18=5.15(X,U);m(!18&&1e){18=5.15(X.2h(0,1e.17),U)}}m(18){m(C R==\'u\'){d=\'f\'+5.$f.1R++;5.$f[d]=R;R=\'$f[\'+d+\']\'}O=\'1j\';2i=-1;m(1e){O=X.S(1e.17+1,1e[0].z+1e.17-1);m(O.2c(5.B.1v)>-1){O=O.S(5.B.1v.z)}}y{2i=R.3Q(/w*<-w*/);m(2i>-1){O=\'24\'}}R=R.E(/^"|"$|\\\'|\\\\\\\'/g,\'\\\\\\\'\');R=5.B.2u(R,O,18,1a.25);18.1q(5.B.1v+O,R);m(1e){m(O!=\'1u\'){5.B.26(18,O)}y m(W!=\'G\'){21.v(18)}}}y{20=[U.3R];m(U.2j!==\'\'){20.v(\'#\'+U.2j)}m(U.2q!==\'\'){20.v(\'#\'+U.2q)}5.12(\'3d\',[X,20.13(\'\')],U)}}}}m(21.z>0){L(i=0;i<21.z;i++){5.B.26(21[i],\'1u\')}}q U},3e:{\'2Q\':\'2F 2Z 2k 3S 3f W 3g 2G 3h. 3T 3i X 3U.\',\'3d\':"2H - 3V 15 2I 3j \\"&\\" 1g \\"&\\"",\'2O\':\'3W 3X 2I 2H 3Y, 3Z a <3k 2j=\\"2n\\"></3k> 40 1g 3i V.\',\'3c\':\'2F 1S u 41\\\'t 42 a 43 2k 3j\',\'39\':\'A 44 3l 45 46 47 2I 2k: &\',\'2P\':\'2F 2k: & 3g 2G 3h 48 3l 2G 49 1B\',\'2L\':\'4a 4b 3f 4c 2H, 4d 4e a 4f 4g 4h 4i: 4j, 4k, Y, 4l, 4m,...\',\'3b\':\'4n 4o: \\"&\\" 1g: &\'},12:u(a,b,c){o d=5.3e[a]||a;o e=/&/,i;m(d!=a&&b){m(C b==\'1D\'){d=d.E(e,b)}y{L(i=0;i<b.z;i++){d=d.E(e,b[i])}}}o f=V.2M(\'2n\');m(f){f.1k=[d,\'\\n\',f.1k].13(\'\')}y{4p(d)}},I:{10:u(a,b){q $p.1S(b,a)},N:u(a,b,c,d){o e=a;m(d){e.1q($p.B.1F,\'G\')}m(c){e=$p.1S(c,a)}q $p.N(e,b,d||K,K)},F:u(a,b,c,d,e){o f=a;m(C d!==\'11\'){f=C d!==\'1D\'&&d[0]||d}y m(C c!==\'11\'&&(c.3m||c.2J||c.1I||C c===\'1D\')){f=(c.3m||c.2J)?c[0]:c;c=1h}q 5.3n(a,e===G?$p.W(f,b,c):$p.F(f,b,c))},3n:u(a,b){o c=V.2x(\'36\');o d=a;o e=d.1X;e.3o(c,d);c.1k=b;o f=c.4q;o g=[];L(o i=f.z-1;i>=0;i--){g.v(d.1X.3o(f[i],d.2v))}e.3p(d);e.3p(c);q g.z>1?g:g[0]}}};m(C Y!==\'11\'){m(Y.3q){Y.3q[0]=/^(\\[) *@?([\\w:\\-]+) *([!*$\\^~=]*) *(\'?"?)(.*?)\\4 *\\]/}$p.B.2B.v({1l:/\\s?Y[^\\s]+\\=\\"1h\\"/38,1m:\'\'});m(C V.1A===\'11\'){$p.15=u(a,b){o c=Y.15(a,b);q c[0]||K}}Y.2l.10=u(a){q Y($p.I.10(5[0],a))};Y.2l.N=u(a,b,c){$p.I.N(5[0],a,b,c);q 5};Y.2l.F=u(a,b,c){q Y($p.I.F(5[0],a,b,c))};Y.2l.W=u(a,b,c){q Y($p.I.F(5[0],a,b,c,G))}}y m(C 3r!==\'11\'){m(C V.1A===\'11\'){$p.15=u(a,b){o c=$(b).2J(a);q c[0]||K}}3r.4r({4s:[\'10\',\'N\',\'F\',\'W\'],10:u(a){q $($p.I.10(5,a))},N:u(a,b,c){$p.I.N(5,a,b,c);q 5},F:u(a,b,c){q $($p.I.F(5,a,b,c))},W:u(a,b,c){q $($p.I.F(5,a,b,c,G))}})}y m(C 4t!==\'11\'){m(C V.1A===\'11\'){$p.15=u(a,b){o c=$(b).4u(a);q c||K}}3s.4v({10:u(a){q $($p.I.10(5,a))},N:u(a,b,c){$p.I.N(5,a,b,c);q 5},F:u(a,b,c){q $($p.I.F(5,a,b,c))},W:u(a,b,c){q $($p.I.F(5,a,b,c,G))}})}y m(C 4w!==\'11\'){m(C V.1A===\'11\'){$p.15=u(a,b){o c=$(b).2N(a);m(!c||c===\'\'){o d=a.2c(\'#\');m(d>-1){o e=a.2h(d+1);o f=b.4x(\'*\');L(o i=0,2m;2m=f[i];i++){m(2m.2j==e){q 2m}}}}q c[0]||K}}3s.4y({10:u(a,b){q $($p.I.10(a,b))},N:u(a,b,c,d){$p.I.N(a,b,c,d);q 5},F:u(a,b,c,d){q $($p.I.F(a,b,c,d))},W:u(a,b,c,d){q $($p.I.F(a,b,c,d,G))}})}y m(C 2K!==\'11\'){m(C V.1A===\'11\'){$p.15=u(a,b){o c=2K(a,b);q c[0]||K}}$p.4z=u(d,e){d=d||V;o f=d.1I?[d]:2K(d,e);o g=f;g.10=u(a){g[0]=$p.I.10(g[0],a);q g};g.N=u(a,b,c){$p.I.N(g[0],a,b,c);q g};g.F=u(a,b,c){g[0]=$p.I.F(g[0],a,b,c);q g};g.W=u(a,b,c){g[0]=$p.I.F(g[0],a,b,c,G);q g};q g}}',62,284,'|||||this|||||||||||||||||if||var||return||||function|push||attValue|else|length||utils|typeof|test|replace|render|true|att|libs|context|false|for|wrkStr|compile|attName|compiledFunctions|fullAtt|currentDir|substring|currentLoop|clone|document|autoRender|selector|jQuery|prop|mapDirective|undefined|msg|join|getAttribute|find|match|index|target|pure|ap|Index|suffix|attValues|isAttr|toString|in|null|REPEAT|nodeValue|innerHTML|what|by|openArrays|split|html|setAttribute|MSIE|navigator|userAgent|class|NS|NODEVALUE|nodeValueSrc|attOut|arrSrc|querySelector|compiled|arguments|string|cloneNode|AUTO|quot|CLASSNAME|nodeType|replacer|rTag|rSrc|fnId|spc|multipleDir|try|catch|cnt|map|nodeValues|repeats|repeatPrefix|removeAttribute|parentNode|strOut|key|parentName|classToDelete|outAtt|hasOwnProperty|repeat|type|removeAtt|replacedSrc|str|outerHTML|output|window|indexOf|subSrc|isNodeValue|max|curr|substr|repetition|id|HTML|fn|el|pureMsg|break|directives|className|number|ap_check|clean|ap_format|nextSibling|while|createElement|append|isArray|arrayName|domCleaningRules|new|location|offset|The|not|PURE|the|cssSelect|Sizzle|library_needed|getElementById|select|place_runtime_container|HTML_does_not_exist|wrong_html_source|PURECLASS|isTypeOfArray|propertyIsEnumerable|splice|autoMap|nodeWalk|do|appendChild|source|slice|out|outputFn|parseInt|contextOut|RegExp|div|html2str|gi|no_HTML_name_set_for_parsing|delete|parsing_error|no_HTML_selected|element_to_map_not_found|messages|to|does|exist|your|element|textarea|is|jquery|replaceWithAndReturnNew|insertBefore|removeChild|parse|DOMAssistant|Element|getRuntime|value|object|pure_|pure_class|pure_autoRender|pure_repeat|pure_nodeValue|autoRenderAtts|firstChild|replaceChild|e2|items|pos|item|pathname|ig|autoCompile|lt|continue|lastIndex|Function|message|search|nodeName|provided|Check|syntax|Cannot|To|collect|runtime|place|somewhere|didn|receive|valid|name|needed|when|parsing|or|yet|In|order|run|you|need|JS|library|such|as|dojo|domAssistant|mootools|prototype|Parsing|error|alert|childNodes|attach|publicMethods|MooTools|getElement|implement|Prototype|getElementsByTagName|addMethods|sizzle'.split('|'),0,{}))
+/* * * * * * * * * * * * * * * * * * * * * * * * * *
+
+    PURE Unobtrusive Rendering Engine for HTML
+
+    Licensed under the MIT licenses.
+    More information at: http://www.opensource.org
+
+    Copyright (c) 2009 Michael Cvilic - BeeBole.com
+
+    revision: 1.35
+
+* * * * * * * * * * * * * * * * * * * * * * * * * */
+var $p, pure;
+$p = pure = {
+	find: function(selector, context){
+		try{
+			return (context||document).querySelector( selector );}
+		catch(e){
+			this.msg('library_needed');};},
+				
+	getRuntime: function(){
+		//build the runtime to be exported as a JS file
+		var src = ['var $p, pure;$p = pure = {', '$outAtt:', this.$outAtt.toString(), ',', '$c:', this.$c.toString(), ',', 'render:', this.render.toString(), ',', 'compiledFunctions:[], msg:'+this.msg.toString()+'};'];
+		for (var fName in this.compiledFunctions){
+			if(this.compiledFunctions.hasOwnProperty(fName)){
+			var htmlFunction = '$p.compiledFunctions[\'' + fName + '\']';
+			src.push(htmlFunction+'={};'+htmlFunction+'.compiled=');
+			src.push(this.compiledFunctions[fName].compiled.toString()+';');
+			for (var fi in this.compiledFunctions[fName]){
+				if(fi != 'compiled'){
+					src.push('$p.compiledFunctions[\''+fName+'\'].'+fi+'='+this.compiledFunctions[fName][fi].toString()+';');}}}}
+	var elm = document.getElementById('pureMsg');
+	if (elm) {
+		elm.value = src.join('');
+		elm.select();}
+	else{
+		this.msg('place_runtime_container');}},
+
+	$f:{cnt:0},
+
+	$c:function(context, path, nullMode){
+		if(path == 'context'){return context;}
+		if(typeof context == 'object'){
+			//context is a JSON
+			var aPath = path.split(/\./);
+			var value = context[aPath[0]];
+
+			for (var i=1; i<aPath.length; i++){
+				if (!value){ break;}
+				value = value[aPath[i]];}}
+			if (!value && value!=0) {value = nullMode ? null :'';}
+		return value;},
+
+	render: function(/*html, context, directives || context, compiledName, directives*/){
+		var fn, html, context, directives = arguments[2];
+		if (typeof arguments[1] === 'string'){//a compiled HTML is passed
+			html = arguments[1];
+			context = arguments[0];}
+		else{
+			html = arguments[0];
+			context = arguments[1];}
+		if (typeof html != 'string'){
+			var mapped = directives ? this.map(directives, html):html.cloneNode(true);
+			fn = this.compiledFunctions.length || 0;
+			this.compile(mapped, fn, context, false);}
+		else{ // call to an already compiled f()
+			fn = html;}
+		if (this.compiledFunctions[fn]){
+			return this.compiledFunctions[fn].compiled(context);} //transform and return an html string
+		else{
+			this.msg('HTML_does_not_exist', fn);}},
+
+	autoRender:function(html, context, directives){
+		if (typeof html != 'string') {
+			if (!html) { this.msg('wrong_html_source'); return false;}
+			html.setAttribute(this.utils.AUTO, 'true');}
+		return this.render(html, context, directives);},
+
+	compiledFunctions:{},
+
+	$outAtt:function(content){
+			(/\"/).test(content[1]) && (content[1] = content[1].replace(/\\\"|\"/g, '&quot;'));
+			var att = content.join('');
+			return (/\=\"\"/.test(att)) ? '' : att;},
+ 	utils:{
+ 		CLASSNAME:/MSIE\s+(6|7|8)/.test(navigator.userAgent)? 'className':'class',
+		NS:/MSIE/.test(navigator.userAgent) ? 'pure_':'pure:',
+		PURECLASS:/MSIE/.test(navigator.userAgent) ? 'pure_class':'pure:class',
+		AUTO:/MSIE/.test(navigator.userAgent) ? 'pure_autoRender':'pure:autoRender',
+		REPEAT:/MSIE/.test(navigator.userAgent) ? 'pure_repeat':'pure:repeat',
+		NODEVALUE:/MSIE/.test(navigator.userAgent) ? 'pure_nodeValue':'pure:nodeValue',
+		nodeValues:[],
+		repeats:[],
+		autoRenderAtts:[],
+		isTypeOfArray:function(obj){
+            return typeof obj.length === 'number' && !(obj.propertyIsEnumerable('length')) && typeof obj.splice === 'function';},
+		autoMap: function(n, autoRender, context, openArray){
+			var toMap, k, j, att, repeatPrefix, prop, attValue, ap;
+			if (autoRender == 'true') {
+				attValue = n.getAttribute(this.CLASSNAME);
+				if (attValue) {
+					toMap = attValue.replace(/^\d|\s\d/g,'').split(/\s+/);//remove numeric classes as they mess up the array reference
+					for (j = 0; j < toMap.length; j++) {
+						repeatPrefix = '';
+						ap = this.ap_check(toMap[j]);
+						att = ap.clean.split(/@/);
+						if(openArray.length > 0) {
+							for (k = openArray.length-1; k>=0; k--) {
+								prop = openArray[k] == 'context' ? $p.$c(context[0], att[0], true) : $p.$c(context[openArray[k]][0], att[0], true);
+								if ((prop || prop == 0) && att[0] !== 'context') {//found a repetition field, break, specific case when 0 is returned as a value
+									repeatPrefix = openArray[k];
+									break;}}}
+
+						if(!prop && prop != 0){
+							prop = att[0] != 'context' ? $p.$c(context, att[0], true) : !(/context/).test(openArray.join('')) ? context: true;}
+							
+						if (prop || prop==0) {
+							if (typeof prop.length === 'number' && !(prop.propertyIsEnumerable('length')) && typeof prop.splice === 'function') { //Douglas Crockford check if array
+								openArray.push(att[0]);
+								n.setAttribute(this.REPEAT, att[0] + '<-' + att[0]);}
+							else {
+								if(repeatPrefix !== ''){
+									att[0] = repeatPrefix + '[\'' + att[0].replace(/\./g, '\'][\'') + '\']';}
+								if(!att[1]){ //not an attribute
+									att.push('nodeValue');}
+								if(ap.type){ //append or prepend ?
+									att[0] = this.ap_format(att[0], att[1], n, ap.type);}
+								if (att[1]!='nodeValue'){ // remove the existing attribute if any
+									this.removeAtt(n, att[1]);}
+								if (!n.getAttribute(this.NS + att[1])) { //don't overwrite a directive if any
+									n.setAttribute(this.NS + att[1], att[0]);}}}}
+					if (n.getAttribute(this.PURECLASS) && n.getAttribute(this.CLASSNAME)){
+						n.removeAttribute(this.CLASSNAME);}}}
+
+			//flag the nodeValue and repeat attributes
+			var isNodeValue = n.getAttribute(this.NODEVALUE);
+			if (isNodeValue) {this.nodeValues.push(n);}
+			var isRepeat = n.getAttribute(this.REPEAT);
+			if (isRepeat) {this.repeats.push(n);}},
+
+		nodeWalk:function(node, context){
+			var auto = this.AUTO;
+			this.repeats = []; this.nodeValues = [];
+			var autoRender = node.getAttribute(auto);
+			node.removeAttribute(auto);
+			var openArray=[];
+			//memory safe non-recursive tree traverse
+			var c = node, n = null;
+			do {
+				if (c.nodeType == 1) {
+					this.autoMap(c, autoRender, context, openArray);}
+				n = c.firstChild;
+				if (n === null) {
+					n = c.nextSibling;}
+				var tmp = c;
+				if (n === null) {
+					tmp = c;
+					do {
+						n = tmp.parentNode ? tmp.parentNode:node;
+						if (n == node) {break;}
+						tmp = n;
+						n = n.nextSibling;}
+					while (n === null);}
+				c = n;}
+			while (c != node);
+			//post process the repeat and nodeValue for easier compiling
+			var replaced, replacer, replacedSrc, nodeValueSrc, str = false;
+			for (var j = this.nodeValues.length-1; j >= 0; j--) {
+				try {
+					n = this.nodeValues[j];
+					nodeValueSrc = n.getAttribute(this.NODEVALUE); // put the node value in place
+					if (nodeValueSrc) {
+						var ap = nodeValueSrc.match(/\|(a|p)\|/);
+						if (ap) {
+							if (ap[1] == 'a'){
+								n.innerHTML += this.NODEVALUE + '="' + nodeValueSrc.substring(ap.index+3) + '"';}
+							else{
+								n.innerHTML = this.NODEVALUE + '="' + nodeValueSrc.substring(ap.index+3) + '"' + n.innerHTML;}}
+						else{
+							n.innerHTML = this.NODEVALUE + '="' + nodeValueSrc + '"';}
+						
+						n.removeAttribute(this.NODEVALUE);}} 
+				catch (e) {}}
+			for(var i=this.repeats.length-1; i>=0;i--){
+				n = this.repeats[i];//go inside out of the tree
+				try {
+					replacedSrc = n.getAttribute(this.REPEAT); //wrap in tags for easy string find
+					if (replacedSrc) {
+						replaced = n.cloneNode(true);
+						replaced.removeAttribute(this.REPEAT);
+						replacer = document.createElement(this.REPEAT);
+						replacer.appendChild(replaced);
+						replacer.setAttribute('source', "" + replacedSrc);
+						if(node == n){
+							str = this.outerHTML(replacer);}
+						else{
+							n.parentNode.replaceChild(replacer, n);}}}
+				catch (e2) {}}
+				return (str) ? str : false;},
+				
+		ap_format: function(attValue, attName, node, ap){
+			if (ap){
+				if (!attName) {attName = 'nodeValue';}
+				var fixAtt = attName == 'class' ? this.CLASSNAME : attName;
+				var original = node.getAttribute(fixAtt) || ('nodeValue' == attName ? 'nodeValue' : null);
+				if (original){
+					return original + '|' + ap + '|' + attValue;}}
+				return attValue;},
+							
+		ap_check: function(str){
+			var prepend, append;
+			str = (prepend = /^\+/.test(str)) ? str.slice(1) : (append = /\+$/.test(str)) ? str.slice(0, -1) : str;
+			return {type:(append) ? 'a' : (prepend) ? 'p' : false, clean:str};},
+
+		removeAtt:function(node, att){
+			if (att == 'class') {att = this.CLASSNAME;}
+			try{ 
+				node[att] = ''; 
+				node.removeAttribute(att);
+			}catch(e){}},
+
+		out:function(content){ return ['output.push(', content, ');'].join('');},
+		strOut:function (content){ return ['output.push(', "'", content, "');"].join('');},
+		outputFn:function (attValue, currentLoop){
+			if (currentLoop){
+				return attValue + '({context:context, items:' + currentLoop + ',pos:'+currentLoop+'Index==\'0\'?0:parseInt(' + currentLoop + 'Index)||'+currentLoop+'Index, item:' + currentLoop + '['+currentLoop+'Index==\'0\'?0:parseInt(' + currentLoop + 'Index)||'+currentLoop+'Index]})';}
+			else{
+				return attValue + '({context:context})';}},
+		contextOut:function(path){ return '$p.$c(context, ' + path + ')';},
+
+		isArray:function (attValue, openArrays){ //check if it is an array reference either [] or an open loop
+			var arrIndex = /\[[^\]]*\]/.test(attValue);
+			var objProp  = attValue.replace(/(")|(')/g,'').split(/\./);
+			return arrIndex || openArrays[objProp[0]] ? true: false;},
+
+		arrayName:function(pName){
+			var name=pName.match(/\w*/)[0] || ''; 
+			var subIndex= pName.substring(name.length).replace(/\[\s*\]/,''); // take the tail and replace [ ] by ''
+			if(/\./.test(subIndex)){
+				subIndex = subIndex.replace(/^\./, '[\'').replace(/\./g,'\'][\'') + '\']';}
+			return name + '[' + name + 'Index]' + subIndex.replace(/\\\'/g,"'");},
+		domCleaningRules:[
+			{what:window ? new RegExp(window.location.toString().substring(0, window.location.toString().indexOf(window.location.pathname)), 'g'):'', by:''},//put all absolute links( img.src ) of window.location relative to the root
+			{what:/\>\s+</g, by:'> <'}, //remove multiple spaces between >..< (IE 6) 
+			{what:/\r|\n/g, by:''},//may be too strong check with pre, textarea,...
+			{what:/\\\'|\'/g, by:'\\\''}, //escape apostrophe
+			{what:/\s+[^\s]+\=\"\"(?=[^\>]|\>)/ig, by:''}, //IE does not remove some attr, ticket #20
+			{what:/^\s+/, by:''}],//clean leading white spaces in the html
+		outerHTML:function(elm){
+			return elm.outerHTML || (function(elm){
+				var div = document.createElement('div');
+				div.appendChild(elm);
+				return div.innerHTML;})(elm);},
+		html2str:function(html, context){
+			var clone = html[0] && !html.nodeType ? html[0].cloneNode(true) : html.cloneNode(true);
+			//node manipulation before conversion to string
+			var str = this.nodeWalk(clone, context);
+			//convert the HTML to a string
+			if(!str) {str = this.outerHTML( clone );}
+			//avoid shifting lines remove the > and </ around pure:repeat tags
+			str = str.replace(new RegExp('<\/?:?'+this.REPEAT, 'gi'), this.REPEAT);// :? -> from bug in IE
+			//clean the dom string, based on rules in $p.domCleaningRules
+			var rules = this.domCleaningRules;
+			for(var i=0;i<rules.length;i++){
+				str = str.replace(rules[i].what||'' ,rules[i].by);}
+			return str.split(this.NS);}},
+
+	autoCompile:function(html, fName, context, noEval){
+		html.setAttribute(this.utils.AUTO, 'true');
+		return this.compile(html, fName, context, noEval);},
+
+	compile: function(html, fName, context, noEval){
+		var aStr = this.utils.html2str(html, context);
+				
+		if(!fName && typeof fName != 'number'){
+			this.msg( 'no_HTML_name_set_for_parsing', aStr.join(''), html);
+			return false;}
+
+		//start the js generation
+		var js, wrkStr, rTag = false, rSrc, openArrays=[], cnt=1, subSrc='', fnId, attOut, spc, suffix, currentLoop, isNodeValue, max, curr, key, offset, attName = '', attValue = '', attValues=[], arrSrc, fullAtt;
+
+		this.compiledFunctions[fName]={}; //clean the fct place if any
+		var aJS = ['{var output = [];'];
+
+		if(aStr[0]!=="") {aJS.push(this.utils.strOut(aStr[0]));}
+		for(var j = 1;j < aStr.length; j++){
+			wrkStr = aStr[j];
+			if (/^repeat[^\>]*\>/i.test(wrkStr)){
+				rTag = wrkStr.match(/^repeat[^\>]*>/i);
+				rSrc = rTag[0].match(/"[^"]*"/);
+				if (rSrc){ //start a loop
+					rSrc = rSrc[0].replace(/&lt;/,'<').replace(/"/g,'').replace(/\s/g,'');
+					subSrc = rSrc.split(/<-/);
+					currentLoop = subSrc[0];
+					arrSrc = subSrc[1] || '';
+					if ( this.utils.isArray(arrSrc, openArrays) ){
+						//reference to an open array
+						aJS.push('var ' + currentLoop + '=' + this.utils.arrayName(arrSrc) + ';');}
+					else{
+						if (/context/i.test(arrSrc) || arrSrc.length == 0) {
+							if (!(/context/i).test(currentLoop)){ // avoid var context = context 
+								aJS.push('var ' + currentLoop + '= context;');}}
+						else{ 
+							aJS.push('var ' + currentLoop + '= $p.$c(context, "' + arrSrc + '");');}}
+					aJS.push('for(var '+currentLoop+'Index in '+currentLoop+'){if ('+currentLoop+'.hasOwnProperty('+currentLoop+'Index)){'); 		
+					aJS.push(this.utils.strOut(wrkStr.substring(rTag[0].length)));
+					openArrays[currentLoop] = cnt++;}
+			
+				else{ //end of loop;
+					aJS.push('}}');
+					delete openArrays[currentLoop];
+					max = 0;
+					for (key in openArrays){
+						if(openArrays.hasOwnProperty(key)){
+						curr = openArrays[key];
+						if( curr > max){
+						max = curr;
+						currentLoop = key;}}}
+					aJS.push(this.utils.strOut(wrkStr.substring(rTag[0].length, wrkStr.length)));}
+
+				rTag = false;
+				continue;}
+			else{
+				attName = wrkStr.substring(0, wrkStr.indexOf('='));
+				attValue = wrkStr.match(/\=""?[^"]*""?/)[0].substr(2).replace(/"$/,'');
+				offset = attName.length + attValue.length + 3;
+				if (/&quot;/.test(attValue)) {
+					attValue = attValue.replace(/&quot;/g, '"');
+					wrkStr = wrkStr.replace(/&quot;/, '"').replace(/&quot;/, '"');}
+
+				isNodeValue = /^nodeValue/i.test(wrkStr);	
+				fullAtt = isNodeValue ? []: ['\''+attName+'="\''];
+
+				attOut = attValue.match(/\|(a|p)\|/);
+				suffix = ''; 
+				spc = attName !== 'class'  ? '':' '; //at some point we should use 'tag[class]+':' #{prop}' instead and deprecate the auto space for class
+				if (attOut) {
+					if(attOut[1] =='a'){
+						fullAtt.push('\''+attValue.substring(0, attOut.index)+spc+'\'');}
+					else{ // |p|
+						suffix = attValue.substring(0, attOut.index);}
+					attValue = attValue.substring(attOut.index + 3);}
+
+				if(/\$f\[(f[0-9]+)\]/.test(attValue)){ //function reference
+					fnId = attValue.match(/\[(f[0-9]+)/)[1];
+					this.compiledFunctions[fName]['$'+fnId]=this.$f[fnId];
+					delete this.$f[fnId];this.$f.cnt--;
+					fullAtt.push(this.utils.outputFn('this.$'+fnId, currentLoop));
+					if(suffix !== '') {fullAtt.push('\''+spc+suffix+'\'');}}
+				else if(/^\\\'|&quot;/.test(attValue)){ //a string, strip the quotes
+					fullAtt.push('\''+ attValue.replace(/^\\\'|\\\'$/g,'')+'\'');
+					if(suffix !== '') {fullAtt.push('\''+spc+suffix+'\'');}}
+				else{
+					if (!(/MSIE/).test(navigator.userAgent)) {
+						attValues = attValue.split(/(#\{[^\}]*\})/g);}
+					else { //IE:(
+						var ie = attValue.match(/#\{[^\}]*\}/);
+						attValues = ie ? [] : [attValue];
+						while (ie) {
+							if (ie.index > 0) {attValues.push(attValue.substring(0, ie.index));}
+							attValues.push(ie[0]);
+							attValue = attValue.substring(ie.lastIndex);
+							ie = attValue.match(/#\{[^\}]*\}/);
+							if (!ie && attValue !== '') {attValues.push(attValue);}}}
+
+					for(var atts = 0; atts<attValues.length; atts++){
+						attValue = attValues[atts];
+						if(/\#\{/.test(attValue) || attValues.length == 1){
+							attValue = attValue.replace(/^\#\{/, '').replace(/\}$/,'');
+							if(this.utils.isArray(attValue, openArrays)){ //iteration reference
+								fullAtt.push(this.utils.arrayName(attValue));}
+							else{ //context data
+								fullAtt.push(this.utils.contextOut("'"+attValue+"'"));}}
+						else if(attValue !== ''){
+							fullAtt.push('\''+attValue+'\'');}
+	
+						if(suffix !== ''){ fullAtt.push('\''+spc+suffix+'\'');}}}
+
+				if (!isNodeValue) { //close the attribute string
+					fullAtt.push('\'"\'');}}
+				aJS.push(this.utils.out(fullAtt.length > 1 ? '$p.$outAtt(['+fullAtt.join(',')+'])':fullAtt[0]));
+				
+			//output the remaining if any	
+			wrkStr = wrkStr.substr(offset);
+			if(wrkStr !== '') {aJS.push(this.utils.strOut(wrkStr));}}
+		aJS.push( 'return output.join("");}' );
+		js = aJS.join('');
+		if(!noEval){
+			try{
+				this.compiledFunctions[fName].compiled = new Function('context', js);} 
+			catch (e){
+				this.msg('parsing_error', [e.message, js]);
+				return false;}}
+		return js;},
+
+	map:function(directives, html, noClone){
+		// a directive is a tuple{ dom selector, value }
+		// returns the html with the directives as pure:<attr>="..."
+		if(!html[0] && html.length == 0){
+			this.msg('no_HTML_selected');
+			return false;}
+
+		var fnId, multipleDir=[], currentDir, clone, ap,isAttr, target, attName, repetition, parentName, selector, i, autoRender, classToDelete=[];
+		if (noClone){
+			clone = html[0] && !html.nodeType ? html[0] : html;}
+		else{
+			clone = html[0] && !html.nodeType ? html[0].cloneNode(true) : html.cloneNode(true);}
+			
+		autoRender = clone.getAttribute(this.utils.AUTO)||false;
+		for (selector in directives){ // for each directive set the corresponding pure:<attr>
+			if(directives.hasOwnProperty(selector)){
+				currentDir = directives[selector];
+				if(this.utils.isTypeOfArray(currentDir)){//check if an array of directives is provided
+					multipleDir = currentDir;}
+				else{
+					multipleDir = []; 
+					multipleDir.push(currentDir);}
+				for(i = 0; i<multipleDir.length;i++){
+					currentDir = multipleDir[i];
+					ap = this.utils.ap_check(selector);
+					selector = ap.clean;
+					isAttr = selector.match(/\[[^\]]*\]/); // match a [...]
+					if(/^\[|^\.$/.test(selector)){ //attribute of the selected node or itself . (dot)
+						target = clone;}
+					else{
+						target = this.find(selector, clone);
+						if (!target && isAttr){
+							//if the attribute does not exist yet, select its containing element
+							target = this.find(selector.substr(0, isAttr.index), clone);}}
+
+					if ( target ){  //target found
+						if (typeof currentDir == 'function'){
+							fnId = 'f'+this.$f.cnt++;
+							this.$f[fnId] = currentDir;
+							currentDir = '$f['+fnId+']';}
+
+						attName = 'nodeValue'; //default
+						repetition = -1;
+						if (isAttr){
+							//the directive points to an attribute
+							attName = selector.substring(isAttr.index+1,isAttr[0].length+isAttr.index-1);
+						if(attName.indexOf(this.utils.NS) > -1){
+							attName = attName.substring(this.utils.NS.length);}}
+						else{
+							//check if the directive is a repetition
+							repetition = currentDir.search(/w*<-w*/);
+							if(repetition > -1) {attName = 'repeat';}}
+
+						currentDir = currentDir.replace(/^"|"$|\'|\\\'/g, '\\\''); //escape any quotes by \'
+						currentDir = this.utils.ap_format(currentDir, attName, target, ap.type);
+						target.setAttribute( this.utils.NS + attName, currentDir);
+
+						if(isAttr){
+							if (attName != 'class'){ 
+								this.utils.removeAtt(target, attName);}
+							else if (autoRender != 'true'){ 
+							  		classToDelete.push(target);}}}
+
+					else{ // target not found
+						parentName = [clone.nodeName];
+						if(clone.id !== '') {parentName.push('#' + clone.id);}
+						if(clone.className !== '') {parentName.push('#' + clone.className);}
+						this.msg( 'element_to_map_not_found', [selector, parentName.join('')], clone);}}}}
+		if (classToDelete.length>0){ //remove class attribute only at the end to allow .selector to work regardless of the order of directives
+			for (i=0;i<classToDelete.length;i++){
+				this.utils.removeAtt(classToDelete[i], 'class');}}
+		return clone;},
+
+	messages:{
+		'wrong_html_source':'The source HTML provided to autoRender does not exist. Check your selector syntax.',
+		'element_to_map_not_found':"PURE - Cannot find the element \"&\" in \"&\"",
+		'place_runtime_container':'To collect the PURE runtime, place a <textarea id=\"pureMsg\"></textarea> somewhere in your document.',
+		'no_HTML_selected':'The map function didn\'t receive a valid HTML element',
+		'no_HTML_name_set_for_parsing':'A name is needed when parsing the HTML: &',
+		'HTML_does_not_exist':'The HTML: & does not exist or is not yet compiled',
+		'library_needed':'In order to run PURE, you need a JS library such as: dojo, domAssistant, jQuery, mootools, prototype,...',
+		'parsing_error':'Parsing error: \"&\" in: &'},
+
+	msg:function(msgId, msgParams, where){
+		// find the msg in local labels repository or in this.messages
+		var msg = this.messages[msgId] || msgId;
+		var re = /&/, i;
+		if(msg != msgId && msgParams){
+			if (typeof msgParams == 'string'){
+				msg = msg.replace(re, msgParams);}
+			else{
+				for(i=0; i<msgParams.length;i++ ){
+					msg = msg.replace(re, msgParams[i]);}}}
+
+		var elm = document.getElementById('pureMsg');
+		if(elm){
+			elm.innerHTML = [msg, '\n', elm.innerHTML].join('');}
+			else{ alert(msg);}},
+	libs:{
+		mapDirective:function(elm, directives){
+			return $p.map(directives, elm);},
+
+		compile:function(elm, fName, directives, context){
+			var html = elm;
+			if(context) {html.setAttribute($p.utils.AUTO, 'true');}
+			if(directives) {html = $p.map( directives, elm);}
+			return $p.compile(html, fName, context||false, false);},//return the compiled JS
+
+		render:function(elm, context, directives, html, auto){
+			var source = elm;
+			if(typeof html !== 'undefined'){
+				source = typeof html !== 'string' && html[0] || html;} //either a lib object or a node or a template name
+			else if(typeof directives !== 'undefined' && (directives.jquery || directives.cssSelect || directives.nodeType || typeof directives=== 'string')){
+				//the directive is the template 
+				source = (directives.jquery || directives.cssSelect) ? directives[0]:directives;
+				directives = null;}
+			return this.replaceWithAndReturnNew(elm, auto === true ? $p.autoRender(source, context, directives):$p.render(source, context, directives));},
+
+		replaceWithAndReturnNew: function(elm, html){
+			var div = document.createElement('div');
+			var replaced = elm;
+			var parent = replaced.parentNode;
+			parent.insertBefore(div, replaced);//avoid IE mem leak, place it before filling
+			div.innerHTML = html;
+			var replacers = div.childNodes;
+			var newThis = [];
+			for (var i = replacers.length - 1; i >= 0; i--) {
+				newThis.push(replaced.parentNode.insertBefore(replacers[i], replaced.nextSibling));}
+			parent.removeChild(replaced);
+			parent.removeChild(div);
+			return newThis.length > 1 ? newThis:newThis[0];}}};
+
+if(typeof jQuery !== 'undefined'){ 
+	//patch jQuery to read namespaced attributes see Ticket #3023
+	if(jQuery.parse) {jQuery.parse[0] = /^(\[) *@?([\w:\-]+) *([!*$\^~=]*) *('?"?)(.*?)\4 *\]/;}
+	$p.utils.domCleaningRules.push({ what: /\s?jQuery[^\s]+\=\"null\"/gi, by: ''});
+	if (typeof document.querySelector === 'undefined') {$p.find = function(selector, context){
+		var found = jQuery.find(selector, context);
+		return found[0] || false;};}
+	// jQuery chaining functions
+	jQuery.fn.mapDirective = function(directives){
+		return jQuery($p.libs.mapDirective(this[0], directives));};
+	jQuery.fn.compile = function(fName, directives, context){
+		$p.libs.compile(this[0], fName, directives, context);
+		return this;};
+	jQuery.fn.render = function(context, directives, html){
+		return jQuery($p.libs.render(this[0], context, directives, html));};
+	jQuery.fn.autoRender = function(context, directives, html){
+		return jQuery($p.libs.render(this[0], context, directives, html, true));};}
+
+else if (typeof DOMAssistant !== 'undefined') { //Thanks to Lim Cheng Hong from DOMAssistant who did it
+	if (typeof document.querySelector === 'undefined') {$p.find = function (selector, context) {
+		var found = $(context).cssSelect(selector);
+		return found[0] || false;};}	
+	DOMAssistant.attach({
+		publicMethods : [ 'mapDirective', 'compile', 'render', 'autoRender'],
+		mapDirective : function (directives) {
+			return $($p.libs.mapDirective(this, directives));},
+		compile : function (fName, directives, context) {
+			$p.libs.compile(this, fName, directives, context);
+			return this;},
+		render : function (context, directives, html) {
+			return $($p.libs.render(this, context, directives, html));},
+		autoRender : function (context, directives, html) {
+			return $($p.libs.render(this, context, directives, html, true));}});}
+
+else if (typeof MooTools !== 'undefined') {//Thanks to Carlos Saltos
+	if (typeof document.querySelector === 'undefined'){$p.find = function (selector, context) {
+		var found = $(context).getElement(selector);
+		return found || false;};}
+
+	Element.implement({
+	mapDirective: function (directives) {
+		return $($p.libs.mapDirective(this, directives));},
+	
+	compile: function (fName, directives, context) {
+		$p.libs.compile(this, fName, directives, context);
+		return this;},
+	
+	render: function (context, directives, html) {
+		return $($p.libs.render(this, context, directives, html));},
+	
+	autoRender: function (context, directives, html) {
+		return $($p.libs.render(this, context, directives, html, true));}});}
+			
+else if (typeof Prototype !== 'undefined'){ //Thanks to Carlos Saltos and Borja Vasquez
+	// Implement the find function for pure using the prototype
+	// select function
+	if (typeof document.querySelector === 'undefined'){ $p.find = function (selector, context) {		
+		var found = $(context).select(selector);
+		// patch prototype when using selector with id's and cloned nodes in IE
+		// maybe in next releases of prototype this is fixed
+		if (!found || found === '') {
+			var pos = selector.indexOf('#');
+			if (pos > -1) { 				
+				var id = selector.substr(pos+1);								
+				var els = context.getElementsByTagName('*');
+        		for (var i = 0, el; el = els[i]; i++) {
+        			if (el.id == id) {
+        				return el;}}}}
+		return found[0] || false;
+	};}
+	// Add more methods to the prototype element's objects for
+	// supporting pure calls
+	// Add these extended methods using the prototype element object
+	Element.addMethods({
+		mapDirective: function (element, directives) {
+			return $($p.libs.mapDirective(element, directives));},
+
+		compile: function (element, fName, directives, context) {
+			$p.libs.compile(element, fName, directives, context);
+			return this;},
+
+		render: function (element, context, directives, html) {
+			return $($p.libs.render(element, context, directives, html));},
+
+		autoRender: function (element, context, directives, html) {
+			return $($p.libs.render(element, context, directives, html, true));}});}
+			
+else if (typeof Sizzle !== 'undefined') {
+		if (typeof document.querySelector === 'undefined'){ $p.find = function(selector, context){
+		var found = Sizzle(selector, context);
+		return found[0] || false;};}
+		
+	$p.sizzle = function(selector, context){
+		selector = selector || document;
+		var ret  = selector.nodeType ? [selector]:Sizzle(selector, context);
+		var sizzle = ret;
+		sizzle.mapDirective = function(directives){
+			sizzle[0] = $p.libs.mapDirective(sizzle[0], directives);
+			return sizzle;};
+
+		sizzle.compile = function(fName, directives, context){
+			$p.libs.compile(sizzle[0], fName, directives, context);
+			return sizzle;};
+
+		sizzle.render = function(context, directives, html){
+			sizzle[0] = $p.libs.render(sizzle[0], context, directives, html);
+			return sizzle;};
+
+		sizzle.autoRender = function(context, directives, html){
+			sizzle[0] = $p.libs.render(sizzle[0], context, directives, html, true);
+			return sizzle;};
+		return sizzle;};}

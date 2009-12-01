@@ -85,10 +85,11 @@ li.messages {
 	float:left;
 	resize:vertical;
   margin:0 4px 0 0;
-	padding:2px;
+	padding:3px 5px;
   width:565px;
   height:26px;
   font-size:11pt;
+	font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;
   -moz-border-radius:3px;
   -webkit-border-radius:3px;
   -webkit-box-shadow:0 0 3px #ccc;
