@@ -5,17 +5,22 @@ var log = function(d) {
 
 // Main WebCenter resource module
 var webCenter = function(callback){
-  var resourceIndexURL = "/rest/api/resourceIndex";
+  var hostname = location.hostname;
+  var port = (hostname == 'wc') ? '80' : '8889';
   var resourceIndex = null;
   var perPage = 20;
   
   function currentServer() {
-    return location.protocol + '//' + location.hostname + ':' + location.port + '/';
+    return location.protocol + '//' + hostname + ':' + port + '/';
+  }
+
+  function getResourceIndexURL(){
+    return currentServer() + 'rest/api/resourceIndex';
   }
 
   function getResourceIndex(callback){
     if(!resourceIndex) {
-      $.getJSON(resourceIndexURL, function(data){
+      $.getJSON(getResourceIndexURL(), function(data){
         resourceIndex = data;
         callback();
       });
@@ -60,7 +65,7 @@ var webCenter = function(callback){
       var url = $.grep(item.links, function(l){
           return l.type == 'text/html';
         })[0].href;
-      return '<a href="' + url + '">' + item.displayName + '</a>'; 
+      return ' <a href="' + url + '">' + item.displayName + '</a> '; 
     });
   }
 
