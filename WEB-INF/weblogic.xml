@@ -1,0 +1,4 @@
+<?xml version = '1.0' encoding = 'ISO-8859-1'?>
+<weblogic-web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.bea.com/ns/weblogic/weblogic-web-app http://www.bea.com/ns/weblogic/weblogic-web-app/1.0/weblogic-web-app.xsd" xmlns="http://www.bea.com/ns/weblogic/weblogic-web-app">
+    <context-root>ir</context-root>
+</weblogic-web-app>
