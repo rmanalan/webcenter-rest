@@ -1,7 +1,4 @@
-var log = function(d) {
-  try { console.log(d) }
-  catch(e) {};
-}
+$(loadPage);
 
 // Main WebCenter resource module
 var webCenter = function(callback){
@@ -145,8 +142,8 @@ var userProfile = function(){
   }
 }();
 
-$(function(){
-
+// Main page loader/initializer
+function loadPage() {
   webCenter.init(function(){
 
     // setup posting widget
@@ -192,7 +189,7 @@ $(function(){
     }); 
     
   });
-});
+};
 
 /* 
 vim:ts=2:sw=2:expandtab
