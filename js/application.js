@@ -40,10 +40,7 @@ function loadPage() {
     // Infinite scroll pager
     $(window).scroll(function(){
       if($(window).scrollTop() == $(document).height() - $(window).height()){
-        $('#loading-ind').show()
-        setTimeout(function(){
-          activityStream.renderActivities(activityStream.currentActivityId(),true);
-        }, 1000);
+        activityStream.renderActivities(activityStream.currentActivityId(),true);
       }
     }); 
     

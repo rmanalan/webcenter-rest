@@ -156,12 +156,17 @@ var webCenter = function(callback){
 // Activity Stream module
 var activityStream = function() {
   var activityId = -1;
+  var moreActivities = true;
   function getActivities(startIndex, callback){
     startIndex = startIndex ? startIndex : 0;
     $.getJSON(webCenter.getResourceURL(webCenter.getResourceIndex().links,'urn:oracle:webcenter:activities:stream',startIndex), callback);
   }
   function renderActivities(startIndex, cloneElem){
     getActivities(startIndex, function(data){
+      if(data.items.length==0) {
+        moreActivities = false;
+        return;
+      }
       var bindData = {
         'messages' : $.map(data.items, function(d){
           var detail = d.detail ? d.detail : "";
