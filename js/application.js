@@ -14,7 +14,7 @@ var utils = function(){
       function(url){
         // apply filters one by one. if one is applied, move on to the next url. order matters
         var origUrl = url;
-        if((result=resolveYouTubeURLs(origUrl)!=origUrl){
+        if(result=resolveYouTubeURLs(origUrl)!=origUrl){
           return result;
         } else if(result=resolveImages(origUrl)!=origUrl){
           return result;
