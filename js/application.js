@@ -50,7 +50,7 @@ var utils = function(){
   function resolveYouTubeURLs(str){
     return str.replace(/http:\/\/(www.)?youtube\.com\/watch\?v=([A-Za-z0-9._%-]*)[&\w;=\+_\-]*/,
       function(url, token1, id){
-        return '<p><object width="379" height="227">' +
+        return linkTo(url, url, true) + '<p><object width="379" height="227">' +
           '<param name="movie" value="http://www.youtube.com/v/'+id+'"></param>' + 
           '<param name="wmode" value="transparent"></param>' +
           '<embed src="http://www.youtube.com/v/' + id +
@@ -62,7 +62,7 @@ var utils = function(){
   function resolveVimeoURLs(str){
     return str.replace(/http:\/\/(www.)?vimeo\.com\/([A-Za-z0-9._%-]*)[&\w;=\+_\-]*/,
       function(url, token1, id){
-        return '<p><object width="379" height="227">' +
+        return linkTo(url, url, true) + '<p><object width="379" height="227">' +
           '<param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id='+id+'&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=00adef&amp;fullscreen=1"></param>' + 
           '<param name="allowfullscreen" value="true" />' +
           '<param name="allowscriptaccess" value="always" />' +
