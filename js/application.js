@@ -229,8 +229,10 @@ function loadPage() {
     // Infinite scroll pager
     $(window).scroll(function(){
       if($(window).scrollTop() == $(document).height() - $(window).height()){
-        activityStream.renderActivities(activityStream.currentActivityId(),
-          $('li.messages:last').clone(true).appendTo('ol.results'));
+        setTimeout(function(){
+          activityStream.renderActivities(activityStream.currentActivityId(),
+            $('li.messages:last').clone(true).appendTo('ol.results'));
+        }, 1000);
       }
     }); 
     
