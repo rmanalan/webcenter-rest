@@ -27,7 +27,7 @@ var utils = function(){
   function resolveImages(str) {
     return str.replace(/(^|[\n ])http(|s):\/\/.+(jpg|gif|png|bmp)/i,
       function(token){
-        return '"<img src="' + token + ''" alt=""/>"';
+        return '"<img src="' + token + '" alt=""/>"';
       }
     );
   }
