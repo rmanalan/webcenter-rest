@@ -2,17 +2,54 @@ $(loadPage);
 
 // Common utilities
 var utils = function(){
+  function linkTo(url, text, newwin){
+    newwin = newwin ? ' target="_blank"' : "";
+    return '<a href="' + url + '"' + newwin + '>' + text + '</a>'
+  }
+
   function resolveURLs(str) {
     // based on Gruber's liberal regex pattern enhanced by Alan Storm
     // http://alanstorm.com/url_regex_explained
-    str.replace("\\b(([\\w-]+://?|www[.])[^\\s()<>]+(?:(?:\\([\\w\\d)]+\\)[^\\s()<>]*)+|([^[:punct:]\\s]|/)))",
-      function(token){
-        console.log(token)
+    return str.replace(/(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/g,
+      function(url){
+        // apply filters one by one. if one is applied, move on to the next url. order matters
+        var origUrl = url;
+        if((result=resolveYouTubeURLs(origUrl)!=origUrl){
+          return result;
+        } else if((result=resolveImages(origUrl)!=origUrl){
+          return result;
+        } else {
+          return linkTo(url, url, true);
+        }
       }
     );
   }
+  function resolveImages(str) {
+    return str.replace(/(^|[\n ])http(|s):\/\/.+(jpg|gif|png|bmp)/i,
+      function(token){
+        return '"<img src="' + token + ''" alt=""/>"';
+      }
+    );
+  }
+  function resolveYouTubeURLs(str){
+    return str.replace(/http:\/\/(www.)?youtube\.com\/watch\?v=([A-Za-z0-9._%-]*)[&\w;=\+_\-]*/,
+      function(token){
+        return '<object width="379" height="227">' +
+          '<param name="movie" value="http://www.youtube.com/v/'+token[2]+"></param>' + 
+          '<param name="wmode" value="transparent"></param>' +
+          '<embed src="http://www.youtube.com/v/' + token[2]
+            'type="application/x-shockwave-flash" wmode="transparent" ' +
+            'width="379" height="227">' +
+          '</embed>' +
+          '</object>';
+      }
+    );
+  }
+
   return {
-    resolveURLs: resolveURLs
+    'linkTo' : linkTo,
+    'resolveURLs' : resolveURLs,
+    'resolveYouTubeURLs' : resolveYouTubeURLs
   };
 }();
 
@@ -86,10 +123,6 @@ var webCenter = function(callback){
     return $.timeago(dttm.replace(/\.[^\-]*.\-/,'-'));
   }
 
-  function linkTo(url,text){
-    return '<a href="' + url + '">' + text + '</a>'
-  }
-
   return {
     'init' : getResourceIndex,
     'currentServer' : currentServer,
@@ -97,8 +130,7 @@ var webCenter = function(callback){
     'getResourceURL' : getResourceURL,
     'getTemplateItem' : getTemplateItem,
     'resolveBindItems' : resolveBindItems,
-    'timeAgoInWords' : timeAgoInWords,
-    'linkTo' : linkTo
+    'timeAgoInWords' : timeAgoInWords
   }
 }();
 
@@ -171,7 +203,7 @@ function loadPage() {
         type: "post",
         dataType: "json",
         contentType: "application/json",
-        data: JSON.stringify({'body': msg}),
+        data: JSON.stringify({'body': utils.resolveURLs(msg)}),
         success: function(d){
           $('#pub-text').val('');
           var profileUrl = webCenter.getResourceURL(d.author.links,'urn:oracle:webcenter:spaces:profile');
@@ -181,7 +213,7 @@ function loadPage() {
                 'avatar' : userProfile.avatarSmall(d.author.guid),
                 'name' : d.author.displayName,
                 'url' : profileUrl,
-                'activity' : webCenter.linkTo(profileUrl, d.author.displayName) + ' posted a message',
+                'activity' : utils.linkTo(profileUrl, d.author.displayName) + ' posted a message',
                 'detail' : d.body,
                 'reltime' : webCenter.timeAgoInWords(d.created)
               }]
