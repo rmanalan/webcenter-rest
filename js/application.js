@@ -37,8 +37,8 @@ var utils = function(){
         return '<object width="379" height="227">' +
           '<param name="movie" value="http://www.youtube.com/v/'+token[2]+'"></param>' + 
           '<param name="wmode" value="transparent"></param>' +
-          '<embed src="http://www.youtube.com/v/' + token[2]
-            'type="application/x-shockwave-flash" wmode="transparent" ' +
+          '<embed src="http://www.youtube.com/v/' + token[2] +
+            '" type="application/x-shockwave-flash" wmode="transparent" ' +
             'width="379" height="227">' +
           '</embed>' +
           '</object>';
