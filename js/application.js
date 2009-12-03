@@ -33,18 +33,13 @@ var utils = function(){
   }
   function resolveYouTubeURLs(str){
     return str.replace(/http:\/\/(www.)?youtube\.com\/watch\?v=([A-Za-z0-9._%-]*)[&\w;=\+_\-]*/,
-      function(url, token1, token2){
-        console.log(url);
-        console.log(token1);
-        console.log(token2);
-        return '<object width="379" height="227">' +
-          '<param name="movie" value="http://www.youtube.com/v/'+token2+'"></param>' + 
+      function(url, token1, youtubeid){
+        return '<p><object width="379" height="227">' +
+          '<param name="movie" value="http://www.youtube.com/v/'+youtubeid+'"></param>' + 
           '<param name="wmode" value="transparent"></param>' +
-          '<embed src="http://www.youtube.com/v/' + token2 +
+          '<embed src="http://www.youtube.com/v/' + youtubeid +
             '" type="application/x-shockwave-flash" wmode="transparent" ' +
-            'width="379" height="227">' +
-          '</embed>' +
-          '</object>';
+            'width="379" height="227"></embed></object></p>';
       }
     );
   }
