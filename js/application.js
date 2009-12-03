@@ -35,15 +35,14 @@ function loadPage() {
     });
 
     // Render initial activities
-    activityStream.renderActivities(0,$('li.messages:first'));
+    activityStream.renderActivities(0,false);
 
     // Infinite scroll pager
     $(window).scroll(function(){
       if($(window).scrollTop() == $(document).height() - $(window).height()){
         $('#loading-ind').show()
         setTimeout(function(){
-          activityStream.renderActivities(activityStream.currentActivityId(),
-            $('li.messages:last').clone(true).appendTo('ol.results'));
+          activityStream.renderActivities(activityStream.currentActivityId(),true);
         }, 1000);
       }
     }); 

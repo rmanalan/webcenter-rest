@@ -96,7 +96,7 @@ var webCenter = function(callback){
     if(!resourceIndex) {
       $.getJSON(getResourceIndexURL(), function(data){
         resourceIndex = data;
-        callback(resourceIndex);
+        callback(data);
       });
     }
     return resourceIndex;
@@ -160,7 +160,7 @@ var activityStream = function() {
     startIndex = startIndex ? startIndex : 0;
     $.getJSON(webCenter.getResourceURL(webCenter.getResourceIndex().links,'urn:oracle:webcenter:activities:stream',startIndex), callback);
   }
-  function renderActivities(startIndex, template){
+  function renderActivities(startIndex, cloneElem){
     getActivities(startIndex, function(data){
       var bindData = {
         'messages' : $.map(data.items, function(d){
@@ -177,6 +177,11 @@ var activityStream = function() {
             }
           })
       };
+      if(cloneElem) {
+        var template = $('li.messages:last').clone(true).appendTo('ol.results');
+      } else {
+        var template = $('li.messages:last');
+      }
       template.autoRender(bindData);
     });
   }
