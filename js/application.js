@@ -1,3 +1,4 @@
+$(document).ajaxStart(function(){$('#loading-ind').show()}).ajaxStop(function(){$('#loading-ind').hide()});
 $(loadPage);
 
 // Common utilities
