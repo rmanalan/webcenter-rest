@@ -158,6 +158,7 @@ var activityStream = function() {
   var activityId = -1;
   var moreActivities = true;
   function getActivities(startIndex, callback){
+    if(!moreActivities) return;
     startIndex = startIndex ? startIndex : 0;
     $.getJSON(webCenter.getResourceURL(webCenter.getResourceIndex().links,'urn:oracle:webcenter:activities:stream',startIndex), callback);
   }
