@@ -96,7 +96,7 @@ var webCenter = function(callback){
     if(!resourceIndex) {
       $.getJSON(getResourceIndexURL(), function(data){
         resourceIndex = data;
-        callback();
+        callback(resourceIndex);
       });
     }
     return resourceIndex;

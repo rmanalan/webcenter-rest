@@ -6,12 +6,25 @@
     <script src="js/wcrest.js" type="text/javascript" language="javascript"></script>
     <script src="js/tester.js" type="text/javascript" language="javascript"></script>
     <link href="css/screen.css" type="text/css" media="screen" rel="stylesheet"/>
+    <style type="text/css" media="screen">
+      /* <![CDATA[ */
+      .padtop {
+        margin-top:10px;
+      }
+      
+      /* ]]> */
+    </style>
     <title>WebCenter REST API Browser</title>
   </head>
   <body>
     <div id="msg"></div>
-
-      <div id="contents">
+      <div id="contents" class="container padtop">
+        <div id="loading-ind" class="hide"></div>
+        <h3>WebCenter REST API Browser</h3>
+        <p>
+          User Firefox and Firebug to browse the API.  The links below will initiate
+          the services and show the resulting objects inside the Firebug window.
+        </p>
         <ul class="results">
           <li class="services clearfix">
             <a class="service"></a>
