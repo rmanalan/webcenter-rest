@@ -35,7 +35,7 @@ var utils = function(){
     return str.replace(/http:\/\/(www.)?youtube\.com\/watch\?v=([A-Za-z0-9._%-]*)[&\w;=\+_\-]*/,
       function(token){
         return '<object width="379" height="227">' +
-          '<param name="movie" value="http://www.youtube.com/v/'+token[2]+"></param>' + 
+          '<param name="movie" value="http://www.youtube.com/v/'+token[2]+'"></param>' + 
           '<param name="wmode" value="transparent"></param>' +
           '<embed src="http://www.youtube.com/v/' + token[2]
             'type="application/x-shockwave-flash" wmode="transparent" ' +
