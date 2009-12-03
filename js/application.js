@@ -253,6 +253,7 @@ function loadPage() {
     // Infinite scroll pager
     $(window).scroll(function(){
       if($(window).scrollTop() == $(document).height() - $(window).height()){
+        $('#loading-ind').show()
         setTimeout(function(){
           activityStream.renderActivities(activityStream.currentActivityId(),
             $('li.messages:last').clone(true).appendTo('ol.results'));
