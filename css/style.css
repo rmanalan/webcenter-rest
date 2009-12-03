@@ -174,7 +174,9 @@ button:hover, .button:hover {
 	margin-top:5px;
 	border-top:1px solid #333;
 }
-
+.detail p {
+  margin:5px 0;
+}
 /*
 vim:ts=2:sw=2
  */
