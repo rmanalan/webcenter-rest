@@ -16,7 +16,7 @@ var utils = function(){
         var origUrl = url;
         if((result=resolveYouTubeURLs(origUrl)!=origUrl){
           return result;
-        } else if((result=resolveImages(origUrl)!=origUrl){
+        } else if(result=resolveImages(origUrl)!=origUrl){
           return result;
         } else {
           return linkTo(url, url, true);
