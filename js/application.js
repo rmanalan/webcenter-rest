@@ -8,6 +8,10 @@ var utils = function(){
     return '<a href="' + url + '"' + newwin + '>' + text + '</a>'
   }
 
+  function timeAgoInWords(dttm){
+    return $.timeago(dttm.replace(/\.[^\-]*.\-/,'-'));
+  }
+
   function resolveURLs(str) {
     // based on Gruber's liberal regex pattern enhanced by Alan Storm
     // http://alanstorm.com/url_regex_explained
@@ -19,11 +23,20 @@ var utils = function(){
           return result;
         } else if((result=resolveVimeoURLs(origUrl))!=origUrl){
           return result;
+        } else if((result=resolveGists(origUrl))!=origUrl){
+          return result;
         } else if((result=resolveImages(origUrl))!=origUrl){
           return result;
         } else {
           return linkTo(url, url, true);
         }
+      }
+    );
+  }
+  function resolveGists(str){
+    return str.replace(/http:\/\/gist\.github\.com\/([0-9]*)[&\w;=\+_\-]*/,
+      function(url,id){
+        return '<script src="http://gist.github.com/' + id + '.js"></script>';
       }
     );
   }
@@ -63,6 +76,7 @@ var utils = function(){
   return {
     'linkTo' : linkTo,
     'resolveURLs' : resolveURLs,
+    'timeAgoInWords' : timeAgoInWords
   };
 }();
 
@@ -132,18 +146,13 @@ var webCenter = function(callback){
     });
   }
 
-  function timeAgoInWords(dttm){
-    return $.timeago(dttm.replace(/\.[^\-]*.\-/,'-'));
-  }
-
   return {
     'init' : getResourceIndex,
     'currentServer' : currentServer,
     'getResourceIndex' : getResourceIndex,
     'getResourceURL' : getResourceURL,
     'getTemplateItem' : getTemplateItem,
-    'resolveBindItems' : resolveBindItems,
-    'timeAgoInWords' : timeAgoInWords
+    'resolveBindItems' : resolveBindItems
   }
 }();
 
@@ -167,7 +176,7 @@ var activityStream = function() {
               'urn:oracle:webcenter:people:person'),
             'activity' : webCenter.resolveBindItems(d.message, d.templateParams.items),
             'detail' : detail,
-            'reltime' : webCenter.timeAgoInWords(d.createdDate)
+            'reltime' : utils.timeAgoInWords(d.createdDate)
             }
           })
       };
@@ -228,7 +237,7 @@ function loadPage() {
                 'url' : profileUrl,
                 'activity' : utils.linkTo(profileUrl, d.author.displayName) + ' posted a message',
                 'detail' : d.body,
-                'reltime' : webCenter.timeAgoInWords(d.created)
+                'reltime' : utils.timeAgoInWords(d.created)
               }]
             };
           // don't re-render the entire stream, just prepend the latest to the top
