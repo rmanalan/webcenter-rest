@@ -1,5 +1,21 @@
 $(loadPage);
 
+// Common utilities
+var utils = function(){
+  function resolveURLs(str) {
+    // based on Gruber's liberal regex pattern enhanced by Alan Storm
+    // http://alanstorm.com/url_regex_explained
+    str.replace("\\b(([\\w-]+://?|www[.])[^\\s()<>]+(?:(?:\\([\\w\\d)]+\\)[^\\s()<>]*)+|([^[:punct:]\\s]|/)))",
+      function(token){
+        console.log(token)
+      }
+    );
+  }
+  return {
+    resolveURLs: resolveURLs
+  };
+}();
+
 // Main WebCenter resource module
 var webCenter = function(callback){
   var hostname = location.hostname;
