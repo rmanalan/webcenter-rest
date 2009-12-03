@@ -17,6 +17,8 @@ var utils = function(){
         var origUrl = url;
         if((result=resolveYouTubeURLs(origUrl))!=origUrl){
           return result;
+        } else if((result=resolveVimeoURLs(origUrl))!=origUrl){
+          return result;
         } else if((result=resolveImages(origUrl))!=origUrl){
           return result;
         } else {
@@ -34,12 +36,25 @@ var utils = function(){
   }
   function resolveYouTubeURLs(str){
     return str.replace(/http:\/\/(www.)?youtube\.com\/watch\?v=([A-Za-z0-9._%-]*)[&\w;=\+_\-]*/,
-      function(url, token1, youtubeid){
+      function(url, token1, id){
         return '<p><object width="379" height="227">' +
-          '<param name="movie" value="http://www.youtube.com/v/'+youtubeid+'"></param>' + 
+          '<param name="movie" value="http://www.youtube.com/v/'+id+'"></param>' + 
           '<param name="wmode" value="transparent"></param>' +
-          '<embed src="http://www.youtube.com/v/' + youtubeid +
+          '<embed src="http://www.youtube.com/v/' + id +
             '" type="application/x-shockwave-flash" wmode="transparent" ' +
+            'width="379" height="227"></embed></object></p>';
+      }
+    );
+  }
+  function resolveVimeoURLs(str){
+    return str.replace(/http:\/\/(www.)?vimeo\.com\/([A-Za-z0-9._%-]*)[&\w;=\+_\-]*/,
+      function(url, token1, id){
+        return '<p><object width="379" height="227">' +
+          '<param name="movie" value="http://vimeo.com/moogaloop.swf?clip_id='+id+'&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=00adef&amp;fullscreen=1"></param>' + 
+          '<param name="allowfullscreen" value="true" />' +
+          '<param name="allowscriptaccess" value="always" />' +
+          '<embed src="http://vimeo.com/moogaloop.swf?clip_id=' + id +
+            '&amp;server=vimeo.com&amp;show_title=0&amp;show_byline=0&amp;show_portrait=0&amp;color=00adef&amp;fullscreen=1" type="application/x-shockwave-flash" allowfullscreen="true" allowscriptaccess="always" ' +
             'width="379" height="227"></embed></object></p>';
       }
     );
@@ -48,7 +63,6 @@ var utils = function(){
   return {
     'linkTo' : linkTo,
     'resolveURLs' : resolveURLs,
-    'resolveYouTubeURLs' : resolveYouTubeURLs
   };
 }();
 
