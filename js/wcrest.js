@@ -20,8 +20,8 @@ var utils = function(){
           return result;
         } else if((result=resolveVimeoURLs(origUrl))!=origUrl){
           return result;
-        } else if((result=resolveGists(origUrl))!=origUrl){
-          return result;
+        //} else if((result=resolveGists(origUrl))!=origUrl){
+        //  return result;
         } else if((result=resolveImages(origUrl))!=origUrl){
           return result;
         } else {
@@ -118,6 +118,7 @@ var webCenter = function(callback){
     } else {
       return null;
     }
+        return;
   };
 
   function getTemplateItem(items, type) {
@@ -208,15 +209,33 @@ var activityStream = function() {
 
 // User Profile module
 var userProfile = function(){
+  var currentUser = null;
   var avatarPath = 'webcenter/profilephoto/';
   function avatar(guid,size) {
     return webCenter.currentServer() + 'webcenter/profilephoto/' + guid + '/' + size.toUpperCase();
   }
   
+  function getCurrentUser(callback){
+    if(!currentUserGuid){
+      $.getJSON(webCenter.getResourceURL(webCenter.getResourceIndex().links,'urn:oracle:webcenter:people'),function(data){ 
+        currentUser = data;
+        callback(data);
+      )};
+    }else{
+      callback(currentUser);
+    }
+  }
+
+  function getUser(guid){
+
+  }
+  
   return {
-    avatarSmall : function(guid){ return avatar(guid,'SMALL')},
-    avatarLarge : function(guid){ return avatar(guid,'LARGE')},
-    avatarOriginal : function(guid){ return avatar(guid,'')}
+    'avatarSmall' : function(guid){ return avatar(guid,'SMALL')},
+    'avatarLarge' : function(guid){ return avatar(guid,'LARGE')},
+    'avatarOriginal' : function(guid){ return avatar(guid,'')},
+    'getCurrentUser' : getCurrentUser,
+    'getUser' : getUser
   }
 }();
 /* 
