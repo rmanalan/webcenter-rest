@@ -1,7 +1,14 @@
 $(document).ajaxStart(function(){$('#loading-ind').show()}).ajaxStop(function(){$('#loading-ind').hide()});
 $(loadPage);
+var currentUser;
+
 function loadPage() {
   webCenter.init(function(){
+
+    $('ul.headnav li').autoRender({
+      'username' : currentUser.name.formatted,
+      'url' : webCenter.getResourceURL(currentUser.links,'urn:oracle:webcenter:spaces:profile',false)
+    });
 
     // setup posting widget
     $('#pub-form').submit(function(){

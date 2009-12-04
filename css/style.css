@@ -38,6 +38,15 @@ a.no-underline, a.no-underline:active, a.no-underline:visited, a.no-underline:li
 .span-avatar {
 	width:50px;
 }
+ul.headnav {
+  margin:2px 5px;
+  text-align:right;
+  height:20px;
+}
+ul.headnav li {
+  float:right;
+  list-style-type:none;
+}
 li.messages {
 	margin-bottom:10px;
 }

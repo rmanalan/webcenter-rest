@@ -77,6 +77,9 @@ var utils = function(){
   };
 }();
 
+// Currently logged in user. Gets init when webCenter.init() is called
+var currentUser;
+
 // Main WebCenter resource module
 var webCenter = function(callback){
   var hostname = location.hostname;
@@ -92,14 +95,27 @@ var webCenter = function(callback){
     return currentServer() + 'rest/api/resourceIndex';
   }
 
+  function init(callback){
+    getResourceIndex(function(){
+        // setup current user
+        userProfile.getCurrentUser(function(d){
+          currentUser = d;
+          callback();
+        });
+      });
+  }
+
   function getResourceIndex(callback){
     if(!resourceIndex) {
       $.getJSON(getResourceIndexURL(), function(data){
         resourceIndex = data;
-        callback(data);
+
+        if(callback) callback(data);
+        return resourceIndex;
       });
+    } else {
+      return resourceIndex;
     }
-    return resourceIndex;
   };
 
   function getResourceURL(links, urn, startIndex) {
@@ -145,7 +161,7 @@ var webCenter = function(callback){
   }
 
   return {
-    'init' : getResourceIndex,
+    'init' : init,
     'currentServer' : currentServer,
     'getResourceIndex' : getResourceIndex,
     'getResourceURL' : getResourceURL,
@@ -209,36 +225,35 @@ var activityStream = function() {
 
 // User Profile module
 var userProfile = function(){
-  var currentUser = null;
+  var currUserObj = null;
   var avatarPath = 'webcenter/profilephoto/';
   
   function avatar(guid,size) {
     return webCenter.currentServer() + 'webcenter/profilephoto/' + guid + '/' + size.toUpperCase();
   }
   
-  function getCurrentUser(callback){
-    if(!currentUser){
+function getCurrentUser(callback){
+    if(!currUserObj){
       $.getJSON(webCenter.getResourceURL(webCenter.getResourceIndex().links,'urn:oracle:webcenter:people',false),function(data){ 
-        currentUser = data;
-        callback(data);
+        currUserObj = data;
+        if(callback) callback(currUserObj);
       });
     } else {
-      callback(currentUser);
+      if(callback) callback(currUserObj);
+      return currUserObj;
     }
   }
 
   function updateStatus(status){
-    getCurrentUser(function(){
-      $.ajax({
-        url: webCenter.getResourceURL(currentUser.links,'urn:oracle:webcenter:people:person:status',false),
-        type: "put",
-        dataType: "json",
-        contentType: "application/json",
-        data: JSON.stringify({'note': utils.resolveURLs(status)}),
-        success: function(d){
-          return d;
-        }
-      });
+    $.ajax({
+      url: webCenter.getResourceURL(currentUser.links,'urn:oracle:webcenter:people:person:status',false),
+      type: "put",
+      dataType: "json",
+      contentType: "application/json",
+      data: JSON.stringify({'note': utils.resolveURLs(status)}),
+      success: function(d){
+        return d;
+      }
     });
   }
 
@@ -246,8 +261,7 @@ var userProfile = function(){
     'avatarSmall' : function(guid){ return avatar(guid,'SMALL')},
     'avatarLarge' : function(guid){ return avatar(guid,'LARGE')},
     'avatarOriginal' : function(guid){ return avatar(guid,'')},
-    'getCurrentUser' : getCurrentUser,
-    'updateStatus' : updateStatus
+    'getCurrentUser' : getCurrentUser
   }
 }();
 
