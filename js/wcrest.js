@@ -107,6 +107,7 @@ var webCenter = function(callback){
         return n.resourceType == urn;
       });
     if(results.length>0){
+      if(startIndex==false) return results[0].href;
       if(results[0].template){
         var url = results[0].template.replace("{itemsPerPage}", perPage);
         if(!startIndex) startIndex = "0";
@@ -118,7 +119,6 @@ var webCenter = function(callback){
     } else {
       return null;
     }
-        return;
   };
 
   function getTemplateItem(items, type) {
@@ -211,33 +211,46 @@ var activityStream = function() {
 var userProfile = function(){
   var currentUser = null;
   var avatarPath = 'webcenter/profilephoto/';
+  
   function avatar(guid,size) {
     return webCenter.currentServer() + 'webcenter/profilephoto/' + guid + '/' + size.toUpperCase();
   }
   
   function getCurrentUser(callback){
-    if(!currentUserGuid){
-      $.getJSON(webCenter.getResourceURL(webCenter.getResourceIndex().links,'urn:oracle:webcenter:people'),function(data){ 
+    if(!currentUser){
+      $.getJSON(webCenter.getResourceURL(webCenter.getResourceIndex().links,'urn:oracle:webcenter:people',false),function(data){ 
         currentUser = data;
         callback(data);
-      )};
-    }else{
+      });
+    } else {
       callback(currentUser);
     }
   }
 
-  function getUser(guid){
-
+  function updateStatus(status){
+    getCurrentUser(function(){
+      $.ajax({
+        url: webCenter.getResourceURL(currentUser.links,'urn:oracle:webcenter:people:person:status',false),
+        type: "put",
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify({'note': utils.resolveURLs(status)}),
+        success: function(d){
+          return d;
+        }
+      });
+    });
   }
-  
+
   return {
     'avatarSmall' : function(guid){ return avatar(guid,'SMALL')},
     'avatarLarge' : function(guid){ return avatar(guid,'LARGE')},
     'avatarOriginal' : function(guid){ return avatar(guid,'')},
     'getCurrentUser' : getCurrentUser,
-    'getUser' : getUser
+    'updateStatus' : updateStatus
   }
 }();
+
 /* 
 vim:ts=2:sw=2:expandtab
 */
