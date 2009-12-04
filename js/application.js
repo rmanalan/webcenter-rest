@@ -8,7 +8,7 @@ function loadPage() {
     $('ul.headnav li').autoRender({
       'username' : currentUser.name.formatted,
       'url' : webCenter.getResourceURL(currentUser.links,'urn:oracle:webcenter:spaces:profile',false)
-    });
+    }).show();
 
     // setup posting widget
     $('#pub-form').submit(function(){
