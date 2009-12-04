@@ -231,11 +231,18 @@ var userProfile = function(){
   function avatar(guid,size) {
     return webCenter.currentServer() + 'webcenter/profilephoto/' + guid + '/' + size.toUpperCase();
   }
+
+  function setCurrentUser(props){
+    props['updateStatus'] = updateStatus;
+    props['avatar'] = function(size){size=size?size:'';return avatar(currentUser.guid,size)};
+    currUserObj = props;
+    return currUserObj;
+  }
   
-function getCurrentUser(callback){
+  function getCurrentUser(callback){
     if(!currUserObj){
       $.getJSON(webCenter.getResourceURL(webCenter.getResourceIndex().links,'urn:oracle:webcenter:people',false),function(data){ 
-        currUserObj = data;
+        setCurrentUser(data);
         if(callback) callback(currUserObj);
       });
     } else {

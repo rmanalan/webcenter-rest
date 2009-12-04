@@ -1,7 +1,5 @@
 $(document).ajaxStart(function(){$('#loading-ind').show()}).ajaxStop(function(){$('#loading-ind').hide()});
 $(loadPage);
-var currentUser;
-
 function loadPage() {
   webCenter.init(function(){
 
