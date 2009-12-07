@@ -65,7 +65,7 @@ $(function(){
     });
 
     $('#listfilters').bind('change',function(e){
-      if(this.value=='') return;
+      if(this.value=='') alert('Patience little grasshopper... not implemented yet');
       var activityTemplate = $('li.messages:first');
       $('ol.results').empty().append(activityTemplate);
       activityStream.renderActivities(this.value, 0);
