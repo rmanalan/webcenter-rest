@@ -46,6 +46,19 @@ $(function(){
     // Render initial activities
     activityStream.renderActivities(0,false);
 
+    currentUser.getListNames(function(lists){
+      var bindData = {
+        'list-filters' : $.map(lists.items,function(d){
+               return {
+                 'list-filter' : d.name,
+                 'list-filter-val@value' : d.name
+               };
+             })
+      };
+      console.log(bindData);
+      $('select.list-filters option:last').autoRender(bindData);
+      });
+
     // Infinite scroll pager
     $(window).scroll(function(){
       if($(window).scrollTop() == $(document).height() - $(window).height()){
