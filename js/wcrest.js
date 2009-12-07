@@ -45,7 +45,7 @@ var webCenter = function(callback){
         return n.resourceType == urn;
       });
     if(results.length>0){
-      if(startIndex==false) return results[0].href;
+      if(startIndex==false && typeof(startIndex)=='boolean') return results[0].href;
       if(results[0].template){
         var url = results[0].template.replace("{itemsPerPage}", perPage);
         if(!startIndex) startIndex = "0";
