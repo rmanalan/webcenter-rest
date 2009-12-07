@@ -49,7 +49,7 @@ $(function(){
     currentUser.getListNames(function(lists){
       if(lists.items.length==0) return;
       var bindData = {
-        'list-filter-options' : $.map(lists.items,function(d){
+        'list-filter-option' : $.map(lists.items,function(d){
            return {
              'list-filter-name' : d.name,
 //             'list-filter-val@value' : d.name
@@ -57,7 +57,7 @@ $(function(){
          })
       };
       console.log(JSON.stringify(bindData));
-      $('option.list-filter-options:last').autoRender(bindData);
+      $('option.list-filter-option').autoRender(bindData);
       });
 
     // Infinite scroll pager
