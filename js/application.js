@@ -49,10 +49,10 @@ $(function(){
     currentUser.getListNames(function(lists){
       if(lists.items.length==0) return;
       var bindData = {
-        'list-filter-option' : $.map(lists.items,function(d){
+        'listfilteropt' : $.map(lists.items,function(d){
            return {
-             'list-filter-name' : d.name,
-             'list-filter-val@value' : d.name
+             'listfiltername' : d.name,
+             'listfilteropt@value' : d.name
            };
          })
       };
