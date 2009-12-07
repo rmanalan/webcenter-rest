@@ -64,7 +64,7 @@ $(function(){
       console.log(this.value);
       var activityTemplate = $('li.messages:first');
       $('ol.results').empty().append(activityTemplate);
-      //activityStream.renderActivities(webCenter.getResourceIndex().links, 0);
+      activityStream.renderActivities(this.value, 0);
 
     });
 
