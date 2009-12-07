@@ -48,6 +48,8 @@ ul.headnav li {
   list-style-type:none;
 }
 li.messages {
+	height:50px;
+	list-style-type:none;
 	margin-bottom:10px;
 }
 .activity {
