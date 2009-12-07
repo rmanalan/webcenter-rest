@@ -45,7 +45,7 @@ $(function(){
 
     // Render initial activities
     activityStream.renderActivities(0,false);
-/*
+
     currentUser.getListNames(function(lists){
       if(lists.items.length==0) return;
       var bindData = {
@@ -59,7 +59,7 @@ $(function(){
       console.log(JSON.stringify(bindData));
       $('option.list-filter-option').autoRender(bindData);
       });
-*/
+
     // Infinite scroll pager
     $(window).scroll(function(){
       if($(window).scrollTop() == $(document).height() - $(window).height()){
