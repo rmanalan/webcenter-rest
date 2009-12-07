@@ -47,16 +47,17 @@ $(function(){
     activityStream.renderActivities(0,false);
 
     currentUser.getListNames(function(lists){
+      if(lists.items.length==0) return;
       var bindData = {
-        'list-filters' : $.map(lists.items,function(d){
+        'list-filter-options' : $.map(lists.items,function(d){
                return {
-                 'list-filter' : d.name,
+                 'list-filter-name' : d.name,
                  'list-filter-val@value' : d.name
                };
              })
       };
       console.log(bindData);
-      $('select.list-filters option:last').autoRender(bindData);
+      $('option.list-filter-options:last').autoRender(bindData);
       });
 
     // Infinite scroll pager
