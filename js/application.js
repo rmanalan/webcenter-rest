@@ -1,11 +1,12 @@
-$(document).ajaxStart(function(){$('#loading-ind').show()}).ajaxStop(function(){$('#loading-ind').hide()});
-$(loadPage);
-function loadPage() {
-  webCenter.init(function(){
+$(document).ajaxStart(function(){$('#loading-ind').show()})
+  .ajaxStop(function(){$('#loading-ind').hide()});
 
+$(function(){
+  webCenter.init(function(){
     $('ul.headnav li').autoRender({
       'username' : currentUser.name.formatted,
-      'url' : webCenter.getResourceURL(currentUser.links,'urn:oracle:webcenter:spaces:profile',false)
+      'url' : webCenter.getResourceURL(currentUser.links,
+        'urn:oracle:webcenter:spaces:profile',false)
     }).show();
 
     // setup posting widget
@@ -13,14 +14,16 @@ function loadPage() {
       var msg = $('#pub-text').val();
       if(msg == "") return false; 
       $.ajax({
-        url: webCenter.getResourceURL(webCenter.getResourceIndex().links,'urn:oracle:webcenter:messageBoard'),
+        url: webCenter.getResourceURL(webCenter.getResourceIndex().links,
+               'urn:oracle:webcenter:messageBoard'),
         type: "post",
         dataType: "json",
         contentType: "application/json",
         data: JSON.stringify({'body': utils.resolveURLs(msg)}),
         success: function(d){
           $('#pub-text').val('');
-          var profileUrl = webCenter.getResourceURL(d.author.links,'urn:oracle:webcenter:spaces:profile');
+          var profileUrl = webCenter.getResourceURL(d.author.links,
+            'urn:oracle:webcenter:spaces:profile');
           var data = {
               'messages' : [{
                 'id' : activityStream.nextActivityId(),
@@ -33,7 +36,8 @@ function loadPage() {
               }]
             };
           // don't re-render the entire stream, just prepend the latest to the top
-          $('li.messages:first').clone(true).hide().prependTo('ol.results').autoRender(data).show(300);
+          $('li.messages:first').clone(true).hide().prependTo('ol.results')
+            .autoRender(data).show(300);
         }
       });
       return false;
@@ -48,9 +52,8 @@ function loadPage() {
         activityStream.renderActivities(activityStream.currentActivityId(),true);
       }
     }); 
-    
   });
-};
+});
 
 /* 
 vim:ts=2:sw=2:expandtab
