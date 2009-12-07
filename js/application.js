@@ -46,6 +46,7 @@ $(function(){
     // Render initial activities
     activityStream.renderActivities(0,false);
 
+    // Setup Lists drop-down
     currentUser.getListNames(function(lists){
       if(lists.items.length==0) return;
       var bindData = {
@@ -56,7 +57,7 @@ $(function(){
            };
          })
       };
-      $('.lfopt').clone(true).appendTo('.listfilters').autoRender(bindData);
+      $('.lfopt').autoRender(bindData);
     });
 
     // Infinite scroll pager
