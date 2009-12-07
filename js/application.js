@@ -61,10 +61,11 @@ $(function(){
          webCenter.getResourceURL(webCenter.getResourceIndex().links,
            'urn:oracle:webcenter:activities:stream',true))
       $('.lfopts').clone(true).appendTo('#listfilters').autoRender(bindData);
-      $('.lfopts').clone(true).appendTo('#listfilters').val('').html('Create a new list');
+      $('.lfopts:last').clone(true).appendTo('#listfilters').val('').html('Create a new list');
     });
 
     $('#listfilters').bind('change',function(e){
+      if(this.value=='') return;
       var activityTemplate = $('li.messages:first');
       $('ol.results').empty().append(activityTemplate);
       activityStream.renderActivities(this.value, 0);
