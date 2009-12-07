@@ -47,6 +47,7 @@ var webCenter = function(callback){
     if(results.length>0){
       if(startIndex==false && typeof(startIndex)=='boolean') return results[0].href;
       if(results[0].template){
+        if(startIndex==true && typeof(startIndex)=='boolean') return results[0].template;
         var url = results[0].template.replace("{itemsPerPage}", perPage);
         if(!startIndex) startIndex = "0";
         url = url.replace("{startIndex}", startIndex)
@@ -103,7 +104,7 @@ var activityStream = function() {
     if(typeof(links)=='object')
       var url = webCenter.getResourceURL(links,'urn:oracle:webcenter:activities:stream',startIndex);
     else
-      var url = links;
+      var url = links.replace("{startIndex}", startIndex);
     $.getJSON(url, callback);
   }
   function renderActivities(links,startIndex){
