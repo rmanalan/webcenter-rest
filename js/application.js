@@ -50,13 +50,13 @@ $(function(){
       if(lists.items.length==0) return;
       var bindData = {
         'list-filter-options' : $.map(lists.items,function(d){
-               return {
-                 'list-filter-name' : d.name,
-                 'list-filter-val@value' : d.name
-               };
-             })
+           return {
+             'list-filter-name' : d.name,
+             'list-filter-val@value' : d.name
+           };
+         })
       };
-      console.log(bindData);
+      console.log(JSON.stringify(bindData));
       $('option.list-filter-options:last').autoRender(bindData);
       });
 
