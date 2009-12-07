@@ -52,12 +52,10 @@ $(function(){
       var bindData = {
         'lfopts' : $.map(lists.items,function(d){
            return {
-             'lfopt' : d.name,
-             'lfopt@value' : d.name
+             'lfoptname' : d.name
            };
          })
       };
-      console.log(JSON.stringify(bindData))
       $('.lfopt').clone(true).appendTo('.listfilters').autoRender(bindData);
     });
 
