@@ -61,6 +61,7 @@ $(function(){
          webCenter.getResourceURL(webCenter.getResourceIndex().links,
            'urn:oracle:webcenter:activities:stream',true))
       $('.lfopts').clone(true).appendTo('#listfilters').autoRender(bindData);
+      $('.lfopts').clone(true).appendTo('#listfilters').val('').html('Create a new list');
     });
 
     $('#listfilters').bind('change',function(e){
