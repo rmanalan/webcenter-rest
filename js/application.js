@@ -50,7 +50,7 @@ $(function(){
     currentUser.getListNames(function(lists){
       if(lists.items.length==0) return;
       var bindData = {
-        'lfopt' : $.map(lists.items,function(d){
+        'lfopts' : $.map(lists.items,function(d){
            return {
              'lfopt' : d.name,
              'lfopt@value' : d.name
