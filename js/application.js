@@ -49,16 +49,15 @@ $(function(){
     currentUser.getListNames(function(lists){
       if(lists.items.length==0) return;
       var bindData = {
-        '.' : $.map(lists.items,function(d){
+        'lfopt' : $.map(lists.items,function(d){
            return {
-             '.@name' : d.name,
-             '.@value' : d.name
+             'lfopt@name' : d.name,
+             'lfopt@value' : d.name
            };
          })
       };
-      console.log(JSON.stringify(bindData));
-      $('.listfilters option').autoRender(bindData);
-      });
+      $('.lfopt').clone(true).appendTo('.listfilters').autoRender(bindData);
+    });
 
     // Infinite scroll pager
     $(window).scroll(function(){
