@@ -99,9 +99,13 @@ var activityStream = function() {
   function getActivities(links,startIndex,callback){
     if(!moreActivities) return;
     startIndex = startIndex ? startIndex : 0;
-    $.getJSON(webCenter.getResourceURL(links,'urn:oracle:webcenter:activities:stream',startIndex), callback);
+    if(typeof(links)=='object')
+      var url = webCenter.getResourceURL(links,'urn:oracle:webcenter:activities:stream',startIndex);
+    else
+      var url = links;
+    $.getJSON(url, callback);
   }
-  function renderActivities(links,startIndex,cloneElem){
+  function renderActivities(links,startIndex){
     getActivities(links, startIndex, function(data){
       if(data.items.length==0) {
         moreActivities = false;

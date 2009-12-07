@@ -52,7 +52,8 @@ $(function(){
       var bindData = {
         'lfopts' : $.map(lists.items,function(d){
            return {
-             'lfoptname' : d.name
+             'lfoptname' : d.name,
+             'value' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:activities:stream',0);
            };
          })
       };
@@ -63,6 +64,8 @@ $(function(){
       console.log(this.value);
       var activityTemplate = $('li.messages:first');
       $('ol.results').empty().append(activityTemplate);
+      //activityStream.renderActivities(webCenter.getResourceIndex().links, 0);
+
     });
 
     // Infinite scroll pager
