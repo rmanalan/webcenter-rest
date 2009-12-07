@@ -53,7 +53,7 @@ $(function(){
         'lfopts' : $.map(lists.items,function(d){
            return {
              'lfoptname' : d.name,
-             'value' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:activities:stream',0);
+             'value' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:activities:stream',0)
            };
          })
       };
