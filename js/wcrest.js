@@ -122,7 +122,6 @@ var activityStream = function() {
             }
           })
       };
-      console.log(JSON.stringify(bindData))
       if(cloneElem) {
         var template = $('li.messages:last').clone(true).appendTo('ol.results');
       } else {
