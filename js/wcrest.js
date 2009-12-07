@@ -118,7 +118,8 @@ var activityStream = function() {
               'urn:oracle:webcenter:people:person'),
             'activity' : webCenter.resolveBindItems(d.message, d.templateParams.items),
             'detail' : detail,
-            'reltime' : utils.timeAgoInWords(d.createdDate)
+            'reltime' : utils.timeAgoInWords(d.createdDate),
+            'class+' : 'act'
             }
           })
       };

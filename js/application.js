@@ -36,7 +36,7 @@ $(function(){
               }]
             };
           // don't re-render the entire stream, just prepend the latest to the top
-          $('li.messages:first').clone(true).hide().prependTo('ol.results')
+          $('li.messages:first').clone(true).prependTo('ol.results')
             .autoRender(data).show(300);
         }
       });
@@ -44,7 +44,7 @@ $(function(){
     });
 
     // Render initial activities
-    activityStream.renderActivities(webCenter.getResourceIndex().links, 0,false);
+    activityStream.renderActivities(webCenter.getResourceIndex().links, 0);
 
     // Setup Lists drop-down
     currentUser.getListNames(function(lists){
@@ -61,13 +61,13 @@ $(function(){
 
     $('#listfilters').bind('change',function(e){
       console.log(this.value);
-
+      $('.messages')
     });
 
     // Infinite scroll pager
     $(window).scroll(function(){
       if($(window).scrollTop() == $(document).height() - $(window).height()){
-        activityStream.renderActivities(webCenter.getResourceIndex().links, activityStream.currentActivityId(),true);
+        activityStream.renderActivities(webCenter.getResourceIndex().links, activityStream.currentActivityId());
       }
     }); 
   });
