@@ -52,12 +52,12 @@ $(function(){
       var bindData = {
         'lfopt' : $.map(lists.items,function(d){
            return {
-             'lfopt@name' : d.name,
+             'lfopt' : d.name,
              'lfopt@value' : d.name
            };
          })
       };
-      $('.lfopt').autoRender(bindData);
+      $('.lfopt').clone(true).appendTo('.listfilters').autoRender(bindData);
     });
 
     // Infinite scroll pager
