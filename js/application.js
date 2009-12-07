@@ -60,8 +60,7 @@ $(function(){
     });
 
     $('#listfilters').bind('change',function(e){
-      console.log(e);
-      console.log(this);
+      console.log(this.val);
     });
 
     // Infinite scroll pager
