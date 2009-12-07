@@ -61,6 +61,7 @@ $(function(){
 
     $('#listfilters').bind('change',function(e){
       console.log(e);
+      console.log(this);
     });
 
     // Infinite scroll pager
