@@ -52,12 +52,12 @@ $(function(){
         'list-filter-options' : $.map(lists.items,function(d){
            return {
              'list-filter-name' : d.name,
-             'list-filter-val@value' : d.name
+//             'list-filter-val@value' : d.name
            };
          })
       };
       console.log(JSON.stringify(bindData));
-      $('select.list-filters').autoRender(bindData);
+      $('option.list-filter-options:last').autoRender(bindData);
       });
 
     // Infinite scroll pager
