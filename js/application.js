@@ -65,7 +65,6 @@ $(function(){
       var activityTemplate = $('li.messages:first');
       $('ol.results').empty().append(activityTemplate);
       activityStream.renderActivities(this.value, 0);
-
     });
 
     // Infinite scroll pager

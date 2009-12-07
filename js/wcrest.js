@@ -83,13 +83,18 @@ var webCenter = function(callback){
     });
   }
 
+  function getPerPage(){
+    return perPage;
+  }
+
   return {
     'init' : init,
     'currentServer' : currentServer,
     'getResourceIndex' : getResourceIndex,
     'getResourceURL' : getResourceURL,
     'getTemplateItem' : getTemplateItem,
-    'resolveBindItems' : resolveBindItems
+    'resolveBindItems' : resolveBindItems,
+    'getPerPage' : getPerPage
   }
 }();
 
@@ -104,7 +109,7 @@ var activityStream = function() {
     if(typeof(links)=='object')
       var url = webCenter.getResourceURL(links,'urn:oracle:webcenter:activities:stream',startIndex);
     else
-      var url = links.replace("{startIndex}", startIndex);
+      var url = links.replace("{startIndex}", startIndex).replace("{itemsPerPage}", webCenter.getPerPage());
     $.getJSON(url, callback);
   }
   function renderActivities(links,startIndex){
