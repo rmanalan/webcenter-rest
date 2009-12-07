@@ -45,21 +45,21 @@ $(function(){
 
     // Render initial activities
     activityStream.renderActivities(0,false);
-
+/*
     currentUser.getListNames(function(lists){
       if(lists.items.length==0) return;
       var bindData = {
         'list-filter-option' : $.map(lists.items,function(d){
            return {
              'list-filter-name' : d.name,
-//             'list-filter-val@value' : d.name
+             'list-filter-val@value' : d.name
            };
          })
       };
       console.log(JSON.stringify(bindData));
-//      $('option.list-filter-option').autoRender(bindData);
+      $('option.list-filter-option').autoRender(bindData);
       });
-
+*/
     // Infinite scroll pager
     $(window).scroll(function(){
       if($(window).scrollTop() == $(document).height() - $(window).height()){
