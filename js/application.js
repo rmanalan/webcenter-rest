@@ -44,7 +44,7 @@ $(function(){
     });
 
     // Render initial activities
-    activityStream.renderActivities(0,false);
+    activityStream.renderActivities(webCenter.getResourceIndex().links, 0,false);
 
     // Setup Lists drop-down
     currentUser.getListNames(function(lists){
@@ -60,13 +60,13 @@ $(function(){
     });
 
     $('#listfilters').bind('change',function(e){
-      console.log(this.val);
+      console.log(this.value);
     });
 
     // Infinite scroll pager
     $(window).scroll(function(){
       if($(window).scrollTop() == $(document).height() - $(window).height()){
-        activityStream.renderActivities(activityStream.currentActivityId(),true);
+        activityStream.renderActivities(webCenter.getResourceIndex().links, activityStream.currentActivityId(),true);
       }
     }); 
   });

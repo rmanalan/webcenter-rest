@@ -101,8 +101,8 @@ var activityStream = function() {
     startIndex = startIndex ? startIndex : 0;
     $.getJSON(webCenter.getResourceURL(links,'urn:oracle:webcenter:activities:stream',startIndex), callback);
   }
-  function renderActivities(startIndex, cloneElem){
-    getActivities(webCenter.getResourceIndex().links, startIndex, function(data){
+  function renderActivities(links,startIndex,cloneElem){
+    getActivities(links, startIndex, function(data){
       if(data.items.length==0) {
         moreActivities = false;
         return;
