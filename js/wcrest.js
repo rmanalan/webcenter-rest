@@ -118,7 +118,7 @@ var activityStream = function() {
     $.getJSON(url, callback);
   }
   function renderActivities(links,startIndex){
-    if(startIndex==0) moreActivities==true;
+    if(startIndex==0) moreActivities=true;
     getActivities(links, startIndex, function(data){
       if(data.items.length==0) {
         moreActivities = false;
