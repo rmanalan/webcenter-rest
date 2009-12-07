@@ -174,7 +174,7 @@ var userProfile = function(){
   }
 
   function getListNames(callback){
-    $.getJSON(webcenter.getResourceURL(currentUser.links,'urn:oracle:webcenter:people:person:listNames',false),function(data){
+    $.getJSON(webCenter.getResourceURL(currentUser.links,'urn:oracle:webcenter:people:person:listNames',false),function(data){
       console.log(data);
     });
   }
