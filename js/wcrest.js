@@ -123,7 +123,7 @@ var activityStream = function() {
           })
       };
       var template = $('li.messages:last').clone(true).appendTo('ol.results');
-      template.autoRender(bindData).show();
+      template.autoRender(bindData).removeClass('hide');
     });
   }
   function nextActivityId() {
