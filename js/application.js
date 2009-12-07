@@ -72,7 +72,7 @@ $(function(){
     // Infinite scroll pager
     $(window).scroll(function(){
       if($(window).scrollTop() == $(document).height() - $(window).height()){
-        activityStream.renderActivities(('#listfilters').val(), activityStream.currentActivityId());
+        activityStream.renderActivities($('#listfilters').val(), activityStream.currentActivityId());
       }
     }); 
   });
