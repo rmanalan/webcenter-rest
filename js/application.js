@@ -57,7 +57,7 @@ $(function(){
          })
       };
       console.log(JSON.stringify(bindData));
-      $('option.list-filter-options:last').autoRender(bindData);
+      $('select.list-filters').autoRender(bindData);
       });
 
     // Infinite scroll pager
