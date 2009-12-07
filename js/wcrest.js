@@ -156,6 +156,7 @@ var userProfile = function(){
   function setCurrentUser(props){
     props['updateStatus'] = updateStatus;
     props['avatar'] = function(size){size=size?size:'';return avatar(currentUser.guid,size)};
+    props['getListNames'] = getListNames;
     currUserObj = props;
     return currUserObj;
   }
