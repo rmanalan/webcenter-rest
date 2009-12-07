@@ -57,11 +57,13 @@ $(function(){
            };
          })
       };
+      $('.lfopts:first').attr('value',
+         webCenter.getResourceURL(webCenter.getResourceIndex().links,
+           'urn:oracle:webcenter:activities:stream',true))
       $('.lfopts').clone(true).appendTo('#listfilters').autoRender(bindData);
     });
 
     $('#listfilters').bind('change',function(e){
-      console.log(this.value);
       var activityTemplate = $('li.messages:first');
       $('ol.results').empty().append(activityTemplate);
       activityStream.renderActivities(this.value, 0);

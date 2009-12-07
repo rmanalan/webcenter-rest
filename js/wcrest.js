@@ -45,9 +45,12 @@ var webCenter = function(callback){
         return n.resourceType == urn;
       });
     if(results.length>0){
+      //return href if startIndex is false
       if(startIndex==false && typeof(startIndex)=='boolean') return results[0].href;
       if(results[0].template){
+        // return template url if startIndex is true
         if(startIndex==true && typeof(startIndex)=='boolean') return results[0].template;
+        // return paged url if startIndex is a number
         var url = results[0].template.replace("{itemsPerPage}", perPage);
         if(!startIndex) startIndex = "0";
         url = url.replace("{startIndex}", startIndex)
