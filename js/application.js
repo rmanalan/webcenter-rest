@@ -61,7 +61,8 @@ $(function(){
 
     $('#listfilters').bind('change',function(e){
       console.log(this.value);
-      $('.messages')
+      var activityTemplate = $('li.messages:first');
+      $('ol.results').empty().append(activityTemplate);
     });
 
     // Infinite scroll pager
