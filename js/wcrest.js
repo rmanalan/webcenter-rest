@@ -108,7 +108,10 @@ var activityStream = function() {
   function getActivities(links,startIndex,callback){
     if(!moreActivities) return;
     startIndex = startIndex ? startIndex : 0;
-    if(startIndex==0) activityId = -1;
+    if(startIndex==0){
+      activityId = -1;
+      moreActivities = true;
+    };
     if(typeof(links)=='object')
       var url = webCenter.getResourceURL(links,'urn:oracle:webcenter:activities:stream',startIndex);
     else
