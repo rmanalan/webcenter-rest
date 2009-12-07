@@ -96,13 +96,13 @@ var webCenter = function(callback){
 var activityStream = function() {
   var activityId = -1;
   var moreActivities = true;
-  function getActivities(startIndex, callback){
+  function getActivities(links,startIndex,callback){
     if(!moreActivities) return;
     startIndex = startIndex ? startIndex : 0;
-    $.getJSON(webCenter.getResourceURL(webCenter.getResourceIndex().links,'urn:oracle:webcenter:activities:stream',startIndex), callback);
+    $.getJSON(webCenter.getResourceURL(links,'urn:oracle:webcenter:activities:stream',startIndex), callback);
   }
   function renderActivities(startIndex, cloneElem){
-    getActivities(startIndex, function(data){
+    getActivities(webCenter.getResourceIndex().links, startIndex, function(data){
       if(data.items.length==0) {
         moreActivities = false;
         return;
