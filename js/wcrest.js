@@ -122,11 +122,7 @@ var activityStream = function() {
             }
           })
       };
-      if(cloneElem) {
-        var template = $('li.messages:last').clone(true).appendTo('ol.results');
-      } else {
-        var template = $('li.messages:last');
-      }
+      var template = $('li.messages:last').clone(true).appendTo('ol.results');
       template.autoRender(bindData);
     });
   }
