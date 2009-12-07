@@ -183,7 +183,7 @@ var userProfile = function(){
     $.ajax({
       url: webCenter.getResourceURL(currentUser.links,'urn:oracle:webcenter:people:person:status',false),
       type: "put",
-      dataType: "json"
+      dataType: "json",
       contentType: "application/json",
       data: JSON.stringify({'note': utils.resolveURLs(status)}),
       success: function(d){
