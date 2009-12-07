@@ -59,6 +59,10 @@ $(function(){
       $('.lfopts').clone(true).appendTo('.listfilters').autoRender(bindData);
     });
 
+    $('#listfilters').bind('change',function(e){
+      console.log(e);
+    });
+
     // Infinite scroll pager
     $(window).scroll(function(){
       if($(window).scrollTop() == $(document).height() - $(window).height()){
