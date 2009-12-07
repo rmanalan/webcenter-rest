@@ -65,7 +65,10 @@ $(function(){
     });
 
     $('#listfilters').bind('change',function(e){
-      if(this.value=='') alert('Patience little grasshopper... not implemented yet');
+      if(this.value==''){
+        alert('Patience little grasshopper... not implemented yet')
+        return;
+      };
       var activityTemplate = $('li.messages:first');
       $('ol.results').empty().append(activityTemplate);
       activityStream.renderActivities(this.value, 0);
