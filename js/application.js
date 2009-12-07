@@ -57,6 +57,7 @@ $(function(){
            };
          })
       };
+      console.log(JSON.stringify(bindData))
       $('.lfopt').clone(true).appendTo('.listfilters').autoRender(bindData);
     });
 
