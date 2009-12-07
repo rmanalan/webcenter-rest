@@ -56,7 +56,7 @@ $(function(){
            };
          })
       };
-      $('.lfopts').clone(true).appendTo('.listfilters').autoRender(bindData);
+      $('.lfopts').clone(true).appendTo('#listfilters').autoRender(bindData);
     });
 
     $('#listfilters').bind('change',function(e){
