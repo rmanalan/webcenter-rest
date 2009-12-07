@@ -56,7 +56,7 @@ $(function(){
            };
          })
       };
-      $('.lfopts option').clone(true).appendTo('.listfilters').autoRender(bindData);
+      $('.lfopts').clone(true).appendTo('.listfilters').autoRender(bindData);
     });
 
     // Infinite scroll pager
