@@ -1,7 +1,6 @@
 $(document).ajaxStart(function(){$('#loading-ind').show()})
   .ajaxStop(function(){$('#loading-ind').hide()});
 
-
 $(function(){
   function initApp(callback){
     webCenter.init(function(){
@@ -23,6 +22,7 @@ $(function(){
              };
            })
         };
+        // Sets url for default stream
         $('.lfopts:first').attr('value',
            webCenter.getResourceURL(webCenter.getResourceIndex().links,
              'urn:oracle:webcenter:activities:stream',true))
@@ -51,29 +51,42 @@ $(function(){
     activityStream.renderActivities(webCenter.getResourceIndex().links, 0);
   }
 
-
   // App Controller
   var app = new Sammy.Application(function(){with(this){
     var appStarted=false;
     var lastLocation;
     element_selector = '#main';
-    debug = true;
 
     before(function(){with(this){
+      var currLocation = getLocation();
       if(!appStarted){
         initApp(function(){
           appStarted = true;
-          if(getLocation()=='#/'){
+          if(currLocation=='#/'){
             refresh();
           }else{
             redirect('#/');
           }
         });
         return false;
-      }
+      };
+
+      // Properly sets list filter when using the back button
+      if(/\#\/list\//.test(currLocation)){
+        var selectedVal = currLocation.split('#/list/')[1].split('/')[0];
+        $('#listfilters option').each(function(i,n){
+          var opt = $(n);
+          if(opt.text()==selectedVal){
+            opt.attr('selected','1');
+          } else {
+            opt.removeAttr('selected');
+          }
+        })
+      };
     }});
 
     after(function(){with(this){
+      // Save off last location
       lastLocation = getLocation();
     }});
 
