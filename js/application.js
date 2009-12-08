@@ -95,6 +95,7 @@ $(function(){
         appStarted = initApp();
         this.redirect('#/');
       }
+      console.log('test');
     });
 
     this.get('/', function(){
@@ -104,7 +105,7 @@ $(function(){
       console.log(this.params['guid'])
     });
 
-    this.post('/list/:value'),function(){
+    this.get('/list/:value'),function(){
       var activityTemplate = $('li.messages:first');
       $('ol.results').empty().append(activityTemplate);
       activityStream.renderActivities(this.value, 0);
