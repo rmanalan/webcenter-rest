@@ -69,7 +69,7 @@ function initApp(){
         alert('Patience little grasshopper... not implemented yet')
         return;
       };
-      slocation = '#/list/' + this.value;
+      location = '#/list/' + this.value;
     });
 
     // Infinite scroll pager
