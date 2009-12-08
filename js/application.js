@@ -78,16 +78,26 @@ function initApp(){
       if($(window).scrollTop() == $(document).height() - $(window).height()){
         activityStream.renderActivities($('#listfilters').val(), activityStream.currentActivityId());
       }
-    }); 
+     });
+
+    return true; 
   });
 };
 
 
 $(function(){
   var app = $.sammy(function(){
+     var appStarted = false;
+
+    this.before(function(){
+      console.log(appStarted);
+      if(!appStarted){
+        appStarted = initApp();
+        this.redirect('#/');
+      }
+    });
 
     this.get('/', function(){
-      initApp();
     });
 
     this.get('/user/:guid',function(){
@@ -103,7 +113,6 @@ $(function(){
   });
   app.run('#/');
 });
-
 /* 
 vim:ts=2:sw=2:expandtab
 */
