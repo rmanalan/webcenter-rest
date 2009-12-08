@@ -12,40 +12,6 @@ $(function(){
           'urn:oracle:webcenter:spaces:profile',false)
       }).show();
 
-      // setup posting widget
-      $('#pub-form').submit(function(){
-        var msg = $('#pub-text').val();
-        if(msg == "") return false; 
-        $.ajax({
-          url: webCenter.getResourceURL(webCenter.getResourceIndex().links,
-                 'urn:oracle:webcenter:messageBoard'),
-          type: "post",
-          dataType: "json",
-          contentType: "application/json",
-          data: JSON.stringify({'body': utils.resolveURLs(msg)}),
-          success: function(d){
-            $('#pub-text').val('');
-            var profileUrl = webCenter.getResourceURL(d.author.links,
-              'urn:oracle:webcenter:spaces:profile');
-            var data = {
-                'messages' : [{
-                  'id' : activityStream.nextActivityId(),
-                  'avatar' : userProfile.avatarSmall(d.author.guid),
-                  'name' : d.author.displayName,
-                  'url' : profileUrl,
-                  'activity' : utils.linkTo(profileUrl, d.author.displayName) + ' posted a message',
-                  'detail' : d.body,
-                  'reltime' : utils.timeAgoInWords(d.created)
-                }]
-              };
-            // don't re-render the entire stream, just prepend the latest to the top
-            $('li.messages:first').clone(true).prependTo('ol.results')
-              .autoRender(data).show(300);
-          }
-        });
-        return false;
-      });
-
       // Setup Lists drop-down
       currentUser.getListNames(function(lists){
         if(lists.items.length==0) return;
@@ -65,10 +31,6 @@ $(function(){
       });
 
       $('#listfilters').bind('change',function(e){
-        if(this.value==''){
-          alert('Patience little grasshopper... not implemented yet')
-          return;
-        };
         location = '#/list/' + $('option:selected',this).text();
       });
 
@@ -93,7 +55,9 @@ $(function(){
   // App Controller
   var app = new Sammy.Application(function(){with(this){
     var appStarted=false;
+    var lastLocation;
     element_selector = '#main';
+    debug = true;
 
     before(function(){with(this){
       if(!appStarted){
@@ -109,23 +73,60 @@ $(function(){
       }
     }});
 
-    get('#/', function(c){with(this){
-      renderDefaultStream();
+    after(function(){with(this){
+      lastLocation = getLocation();
     }});
 
-    get('#/user/:guid',function(c){with(this){
+    get('#/', function(c){with(this){
+      renderDefaultStream();
     }});
 
     get('#/list/:name',function(c){with(this){
       if(params['name']=='All%20contacts'){
         renderDefaultStream();
-        return false;
-      };
-      var url = $.grep($('#listfilters option'),function(n){return $(n).text()==params['name']})[0].value;
-      var activityTemplate = $('li.messages:first');
-      $('ol.results').empty().append(activityTemplate);
-      activityStream.renderActivities(url, 0);
+      } else if(params['name']=='Create%20a%20new%20list') {
+        alert('Patience little grasshopper... not implemented yet')
+        redirect(lastLocation);
+      } else {
+        var url = $.grep($('#listfilters option'),function(n){return $(n).text()==params['name']})[0].value;
+        var activityTemplate = $('li.messages:first');
+        $('ol.results').empty().append(activityTemplate);
+        activityStream.renderActivities(url, 0);
+      }
     }});
+
+    post('#/message',function(c){with(this){
+      var msg = params['body'];
+      if(msg == "") return false; 
+      $.ajax({
+        url: webCenter.getResourceURL(webCenter.getResourceIndex().links,
+               'urn:oracle:webcenter:messageBoard'),
+        type: "post",
+        dataType: "json",
+        contentType: "application/json",
+        data: JSON.stringify({'body': utils.resolveURLs(msg)}),
+        success: function(d){
+          $('#pub-text').val('');
+          var profileUrl = webCenter.getResourceURL(d.author.links,
+            'urn:oracle:webcenter:spaces:profile');
+          var data = {
+              'messages' : [{
+                'id' : activityStream.nextActivityId(),
+                'avatar' : userProfile.avatarSmall(d.author.guid),
+                'name' : d.author.displayName,
+                'url' : profileUrl,
+                'activity' : utils.linkTo(profileUrl, d.author.displayName) + ' posted a message',
+                'detail' : d.body,
+                'reltime' : utils.timeAgoInWords(d.created)
+              }]
+            };
+          // don't re-render the entire stream, just prepend the latest to the top
+          $('li.messages:first').clone(true).prependTo('ol.results')
+            .autoRender(data).show(300);
+        }
+      });
+    }});
+
 
   }});
   app.run('#/');
