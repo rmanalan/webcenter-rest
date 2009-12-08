@@ -3,6 +3,7 @@ $(document).ajaxStart(function(){$('#loading-ind').show()})
 
 function initApp(){
   webCenter.init(function(){
+    // show who's logged in
     $('ul.headnav li').autoRender({
       'username' : currentUser.name.formatted,
       'url' : webCenter.getResourceURL(currentUser.links,
@@ -69,7 +70,7 @@ function initApp(){
         alert('Patience little grasshopper... not implemented yet')
         return;
       };
-      location = '#/list/' + this.value;
+      location = '#/list/' + $('option:selected',this).text();
     });
 
     // Infinite scroll pager
