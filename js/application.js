@@ -95,7 +95,6 @@ $(function(){
         appStarted = initApp();
         this.redirect('#/');
       }
-      console.log('test');
     });
 
     this.get('/', function(){
