@@ -1,7 +1,7 @@
 $(document).ajaxStart(function(){$('#loading-ind').show()})
   .ajaxStop(function(){$('#loading-ind').hide()});
 
-$(function(){
+function initApp(){
   webCenter.init(function(){
     $('ul.headnav li').autoRender({
       'username' : currentUser.name.formatted,
@@ -69,9 +69,7 @@ $(function(){
         alert('Patience little grasshopper... not implemented yet')
         return;
       };
-      var activityTemplate = $('li.messages:first');
-      $('ol.results').empty().append(activityTemplate);
-      activityStream.renderActivities(this.value, 0);
+      slocation = '#/list/' + this.value;
     });
 
     // Infinite scroll pager
@@ -81,6 +79,28 @@ $(function(){
       }
     }); 
   });
+};
+
+
+$(function(){
+  var app = $.sammy(function(){
+
+    this.get('/', function(){
+      initApp();
+    });
+
+    this.get('/user/:guid',function(){
+      console.log(this.params['guid'])
+    });
+
+    this.post('/list/:value'),function(){
+      var activityTemplate = $('li.messages:first');
+      $('ol.results').empty().append(activityTemplate);
+      activityStream.renderActivities(this.value, 0);
+    }
+
+  });
+  app.run('#/');
 });
 
 /* 
