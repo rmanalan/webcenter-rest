@@ -53,16 +53,16 @@ $(function(){
   }
 
   // App Controller
-  var app = $.sammy(function(s){
+  var activityStreamApp = $.sammy(function(app){
     var appStarted=false;
     var lastLocation;
 
-    s.before(function(c){
-      var currLocation = s.getLocation();
+    app.before(function(c){
+      var currLocation = app.getLocation();
       if(!appStarted){
         initApp(function(){
           appStarted = true;
-          s.refresh(); //required to get stream to render
+          app.refresh(); //required to get stream to render
         });
         return false;
       };
@@ -81,16 +81,16 @@ $(function(){
       };
     });
 
-    s.after(function(){
+    app.after(function(){
       // Save off last location
-      lastLocation = s.getLocation();
+      lastLocation = app.getLocation();
     });
 
-    s.get('#/', function(c){
+    app.get('#/', function(c){
       renderDefaultStream();
     });
 
-    s.get('#/list/:name',function(c){
+    app.get('#/list/:name',function(c){
       var listName = this.params['name'];
       if(listName=='All%20contacts'){
         renderDefaultStream();
@@ -105,7 +105,7 @@ $(function(){
       }
     });
 
-    s.post('#/message',function(c){
+    app.post('#/message',function(c){
       var msg = this.params['body'];
       if(msg == "") return false; 
       $.ajax({
@@ -139,7 +139,7 @@ $(function(){
 
 
   });
-  app.run('#/');
+  activityStreamApp.run('#/');
 });
 /* 
 vim:ts=2:sw=2:expandtab
