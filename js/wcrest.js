@@ -167,15 +167,12 @@ var userProfile = function(){
     return webCenter.currentServer() + 'webcenter/profilephoto/' + guid + '/' + size.toUpperCase();
   }
 
-  function setCurrentUser(obj){
-    //props['updateStatus'] = updateStatus;
-    //props['avatar'] = function(size){size=size?size:'';return avatar(currentUser.guid,size)};
-    //props['getListNames'] = getListNames;
-    //props['getSpaces'] = getSpaces;
-    for(m in userProfile) {
-      obj[m] = userProfile[m];
-    }
-    currUserObj = obj;
+  function setCurrentUser(props){
+    props['updateStatus'] = updateStatus;
+    props['avatar'] = function(size){size=size?size:'';return avatar(currentUser.guid,size)};
+    props['getListNames'] = getListNames;
+    props['getSpaces'] = getSpaces;
+    currUserObj = props;
     return currUserObj;
   }
   
@@ -196,7 +193,7 @@ var userProfile = function(){
   }
 
   function getSpaces(callback){
-    $.getJSON(webCenter.getResourceURL(currentUser.links,'urn:oracle:webcenter:spaces',false),callback);
+    $.getJSON(webCenter.getResourceURL(webCenter.getResourceIndex().links,'urn:oracle:webcenter:spaces',false),callback);
   }
 
   function updateStatus(status){
