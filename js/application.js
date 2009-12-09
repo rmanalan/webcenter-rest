@@ -24,9 +24,9 @@ $(function(){
 
       // Setup Lists drop-down
       currentUser.getListNames(function(lists){
-        if(currentUser.lists.items.length==0) return;
+        if(currentUser.listNames.items.length==0) return;
         var bindData = {
-          'lfopts' : $.map(currentUser.lists.items,function(d){
+          'lfopts' : $.map(currentUser.listNames.items,function(d){
              return {
                'lfoptname' : d.name,
                'lfoptval' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:activities:stream',true)

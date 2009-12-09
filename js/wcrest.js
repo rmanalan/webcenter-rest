@@ -190,13 +190,19 @@ var userProfile = function(){
 
   function getListNames(callback){
     $.getJSON(webCenter.getResourceURL(currentUser.links,'urn:oracle:webcenter:people:person:listNames',false),function(d){
-      callback($.extend(currentUser,{"lists":d}));
+      callback($.extend(currentUser,{"listNames":d}));
     });
   }
 
   function getSpaces(callback){
     $.getJSON(webCenter.getResourceURL(webCenter.getResourceIndex().links,'urn:oracle:webcenter:spaces',false),function(d){
       callback($.extend(currentUser,{"spaces":d}));
+    });
+  }
+
+  function getConnections(callback){
+    $.getJSON(webCenter.getResourceURL(currentUser.links,'urn:oracle:webcenter:people:person:list',false),function(d){
+      callback($.extend(currentUser,{"connections":d}));
     });
   }
 
