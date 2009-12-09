@@ -145,7 +145,6 @@ button:hover, .button:hover {
 	color:#333;
 	text-decoration:none;
 	text-shadow:#fff 1px 1px 0;
-	margin-left:7px;
 	padding-left:12px;
 	background:url(../images/file.png) no-repeat 0 1px;
 }
