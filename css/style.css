@@ -38,6 +38,9 @@ a.no-underline, a.no-underline:active, a.no-underline:visited, a.no-underline:li
 .span-avatar {
 	width:50px;
 }
+.span-activity {
+	width:534px;
+}
 ul.headnav {
   margin:2px 5px;
   text-align:right;
