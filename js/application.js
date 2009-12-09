@@ -11,6 +11,17 @@ $(function(){
           'urn:oracle:webcenter:spaces:profile',false)
       }).show();
 
+      // Infinite scroll pager
+      $(window).scroll(function(){
+        if($(window).scrollTop() == $(document).height() - $(window).height()){
+          activityStream.renderActivities($('#listfilters').val(), activityStream.currentActivityId());
+        }
+       });
+
+      $('#listfilters').bind('change',function(e){
+        location = '#/list/' + $('option:selected',this).text();
+      });
+
       // Setup Lists drop-down
       currentUser.getListNames(function(lists){
         if(lists.items.length==0) return;
@@ -28,20 +39,10 @@ $(function(){
              'urn:oracle:webcenter:activities:stream',true))
         $('.lfopts').clone(true).appendTo('#listfilters').autoRender(bindData);
         $('.lfopts:last').clone(true).appendTo('#listfilters').val('').html('Create a new list');
+
+        // Don't process anything until the filter is set up
+        callback(); 
       });
-
-      $('#listfilters').bind('change',function(e){
-        location = '#/list/' + $('option:selected',this).text();
-      });
-
-      // Infinite scroll pager
-      $(window).scroll(function(){
-        if($(window).scrollTop() == $(document).height() - $(window).height()){
-          activityStream.renderActivities($('#listfilters').val(), activityStream.currentActivityId());
-        }
-       });
-
-      callback(); 
     });
   };
 
@@ -52,21 +53,16 @@ $(function(){
   }
 
   // App Controller
-  var app = new Sammy.Application(function(){with(this){
+  var app = $.sammy(function(s){
     var appStarted=false;
     var lastLocation;
-    element_selector = '#main';
 
-    before(function(){with(this){
-      var currLocation = getLocation();
+    s.before(function(c){
+      var currLocation = s.getLocation();
       if(!appStarted){
         initApp(function(){
           appStarted = true;
-          if(currLocation=='#/'){
-            refresh();
-          }else{
-            redirect('#/');
-          }
+          s.refresh(); //required to get stream to render
         });
         return false;
       };
@@ -83,33 +79,34 @@ $(function(){
           }
         })
       };
-    }});
+    });
 
-    after(function(){with(this){
+    s.after(function(){
       // Save off last location
-      lastLocation = getLocation();
-    }});
+      lastLocation = s.getLocation();
+    });
 
-    get('#/', function(c){with(this){
+    s.get('#/', function(c){
       renderDefaultStream();
-    }});
+    });
 
-    get('#/list/:name',function(c){with(this){
-      if(params['name']=='All%20contacts'){
+    s.get('#/list/:name',function(c){
+      var listName = this.params['name'];
+      if(listName=='All%20contacts'){
         renderDefaultStream();
-      } else if(params['name']=='Create%20a%20new%20list') {
+      } else if(listName=='Create%20a%20new%20list') {
         alert('Patience little grasshopper... not implemented yet')
-        redirect(lastLocation);
+        if(lastLocation) this.redirect(lastLocation);
       } else {
-        var url = $.grep($('#listfilters option'),function(n){return $(n).text()==params['name']})[0].value;
+        var url = $.grep($('#listfilters option'),function(n){return $(n).text()==listName})[0].value;
         var activityTemplate = $('li.messages:first');
         $('ol.results').empty().append(activityTemplate);
         activityStream.renderActivities(url, 0);
       }
-    }});
+    });
 
-    post('#/message',function(c){with(this){
-      var msg = params['body'];
+    s.post('#/message',function(c){
+      var msg = this.params['body'];
       if(msg == "") return false; 
       $.ajax({
         url: webCenter.getResourceURL(webCenter.getResourceIndex().links,
@@ -138,10 +135,10 @@ $(function(){
             .autoRender(data).show(300);
         }
       });
-    }});
+    });
 
 
-  }});
+  });
   app.run('#/');
 });
 /* 
