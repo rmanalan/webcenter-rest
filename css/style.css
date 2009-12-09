@@ -54,6 +54,9 @@ ul.headnav li {
   float:right;
   list-style-type:none;
 }
+ol.results {
+	margin:0;
+}
 li.messages {
 	clear:both;
 	height:60px;
