@@ -64,14 +64,10 @@ li.messages {
 .detail {
 	font-size:15px;
 }
-
-#publisher {
-	margin: 10px 0 20px 0;
-}
 #header {
   margin:10px 0 0 0;
 }
-#pub1 {
+#publisher {
   border:1px solid #ccc;
   -moz-border-radius:7px;
   -webkit-border-radius:7px;
@@ -80,6 +76,7 @@ li.messages {
   border:1px solid #ccc;
   padding:5px 10px;
   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(255, 255, 255)), color-stop(1, rgb(230, 230, 230)));
+	margin: 10px 0 20px 0;
 }
 #pub1-share {
   text-shadow:#fff 1px 1px 0;
@@ -101,7 +98,7 @@ li.messages {
 #pub1-text {
 	margin-bottom:5px;
 }
-#pub1 textarea {
+#publisher textarea {
 	float:left;
 	resize:vertical;
   margin:0 4px 0 0;

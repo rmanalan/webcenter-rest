@@ -20,12 +20,12 @@
     <div id="msg"></div>
     
     <div id="loading-ind" class="hide"></div>
-    <div id="main" class="container">
+    <div class="container">
       <ul class="headnav span-24">
         <li class="hide">Logged in as <a href="" class="url@href username strong"></a></li>
       </ul>  
-      <div id="publisher" class="section clearfix">
-        <div id="pub1" class="span-16 first">
+      <div id="main-content" class="span-16">
+        <div id="publisher" class="clearfix">
           <div id="pub1-share" class="loud">
             Share something with
             <span id="pub1-group" class="pub1-dd">
@@ -48,27 +48,27 @@
           </div>
           <a href="#" id="pub1-attachment" class="no-underline">Attach file</a>
         </div>
-      </div>
 
-      <div id="contents">
-        <div id="filters">
-          <label for="listfilter">Lists:</label>
-          <select name="listfilters" id="listfilters">
-            <option class="lfopts lfoptname lfoptval@value" value="">All contacts</option>
-          </select>
+        <div id="contents">
+          <div id="filters">
+            <label for="listfilter">Lists:</label>
+            <select name="listfilters" id="listfilters">
+              <option class="lfopts lfoptname lfoptval@value" value="">All contacts</option>
+            </select>
+          </div>
+          <ol class="results">
+            <li id="act-template" class="messages id@id hide">
+              <div class="span-avatar column first">
+                <img class="avatar@src" src="images/loader.gif"/>
+              </div>
+              <div class="span-14 last">
+                <span class="activity"></span>
+                <div class="detail">Loading...</div>
+                <div class="reltime"></div>
+              </div>
+            </li>
+          </ol>
         </div>
-        <ol class="results span-16">
-          <li id="act-template" class="messages id@id hide">
-            <div class="span-avatar column first">
-              <img class="avatar@src" src="images/loader.gif"/>
-            </div>
-            <div class="span-14 last">
-              <span class="activity"></span>
-              <div class="detail">Loading...</div>
-              <div class="reltime"></div>
-            </div>
-          </li>
-        </ol>
       </div>
     </div>
   </body>
