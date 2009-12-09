@@ -167,11 +167,15 @@ var userProfile = function(){
     return webCenter.currentServer() + 'webcenter/profilephoto/' + guid + '/' + size.toUpperCase();
   }
 
-  function setCurrentUser(props){
-    props['updateStatus'] = updateStatus;
-    props['avatar'] = function(size){size=size?size:'';return avatar(currentUser.guid,size)};
-    props['getListNames'] = getListNames;
-    currUserObj = props;
+  function setCurrentUser(obj){
+    //props['updateStatus'] = updateStatus;
+    //props['avatar'] = function(size){size=size?size:'';return avatar(currentUser.guid,size)};
+    //props['getListNames'] = getListNames;
+    //props['getSpaces'] = getSpaces;
+    for(m in userProfile) {
+      obj[m] = userProfile[m];
+    }
+    currUserObj = obj;
     return currUserObj;
   }
   
@@ -189,6 +193,10 @@ var userProfile = function(){
 
   function getListNames(callback){
     $.getJSON(webCenter.getResourceURL(currentUser.links,'urn:oracle:webcenter:people:person:listNames',false),callback);
+  }
+
+  function getSpaces(callback){
+    $.getJSON(webCenter.getResourceURL(currentUser.links,'urn:oracle:webcenter:spaces',false),callback);
   }
 
   function updateStatus(status){
@@ -210,13 +218,6 @@ var userProfile = function(){
     'avatarOriginal' : function(guid){ return avatar(guid,'')},
     'getCurrentUser' : getCurrentUser
   }
-}();
-
-// Group Space module
-var spaces = function(){
-
-  return {
-  };
 }();
 
 /* 
