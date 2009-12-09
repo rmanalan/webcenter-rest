@@ -189,7 +189,9 @@ var userProfile = function(){
   }
 
   function getListNames(callback){
-    $.getJSON(webCenter.getResourceURL(currentUser.links,'urn:oracle:webcenter:people:person:listNames',false),callback);
+    $.getJSON(webCenter.getResourceURL(currentUser.links,'urn:oracle:webcenter:people:person:listNames',false),function(d){
+      callback($.extend(currentUser,{"lists":d}));
+    });
   }
 
   function getSpaces(callback){
