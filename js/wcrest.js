@@ -172,6 +172,7 @@ var userProfile = function(){
     props['avatar'] = function(size){size=size?size:'';return avatar(currentUser.guid,size)};
     props['getListNames'] = getListNames;
     props['getSpaces'] = getSpaces;
+    props['getConnections'] = getConnections;
     currUserObj = props;
     return currUserObj;
   }
