@@ -62,7 +62,7 @@ $(function(){
       if(!appStarted){
         initApp(function(){
           appStarted = true;
-          s.refresh(); //required to get stream to render
+           s.refresh(); //required to get stream to render
         });
         return false;
       };
