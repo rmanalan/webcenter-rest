@@ -5,7 +5,7 @@ var user;
 // Main WebCenter resource module
 var webCenter = function(callback){
   var hostname = location.hostname;
-  var port = (hostname == 'wc') ? '80' : '8890';
+  var port = (hostname == 'wc') ? '80' : '8911';
   var resourceIndex = null;
   var perPage = 20;
   
