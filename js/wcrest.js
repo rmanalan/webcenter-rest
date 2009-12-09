@@ -189,13 +189,13 @@ var userProfile = function(){
   }
 
   function getListNames(callback){
-    $.getJSON(webCenter.getResourceURL(currentUser.links,'urn:oracle:webcenter:people:person:listNames',false),function(d){
-      callback($.extend(currentUser,{"spaces":d}));
-    });
+    $.getJSON(webCenter.getResourceURL(currentUser.links,'urn:oracle:webcenter:people:person:listNames',false),callback);
   }
 
   function getSpaces(callback){
-    $.getJSON(webCenter.getResourceURL(webCenter.getResourceIndex().links,'urn:oracle:webcenter:spaces',false),callback);
+    $.getJSON(webCenter.getResourceURL(webCenter.getResourceIndex().links,'urn:oracle:webcenter:spaces',false),function(d){
+      callback($.extend(currentUser,{"spaces":d}));
+    });
   }
 
   function updateStatus(status){
