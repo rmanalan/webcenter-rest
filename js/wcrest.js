@@ -22,7 +22,6 @@ var webCenter = function(callback){
         // setup current user
         userProfile.getCurrentUser(function(d){
           currentUser = d;
-          currentUser.getSpaces();
           callback();
         });
       });
@@ -32,7 +31,6 @@ var webCenter = function(callback){
     if(!resourceIndex) {
       $.getJSON(getResourceIndexURL(), function(data){
         resourceIndex = data;
-
         if(callback) callback(data);
         return resourceIndex;
       });
@@ -193,7 +191,7 @@ var userProfile = function(){
 
   function getListNames(callback){
     $.getJSON(webCenter.getResourceURL(currentUser.links,'urn:oracle:webcenter:people:person:listNames',false),function(d){
-      var obj = $.extend(currentUser,{"listNames":d.items};
+      var obj = $.extend(currentUser,{"listNames":d.items});
       if(callback) {
         callback(obj);
       } else {
@@ -204,7 +202,7 @@ var userProfile = function(){
 
   function getSpaces(callback){
     $.getJSON(webCenter.getResourceURL(webCenter.getResourceIndex().links,'urn:oracle:webcenter:spaces',false),function(d){
-      var obj = $.extend(currentUser,{"spaces":d.items};
+      var obj = $.extend(currentUser,{"spaces":d.items});
       if(callback) {
         callback(obj);
       } else {
