@@ -15,6 +15,11 @@ html[xmlns] .clearfix {
 * html .clearfix {
   height: 1%;
 }
+body {
+	background-color:transparent;
+	overflow-x:hidden;
+	overflow-y:scroll;	
+}
 a, a:active, a:visited, a:link {
 	text-decoration:none;
 	border-bottom:1px dotted #ccc;
@@ -46,6 +51,7 @@ a.no-underline, a.no-underline:active, a.no-underline:visited, a.no-underline:li
 	margin-bottom:10px;
 }
 ul.headnav {
+	display:none;
   margin:2px 5px;
   text-align:right;
   height:20px;
