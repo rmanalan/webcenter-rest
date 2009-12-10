@@ -20,6 +20,9 @@ body {
 	overflow-x:hidden;
 	overflow-y:scroll;	
 }
+#main{
+	margin-left:10px;
+}
 a, a:active, a:visited, a:link {
 	text-decoration:none;
 	border-bottom:1px dotted #ccc;
