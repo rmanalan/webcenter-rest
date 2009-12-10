@@ -22,7 +22,7 @@ var webCenter = function(callback){
         // setup current user
         userProfile.getCurrentUser(function(d){
           currentUser = d;
-          callback();
+          currentUser.getSpaces(callback);
         });
       });
   }
