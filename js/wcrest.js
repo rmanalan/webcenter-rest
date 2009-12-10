@@ -7,7 +7,7 @@ var webCenter = function(callback){
   var hostname = location.hostname;
   var port = (hostname == 'wc') ? '80' : '8911';
   var resourceIndex = null;
-  var perPage = 20;
+  var perPage = 10;
   
   function currentServer() {
     return location.protocol + '//' + hostname + ':' + port + '/';
