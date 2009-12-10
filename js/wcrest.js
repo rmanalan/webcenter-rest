@@ -173,6 +173,7 @@ var userProfile = function(){
     props['getListNames'] = getListNames;
     props['getSpaces'] = getSpaces;
     props['getConnections'] = getConnections;
+    props['getStatus'] = getStatus;
     currUserObj = props;
     return currUserObj;
   }
@@ -204,6 +205,12 @@ var userProfile = function(){
   function getConnections(callback){
     $.getJSON(webCenter.getResourceURL(currentUser.links,'urn:oracle:webcenter:people:person:list',false),function(d){
       callback($.extend(currentUser,{"connections":d}));
+    });
+  }
+
+  function getStatus(callback){
+    $.getJSON(webCenter.getResourceURL(currentUser.links,'urn:oracle:webcenter:people:person:status',false),function(d){
+      callback($.extend(currentUser,{"status":d.note}));
     });
   }
 
