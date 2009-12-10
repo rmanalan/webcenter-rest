@@ -22,7 +22,7 @@ var webCenter = function(callback){
         // setup current user
         userProfile.getCurrentUser(function(d){
           currentUser = d;
-          currentUser.getSpaces(function(d){console.log(d)});
+          currentUser.getSpaces();
           callback();
         });
       });
@@ -193,13 +193,23 @@ var userProfile = function(){
 
   function getListNames(callback){
     $.getJSON(webCenter.getResourceURL(currentUser.links,'urn:oracle:webcenter:people:person:listNames',false),function(d){
-      callback($.extend(currentUser,{"listNames":d}));
+      var obj = $.extend(currentUser,{"listNames":d.items};
+      if(callback) {
+        callback(obj));
+      } else {
+        return obj;
+      }
     });
   }
 
   function getSpaces(callback){
     $.getJSON(webCenter.getResourceURL(webCenter.getResourceIndex().links,'urn:oracle:webcenter:spaces',false),function(d){
-      callback($.extend(currentUser,{"spaces":d}));
+      var obj = $.extend(currentUser,{"spaces":d.items};
+      if(callback) {
+        callback(obj));
+      } else {
+        return obj;
+      }
     });
   }
 
