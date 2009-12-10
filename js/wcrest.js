@@ -195,7 +195,7 @@ var userProfile = function(){
     $.getJSON(webCenter.getResourceURL(currentUser.links,'urn:oracle:webcenter:people:person:listNames',false),function(d){
       var obj = $.extend(currentUser,{"listNames":d.items};
       if(callback) {
-        callback(obj));
+        callback(obj);
       } else {
         return obj;
       }
@@ -206,7 +206,7 @@ var userProfile = function(){
     $.getJSON(webCenter.getResourceURL(webCenter.getResourceIndex().links,'urn:oracle:webcenter:spaces',false),function(d){
       var obj = $.extend(currentUser,{"spaces":d.items};
       if(callback) {
-        callback(obj));
+        callback(obj);
       } else {
         return obj;
       }
