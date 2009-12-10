@@ -20,7 +20,7 @@ body {
 	overflow-x:hidden;
 	overflow-y:scroll;	
 }
-#main{
+.main{
 	margin-left:10px;
 }
 a, a:active, a:visited, a:link {
