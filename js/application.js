@@ -66,8 +66,6 @@ $(function(){
         });
         return false;
       };
-
-      // Properly sets list filter when using the back button
       app.trigger('update-list-filters', currLocation);
     });
 
@@ -128,6 +126,7 @@ $(function(){
     });
 
     app.bind('update-list-filters',function(e,currLocation){
+      console.log('updating list: ' + currLocation);
       if(/\#\/list\//.test(currLocation)){
         var selectedVal = currLocation.split('#/list/')[1].split('/')[0];
         $('#listfilters option').each(function(i,n){
