@@ -22,7 +22,8 @@ var webCenter = function(callback){
         // setup current user
         userProfile.getCurrentUser(function(d){
           currentUser = d;
-          currentUser.getSpaces(callback);
+          currentUser.getSpaces(function(d){console.log(d)});
+          callback();
         });
       });
   }
