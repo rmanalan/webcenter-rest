@@ -19,6 +19,7 @@ body {
 	background-color:transparent;
 	overflow-x:hidden;
 	overflow-y:scroll;	
+	min-height:800px;
 }
 .main{
 	margin-left:10px;
