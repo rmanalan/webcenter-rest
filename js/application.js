@@ -45,10 +45,10 @@ $(function(){
         if(currentUser.spaces.length==0) return;
         var bindData = {
           'pub1-group' : $.map(currentUser.spaces,function(d){
-              return {
-                'pub1-group-name' : d.displayName
-              };
-            }
+            return {
+              'pub1-group-name' : d.displayName
+            };
+          });
         };
         $('li.pub1-group-name:first').clone(true).appendTo('#pub1-groups').autoRender(bindData);
 
