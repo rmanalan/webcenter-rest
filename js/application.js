@@ -47,7 +47,8 @@ $(function(){
         var bindData = {
           'pub1-group' : $.map(currentUser.spaces,function(d){
             return {
-              'pub1-group-name' : d.displayName
+              'pub1-group-name' : d.displayName,
+              'pub1-group-val' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:activities:stream',true)
             };
           })
         };
