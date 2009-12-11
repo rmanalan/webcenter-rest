@@ -44,7 +44,7 @@ $(function(){
       currentUser.getSpaces(function(){
         if(currentUser.spaces.length==0) return;
         var bindData = {
-          'pub1-group' : $.map(currentUser.spaces,function(d)){
+          'pub1-group' : $.map(currentUser.spaces,function(d){
               return {
                 'pub1-group-name' : d.displayName
               };
