@@ -1,6 +1,7 @@
 $(document).ajaxStart(function(){$('#loading-ind').show()})
   .ajaxStop(function(){$('#loading-ind').hide()});
 
+var dump; // for debugging purposes
 $(function(){
   function initApp(callback){
     webCenter.init(function(){
@@ -50,6 +51,9 @@ $(function(){
             };
           })
         };
+
+        console.log(bindData);
+        dump = bindData;
         $('li.pub1-group:first').clone(true).appendTo('#pub1-groups').autoRender(bindData);
 
         // Don't process anything until the filter is set up
