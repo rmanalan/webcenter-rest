@@ -34,11 +34,10 @@ $(function(){
              };
            })
         };
-        console.log(bindData);
         // Sets url for default stream
         $('.lfopts:first').attr('value',
            webCenter.getResourceURL(webCenter.getResourceIndex().links,
-             'urn:oracle:webcenter:activities:stream',true))
+             'urn:oracle:webcenter:activities:stream',true));
         $('.lfopts').clone(true).appendTo('#listfilters').autoRender(bindData);
         $('.lfopts:last').clone(true).appendTo('#listfilters').val('').html('Create a new list');
       });
@@ -53,9 +52,6 @@ $(function(){
             };
           })
         };
-
-        console.log(bindData);
-        dump = bindData;
         $('.pub1-group').clone(true).appendTo('#pub1-groups').autoRender(bindData);
 
         // Don't process anything until the filter is set up
