@@ -26,22 +26,19 @@
       </ul>  
       <div id="main-content" class="span-16">
         <div id="publisher" class="clearfix">
-          <div id="pub1-share" class="loud">
-            Share something with
-            <span id="pub1-group" class="pub1-dd">
-              <span id="pub1-selected-group">everyone</span> &#x25BE;
-              <ul id="pub1-groups" class="hide">
-                <li class="pub1-group pub1-group-name">Everyone</li>
-              </ul>
-            </span>
-          </div>
-          <div id="pub1-text" class="clearfix">
-            <form id="pub-form" action="#/message" method="post">
-              <textarea id="pub-text" name="body"></textarea>
-              <input id="share" type="submit" value="Share"/>
-            </form>
-          </div>
-          <a href="#" id="pub1-attachment" class="no-underline">Attach file</a>
+          <form id="pub-form" action="#/message" method="post">
+            <div id="pub1-share" class="loud">
+              Share something with
+              <select id="pub1-groups" name="groups">
+                <option class="pub1-group pub1-group-name">Everyone</option>
+              </select>
+            </div>
+            <div id="pub1-text" class="clearfix">
+                <textarea id="pub-text" name="body"></textarea>
+                <input id="share" type="submit" value="Share"/>
+            </div>
+            <a href="#" id="pub1-attachment" class="no-underline">Attach file</a>
+          </form>
         </div>
 
         <div id="stream">

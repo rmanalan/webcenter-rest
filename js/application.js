@@ -54,7 +54,7 @@ $(function(){
 
         console.log(bindData);
         dump = bindData;
-        $('li.pub1-group:first').clone(true).appendTo('#pub1-groups').autoRender(bindData);
+        $('.pub1-group:first').clone(true).appendTo('#pub1-groups').autoRender(bindData);
 
         // Don't process anything until the filter is set up
         callback(); 
