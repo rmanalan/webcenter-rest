@@ -23,7 +23,7 @@ $(function(){
       });
 
       // Setup Lists drop-down
-      currentUser.getListNames(function(lists){
+      currentUser.getListNames(function(){
         if(currentUser.listNames.length==0) return;
         var bindData = {
           'lfopts' : $.map(currentUser.listNames,function(d){
@@ -39,11 +39,24 @@ $(function(){
              'urn:oracle:webcenter:activities:stream',true))
         $('.lfopts').clone(true).appendTo('#listfilters').autoRender(bindData);
         $('.lfopts:last').clone(true).appendTo('#listfilters').val('').html('Create a new list');
+      });
+
+      currentUser.getSpaces(function(){
+        if(currentUser.spaces.length==0) return;
+        var bindData = {
+          'pub1-group' : $.map(currentUser.spaces,function(d)){
+              return {
+                'pub1-group-name' : d.displayName
+              };
+            }
+        };
+        $('li.pub1-group-name:first').clone(true).appendTo('#pub1-groups').autoRender(bindData);
 
         // Don't process anything until the filter is set up
         callback(); 
       });
     });
+
   };
 
   function renderDefaultStream(){
