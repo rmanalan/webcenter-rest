@@ -34,6 +34,7 @@ $(function(){
              };
            })
         };
+        console.log(bindData);
         // Sets url for default stream
         $('.lfopts:first').attr('value',
            webCenter.getResourceURL(webCenter.getResourceIndex().links,
