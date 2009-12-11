@@ -45,14 +45,14 @@ $(function(){
       currentUser.getSpaces(function(){
         if(currentUser.spaces.length==0) return;
         var bindData = {
-          'pub1-group' : $.map(currentUser.spaces,function(d){
+          'pub1group' : $.map(currentUser.spaces,function(d){
             return {
-              'pub1-group-name' : d.displayName,
-              'pub1-group-val' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:activities:stream',true)
+              'pub1group-name' : d.displayName,
+              'pub1group-val' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:activities:stream',true)
             };
           })
         };
-        $('.pub1-group').clone(true).appendTo('#pub1-groups').autoRender(bindData);
+        $('.pub1group').clone(true).appendTo('#pub1-groups').autoRender(bindData);
 
         // Don't process anything until the filter is set up
         callback(); 
