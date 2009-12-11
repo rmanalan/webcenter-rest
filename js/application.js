@@ -116,8 +116,7 @@ $(function(){
       var msg = this.params['body'];
       if(msg == "") return false; 
       $.ajax({
-        url: webCenter.getResourceURL(webCenter.getResourceIndex().links,
-               'urn:oracle:webcenter:messageBoard'),
+        url: this.params['puburl'],
         type: "post",
         dataType: "json",
         contentType: "application/json",
