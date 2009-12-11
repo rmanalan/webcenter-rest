@@ -16,10 +16,9 @@ html[xmlns] .clearfix {
   height: 1%;
 }
 body {
-	background-color:transparent;
+	background-color:#fff;
 	overflow-x:hidden;
 	overflow-y:scroll;	
-	height:800px;
 }
 .main{
 	margin-left:10px;
