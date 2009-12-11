@@ -48,7 +48,7 @@ $(function(){
             return {
               'pub1-group-name' : d.displayName
             };
-          });
+          })
         };
         $('li.pub1-group-name:first').clone(true).appendTo('#pub1-groups').autoRender(bindData);
 
