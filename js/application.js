@@ -52,6 +52,10 @@ $(function(){
             };
           })
         };
+        // Sets url for default stream
+        $('.pub1group:first').attr('value',
+           webCenter.getResourceURL(webCenter.getResourceIndex().links,
+             'urn:oracle:webcenter:messageBoard',true));
         $('.pub1group').clone(true).appendTo('#pub1-groups').autoRender(bindData);
 
         // Don't process anything until the filter is set up
