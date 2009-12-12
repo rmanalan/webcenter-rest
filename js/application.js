@@ -48,14 +48,14 @@ $(function(){
           'pub1group' : $.map(currentUser.spaces,function(d){
             return {
               'pub1groupname' : d.displayName,
-              'pub1groupval' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:activities:stream',true)
+              'pub1groupval' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:activities:stream',false)
             };
           })
         };
         // Sets url for default stream
         $('.pub1group:first').attr('value',
-           webCenter.getResourceURL(webCenter.getResourceIndex().links,
-             'urn:oracle:webcenter:messageBoard',true));
+           webCenter.getResourceURL(d.links,
+             'urn:oracle:webcenter:messageBoard',false));
         $('.pub1group').clone(true).appendTo('#pub1-groups').autoRender(bindData);
 
         // Don't process anything until the filter is set up
