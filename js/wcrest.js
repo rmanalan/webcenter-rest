@@ -35,8 +35,8 @@ var webCenter = function(callback){
     if(!resourceIndex) {
       $.getJSON(getResourceIndexURL(), function(data){
         resourceIndex = data;
-        if(callback) callback(data);
         $.extend(webCenter,{'resourceIndex': data});
+        if(callback) callback(data);
         return resourceIndex;
       });
     } else {
