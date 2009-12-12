@@ -48,6 +48,7 @@ $(function(){
           'pub1group' : $.map(currentUser.spaces,function(d){
             return {
               'pub1groupname' : d.displayName,
+              // TODO the following URL won't work... need to figure out what to publish to for groups
               'pub1groupval' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:activities:stream',false)
             };
           })

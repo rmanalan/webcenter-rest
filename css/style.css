@@ -114,9 +114,6 @@ li.messages {
   -moz-box-shadow:0 0 5px #fff;
   -webkit-box-shadow:0 0 5px #fff;
 }
-#pub1-text {
-	margin-bottom:5px;
-}
 #pub1-text textarea {
 	float:left;
 	resize:vertical;
@@ -138,7 +135,7 @@ input[type='submit'], input[type='button'], .button {
   font-weight:bold;
   font-size:10pt;
   padding:3px 7px;
-  margin:0 0 5px 0;
+  margin:0;
   border:1px solid #999;
   -moz-border-radius:3px;
   -webkit-border-radius:3px;
