@@ -160,19 +160,6 @@ button:hover, .button:hover {
 #pub1-attachment:hover {
 	text-decoration:underline;
 }
-#pub1-group {
-  position:absolute;
-	width:90px;
-	margin-top:-1px;
-	text-shadow:#fff 1px 1px 0;
-	margin-left:3px;
-}
-#pub1-groups {
-  position:relative;
-  z-index:10;
-	margin:0;
-	padding:0 0 3px 0;
-}
 .active-dd {
   background:#000;
   opacity:.7;
