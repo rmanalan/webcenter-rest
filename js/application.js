@@ -36,7 +36,7 @@ $(function(){
         };
         // Sets url for default stream
         $('.lfopts:first').attr('value',
-           webCenter.getResourceURL(webCenter.getResourceIndex().links,
+           webCenter.getResourceURL(webCenter.resourceIndex.links,
              'urn:oracle:webcenter:activities:stream',true));
         $('.lfopts').clone(true).appendTo('#listfilters').autoRender(bindData);
         $('.lfopts:last').clone(true).appendTo('#listfilters').val('').html('Create a new list');
@@ -54,7 +54,7 @@ $(function(){
         };
         // Sets url for default stream
         $('.pub1group:first').attr('value',
-           webCenter.getResourceURL(d.links,
+           webCenter.getResourceURL(webCenter.resourceIndex.links,
              'urn:oracle:webcenter:messageBoard',false));
         $('.pub1group').clone(true).appendTo('#pub1-groups').autoRender(bindData);
 
@@ -68,7 +68,7 @@ $(function(){
   function renderDefaultStream(){
     var activityTemplate = $('li.messages:first');
     $('ol.results').empty().append(activityTemplate);
-    activityStream.renderActivities(webCenter.getResourceIndex().links, 0);
+    activityStream.renderActivities(webCenter.resourceIndex.links, 0);
   }
 
   // App Controller

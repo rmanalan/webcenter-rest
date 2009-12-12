@@ -10,11 +10,15 @@ var webCenter = function(callback){
   var perPage = 10;
   
   function currentServer() {
-    return location.protocol + '//' + hostname + ':' + port + '/';
+    var server = location.protocol + '//' + hostname + ':' + port + '/';
+    $.extend(webCenter,{'server':server});
+    return server;
   }
 
   function getResourceIndexURL(){
-    return currentServer() + 'rest/api/resourceIndex';
+    var url = currentServer() + 'rest/api/resourceIndex';
+    $.extend(webCenter,{'resourceIndexURL': url})
+    return url;
   }
 
   function init(callback){
@@ -32,6 +36,7 @@ var webCenter = function(callback){
       $.getJSON(getResourceIndexURL(), function(data){
         resourceIndex = data;
         if(callback) callback(data);
+        $.extend(webCenter,{'resourceIndex': data});
         return resourceIndex;
       });
     } else {
@@ -179,7 +184,7 @@ var userProfile = function(){
   
   function getCurrentUser(callback){
     if(!currUserObj){
-      $.getJSON(webCenter.getResourceURL(webCenter.getResourceIndex().links,'urn:oracle:webcenter:people',false),function(data){ 
+      $.getJSON(webCenter.getResourceURL(webCenter.resourceIndex.links,'urn:oracle:webcenter:people',false),function(data){ 
         setCurrentUser(data);
         if(callback) callback(currUserObj);
       });
@@ -201,7 +206,7 @@ var userProfile = function(){
   }
 
   function getSpaces(callback){
-    $.getJSON(webCenter.getResourceURL(webCenter.getResourceIndex().links,'urn:oracle:webcenter:spaces',false),function(d){
+    $.getJSON(webCenter.getResourceURL(webCenter.resourceIndex.links,'urn:oracle:webcenter:spaces',false),function(d){
       var obj = $.extend(currentUser,{"spaces":d.items});
       if(callback) {
         callback(obj);
