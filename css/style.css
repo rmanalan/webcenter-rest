@@ -117,7 +117,7 @@ li.messages {
 #pub1-text {
 	margin-bottom:5px;
 }
-#pub1-text {
+#pub1-text textarea {
 	float:left;
 	resize:vertical;
   margin:0 4px 0 0;
