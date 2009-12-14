@@ -58,7 +58,10 @@ $(function(){
       });
 
       currentUser.getSpaces(function(){
-        if(currentUser.spaces.length==0) return;
+        if(currentUser.spaces.length==0) {
+          callback();
+          return;
+        }
         var bindData = {
           'groupopt' : $.map(currentUser.spaces,function(d){
             return {
@@ -80,7 +83,6 @@ $(function(){
              'urn:oracle:webcenter:activities:stream',false));
         $('#groupfilter option:first').clone(true).appendTo('#groupfilter').autoRender(bindData);
 
-        console.log('is this getting called')
         // Don't process anything until the filter is set up
         callback(); 
       });
