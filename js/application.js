@@ -126,8 +126,8 @@ $(function(){
 
     app.get('#/group/:name',function(c){
       var groupName = this.params['name'];
-        renderDefaultStream();
       if(groupName=='My%20Network'){
+        renderDefaultStream();
       } else {
         var url = $.grep($('#groupfilter option'),function(n){return $(n).text()==groupName})[0].value;
         var activityTemplate = $('li.messages:first');
