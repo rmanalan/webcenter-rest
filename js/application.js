@@ -20,7 +20,7 @@ $(function(){
         }
       })
 
-      $("textarea.autoresize").autoResize();
+      $("textarea.autoresize").autoResize({'extraSpace':0});
 
       // Infinite scroll pager
       $(window).scroll(function(){
@@ -185,7 +185,7 @@ $(function(){
         contentType: "application/json",
         data: JSON.stringify({'body': utils.resolveURLs(msg)}),
         success: function(d){
-          $('#pub-text').val('');
+          $('#pub-text').val('').css('height',18);
           var profileUrl = webCenter.getResourceURL(d.author.links,
             'urn:oracle:webcenter:spaces:profile');
           var data = {
