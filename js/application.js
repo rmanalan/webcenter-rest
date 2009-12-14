@@ -65,6 +65,7 @@ $(function(){
             'space <- spaces' : {
               '.' : 'space.displayName',
               '@value' : function(space){
+                console.log(space);
                 return webCenter.getResourceURL(space.links,"urn:oracle:webcenter:activities:stream",false);
               }
             }
