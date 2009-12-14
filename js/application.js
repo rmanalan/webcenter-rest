@@ -15,11 +15,11 @@ $(function(){
       // Infinite scroll pager
       $(window).scroll(function(){
         if($(window).scrollTop() == $(document).height() - $(window).height()){
-          activityStream.renderActivities($('#listfilters').val(), activityStream.currentActivityId());
+          activityStream.renderActivities($('#listfilter').val(), activityStream.currentActivityId());
         }
        });
 
-      $('#listfilters').bind('change',function(e){
+      $('#listfilter').bind('change',function(e){
         location = '#/list/' + $('option:selected',this).text();
       });
 
@@ -38,8 +38,8 @@ $(function(){
         $('.lfopts:first').attr('value',
            webCenter.getResourceURL(webCenter.resourceIndex.links,
              'urn:oracle:webcenter:activities:stream',true));
-        $('.lfopts').clone(true).appendTo('#listfilters').autoRender(bindData);
-        $('.lfopts:last').clone(true).appendTo('#listfilters').val('').html('Create a new list');
+        $('.lfopts').clone(true).appendTo('#listfilter').autoRender(bindData);
+        $('.lfopts:last').clone(true).appendTo('#listfilter').val('').html('Create a new list');
       });
 
 
@@ -117,7 +117,7 @@ $(function(){
         alert('Patience little grasshopper... not implemented yet')
         if(lastLocation) this.redirect(lastLocation);
       } else {
-        var url = $.grep($('#listfilters option'),function(n){return $(n).text()==listName})[0].value;
+        var url = $.grep($('#listfilter option'),function(n){return $(n).text()==listName})[0].value;
         var activityTemplate = $('li.messages:first');
         $('ol.results').empty().append(activityTemplate);
         activityStream.renderActivities(url, 0);
@@ -127,8 +127,10 @@ $(function(){
     app.get('#/group/:name',function(c){
       var groupName = this.params['name'];
       if(groupName=='My%20network'){
+        $('#listfilter').show();
         renderDefaultStream();
       } else {
+        $('#listfilter').hide();
         var url = $.grep($('#groupfilter option'),function(n){console.log($(n).text());return $(n).text()==groupName})[0].value;
         var activityTemplate = $('li.messages:first');
         $('ol.results').empty().append(activityTemplate);
@@ -170,7 +172,7 @@ $(function(){
     app.bind('update-list-filters',function(e,currLocation){
       if(/\#\/list\//.test(currLocation)){
         var selectedVal = currLocation.split('#/list/')[1].split('/')[0];
-        $('#listfilters option').each(function(i,n){
+        $('#listfilter option').each(function(i,n){
           var opt = $(n);
           if(opt.text()==selectedVal){
             opt.attr('selected','1');
