@@ -128,6 +128,7 @@ $(function(){
       var groupName = this.params['name'];
       if(groupName=='My%20network'){
         $('#listfiltercontainer').show();
+        $('#listfilter option:first').attr('selected',true);
         renderDefaultStream();
       } else {
         $('#listfiltercontainer').hide();
