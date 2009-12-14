@@ -56,16 +56,15 @@ $(function(){
       $('#groupfilter').bind('change',function(e){
         location = '#/group/' + $('option:selected',this).text();
       });
+      // Sets url for default stream
+      $('#grouppub option:first').attr('value',
+          webCenter.getResourceURL(webCenter.resourceIndex.links,
+            'urn:oracle:webcenter:messageBoard',false));
+      $('#groupfilter option:first').attr('value',
+          webCenter.getResourceURL(webCenter.resourceIndex.links,
+            'urn:oracle:webcenter:activities:stream',false));
 
       currentUser.getSpaces(function(){
-        // Sets url for default stream
-        $('#grouppub option:first').attr('value',
-           webCenter.getResourceURL(webCenter.resourceIndex.links,
-             'urn:oracle:webcenter:messageBoard',false));
-        $('#groupfilter option:first').attr('value',
-           webCenter.getResourceURL(webCenter.resourceIndex.links,
-             'urn:oracle:webcenter:activities:stream',false));
-
         if(currentUser.spaces.length==0) {
           callback();
           return;
