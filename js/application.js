@@ -181,6 +181,8 @@ $(function(){
     });
 
     app.post('#/message',function(c){
+      console.log(c);
+      return false;
       var msg = this.params['body'];
       if(msg == "") return false; 
       $.ajax({
