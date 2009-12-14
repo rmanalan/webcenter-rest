@@ -83,7 +83,7 @@ $(function(){
         'messages' : $.map(data.items, function(d){
           var detail = d.detail ? d.detail : "";
           return {
-            'id' : nextActivityId(), 
+            'id' : activityStream.nextActivityId(), 
             'avatar' : userProfile.avatarSmall(webCenter.getTemplateItem(d.templateParams.items, 'user').guid),
             'name' : webCenter.getTemplateItem(d.templateParams.items,'user').displayName,
             'url' : webCenter.getResourceURL(webCenter.getTemplateItem(d.templateParams.items, 'user').links,
