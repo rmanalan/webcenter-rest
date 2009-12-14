@@ -61,13 +61,10 @@ $(function(){
 
         // Set up group filter
         var directive = {
-          'option' : {
-            'space <- spaces' : {
-              '.' : 'space.displayName',
-              '@value' : function(context){
-                return webCenter.getResourceURL(context.item.links,"urn:oracle:webcenter:activities:stream",false);
-              }
-            }
+          'option' : 'space <- spaces',
+          'option .' : 'space.displayName',
+          'option@value' : function(context){
+            return webCenter.getResourceURL(context.item.links,"urn:oracle:webcenter:activities:stream",false);
           }
         }
         $('#groupfilter').render({'spaces': currentUser.spaces},directive);
