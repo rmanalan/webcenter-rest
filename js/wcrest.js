@@ -110,6 +110,7 @@ var activityStream = function() {
   var activityId = -1;
   var moreActivities = true;
   function getActivities(links,startIndex,callback){
+    if(startIndex==0) moreActivities=true;
     if(!moreActivities) return;
     startIndex = startIndex ? startIndex : 0;
     if(startIndex==0){

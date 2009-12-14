@@ -15,7 +15,7 @@ $(function(){
       // Infinite scroll pager
       $(window).scroll(function(){
         if($(window).scrollTop() == $(document).height() - $(window).height()){
-          activityStream.renderActivities($('#listfilter').val(), activityStream.currentActivityId());
+          renderStream($('#listfilter').val(), activityStream.currentActivityId());
         }
        });
 
@@ -77,11 +77,33 @@ $(function(){
 
   };
 
+  function renderStream(url,startIndex){
+    activityStream.getActivities(url,startIndex,function(data){
+      var bindData = {
+        'messages' : $.map(data.items, function(d){
+          var detail = d.detail ? d.detail : "";
+          return {
+            'id' : nextActivityId(), 
+            'avatar' : userProfile.avatarSmall(webCenter.getTemplateItem(d.templateParams.items, 'user').guid),
+            'name' : webCenter.getTemplateItem(d.templateParams.items,'user').displayName,
+            'url' : webCenter.getResourceURL(webCenter.getTemplateItem(d.templateParams.items, 'user').links,
+              'urn:oracle:webcenter:people:person'),
+            'activity' : webCenter.resolveBindItems(d.message, d.templateParams.items),
+            'detail' : detail,
+            'reltime' : utils.timeAgoInWords(d.createdDate)
+            }
+          })
+      };
+      var template = $('li.messages:last').clone(true).appendTo('ol.results');
+      template.autoRender(bindData).removeClass('hide');
+    });
+  };
+
   function renderDefaultStream(){
     var activityTemplate = $('li.messages:first');
     $('ol.results').empty().append(activityTemplate);
-    activityStream.renderActivities(webCenter.resourceIndex.links, 0);
-  }
+    renderStream(webCenter.resourceIndex.links, 0);
+  };
 
   // App Controller
   var activityStreamApp = $.sammy(function(app){
@@ -120,7 +142,7 @@ $(function(){
         var url = $.grep($('#listfilter option'),function(n){return $(n).text()==listName})[0].value;
         var activityTemplate = $('li.messages:first');
         $('ol.results').empty().append(activityTemplate);
-        activityStream.renderActivities(url, 0);
+        renderStream(url, 0);
       }
     });
 
@@ -135,7 +157,7 @@ $(function(){
         var url = $.grep($('#groupfilter option'),function(n){return $(n).text()==groupName})[0].value;
         var activityTemplate = $('li.messages:first');
         $('ol.results').empty().append(activityTemplate);
-        activityStream.renderActivities(url, 0);
+        renderStream(url, 0);
       }
     });
 
