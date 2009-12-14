@@ -54,7 +54,7 @@ $(function(){
             return {
               'groupname' : d.displayName,
               // TODO the following URL won't work... need to figure out what to publish to for groups
-              'groupval' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:activities:stream',false)
+              'groupval' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:activities:stream',true)
             };
           })
         };
