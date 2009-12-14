@@ -168,6 +168,7 @@ $(function(){
         renderStream(webCenter.resourceIndex.links, 0,true);
       } else {
         $('#listfilter').attr('disabled',true);
+        $('#listfilter option:first').attr('selected',true);
         var url = $.grep($('#groupfilter option'),function(n){return $(n).text()==groupName})[0].value;
         var activityTemplate = $('li.messages:first');
         $('ol.results').empty().append(activityTemplate);
