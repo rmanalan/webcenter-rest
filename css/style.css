@@ -18,7 +18,7 @@ html[xmlns] .clearfix {
 body {
 	background-color:#fff;
 	overflow-x:hidden;
-	overflow-y:scroll;	
+	overflow-y:auto;	
 }
 .main{
 	margin-left:10px;

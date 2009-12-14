@@ -126,6 +126,7 @@ $(function(){
   var activityStreamApp = $.sammy(function(app){
     var appStarted=false;
     var lastLocation;
+    app.element_selector = '#main';
 
     app.before(function(c){
       var currLocation = app.getLocation();
