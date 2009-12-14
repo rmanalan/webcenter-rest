@@ -45,29 +45,25 @@ $(function(){
       currentUser.getSpaces(function(){
         if(currentUser.spaces.length==0) return;
         var bindData = {
-          'pub1group' : $.map(currentUser.spaces,function(d){
+          'groupopt' : $.map(currentUser.spaces,function(d){
             return {
-              'pub1groupname' : d.displayName,
+              'groupname' : d.displayName,
               // TODO the following URL won't work... need to figure out what to publish to for groups
-              'pub1groupval' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:activities:stream',false)
+              'groupval' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:activities:stream',false)
             };
           })
         };
         // Sets url for default stream
-        $('.pub1group:first').attr('value',
+        $('#grouppub option:first').attr('value',
            webCenter.getResourceURL(webCenter.resourceIndex.links,
              'urn:oracle:webcenter:messageBoard',false));
-        $('.pub1group').clone(true).appendTo('#pub1-groups').autoRender(bindData);
+        $('#grouppub option:first').clone(true).appendTo('#grouppub').autoRender(bindData);
 
-        // Set up group filter
-        var directive = {
-          'option' : 'space <- spaces',
-          'option .' : 'space.displayName',
-          'option@value' : function(context){
-            return webCenter.getResourceURL(context.item.links,"urn:oracle:webcenter:activities:stream",false);
-          }
-        }
-        $('#groupfilter option').render({'spaces': currentUser.spaces},directive);
+
+        $('#groupfilter option:first').attr('value',
+           webCenter.getResourceURL(webCenter.resourceIndex.links,
+             'urn:oracle:webcenter:activities:stream',false));
+        $('#groupfilter option:first').clone(true).appendTo('#groupfilter').autoRender();
 
         // Don't process anything until the filter is set up
         callback(); 

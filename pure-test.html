@@ -2,7 +2,7 @@
   lang="en">
   <head>
     <script src="js/jquery.js" type="text/javascript" language="javascript"></script>
-    <script src="js/pure2.js" type="text/javascript" language="javascript"></script>
+    <script src="js/pure.js" type="text/javascript" language="javascript"></script>
     <link href="css/screen.css" type="text/css" media="screen" rel="stylesheet"/>
     <script type="text/javascript" language="javascript" charset="utf-8">
 var data = {"opts":[
@@ -17,24 +17,21 @@ var data = {"opts":[
   ]
 };
 var directive = {
-  'option' : {
-    'opt <- opts':{
-      '.': "opt.name",
-      '@value' : "opt.val"
-    }
-  }
+  'select option' : 'opt <- opts',
+  'select option': "opt.name",
+  //'@value' : "opt.val"
 }
 
       
 $(function(){
-    $('select').autoRender(data, directive);
+    $('option').render(data, directive);
 })
       </script>
       
   </head>
   <body>
     <select name="list-filters" class="list-filters">
-      <option>All contacts</option>
+      <option><span>All contacts</span></option>
     </select>
   </body>
 </html>

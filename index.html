@@ -29,8 +29,8 @@
           <form id="pub-form" action="#/message" method="post">
             <div id="pub1-share" class="loud">
               Share something with
-              <select id="pub1-groups" name="puburl">
-                <option class="pub1group pub1groupname pub1groupval@value" value="">Everyone</option>
+              <select id="grouppub" name="puburl">
+                <option class="groupopt groupname groupval@value" value="">Everyone</option>
               </select>
             </div>
             <div id="pub1-text" class="clearfix">
@@ -45,7 +45,7 @@
           <div id="filters">
             <label for="groupfilter">View:</label>
             <select name="groupfilter" id="groupfilter">
-              <option>My network</option>
+              <option class="groupopt groupname groupval@value">My network</option>
             </select>&nbsp;
             <label for="listfilter">Lists:</label>
             <select name="listfilters" id="listfilters">
