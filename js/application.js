@@ -61,7 +61,7 @@ $(function(){
 
         // Set up group filter
         var directive = {
-          'option' : {
+          'option+' : {
             'space <- spaces' : {
               '.' : 'space.displayName',
               '@value' : 'space.guid'
