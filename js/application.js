@@ -127,11 +127,11 @@ $(function(){
     app.get('#/group/:name',function(c){
       var groupName = this.params['name'];
       if(groupName=='My%20network'){
-        $('#listfiltercontainer').show();
+        $('#listfilter').attr('disabled',false);
         $('#listfilter option:first').attr('selected',true);
         renderDefaultStream();
       } else {
-        $('#listfiltercontainer').hide();
+        $('#listfilter').attr('disabled',true);
         var url = $.grep($('#groupfilter option'),function(n){return $(n).text()==groupName})[0].value;
         var activityTemplate = $('li.messages:first');
         $('ol.results').empty().append(activityTemplate);
