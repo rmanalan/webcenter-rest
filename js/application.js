@@ -12,6 +12,13 @@ $(function(){
           'urn:oracle:webcenter:spaces:profile',false)
       }).show();
 
+      // Listen for <enter> key inside the publisher textarea
+      $('#pub-text').bind('keyup',function(e){
+        if(e.keyCode==13){
+          $('#pub-form').submit();
+        }
+      })
+
       // Infinite scroll pager
       $(window).scroll(function(){
         if($(window).scrollTop() == $(document).height() - $(window).height()){
