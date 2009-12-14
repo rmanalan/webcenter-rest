@@ -80,6 +80,7 @@ $(function(){
              'urn:oracle:webcenter:activities:stream',false));
         $('#groupfilter option:first').clone(true).appendTo('#groupfilter').autoRender(bindData);
 
+        console.log('is this getting called')
         // Don't process anything until the filter is set up
         callback(); 
       });
