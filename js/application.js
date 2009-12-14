@@ -33,6 +33,11 @@ $(function(){
         location = '#/list/' + $('option:selected',this).text();
       });
 
+      // Sets url for default stream
+      $('.lfopts:first').attr('value',
+         webCenter.getResourceURL(webCenter.resourceIndex.links,
+           'urn:oracle:webcenter:activities:stream',true));
+
       // Setup Lists drop-down
       currentUser.getListNames(function(){
         if(currentUser.listNames.length==0) return;
@@ -44,10 +49,6 @@ $(function(){
              };
            })
         };
-        // Sets url for default stream
-        $('.lfopts:first').attr('value',
-           webCenter.getResourceURL(webCenter.resourceIndex.links,
-             'urn:oracle:webcenter:activities:stream',true));
         $('.lfopts').clone(true).appendTo('#listfilter').autoRender(bindData);
         $('.lfopts:last').clone(true).appendTo('#listfilter').val('').html('Create a new list');
       });
