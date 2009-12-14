@@ -126,10 +126,9 @@ $(function(){
 
     app.get('#/group/:name',function(c){
       var groupName = this.params['name'];
-      if(groupName=='My%20Network'){
+      if(groupName=='My%20network'){
         renderDefaultStream();
       } else {
-        console.log(groupName);
         var url = $.grep($('#groupfilter option'),function(n){console.log($(n).text());return $(n).text()==groupName})[0].value;
         var activityTemplate = $('li.messages:first');
         $('ol.results').empty().append(activityTemplate);
