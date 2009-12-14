@@ -15,7 +15,7 @@ $(function(){
       // Infinite scroll pager
       $(window).scroll(function(){
         if($(window).scrollTop() == $(document).height() - $(window).height()){
-          renderStream($('#listfilter').val(), activityStream.currentActivityId(),false);
+          renderStream($('#stream').data('currentStreamUrl'), activityStream.currentActivityId(),false);
         }
        });
 
@@ -98,6 +98,8 @@ $(function(){
             }
           })
       };
+      // Store off current stream url for paging purposes
+      $('#stream').data('currentStreamUrl',url);
       if(clearActivities){
         var activityTemplate = $('li.messages:first');
         $('ol.results').empty().append(activityTemplate);
