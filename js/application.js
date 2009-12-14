@@ -38,7 +38,7 @@ $(function(){
         $('.lfopts:first').attr('value',
            webCenter.getResourceURL(webCenter.resourceIndex.links,
              'urn:oracle:webcenter:activities:stream',true));
-        //$('.lfopts').clone(true).appendTo('#listfilters').autoRender(bindData);
+        $('.lfopts').clone(true).appendTo('#listfilters').autoRender(bindData);
         $('.lfopts:last').clone(true).appendTo('#listfilters').val('').html('Create a new list');
       });
 
@@ -57,7 +57,7 @@ $(function(){
         $('.pub1group:first').attr('value',
            webCenter.getResourceURL(webCenter.resourceIndex.links,
              'urn:oracle:webcenter:messageBoard',false));
-        //$('.pub1group').clone(true).appendTo('#pub1-groups').autoRender(bindData);
+        $('.pub1group').clone(true).appendTo('#pub1-groups').autoRender(bindData);
 
         // Set up group filter
         var directive = {
