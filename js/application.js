@@ -63,8 +63,8 @@ $(function(){
         var directive = {
           'option' : {
             'space <- currentUser.spaces' : {
-              '.' : 'displayName',
-              '@value' : 'guid'
+              '.' : 'space.displayName',
+              '@value' : 'space.guid'
             }
           }
         }
