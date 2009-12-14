@@ -64,7 +64,7 @@ $(function(){
           'option' : {
             'space <- spaces' : {
               '.' : 'space.displayName',
-              '@value' : 'webCenter.getResourceURL("#{space.links}","urn:oracle:webcenter:activities:stream",false)'
+              '@value' : 'webCenter.getResourceURL(\'#{space.links}\',"urn:oracle:webcenter:activities:stream",false)'
             }
           }
         }
