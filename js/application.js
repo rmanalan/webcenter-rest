@@ -59,6 +59,17 @@ $(function(){
              'urn:oracle:webcenter:messageBoard',false));
         $('.pub1group').clone(true).appendTo('#pub1-groups').autoRender(bindData);
 
+        // Set up group filter
+        var directive = {
+          'option' : {
+            'space <- currentUser.spaces' : {
+              '.' : 'displayName',
+              '@value' : 'guid'
+            }
+          }
+        }
+        $('#groupfilter').render(currentUser,directive);
+
         // Don't process anything until the filter is set up
         callback(); 
       });
