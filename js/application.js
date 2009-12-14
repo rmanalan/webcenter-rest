@@ -97,7 +97,7 @@ $(function(){
         });
         return false;
       };
-      app.trigger('update-list-filters', currLocation);
+      app.trigger('update-filters', currLocation);
     });
 
     app.after(function(){
@@ -131,7 +131,7 @@ $(function(){
         renderDefaultStream();
       } else {
         $('#listfiltercontainer').hide();
-        var url = $.grep($('#groupfilter option'),function(n){console.log($(n).text());return $(n).text()==groupName})[0].value;
+        var url = $.grep($('#groupfilter option'),function(n){return $(n).text()==groupName})[0].value;
         var activityTemplate = $('li.messages:first');
         $('ol.results').empty().append(activityTemplate);
         activityStream.renderActivities(url, 0);
@@ -169,10 +169,21 @@ $(function(){
       });
     });
 
-    app.bind('update-list-filters',function(e,currLocation){
+    app.bind('update-filters',function(e,currLocation){
       if(/\#\/list\//.test(currLocation)){
         var selectedVal = currLocation.split('#/list/')[1].split('/')[0];
         $('#listfilter option').each(function(i,n){
+          var opt = $(n);
+          if(opt.text()==selectedVal){
+            opt.attr('selected','1');
+          } else {
+            opt.removeAttr('selected');
+          }
+        })
+      };
+      if(/\#\/group\//.test(currLocation)){
+        var selectedVal = currLocation.split('#/group/')[1].split('/')[0];
+        $('#groupfilter option').each(function(i,n){
           var opt = $(n);
           if(opt.text()==selectedVal){
             opt.attr('selected','1');
