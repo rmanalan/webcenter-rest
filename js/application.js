@@ -129,6 +129,7 @@ $(function(){
     app.element_selector = '#main';
 
     app.before(function(c){
+      console.log(c);
       var currLocation = app.getLocation();
       if(!appStarted){
         initApp(function(){
@@ -181,8 +182,6 @@ $(function(){
     });
 
     app.post('#/message',function(c){
-      console.log(c);
-      return false;
       var msg = this.params['body'];
       if(msg == "") return false; 
       $.ajax({
