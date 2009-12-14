@@ -143,7 +143,7 @@ $(function(){
     app.after(function(){
       // Save off last location
       lastLocation = app.getLocation();
-    );
+    });
 
     app.get('#/', function(c){
       renderStream(webCenter.resourceIndex.links, 0,true);
