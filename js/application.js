@@ -62,13 +62,13 @@ $(function(){
         // Set up group filter
         var directive = {
           'option' : {
-            'space <- currentUser.spaces' : {
+            'space <- spaces' : {
               '.' : 'space.displayName',
               '@value' : 'space.guid'
             }
           }
         }
-        $('#groupfilter').render(currentUser,directive);
+        $('#groupfilter').render({'spaces': currentUser.spaces},directive);
 
         // Don't process anything until the filter is set up
         callback(); 
