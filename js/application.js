@@ -16,6 +16,7 @@ $(function(){
       $('#pub-text').bind('keyup',function(e){
         if(e.keyCode==13){
           $('#pub-form').submit();
+          return false;
         }
       })
 
