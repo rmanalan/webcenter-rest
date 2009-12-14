@@ -63,7 +63,7 @@ $(function(){
         $('#groupfilter option:first').attr('value',
            webCenter.getResourceURL(webCenter.resourceIndex.links,
              'urn:oracle:webcenter:activities:stream',false));
-        $('#groupfilter option:first').clone(true).appendTo('#groupfilter').autoRender();
+        $('#groupfilter option:first').clone(true).appendTo('#groupfilter').autoRender(bindData);
 
         // Don't process anything until the filter is set up
         callback(); 
