@@ -58,6 +58,14 @@ $(function(){
       });
 
       currentUser.getSpaces(function(){
+        // Sets url for default stream
+        $('#grouppub option:first').attr('value',
+           webCenter.getResourceURL(webCenter.resourceIndex.links,
+             'urn:oracle:webcenter:messageBoard',false));
+        $('#groupfilter option:first').attr('value',
+           webCenter.getResourceURL(webCenter.resourceIndex.links,
+             'urn:oracle:webcenter:activities:stream',false));
+
         if(currentUser.spaces.length==0) {
           callback();
           return;
@@ -71,16 +79,7 @@ $(function(){
             };
           })
         };
-        // Sets url for default stream
-        $('#grouppub option:first').attr('value',
-           webCenter.getResourceURL(webCenter.resourceIndex.links,
-             'urn:oracle:webcenter:messageBoard',false));
         $('#grouppub option:first').clone(true).appendTo('#grouppub').autoRender(bindData);
-
-
-        $('#groupfilter option:first').attr('value',
-           webCenter.getResourceURL(webCenter.resourceIndex.links,
-             'urn:oracle:webcenter:activities:stream',false));
         $('#groupfilter option:first').clone(true).appendTo('#groupfilter').autoRender(bindData);
 
         // Don't process anything until the filter is set up
@@ -92,10 +91,14 @@ $(function(){
 
   function renderStream(url,startIndex,clearActivities){
     activityStream.getActivities(url,startIndex,function(data){
+      // Store off current stream url for paging purposes
+      $('#stream').data('currentStreamUrl',url);
+
       if(data.items.length==0) {
         moreActivities = false;
         return;
       }
+
       var bindData = {
         'messages' : $.map(data.items, function(d){
           var detail = d.detail ? d.detail : "";
@@ -111,8 +114,6 @@ $(function(){
             }
           })
       };
-      // Store off current stream url for paging purposes
-      $('#stream').data('currentStreamUrl',url);
       if(clearActivities){
         var activityTemplate = $('li.messages:first');
         $('ol.results').empty().append(activityTemplate);
@@ -143,8 +144,7 @@ $(function(){
     app.after(function(){
       // Save off last location
       lastLocation = app.getLocation();
-      console.log('done');
-    });
+    );
 
     app.get('#/', function(c){
       renderStream(webCenter.resourceIndex.links, 0,true);
