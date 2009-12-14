@@ -20,6 +20,8 @@ $(function(){
         }
       })
 
+      $("textarea.autoresize").autoResize();
+
       // Infinite scroll pager
       $(window).scroll(function(){
         if($(window).scrollTop() == $(document).height() - $(window).height()){
