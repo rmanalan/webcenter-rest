@@ -122,32 +122,6 @@ var activityStream = function() {
       var url = links.replace("{startIndex}", startIndex).replace("{itemsPerPage}", webCenter.getPerPage());
     $.getJSON(url, callback);
   }
-  function renderActivities(links,startIndex){
-    if(startIndex==0) moreActivities=true;
-    getActivities(links, startIndex, function(data){
-      if(data.items.length==0) {
-        moreActivities = false;
-        return;
-      }
-      var bindData = {
-        'messages' : $.map(data.items, function(d){
-          var detail = d.detail ? d.detail : "";
-          return {
-            'id' : nextActivityId(), 
-            'avatar' : userProfile.avatarSmall(webCenter.getTemplateItem(d.templateParams.items, 'user').guid),
-            'name' : webCenter.getTemplateItem(d.templateParams.items,'user').displayName,
-            'url' : webCenter.getResourceURL(webCenter.getTemplateItem(d.templateParams.items, 'user').links,
-              'urn:oracle:webcenter:people:person'),
-            'activity' : webCenter.resolveBindItems(d.message, d.templateParams.items),
-            'detail' : detail,
-            'reltime' : utils.timeAgoInWords(d.createdDate)
-            }
-          })
-      };
-      var template = $('li.messages:last').clone(true).appendTo('ol.results');
-      template.autoRender(bindData).removeClass('hide');
-    });
-  }
   function nextActivityId() {
     return activityId += 1;
   }
@@ -157,7 +131,6 @@ var activityStream = function() {
 
   return {
     'getActivities' : getActivities,
-    'renderActivities' : renderActivities,
     'nextActivityId' : nextActivityId,
     'currentActivityId' : currentActivityId
   }

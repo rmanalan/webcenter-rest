@@ -15,7 +15,7 @@ $(function(){
       // Infinite scroll pager
       $(window).scroll(function(){
         if($(window).scrollTop() == $(document).height() - $(window).height()){
-          renderStream($('#listfilter').val(), activityStream.currentActivityId());
+          renderStream($('#listfilter').val(), activityStream.currentActivityId(),false);
         }
        });
 
@@ -77,8 +77,12 @@ $(function(){
 
   };
 
-  function renderStream(url,startIndex){
+  function renderStream(url,startIndex,clearActivities){
     activityStream.getActivities(url,startIndex,function(data){
+      if(data.items.length==0) {
+        moreActivities = false;
+        return;
+      }
       var bindData = {
         'messages' : $.map(data.items, function(d){
           var detail = d.detail ? d.detail : "";
@@ -94,15 +98,13 @@ $(function(){
             }
           })
       };
+      if(clearActivities){
+        var activityTemplate = $('li.messages:first');
+        $('ol.results').empty().append(activityTemplate);
+      }
       var template = $('li.messages:last').clone(true).appendTo('ol.results');
       template.autoRender(bindData).removeClass('hide');
     });
-  };
-
-  function renderDefaultStream(){
-    var activityTemplate = $('li.messages:first');
-    $('ol.results').empty().append(activityTemplate);
-    renderStream(webCenter.resourceIndex.links, 0);
   };
 
   // App Controller
@@ -128,13 +130,13 @@ $(function(){
     });
 
     app.get('#/', function(c){
-      renderDefaultStream();
+      renderStream(webCenter.resourceIndex.links, 0,true);
     });
 
     app.get('#/list/:name',function(c){
       var listName = this.params['name'];
       if(listName=='All%20contacts'){
-        renderDefaultStream();
+        renderStream(webCenter.resourceIndex.links, 0,true);
       } else if(listName=='Create%20a%20new%20list') {
         alert('Patience little grasshopper... not implemented yet')
         if(lastLocation) this.redirect(lastLocation);
@@ -142,7 +144,7 @@ $(function(){
         var url = $.grep($('#listfilter option'),function(n){return $(n).text()==listName})[0].value;
         var activityTemplate = $('li.messages:first');
         $('ol.results').empty().append(activityTemplate);
-        renderStream(url, 0);
+        renderStream(url, 0,true);
       }
     });
 
@@ -151,13 +153,13 @@ $(function(){
       if(groupName=='My%20network'){
         $('#listfilter').attr('disabled',false);
         $('#listfilter option:first').attr('selected',true);
-        renderDefaultStream();
+        renderStream(webCenter.resourceIndex.links, 0,true);
       } else {
         $('#listfilter').attr('disabled',true);
         var url = $.grep($('#groupfilter option'),function(n){return $(n).text()==groupName})[0].value;
         var activityTemplate = $('li.messages:first');
         $('ol.results').empty().append(activityTemplate);
-        renderStream(url, 0);
+        renderStream(url,0,true);
       }
     });
 
