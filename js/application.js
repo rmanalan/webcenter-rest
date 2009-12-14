@@ -130,7 +130,7 @@ $(function(){
         renderDefaultStream();
       } else {
         console.log(groupName);
-        var url = $.grep($('#groupfilter option'),function(n){console.log(n);return $(n).text()==groupName})[0].value;
+        var url = $.grep($('#groupfilter option'),function(n){console.log($(n).text());return $(n).text()==groupName})[0].value;
         var activityTemplate = $('li.messages:first');
         $('ol.results').empty().append(activityTemplate);
         activityStream.renderActivities(url, 0);
