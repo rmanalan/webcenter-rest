@@ -43,14 +43,18 @@
 
         <div id="stream">
           <div id="filters">
+            <span class="filter" id="groupfiltercontainer">
             <label for="groupfilter">View:</label>
             <select name="groupfilter" id="groupfilter">
               <option class="groupopt groupname groupval@value">My network</option>
             </select>&nbsp;
-            <label for="listfilter">Lists:</label>
-            <select name="listfilter" id="listfilter">
-              <option class="lfopts lfoptname lfoptval@value" value="">All contacts</option>
-            </select>
+            </span>
+            <span class="filter" id="listfiltercontainer">
+              <label for="listfilter">Lists:</label>
+              <select name="listfilter" id="listfilter">
+                <option class="lfopts lfoptname lfoptval@value" value="">All contacts</option>
+              </select>
+            </span>
           </div>
           <ol class="results">
             <li id="act-template" class="messages id@id hide">
