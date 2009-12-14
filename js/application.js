@@ -143,6 +143,7 @@ $(function(){
     app.after(function(){
       // Save off last location
       lastLocation = app.getLocation();
+      console.log('done');
     });
 
     app.get('#/', function(c){
