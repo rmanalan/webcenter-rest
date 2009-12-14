@@ -42,6 +42,11 @@ $(function(){
         $('.lfopts:last').clone(true).appendTo('#listfilters').val('').html('Create a new list');
       });
 
+
+      $('#groupfilter').bind('change',function(e){
+        location = '#/group/' + $('option:selected',this).text();
+      });
+
       currentUser.getSpaces(function(){
         if(currentUser.spaces.length==0) return;
         var bindData = {
@@ -113,6 +118,18 @@ $(function(){
         if(lastLocation) this.redirect(lastLocation);
       } else {
         var url = $.grep($('#listfilters option'),function(n){return $(n).text()==listName})[0].value;
+        var activityTemplate = $('li.messages:first');
+        $('ol.results').empty().append(activityTemplate);
+        activityStream.renderActivities(url, 0);
+      }
+    });
+
+    app.get('#/group/:name',function(c){
+      var groupName = this.params['name'];
+        renderDefaultStream();
+      if(groupName=='My%20Network'){
+      } else {
+        var url = $.grep($('#groupfilter option'),function(n){return $(n).text()==groupName})[0].value;
         var activityTemplate = $('li.messages:first');
         $('ol.results').empty().append(activityTemplate);
         activityStream.renderActivities(url, 0);
