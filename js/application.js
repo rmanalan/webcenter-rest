@@ -67,7 +67,7 @@ $(function(){
             return webCenter.getResourceURL(context.item.links,"urn:oracle:webcenter:activities:stream",false);
           }
         }
-        $('#groupfilter').render({'spaces': currentUser.spaces},directive);
+        $('#groupfilter option').render({'spaces': currentUser.spaces},directive);
 
         // Don't process anything until the filter is set up
         callback(); 
