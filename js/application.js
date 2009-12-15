@@ -172,7 +172,7 @@ $(function(){
 
     app.get('#/group/:name',function(c){
       var groupName = this.params['name'];
-      if(groupName=='My%20network'){
+      if(groupName=='My%20connections'){
         $('#listfilter').attr('disabled',false);
         $('#listfilter option:first').attr('selected',true);
         renderStream(webCenter.resourceIndex.links, 0,true);
