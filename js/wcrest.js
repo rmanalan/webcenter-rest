@@ -86,7 +86,7 @@ var webCenter = function(callback){
       var url = $.grep(item.links, function(l){
           return l.type == 'text/html';
         })[0].href;
-      return ' <a href="' + url + '">' + item.displayName + '</a> '; 
+      return ' <a href="' + url + '" target="_top">' + item.displayName + '</a> '; 
     });
   }
 
