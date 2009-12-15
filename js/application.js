@@ -29,6 +29,10 @@ $(function(){
         }
        });
 
+      $('#refresh').bind('click',function(){
+        renderStream($('#stream').data('currentStreamUrl'),0,true);
+      });
+
       $('#listfilter').bind('change',function(e){
         location = '#/list/' + $('option:selected',this).text();
       });
