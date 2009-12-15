@@ -31,6 +31,7 @@ $(function(){
 
       $('#refresh').bind('click',function(){
         renderStream($('#stream').data('currentStreamUrl'),0,true);
+        return false;
       });
 
       $('#listfilter').bind('change',function(e){
