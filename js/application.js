@@ -157,7 +157,7 @@ $(function(){
 
     app.get('#/list/:name',function(c){
       var listName = this.params['name'];
-      if(listName=='All%20contacts'){
+      if(listName=='All%20connections'){
         renderStream(webCenter.resourceIndex.links, 0,true);
       } else if(listName=='Create%20a%20new%20list') {
         alert('Patience little grasshopper... not implemented yet')
