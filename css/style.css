@@ -35,6 +35,7 @@ a.no-underline, a.no-underline:active, a.no-underline:visited, a.no-underline:li
 	text-decoration:none;
 	border-bottom:0;
 }
+#refresh span{display:none}
 #refresh, #refresh:hover, #refresh:focus {
 	float:right;
 	border-bottom:0;
@@ -42,6 +43,7 @@ a.no-underline, a.no-underline:active, a.no-underline:visited, a.no-underline:li
 	display:block;
 	width:16px;
 	height:16px;
+	background:url(../images/arrow_refresh.png) no-repeat;
 }
 #loading-ind {
   position:fixed;
