@@ -9,6 +9,7 @@ var webCenter = function(options,callback){
       'port' : 80,
       'perPage' : 10
     }, options);
+  console.log(settings);
 
   var resourceIndex = null;
   
