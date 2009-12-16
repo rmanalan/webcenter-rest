@@ -27,3 +27,6 @@ div.irNav div.x1a[theme=dark] {
 div.irNav hr {
   display:none;
 }
+div.irNav table[id=T:infoUserMenuBar] {
+  display:none;
+}
