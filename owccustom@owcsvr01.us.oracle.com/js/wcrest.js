@@ -3,17 +3,14 @@ var currentUser;
 var user;
 
 // Main WebCenter resource module
-var webCenter = function(options,callback){
-  var settings = $.extend({
-      'hostname' : location.hostname,
-      'port' : 80,
-      'perPage' : 10
-    }, options);
-
+var webCenter = function(callback){
+  var hostname = location.hostname;
+  var port = (hostname == 'wc') ? '80' : '8911';
   var resourceIndex = null;
+  var perPage = 10;
   
   function currentServer() {
-    var server = location.protocol + '//' + settings.hostname + ':' + settings.port + '/';
+    var server = location.protocol + '//' + hostname + ':' + port + '/';
     $.extend(webCenter,{'server':server});
     return server;
   }
@@ -58,7 +55,7 @@ var webCenter = function(options,callback){
         // return template url if startIndex is true
         if(startIndex==true && typeof(startIndex)=='boolean') return results[0].template;
         // return paged url if startIndex is a number
-        var url = results[0].template.replace("{itemsPerPage}", settings.perPage);
+        var url = results[0].template.replace("{itemsPerPage}", perPage);
         if(!startIndex) startIndex = "0";
         url = url.replace("{startIndex}", startIndex)
         return url;
@@ -94,7 +91,7 @@ var webCenter = function(options,callback){
   }
 
   function getPerPage(){
-    return settings.perPage;
+    return perPage;
   }
 
   return {

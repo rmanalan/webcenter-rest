@@ -4,7 +4,7 @@ $(document).ajaxStart(function(){$('#loading-ind').show()})
 var dump; // for debugging purposes
 $(function(){
   function initApp(callback){
-    webCenter.init({'port':8911,'perPage':5},function(){
+    webCenter.init(function(){
       // show who's logged in
       $('ul.headnav li').autoRender({
         'username' : currentUser.name.formatted,
