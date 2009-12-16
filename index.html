@@ -7,13 +7,20 @@
     <![endif]-->
     <script src="http://aconmt01.us.oracle.com/js/jquery.js"></script>
     <script src="http://aconmt01.us.oracle.com/js/xLazyLoader.js"></script>
+    <script src="http://aconmt01.us.oracle.com/js/pure.js"></script>
+    <script src="http://aconmt01.us.oracle.com/js/timeago.js"></script>
+    <script src="http://aconmt01.us.oracle.com/js/sammy.js"></script>
+    <script src="http://aconmt01.us.oracle.com/js/autoresize.js"></script>
+    <script src="http://aconmt01.us.oracle.com/js/xLazyLoader.js"></script>
+    <link href="http://webcenter-stage.us.oracle.com/owccustom/css/screen.css" type="text/css" media="screen" rel="stylesheet"/>
     <script>
+    // Lazy load the application scripts/css so I can work on them locally
     var serverUri = 'http://aconmt01.us.oracle.com/';
     $.xLazyLoader({
-      js: $.map(['pure.js', 'timeago.js', 'sammy.js', 'autoresize.js', 'wcutils.js', 'wcrest.js','application.js'],function(n){
+      js: $.map(['wcutils.js', 'wcrest.js','application.js'],function(n){
         return serverUri + 'js/' + n;
       }),
-      css: $.map(['screen.css', 'style.css'],function(n){
+      css: $.map(['style.css'],function(n){
         return serverUri + 'css/' + n;
       })
     })
