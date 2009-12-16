@@ -15,7 +15,7 @@
     <link href="http://aconmt01.us.oracle.com/css/screen.css" type="text/css" media="screen" rel="stylesheet"/>
     <script>
     // Lazy load the application scripts/css so I can work on them locally
-    var hostname = location.hostname;
+    var hostname = (location.hostname=='wc') ? location.hostname : 'aconmt01.us.oracle.com';
     var port = (hostname=='wc') ? 80 : 8911;
     $.xLazyLoader({
       js: $.map(['wcutils.js', 'wcrest.js','application.js'],function(n){
