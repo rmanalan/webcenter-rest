@@ -3,13 +3,12 @@ var currentUser;
 var user;
 
 // Main WebCenter resource module
-var webCenter = function(options,callback){
-  var settings = $.extend({
-      'hostname' : location.hostname,
-      'port' : 80,
-      'perPage' : 10
-    }, options);
-  console.log(settings);
+var webCenter = function(callback){
+  var settings = {
+    'hostname' : location.hostname,
+    'port' : 80,
+    'perPage' : 10
+  };
 
   var resourceIndex = null;
   
@@ -25,7 +24,8 @@ var webCenter = function(options,callback){
     return url;
   }
 
-  function init(callback){
+  function init(options,callback){
+    $.extend(settings,options);
     getResourceIndex(function(){
         // setup current user
         userProfile.getCurrentUser(function(d){
