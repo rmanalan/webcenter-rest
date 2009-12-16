@@ -10,7 +10,7 @@
     <script>
     var serverUri = 'http://aconmt01.us.oracle.com/';
     $.xLazyLoader({
-      js: $.map(['pure.js', 'timeago.js', 'sammy.js', 'autoresize.js', 'wcutils.js', 'application.js'],function(n){
+      js: $.map(['pure.js', 'timeago.js', 'sammy.js', 'autoresize.js', 'wcutils.js', 'wcrest.js','application.js'],function(n){
         return serverUri + 'js/' + n;
       }),
       css: $.map(['screen.css', 'style.css'],function(n){
