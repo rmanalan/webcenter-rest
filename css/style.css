@@ -49,8 +49,8 @@ a.no-underline, a.no-underline:active, a.no-underline:visited, a.no-underline:li
   position:fixed;
   bottom:20px;
   right:20px;
-  height:31px;
-  width:31px;
+  height:43px;
+  width:48px;
   background:url(../images/ss.gif) no-repeat;
 }
 .avatarimg {
