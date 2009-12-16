@@ -16,13 +16,14 @@
     <script>
     // Lazy load the application scripts/css so I can work on them locally
     var hostname = (location.hostname=='wc') ? location.hostname : 'aconmt01.us.oracle.com';
-    var port = (hostname=='wc') ? 80 : 8911;
+    var assetPort = 80;
+    var apiPort = (hostname=='wc') ? 80 : 8911;
     $.xLazyLoader({
       js: $.map(['wcutils.js', 'wcrest.js','application.js'],function(n){
-        return 'http://' + hostname + ':' + port + '/' + 'js/' + n;
+        return 'http://' + hostname + ':' + assetPort + '/' + 'js/' + n;
       }),
       css: $.map(['style.css'],function(n){
-        return 'http://' + hostname + ':' + port + '/' + 'css/' + n;
+        return 'http://' + hostname + ':' + assetPort + '/' + 'css/' + n;
       })
     })
     </script>
