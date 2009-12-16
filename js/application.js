@@ -1,7 +1,5 @@
-$(document).ajaxStart(function(){$('#loading-ind').show()})
-  .ajaxStop(function(){$('#loading-ind').hide()});
+$(document).ajaxStart(function(){$('#loading-ind').show()}).ajaxStop(function(){$('#loading-ind').hide()});
 
-var dump; // for debugging purposes
 $(function(){
   function initApp(callback){
     webCenter.init({'port':8911},function(){
