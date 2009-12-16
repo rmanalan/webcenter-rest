@@ -1,6 +1,6 @@
 var assetHost = 'http://aconmt01.us.oracle.com/';
 $.xLazyLoader({
-  'css' : $.map(['ir.css'],function(n){return assetHost + 'css/' + n;}
+  'css' : $.map(['ir.css'],function(n){return assetHost + 'css/' + n;})
 });
 
 /* 
