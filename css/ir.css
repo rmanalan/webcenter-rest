@@ -6,8 +6,6 @@
 div.irNav {
   -moz-border-radius:5px;
   -webkit-border-radius:5px;
-  -moz-box-shadow:2px 2px 5px #999;
-  -webkit-box-shadow:2px 2px 5px #999;
   border:1px solid #ccc;
   background-color:#e3e9ee;
 }
