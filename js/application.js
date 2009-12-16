@@ -2,7 +2,7 @@ $(document).ajaxStart(function(){$('#loading-ind').show()}).ajaxStop(function(){
 
 $(function(){
   function initApp(callback){
-    webCenter.init({'port':8911},function(){
+    webCenter.init({'port':port},function(){
       // show who's logged in
       $('ul.headnav li').autoRender({
         'username' : currentUser.name.formatted,
