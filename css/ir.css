@@ -3,7 +3,7 @@
   background-image:none;
   background-color:transparent;
 }
-div[id="T:j_id__ctru22pc6"] {
+div.irNav {
   -moz-border-radius:5px;
   -webkit-border-radius:5px;
   -moz-box-shadow:2px 2px 5px #999;
@@ -11,15 +11,15 @@ div[id="T:j_id__ctru22pc6"] {
   border:1px solid #ccc;
   background-color:#e3e9ee;
 }
-div[id="T:j_id__ctru22pc6"] td.xp4,
-div[id="T:j_id__ctru22pc6"] td.xp8,
-div[id="T:j_id__ctru22pc6"] td.xpc,
-div[id="T:j_id__ctru22pc6"] div.x1l6,
-div[id="T:j_id__ctru22pc6"] td.xp6,
-div[id="T:j_id__ctru22pc6"] td.xpa,
-div[id="T:j_id__ctru22pc6"] td.xpe {
+div.irNav td.xp4,
+div.irNav td.xp8,
+div.irNav td.xpc,
+div.irNav div.x1l6,
+div.irNav td.xp6,
+div.irNav td.xpa,
+div.irNav td.xpe {
   background-image:none !important;
 }
-div[id="T:j_id__ctru22pc6"] div.x1l6 {
+div.irNav div.x1l6 {
   border-left:0;
 }
