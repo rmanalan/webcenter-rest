@@ -20,6 +20,8 @@ div.irNav td.xpe {
 }
 div.irNav div.x1l6 {
   border-left:0;
+}
+div.irNav div.x1a[theme=dark] {
   padding:0 5px;
 }
 div.irNav hr {
