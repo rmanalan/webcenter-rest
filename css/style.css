@@ -24,8 +24,8 @@ body {
 	margin-left:10px;
 }
 #sidebar {
-	background:url(../images/pagefade.png) no-repeat left 50px;
-	min-height:500px;
+	background:url(../images/pagefade.png) no-repeat left 25px;
+	min-height:514px;
 	position:fixed;
 	left:650px;
 }
