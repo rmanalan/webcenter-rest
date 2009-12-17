@@ -54,7 +54,7 @@ a.no-underline, a.no-underline:active, a.no-underline:visited, a.no-underline:li
 #loading-ind {
   position:fixed;
   bottom:20px;
-  right:20px;
+  left:587px;
   height:43px;
   width:48px;
   background:url(../images/ss.gif) no-repeat;
