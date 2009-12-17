@@ -108,6 +108,7 @@ li.messages {
   -webkit-box-shadow:2px 2px 10px #666;
   border:1px solid #ccc;
   padding:5px 10px;
+	background: url(../images/pubbg.png) repeat-x;
   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(255, 255, 255)), color-stop(1, rgb(230, 230, 230)));
 	margin: 10px 0;
 }
