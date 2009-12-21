@@ -16,10 +16,9 @@ html[xmlns] .clearfix {
   height: 1%;
 }
 body {
-	background-color:#fff;
 	overflow-x:hidden;
 	overflow-y:auto;	
-	background:url(../images/pagefade.png) no-repeat fixed 645px top;
+	background:transparent url(../images/pagefade.png) no-repeat fixed 645px top;
 }
 .main{
 	margin-left:10px;
