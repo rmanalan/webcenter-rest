@@ -159,7 +159,7 @@ input[type='submit'], input[type='button'], .button {
   border:1px solid #999;
   -moz-border-radius:3px;
   -webkit-border-radius:3px;
-	background:url("../images/pubbg.png") repeat-x scroll 0 0;
+	background:url("../images/pubbg.png") repeat-x scroll 0 12px;
   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(255, 255, 255)), color-stop(1, rgb(194, 192, 191)));
   -moz-box-shadow:0 0 5px #fff;
   -webkit-box-shadow:0 0 5px #fff;
