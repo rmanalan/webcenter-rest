@@ -19,15 +19,10 @@ body {
 	background-color:#fff;
 	overflow-x:hidden;
 	overflow-y:auto;	
+	background:url(../images/pagefade.png) no-repeat fixed 645px top;
 }
 .main{
 	margin-left:10px;
-}
-#sidebar {
-	background:url(../images/pagefade.png) no-repeat left 25px;
-	min-height:514px;
-	position:fixed;
-	left:650px;
 }
 a, a:active, a:visited, a:link {
 	text-decoration:none;
@@ -143,7 +138,7 @@ li.messages {
 	resize:vertical;
   margin:0 4px 0 0;
 	padding:3px 5px;
-  width:531px;
+  width:529px;
   height:18px;
   font-size:11pt;
 	font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;
@@ -151,6 +146,7 @@ li.messages {
   -webkit-border-radius:3px;
   -webkit-box-shadow:0 0 3px #ccc;
 	border:1px solid #999;
+	background:url("../images/pubbg.png") repeat-x scroll 0 0;
 }
 input[type='submit'], input[type='button'], .button {
 	float:left;
