@@ -12,8 +12,8 @@ $(function(){
       var bindData = {
          'gsspace' : $.map(currentUser.spaces, function(n){
            return {
-             'gsspacelink' : n.name,
-             'gslink' : '/webcenter/faces/oracle/webcenter/page/scopedMD/' + n.guid + '/Home.jspx'
+             'gsspacelink' : n.displayName,
+             'gslink' : '/webcenter/spaces/' + n.name
            }
          })
       };
