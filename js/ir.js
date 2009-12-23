@@ -13,7 +13,7 @@ $(function(){
          'gsspace' : $.map(currentUser.spaces, function(n){
            return {
              'gsspacelink' : n.name,
-             'gslink' : '/webcenter/faces/oracle/webcenter/page/scopedMD/' + n.guid + '/ProjectHome.jspx'
+             'gslink' : '/webcenter/faces/oracle/webcenter/page/scopedMD/' + n.guid + '/Home.jspx'
            }
          })
       };
