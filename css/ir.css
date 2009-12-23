@@ -37,6 +37,8 @@ div.irNav a[id='T:managePagesLink'] span {
 div[id='T:j_id__ctru11pc7::c']{
   top:30px !important;
 }
-span[id='T:search'] {
-  margin-left:50px;
+div[id='T:search'] {
+  position:absolute;
+  top:5px;
+  left:150px;
 }
