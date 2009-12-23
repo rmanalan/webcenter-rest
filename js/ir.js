@@ -6,14 +6,14 @@ $.xLazyLoader({
 });
 $(function(){
   var gs = $('#group-switcher');
-  gs.html('<ul id="gs"><li class="gsspace"><a class="gsspacelink" href="/webcenter/spaces/home">Home</a></li></ul>');
+  gs.html('<ul id="gs"><li class="gsspace"><a class="gsspacelink gsspacehref" href="/webcenter/spaces/home">Home</a></li></ul>');
   webCenter.init({'port':apiPort},function(){
     currentUser.getSpaces(function(){
       var bindData = {
          'gsspace' : $.map(currentUser.spaces, function(n){
            return {
              'gsspacelink' : n.name,
-             'gsspacelink@href' : '/webcenter/faces/oracle/webcenter/page/scopedMD/' + n.guid + '/ProjectHome.jspx'
+             'gsspacehref@href' : '/webcenter/faces/oracle/webcenter/page/scopedMD/' + n.guid + '/ProjectHome.jspx'
            }
          })
       };
