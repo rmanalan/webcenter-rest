@@ -54,6 +54,7 @@ $(function(){
         };
         $('.lfopts').clone(true).appendTo('#listfilter').autoRender(bindData);
         $('.lfopts:last').clone(true).appendTo('#listfilter').val('').html('Create a new list');
+        callback(); 
       });
 
 
@@ -68,7 +69,7 @@ $(function(){
           webCenter.getResourceURL(webCenter.resourceIndex.links,
             'urn:oracle:webcenter:activities:stream',false));
 
-      currentUser.getSpaces(function(){
+      /*currentUser.getSpaces(function(){
         if(currentUser.spaces.length==0) {
           callback();
           return;
@@ -88,6 +89,7 @@ $(function(){
         // Don't process anything until the filter is set up
         callback(); 
       });
+      */
     });
 
   };
@@ -161,7 +163,7 @@ $(function(){
         alert('Patience little grasshopper... not implemented yet')
         if(lastLocation) this.redirect(lastLocation);
       } else {
-        var url = $.grep($('#listfilter option'),function(n){return $(n).text()==listName})[0].value;
+        var url = $.grep($('#listfilter option'),function(n){return $(n).text()==decodeURI(listName)})[0].value;
         var activityTemplate = $('li.messages:first');
         $('ol.results').empty().append(activityTemplate);
         renderStream(url, 0,true);
@@ -177,7 +179,7 @@ $(function(){
       } else {
         $('#listfilter').attr('disabled',true);
         $('#listfilter option:first').attr('selected',true);
-        var url = $.grep($('#groupfilter option'),function(n){return $(n).text()==groupName})[0].value;
+        var url = $.grep($('#groupfilter option'),function(n){return $(n).text()==decodeURI(groupName)})[0].value;
         var activityTemplate = $('li.messages:first');
         $('ol.results').empty().append(activityTemplate);
         renderStream(url,0,true);
