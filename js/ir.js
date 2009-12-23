@@ -6,13 +6,13 @@ $.xLazyLoader({
 });
 $(function(){
   var gs = $('#group-switcher');
-  gs.html('<select id="gs"><option class="gsspace url@value" value="/webcenter/spaces/home">Home</option></select>');
+  gs.html('<select id="gs"><option class="gsspace spacename url@value" value="/webcenter/spaces/home">Home</option></select>');
   webCenter.init({'port':apiPort},function(){
     currentUser.getSpaces(function(){
       var bindData = {
          'gsspace' : $.map(currentUser.spaces, function(n){
            return {
-             'gsspace' : n.displayName,
+             'spacename' : n.displayName,
              'url' : '/webcenter/spaces/' + n.name
            }
          })
