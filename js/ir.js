@@ -25,6 +25,7 @@ $(function(){
          })
       };
       $.DOMCached.set('groups',bindData,86400,'webcenter');
+      if(spacesCached) return;
       $('.gsspace').clone(true).appendTo('#gs').autoRender(bindData);
       $('#gs').bind('change',function(){
         location = this.value;
