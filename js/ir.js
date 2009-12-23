@@ -9,7 +9,7 @@ jQuery(function(){
   webCenter.init({'port':apiPort},function(){
     console.log(currentUser);
     currentUser.getSpaces(function(){
-      console.log(currentUser.spaces);`
+      console.log(currentUser.spaces);
     });
   });
 
