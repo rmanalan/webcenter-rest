@@ -7,14 +7,14 @@ $.xLazyLoader({
 $(function(){
   var gs = $('#group-switcher');
   gs.html('<select id="gs"><option class="gsspace spacename url@value" value="/webcenter/spaces/home">Home</option></select>');
+  var spacesCached = $.DOMCached.get('groups','webcenter');
+  if(spacesCached){
+    $('.gsspace').clone(true).appendTo('#gs').autoRender(spacesCached);
+    $('#gs').bind('change',function(){
+      location = this.value;
+    });
+  }
   webCenter.init({'port':apiPort},function(){
-    var spacesCached = $.DOMCached.get('groups','webcenter');
-    if(spacesCached){
-      $('.gsspace').clone(true).appendTo('#gs').autoRender(spacesCached);
-      $('#gs').bind('change',function(){
-        location = this.value;
-      });
-    }
     currentUser.getSpaces(function(){
       var bindData = {
          'gsspace' : $.map(currentUser.spaces, function(n){
