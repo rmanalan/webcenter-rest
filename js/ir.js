@@ -2,12 +2,19 @@ var assetHost = 'http://aconmt01.us.oracle.com/';
 var apiPort = 8892;
 $.xLazyLoader({
   'css' : $.map(['ir.css'],function(n){return assetHost + 'css/' + n;}),
-  'js' : [assetHost + 'js/pure.js', assetHost + 'js/wcutils.js', assetHost + 'js/wcrest.js']
+  'js' : $.map(['pure.js', 'json.js','domcached.js', 'wcutils.js', 'wcrest.js'],function(n){return assetHost + 'js/' + n;})
 });
 $(function(){
   var gs = $('#group-switcher');
   gs.html('<select id="gs"><option class="gsspace spacename url@value" value="/webcenter/spaces/home">Home</option></select>');
   webCenter.init({'port':apiPort},function(){
+    var spacesCached = $.DOMCached.get('groups');
+    if(spacesCached){
+      $('.gsspace').clone(true).appendTo('#gs').autoRender(spacesCached);
+      $('#gs').bind('change',function(){
+        location = this.value;
+      });
+    }
     currentUser.getSpaces(function(){
       var bindData = {
          'gsspace' : $.map(currentUser.spaces, function(n){
@@ -17,6 +24,7 @@ $(function(){
            }
          })
       };
+      $.DOMCached.set('groups',bindData,86400,'webcenter');
       $('.gsspace').clone(true).appendTo('#gs').autoRender(bindData);
       $('#gs').bind('change',function(){
         location = this.value;

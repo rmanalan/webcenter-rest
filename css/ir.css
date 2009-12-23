@@ -42,9 +42,3 @@ div[id='T:search'] {
   top:5px;
   left:5px;
 }
-div#group-switcher {
-  background:#000;
-  opacity:.7;
-  -moz-border-radius:7px;
-  -webkit-border-radius:7px;
-}
