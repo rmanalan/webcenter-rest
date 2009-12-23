@@ -6,7 +6,7 @@ var user;
 var webCenter = function(callback){
   var settings = {
     'hostname' : location.hostname,
-    'port' : 80,
+    'port' : location.port,
     'perPage' : 10
   };
 

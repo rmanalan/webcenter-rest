@@ -5,6 +5,8 @@ $.xLazyLoader({
   'js' : [assetHost + 'js/pure.js', assetHost + 'js/wcutils.js', assetHost + 'js/wcrest.js']
 });
 $(function(){
+  var gs = $('#group-switcher');
+  gs.html('<ul id="gs"><li><a href="/webcenter/spaces/home">Home</a></li></ul>');
   webCenter.init({'port':apiPort},function(){
     console.log(currentUser);
     currentUser.getSpaces(function(){
