@@ -17,7 +17,7 @@ $(function(){
          'gsspace' : $.map(currentUser.spaces, function(n){
            return {
              'spacename' : n.displayName,
-             'url' : '/webcenter/spaces/' + n.name
+             'url' : '/webcenter/spaces/' + n.name,
              'selected' : function(){
                
              }
