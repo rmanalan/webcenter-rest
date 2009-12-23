@@ -1,8 +1,8 @@
 var assetHost = 'http://aconmt01.us.oracle.com/';
 var apiPort = 8892;
 $.xLazyLoader({
-  'css' : $.map(['ir.css'],function(n){return assetHost + 'css/' + n;}),
-  'js' : $.map(['pure.js', 'json.js','domcached.js', 'wcutils.js', 'wcrest.js'],function(n){return assetHost + 'js/' + n;})
+  'css' : $.map(['dd','ir'],function(n){return assetHost+'css/'+n+'.css'}),
+  'js' : $.map(['pure','json','domcached','dd','wcutils','wcrest'],function(n){return assetHost+'js/'+n+'.js'})
 });
 $(function(){
   var gs = $('#group-switcher');
