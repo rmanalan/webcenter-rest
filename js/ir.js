@@ -6,18 +6,21 @@ $.xLazyLoader({
 });
 $(function(){
   var gs = $('#group-switcher');
-  gs.html('<ul id="gs"><li class="gsspace"><a class="gsspacelink gslink@href" href="/webcenter/spaces/home">Home</a></li></ul>');
+  gs.html('<select id="gs"><option class="gsspace url@value" value="/webcenter/spaces/home">Home</option></select>');
   webCenter.init({'port':apiPort},function(){
     currentUser.getSpaces(function(){
       var bindData = {
          'gsspace' : $.map(currentUser.spaces, function(n){
            return {
-             'gsspacelink' : n.displayName,
-             'gslink' : '/webcenter/spaces/' + n.name
+             'gsspace' : n.displayName,
+             'url' : '/webcenter/spaces/' + n.name
            }
          })
       };
       $('.gsspace').clone(true).appendTo('#gs').autoRender(bindData);
+      $('#gs').bind('change',function(){
+        location = this.value;
+      });
     });
   });
 
