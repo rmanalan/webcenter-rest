@@ -34,6 +34,9 @@ div.irNav a[id='T:managePagesLink'] span {
   color:#666;
   font-size:11px;
 }
-table[id='T:j_id__ctru69pc7'] tbody tr td:first {
+table[id='T:j_id__ctru69pc7'] tbody tr td {
   width:0;
+}
+div[id='T:j_id__ctru11pc7::c']{
+  top:30px;
 }
