@@ -6,7 +6,7 @@ $.xLazyLoader({
 });
 $(function(){
   var gs = $('#group-switcher');
-  gs.html('<select id="gs" onchange="location=this.value"><option class="gsspace spacename url@value selected@selected" value="/webcenter/spaces/home">Home</option></select>');
+  gs.html('<select id="gs" onchange="location=this.value"><option class="gsspace spacename url@value selected@selected" value="/webcenter/spaces/home">Home</option></select><a href="/webcenter/faces/oracle/webcenter/community/view/pages/manage/ManageSpaces-SpacesTab.jspx">Browse Group Space</a>');
   var spacesCached = $.DOMCached.get('groups','webcenter');
   if(spacesCached){
     $('.gsspace').clone(true).appendTo('#gs').autoRender(spacesCached);
