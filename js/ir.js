@@ -24,6 +24,8 @@ $(function(){
            }
          })
       };
+	bindData += { 'spacename':'Home test', 'url':'/webcenter/faces/oracle/webcenter/community/view/pages/manage/ManageSpaces-SpacesTab.jsp' };
+	bindData += { 'spacename':'Create Group Space', 'url':'/webcenter/faces/oracle/webcenter/community/view/pages/manage/ManageSpaces-SpacesTab.jspx' };
       $.DOMCached.set('groups',bindData,86400,'webcenter');
       if(spacesCached) return;
       $('.gsspace').clone(true).appendTo('#gs').autoRender(bindData);
