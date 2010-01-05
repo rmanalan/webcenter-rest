@@ -2,7 +2,7 @@ $(document).ajaxStart(function(){$('#loading-ind').show()}).ajaxStop(function(){
 
 $(function(){
   function initApp(callback){
-    webCenter.init({'port':apiPort},function(){
+    webCenter.init({'port':8894,'hostname':'dadvmi0286.us.oracle.com'},function(){
       // show who's logged in
       $('ul.headnav li').autoRender({
         'username' : currentUser.name.formatted,
@@ -54,7 +54,6 @@ $(function(){
         };
         $('.lfopts').clone(true).appendTo('#listfilter').autoRender(bindData);
         $('.lfopts:last').clone(true).appendTo('#listfilter').val('').html('Create a new list');
-        callback(); 
       });
 
 
@@ -69,7 +68,7 @@ $(function(){
           webCenter.getResourceURL(webCenter.resourceIndex.links,
             'urn:oracle:webcenter:activities:stream',false));
 
-      /*currentUser.getSpaces(function(){
+      currentUser.getSpaces(function(){
         if(currentUser.spaces.length==0) {
           callback();
           return;
@@ -89,7 +88,7 @@ $(function(){
         // Don't process anything until the filter is set up
         callback(); 
       });
-      */
+      
     });
 
   };

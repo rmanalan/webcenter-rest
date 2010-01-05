@@ -17,7 +17,7 @@
     // Lazy load the application scripts/css so I can work on them locally
     var hostname = (location.hostname=='wc') ? location.hostname : 'aconmt01.us.oracle.com';
     var assetPort = 80;
-    var apiPort = (hostname=='wc') ? 80 : 8911;
+    var apiPort = (hostname=='wc') ? 80 : 8894;
     $.xLazyLoader({
       js: $.map(['wcutils.js', 'wcrest.js','application.js'],function(n){
         return 'http://' + hostname + ':' + assetPort + '/' + 'js/' + n;
