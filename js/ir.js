@@ -31,7 +31,7 @@ $(function(){
 ////	alert(bindData['gsspace']);
 ////	alert(bindData['gsspace'][0].spacename);
 ////	alert(bindData['gsspace'].length);
-	bindData['gsspace'].unshift({'name':'', 'spacename':'Home', 'url':'/webcenter/faces/oracle/webcenter/community/view/pages/manage/ManageSpaces-SpacesTab.jspx'});
+        bindData['gsspace'].unshift({'name':'', 'spacename':'Home', 'url':'/webcenter/spaces/home'});
 	bindData['gsspace'].push({'spacename':'Browse Group Space', 'url':'/webcenter/faces/oracle/webcenter/community/view/pages/manage/ManageSpaces-SpacesTab.jspx' });
 	bindData['gsspace'][2].selected1 = 'selected';
 ////	alert(bindData['gsspace'][2].spacename);
