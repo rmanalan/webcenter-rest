@@ -196,7 +196,7 @@ var userProfile = function(){
 
   function getConnections(callback){
     $.getJSON(webCenter.getResourceURL(currentUser.links,'urn:oracle:webcenter:people:person:list',false),function(d){
-      callback($.extend(currentUser,{"connections":d}));
+      callback($.extend(currentUser,{"connections":d.items}));
     });
   }
 

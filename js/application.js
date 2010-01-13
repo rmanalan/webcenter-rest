@@ -102,14 +102,30 @@ $(function(){
             }
           })
         };
-        console.log(widgetData);
         $('#grouppub option:first').clone(true).appendTo('#grouppub').autoRender(filterData);
         $('#groupfilter option:first').clone(true).appendTo('#groupfilter').autoRender(filterData);
         $('.sbspace').autoRender(widgetData);
 
-        // Don't process anything until the filter is set up
-        callback(); 
       });
+
+      currentUser.getConnections(function(){
+        if(currentUser.connections.length==0) {
+          callback();
+          return;
+        }
+        var connectionData = {
+          'sbconnection' : $.map(currentUser.connections,function(d){
+            return {
+              'sbconnectionlink' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:read',false),
+              'sbconnectionimg' : userProfile.avatarSmall(d.guid),
+              'sbconnectionname' : d.displayName
+            };
+          })
+        };
+        $('.sbconnection').autoRender(connectionData);
+        // Don't process anything until everything is set up
+        callback(); 
+      })
       
     });
 

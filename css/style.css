@@ -209,6 +209,10 @@ button:hover, .button:hover {
 .detail p {
   margin:5px 0;
 }
+#sidebar {
+  position:fixed;
+	left:650px;
+}
 .sidebar-widget {
 	margin:0 0 0 10px;
 }
@@ -233,7 +237,7 @@ button:hover, .button:hover {
 	padding:0 5px;
 }
 #sb-spaces {
-	max-height:250px;
+	max-height:200px;
 	overflow:auto;
 }
 #sb-spaces ul {
@@ -256,6 +260,14 @@ button:hover, .button:hover {
 }
 .sbspacedescr {
 	margin-bottom:2px;
+}
+.sbconnection {
+	margin-right:3px;
+	border-bottom:0;
+	cursor:pointer;
+}
+.sbconnection:hover {
+  border-bottom:0;
 }
 /*
 vim:ts=2:sw=2
