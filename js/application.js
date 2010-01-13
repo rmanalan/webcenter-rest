@@ -75,10 +75,12 @@ $(function(){
         }
         var filterData = {
           'groupopt' : $.map(currentUser.spaces,function(d){
-            return {
-              'groupname' : d.displayName,
-              // TODO the following URL won't work... need to figure out what to publish to for groups
-              'groupval' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:activities:stream',true)
+            if(!d.isOffline) {
+              return {
+                'groupname' : d.displayName,
+                // TODO the following URL won't work... need to figure out what to publish to for groups
+                'groupval' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:activities:stream',true)
+              };
             };
           })
         };
@@ -90,11 +92,13 @@ $(function(){
             else descr = d.description;
             if(typeof(d.iconUrl)=='undefined') iconUrl = "";
             else iconUrl = d.iconUrl;
-            return {
-              'spspaceiconimg' : iconUrl,
-              'sbspacename' : d.displayName,
-              'sbspacelink' : '/webcenter/spaces/' + d.name,
-              'sbspacedescr' : descr
+            if(!d.isOffline) {
+              return {
+                'spspaceiconimg' : iconUrl,
+                'sbspacename' : d.displayName,
+                'sbspacelink' : '/webcenter/spaces/' + d.name,
+                'sbspacedescr' : descr
+              }
             }
           })
         };

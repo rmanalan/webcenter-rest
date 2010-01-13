@@ -219,7 +219,7 @@ button:hover, .button:hover {
 	-webkit-border-radius:3px;
 	-webkit-box-shadow:1px 1px 5px #ccc;
   border: 1px solid #CCCCCC;
-  margin:10px 0 0 0;
+  margin:10px 0 7px 0;
   padding:0 6px;	
 }
 .sb-widget-titlebar h4 {
@@ -228,6 +228,13 @@ button:hover, .button:hover {
 	margin:0;
 	color:#333;
   text-shadow:#fff 1px 1px 0;
+}
+.sb-widget-body {
+	padding:0 5px;
+}
+#sb-spaces {
+	max-height:250px;
+	overflow:auto;
 }
 #sb-spaces ul {
 	margin:0;
@@ -239,10 +246,16 @@ button:hover, .button:hover {
 	float:left
 }
 .sbspaceicon {
-	width:55px;
+	width:30px;
 }
 .sbspaceinfo {
 	width:165px;
+}
+.sbspaceinfo h5 {
+  margin-bottom:0;
+}
+.sbspacedescr {
+	margin-bottom:2px;
 }
 /*
 vim:ts=2:sw=2
