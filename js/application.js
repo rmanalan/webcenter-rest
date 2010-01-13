@@ -88,7 +88,10 @@ $(function(){
               'spspaceiconimg' : d.iconUrl,
               'sbspacename' : d.displayName,
               'sbspacelink' : '/webcenter/spaces/' + d.name,
-              'sbspacedescr' : d.description
+              'sbspacedescr' : function(){
+                  if(d.description == 'undefined') return "";
+                  else return d.description
+                }
             }
           })
         };
