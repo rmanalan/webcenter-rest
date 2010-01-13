@@ -209,6 +209,26 @@ button:hover, .button:hover {
 .detail p {
   margin:5px 0;
 }
+.sidebar-widget {
+	margin:0 0 0 10px;
+}
+.sb-widget-titlebar {
+	background:url("../images/pubbg.png") repeat-x scroll 0 center transparent;
+	-moz-border-radius:3px;
+	-moz-box-shadow:1px 1px 5px #ccc;
+	-webkit-border-radius:3px;
+	-webkit-box-shadow:1px 1px 5px #ccc;
+  border: 1px solid #CCCCCC;
+  margin:10px 0 0 0;
+  padding:0 6px;	
+}
+.sb-widget-titlebar h4 {
+	font-size:12px;
+	font-weight:bold;
+	margin:0;
+	color:#333;
+  text-shadow:#fff 1px 1px 0;
+}
 /*
 vim:ts=2:sw=2
  */

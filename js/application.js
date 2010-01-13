@@ -73,7 +73,7 @@ $(function(){
           callback();
           return;
         }
-        var bindData = {
+        var filterData = {
           'groupopt' : $.map(currentUser.spaces,function(d){
             return {
               'groupname' : d.displayName,
@@ -82,8 +82,19 @@ $(function(){
             };
           })
         };
-        $('#grouppub option:first').clone(true).appendTo('#grouppub').autoRender(bindData);
-        $('#groupfilter option:first').clone(true).appendTo('#groupfilter').autoRender(bindData);
+        var widgetData = {
+          'sbspace' : $.map(currentUser.spaces, function(d){
+            return {
+              'spspaceiconimg' : d.iconUrl,
+              'sbspacename' : d.displayName,
+              'sbspacelink' : '/webcenter/spaces/' + d.name,
+              'sbspacedescr' : d.description
+            }
+          })
+        };
+        console.log(widgetData);
+        $('#grouppub option:first').clone(true).appendTo('#grouppub').autoRender(filterData);
+        $('#groupfilter option:first').clone(true).appendTo('#groupfilter').autoRender(filterData);
 
         // Don't process anything until the filter is set up
         callback(); 
