@@ -85,7 +85,7 @@ $(function(){
         var widgetData = {
           'sbspace' : $.map(currentUser.spaces, function(d){
             var descr = ""
-            if(d.description == 'undefined') descr="";
+            if(typeof(d.description) == 'undefined') descr="";
             else descr = d.description;
             return {
               'spspaceiconimg' : d.iconUrl,
