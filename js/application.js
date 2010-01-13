@@ -122,7 +122,6 @@ $(function(){
             };
           })
         };
-        console.log(connectionData);
         $('.sbconnection').autoRender(connectionData);
         // Don't process anything until everything is set up
         callback(); 
