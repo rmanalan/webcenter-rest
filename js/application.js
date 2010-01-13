@@ -116,12 +116,13 @@ $(function(){
         var connectionData = {
           'sbconnection' : $.map(currentUser.connections,function(d){
             return {
-              'sbconnectionlink' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:read',false),
+              'sbconnectionlink' : webCenter.getResourceURL(d.links,'"urn:oracle:webcenter:spaces:profile"',false),
               'sbconnectionimg' : userProfile.avatarSmall(d.guid),
               'sbconnectionname' : d.displayName
             };
           })
         };
+        console.log(connectionData);
         $('.sbconnection').autoRender(connectionData);
         // Don't process anything until everything is set up
         callback(); 
