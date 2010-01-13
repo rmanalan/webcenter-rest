@@ -261,12 +261,12 @@ button:hover, .button:hover {
 .sbspacedescr {
 	margin-bottom:2px;
 }
-.sbconnection {
-	margin-right:3px;
+a.sbconnection {
+	margin-right:2px;
 	border-bottom:0;
 	cursor:pointer;
 }
-.sbconnection:hover {
+a.sbconnection:hover {
   border-bottom:0;
 }
 /*

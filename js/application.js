@@ -116,7 +116,7 @@ $(function(){
         var connectionData = {
           'sbconnection' : $.map(currentUser.connections,function(d){
             return {
-              'sbconnectionlink' : webCenter.getResourceURL(d.links,'"urn:oracle:webcenter:spaces:profile"',false),
+              'sbconnectionlink' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:spaces:profile',false),
               'sbconnectionimg' : userProfile.avatarSmall(d.guid),
               'sbconnectionname' : d.displayName
             };
