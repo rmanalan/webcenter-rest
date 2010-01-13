@@ -98,6 +98,7 @@ $(function(){
         console.log(widgetData);
         $('#grouppub option:first').clone(true).appendTo('#grouppub').autoRender(filterData);
         $('#groupfilter option:first').clone(true).appendTo('#groupfilter').autoRender(filterData);
+        $('.sbspace').autoRender(widgetData);
 
         // Don't process anything until the filter is set up
         callback(); 
