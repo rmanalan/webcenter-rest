@@ -229,6 +229,21 @@ button:hover, .button:hover {
 	color:#333;
   text-shadow:#fff 1px 1px 0;
 }
+#sb-spaces ul {
+	margin:0;
+}
+.sbspace {
+	list-style-type:none;
+}
+.sbspaceicon, .sbspaceinfo {
+	float:left
+}
+.sbspaceicon {
+	width:55px;
+}
+.sbspaceinfo {
+	width:165px;
+}
 /*
 vim:ts=2:sw=2
  */

@@ -84,11 +84,14 @@ $(function(){
         };
         var widgetData = {
           'sbspace' : $.map(currentUser.spaces, function(d){
-            var descr = ""
-            if(typeof(d.description) == 'undefined') descr="";
+            var descr = "";
+            var iconUrl = "";
+            if(typeof(d.description)=='undefined') descr="";
             else descr = d.description;
+            if(typeof(d.iconUrl)=='undefined') iconUrl = "";
+            else iconUrl = d.iconUrl;
             return {
-              'spspaceiconimg' : d.iconUrl,
+              'spspaceiconimg' : iconUrl,
               'sbspacename' : d.displayName,
               'sbspacelink' : '/webcenter/spaces/' + d.name,
               'sbspacedescr' : descr
