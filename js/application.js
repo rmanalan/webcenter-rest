@@ -84,14 +84,14 @@ $(function(){
         };
         var widgetData = {
           'sbspace' : $.map(currentUser.spaces, function(d){
+            var descr = ""
+            if(d.description == 'undefined') descr="";
+            else descr = d.description;
             return {
               'spspaceiconimg' : d.iconUrl,
               'sbspacename' : d.displayName,
               'sbspacelink' : '/webcenter/spaces/' + d.name,
-              'sbspacedescr' : function(){
-                  if(d.description == 'undefined') return "";
-                  else return d.description
-                }
+              'sbspacedescr' : descr
             }
           })
         };
