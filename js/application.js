@@ -111,7 +111,7 @@ $(function(){
             }
           })
         };
-        //$('#grouppub option:first').clone(true).appendTo('#grouppub').autoRender(filterData);
+        $('#grouppub option:first').clone(true).appendTo('#grouppub').autoRender(filterData);
         $('#groupfilter option:first').clone(true).appendTo('#groupfilter').autoRender(filterData);
         $('.sbspace').autoRender(widgetData);
 
