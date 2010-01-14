@@ -1,6 +1,15 @@
 $(document).ajaxStart(function(){$('#loading-ind').show()}).ajaxStop(function(){$('#loading-ind').hide()});
 
 $(function(){
+  // Set up placeholder text for publisher
+  if (!("placeholder" in document.createElement("textarea"))) {
+    var placeholder = $('#pub-text').attr('placeholder');
+    $('#pub-text').val(placeholder)
+      .focus(function(){if(this.value==placeholder)$(this).val('')})
+      .blur(function(){if(this.value.replace(' ')=='')$(this).val(placeholder)});
+  }
+
+
   function initApp(callback){
     webCenter.init({'port':apiPort},function(){
       // show who's logged in
@@ -102,7 +111,7 @@ $(function(){
             }
           })
         };
-        $('#grouppub option:first').clone(true).appendTo('#grouppub').autoRender(filterData);
+        //$('#grouppub option:first').clone(true).appendTo('#grouppub').autoRender(filterData);
         $('#groupfilter option:first').clone(true).appendTo('#groupfilter').autoRender(filterData);
         $('.sbspace').autoRender(widgetData);
 
