@@ -1,6 +1,11 @@
 $(document).ajaxStart(function(){$('#loading-ind').show()}).ajaxStop(function(){$('#loading-ind').hide()});
 
 $(function(){
+  $('#pub1-attachment').uploadify({
+    'uploader' : 'uploadify.swf',
+    'script' : 'upload'
+  });
+
   // Set up placeholder text for publisher
   if (!("placeholder" in document.createElement("textarea"))) {
     var placeholder = $('#pub-text').attr('placeholder');
@@ -9,6 +14,37 @@ $(function(){
       .blur(function(){if(this.value.replace(' ')=='')$(this).val(placeholder)});
   }
 
+  function pageThroughSpaces(startIndex,perPage){
+    currentUser.getSpacesPaged(startIndex,perPage,function(d){
+      var widgetData = {
+        'sbspace' : $.map(d, function(d){
+          var descr = "";
+          var iconUrl = "";
+          if(typeof(d.description)=='undefined') descr="";
+          else descr = d.description;
+          if(typeof(d.iconUrl)=='undefined') iconUrl = "";
+          else iconUrl = d.iconUrl;
+          if(!d.isOffline) {
+            return {
+              'spspaceiconimg' : iconUrl,
+              'sbspacename' : d.displayName,
+              'sbspacelink' : '/webcenter/spaces/' + d.name,
+              'sbspacedescr' : descr
+            }
+          }
+        })
+      };
+      var template = $('.sbspace:first');
+      $('#sb-spaces ul').empty().append(template).autoRender(widgetData);
+    });
+  }
+
+  $('#sbspaces-pager-next').click(function(c){
+    var page = this.params['page'];
+    var perPage = 5;
+    var startIndex = (((page-1)*perPage)+1);
+    pageThroughSpaces(startIndex,perPage);
+  });
 
   function initApp(callback){
     webCenter.init({'port':apiPort},function(){
@@ -109,11 +145,11 @@ $(function(){
                 'sbspacedescr' : descr
               }
             }
-          })
+          }).slice(0,5) // show me just the first five groups
         };
         $('#grouppub option:first').clone(true).appendTo('#grouppub').autoRender(filterData);
         $('#groupfilter option:first').clone(true).appendTo('#groupfilter').autoRender(filterData);
-        $('.sbspace').autoRender(widgetData);
+        $('.sbspace').autoRender(widgetData).parent().show();
 
       });
 

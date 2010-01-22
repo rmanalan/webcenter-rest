@@ -236,10 +236,6 @@ button:hover, .button:hover {
 .sb-widget-body {
 	padding:0 5px;
 }
-#sb-spaces {
-	max-height:200px;
-	overflow:auto;
-}
 #sb-spaces ul {
 	margin:0;
 }

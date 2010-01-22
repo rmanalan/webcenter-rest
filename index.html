@@ -12,6 +12,8 @@
     <script src="http://aconmt01.us.oracle.com/js/sammy.js"></script>
     <script src="http://aconmt01.us.oracle.com/js/autoresize.js"></script>
     <script src="http://aconmt01.us.oracle.com/js/xLazyLoader.js"></script>
+    <script src="http://aconmt01.us.oracle.com/js/swfobject.js"></script>
+    <script src="http://aconmt01.us.oracle.com/js/uploadify.js"></script>
     <link href="http://aconmt01.us.oracle.com/css/screen.css" type="text/css" media="screen" rel="stylesheet"/>
     <script>
     // Lazy load the application scripts/css so I can work on them locally
@@ -50,7 +52,7 @@
                 <textarea id="pub-text" name="body" class="autoresize" placeholder="Share something..."></textarea>
                 <input id="share" type="submit" value="Share"/>
             </div>
-            <!--a href="#" id="pub1-attachment" class="no-underline">Attach file</a-->
+            <a href="#" id="pub1-attachment" class="no-underline">Attach file</a>
           </form>
         </div><!-- #publisher -->
 
@@ -93,7 +95,7 @@
             <h4>My Group Spaces</h5>
           </div>
           <div id="sb-spaces" class="sb-widget-body clearfix">
-            <ul>
+            <ul class="hide">
               <li class="sbspace clearfix">
                 <div class="sbspaceicon">
                   <img class="spspaceiconimg@src spacename@alt" src="" width="25px" height="25px" alt=""/>
@@ -104,6 +106,10 @@
                 </div>
               </li>
             </ul>
+            <div class="pager">
+              <a href="#" id="sbspaces-pager-prev" class="hide">&laquo; Previous</a>
+              <a href="#" id="sbspaces-pager-next" class="hide">Next &raquo;</a>
+            </div>
           </div>
         </div><!-- #sidebar-widget -->
 
