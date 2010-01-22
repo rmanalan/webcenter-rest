@@ -2,7 +2,7 @@ $(document).ajaxStart(function(){$('#loading-ind').show()}).ajaxStop(function(){
 
 $(function(){
   $('#pub1-attachment').uploadify({
-    'uploader' : 'uploadify.swf',
+    'uploader' : '../js/uploadify.swf',
     'script' : 'upload'
   });
 
