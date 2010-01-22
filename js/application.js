@@ -1,9 +1,15 @@
 $(document).ajaxStart(function(){$('#loading-ind').show()}).ajaxStop(function(){$('#loading-ind').hide()});
 
 $(function(){
-  $('#pub1-attachment').uploadify({
+  $('#pub1-uploader').uploadify({
+    'wmode' : 'transparent',
+    'hideButton' : true,
     'uploader' : 'http://aconmt01.us.oracle.com/js/uploadify.swf',
-    'script' : 'upload'
+    'script' : 'http://localhost:9393/',
+    'scriptAccess' : 'always',
+    'sizeLimit' : 2097152,
+    'height' : 16,
+    'width' : 70
   });
 
   // Set up placeholder text for publisher
@@ -149,10 +155,12 @@ $(function(){
         };
         $('#grouppub option:first').clone(true).appendTo('#grouppub').autoRender(filterData);
         $('#groupfilter option:first').clone(true).appendTo('#groupfilter').autoRender(filterData);
-        $('.sbspace').autoRender(widgetData).parent().show();
+        //$('.sbspace').autoRender(widgetData).parent().show();
+        callback(); 
 
       });
 
+      /*
       currentUser.getConnections(function(){
         if(currentUser.connections.length==0) {
           callback();
@@ -169,8 +177,8 @@ $(function(){
         };
         $('.sbconnection').autoRender(connectionData);
         // Don't process anything until everything is set up
-        callback(); 
       })
+      */
       
     });
 

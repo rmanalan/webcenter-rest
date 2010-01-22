@@ -15,6 +15,7 @@
     <script src="http://aconmt01.us.oracle.com/js/swfobject.js"></script>
     <script src="http://aconmt01.us.oracle.com/js/uploadify.js"></script>
     <link href="http://aconmt01.us.oracle.com/css/screen.css" type="text/css" media="screen" rel="stylesheet"/>
+    <link href="http://aconmt01.us.oracle.com/css/uploadify.css" type="text/css" media="screen" rel="stylesheet"/>
     <script>
     // Lazy load the application scripts/css so I can work on them locally
     var hostname = (location.hostname=='wc') ? location.hostname : 'aconmt01.us.oracle.com';
@@ -52,7 +53,10 @@
                 <textarea id="pub-text" name="body" class="autoresize" placeholder="Share something..."></textarea>
                 <input id="share" type="submit" value="Share"/>
             </div>
-            <a href="#" id="pub1-attachment" class="no-underline">Attach file</a>
+            <div id="pub1-upload">
+              <a href="#" id="pub1-attachment" class="no-underline">Attach file</a>
+              <div id="pub1-uploader"></div>
+            </div>
           </form>
         </div><!-- #publisher -->
 
@@ -89,7 +93,7 @@
         </div><!-- #stream -->
       </div><!-- #main-content -->
 
-      <div id="sidebar" class="span-6 last">
+      <!--div id="sidebar" class="span-6 last">
         <div class="sidebar-widget">
           <div class="sb-widget-titlebar">
             <h4>My Group Spaces</h5>
@@ -111,7 +115,7 @@
               <a href="#" id="sbspaces-pager-next" class="hide">Next &raquo;</a>
             </div>
           </div>
-        </div><!-- #sidebar-widget -->
+        </div>
 
         <div class="sidebar-widget">
           <div class="sb-widget-titlebar">
@@ -122,8 +126,8 @@
               <img class="sbconnectionimg@src sbconnectionname@alt" src=""/>
             </a>
           </div>
-        </div><!-- #sidebar-widget -->
-      </div><!-- #sidebar -->
+        </div>
+      </div--><!-- #sidebar -->
       
     </div><!-- #main -->
   </body>
