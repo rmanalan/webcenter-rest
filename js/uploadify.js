@@ -23,4 +23,236 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 
-if(jQuery){(function(a){a.extend(a.fn,{uploadify:function(b){a(this).each(function(){settings=a.extend({id:a(this).attr("id"),uploader:"uploadify.swf",script:"uploadify.php",expressInstall:null,folder:"",height:30,width:110,cancelImg:"cancel.png",wmode:"opaque",scriptAccess:"sameDomain",fileDataName:"Filedata",method:"POST",queueSizeLimit:999,simUploadLimit:1,queueID:false,displayData:"percentage",onInit:function(){},onSelect:function(){},onQueueFull:function(){},onCheck:function(){},onCancel:function(){},onError:function(){},onProgress:function(){},onComplete:function(){},onAllComplete:function(){}},b);var e=location.pathname;e=e.split("/");e.pop();e=e.join("/")+"/";var f={};f.uploadifyID=settings.id;f.pagepath=e;if(settings.buttonImg){f.buttonImg=escape(settings.buttonImg)}if(settings.buttonText){f.buttonText=escape(settings.buttonText)}if(settings.rollover){f.rollover=true}f.script=settings.script;f.folder=escape(settings.folder);if(settings.scriptData){var g="";for(var d in settings.scriptData){g+="&"+d+"="+settings.scriptData[d]}f.scriptData=escape(g.substr(1))}f.width=settings.width;f.height=settings.height;f.wmode=settings.wmode;f.method=settings.method;f.queueSizeLimit=settings.queueSizeLimit;f.simUploadLimit=settings.simUploadLimit;if(settings.hideButton){f.hideButton=true}if(settings.fileDesc){f.fileDesc=settings.fileDesc}if(settings.fileExt){f.fileExt=settings.fileExt}if(settings.multi){f.multi=true}if(settings.auto){f.auto=true}if(settings.sizeLimit){f.sizeLimit=settings.sizeLimit}if(settings.checkScript){f.checkScript=settings.checkScript}if(settings.fileDataName){f.fileDataName=settings.fileDataName}if(settings.queueID){f.queueID=settings.queueID}if(settings.onInit()!==false){a(this).css("display","none");a(this).after('<div id="'+a(this).attr("id")+'Uploader"></div>');swfobject.embedSWF(settings.uploader,settings.id+"Uploader",settings.width,settings.height,"9.0.24",settings.expressInstall,f,{quality:"high",wmode:settings.wmode,allowScriptAccess:settings.scriptAccess});if(settings.queueID==false){a("#"+a(this).attr("id")+"Uploader").after('<div id="'+a(this).attr("id")+'Queue" class="uploadifyQueue"></div>')}}if(typeof(settings.onOpen)=="function"){a(this).bind("uploadifyOpen",settings.onOpen)}a(this).bind("uploadifySelect",{action:settings.onSelect,queueID:settings.queueID},function(j,h,i){if(j.data.action(j,h,i)!==false){var k=Math.round(i.size/1024*100)*0.01;var l="KB";if(k>1000){k=Math.round(k*0.001*100)*0.01;l="MB"}var m=k.toString().split(".");if(m.length>1){k=m[0]+"."+m[1].substr(0,2)}else{k=m[0]}if(i.name.length>20){fileName=i.name.substr(0,20)+"..."}else{fileName=i.name}queue="#"+a(this).attr("id")+"Queue";if(j.data.queueID){queue="#"+j.data.queueID}a(queue).append('<div id="'+a(this).attr("id")+h+'" class="uploadifyQueueItem"><div class="cancel"><a href="javascript:jQuery(\'#'+a(this).attr("id")+"').uploadifyCancel('"+h+'\')"><img src="'+settings.cancelImg+'" border="0" /></a></div><span class="fileName">'+fileName+" ("+k+l+')</span><span class="percentage"></span><div class="uploadifyProgress"><div id="'+a(this).attr("id")+h+'ProgressBar" class="uploadifyProgressBar"><!--Progress Bar--></div></div></div>')}});if(typeof(settings.onSelectOnce)=="function"){a(this).bind("uploadifySelectOnce",settings.onSelectOnce)}a(this).bind("uploadifyQueueFull",{action:settings.onQueueFull},function(h,i){if(h.data.action(h,i)!==false){alert("The queue is full.  The max size is "+i+".")}});a(this).bind("uploadifyCheckExist",{action:settings.onCheck},function(m,l,k,j,o){var i=new Object();i=k;i.folder=e+j;if(o){for(var h in k){var n=h}}a.post(l,i,function(r){for(var p in r){if(m.data.action(m,l,k,j,o)!==false){var q=confirm("Do you want to replace the file "+r[p]+"?");if(!q){document.getElementById(a(m.target).attr("id")+"Uploader").cancelFileUpload(p,true,true)}}}if(o){document.getElementById(a(m.target).attr("id")+"Uploader").startFileUpload(n,true)}else{document.getElementById(a(m.target).attr("id")+"Uploader").startFileUpload(null,true)}},"json")});a(this).bind("uploadifyCancel",{action:settings.onCancel},function(l,h,k,m,j){if(l.data.action(l,h,k,m,j)!==false){var i=(j==true)?0:250;a("#"+a(this).attr("id")+h).fadeOut(i,function(){a(this).remove()})}});if(typeof(settings.onClearQueue)=="function"){a(this).bind("uploadifyClearQueue",settings.onClearQueue)}var c=[];a(this).bind("uploadifyError",{action:settings.onError},function(l,h,k,j){if(l.data.action(l,h,k,j)!==false){var i=new Array(h,k,j);c.push(i);a("#"+a(this).attr("id")+h+" .percentage").text(" - "+j.type+" Error");a("#"+a(this).attr("id")+h).addClass("uploadifyError")}});a(this).bind("uploadifyProgress",{action:settings.onProgress,toDisplay:settings.displayData},function(j,h,i,k){if(j.data.action(j,h,i,k)!==false){a("#"+a(this).attr("id")+h+"ProgressBar").css("width",k.percentage+"%");if(j.data.toDisplay=="percentage"){displayData=" - "+k.percentage+"%"}if(j.data.toDisplay=="speed"){displayData=" - "+k.speed+"KB/s"}if(j.data.toDisplay==null){displayData=" "}a("#"+a(this).attr("id")+h+" .percentage").text(displayData)}});a(this).bind("uploadifyComplete",{action:settings.onComplete},function(k,h,j,i,l){if(k.data.action(k,h,j,unescape(i),l)!==false){a("#"+a(this).attr("id")+h+" .percentage").text(" - Completed");a("#"+a(this).attr("id")+h).fadeOut(250,function(){a(this).remove()})}});if(typeof(settings.onAllComplete)=="function"){a(this).bind("uploadifyAllComplete",{action:settings.onAllComplete},function(h,i){if(h.data.action(h,i)!==false){c=[]}})}})},uploadifySettings:function(f,j,c){var g=false;a(this).each(function(){if(f=="scriptData"&&j!=null){if(c){var i=j}else{var i=a.extend(settings.scriptData,j)}var l="";for(var k in i){l+="&"+k+"="+escape(i[k])}j=l.substr(1)}g=document.getElementById(a(this).attr("id")+"Uploader").updateSettings(f,j)});if(j==null){if(f=="scriptData"){var b=unescape(g).split("&");var e=new Object();for(var d=0;d<b.length;d++){var h=b[d].split("=");e[h[0]]=h[1]}g=e}return g}},uploadifyUpload:function(b){a(this).each(function(){document.getElementById(a(this).attr("id")+"Uploader").startFileUpload(b,false)})},uploadifyCancel:function(b){a(this).each(function(){document.getElementById(a(this).attr("id")+"Uploader").cancelFileUpload(b,true,false)})},uploadifyClearQueue:function(){a(this).each(function(){document.getElementById(a(this).attr("id")+"Uploader").clearFileUploadQueue(false)})}})})(jQuery)};
+if(jQuery)(
+	function(jQuery){
+		jQuery.extend(jQuery.fn,{
+			uploadify:function(options) {
+				jQuery(this).each(function(){
+					settings = jQuery.extend({
+					id             : jQuery(this).attr('id'), // The ID of the object being Uploadified
+					uploader       : 'uploadify.swf', // The path to the uploadify swf file
+					script         : 'uploadify.php', // The path to the uploadify backend upload script
+					expressInstall : null, // The path to the express install swf file
+					folder         : '', // The path to the upload folder
+					height         : 30, // The height of the flash button
+					width          : 110, // The width of the flash button
+					cancelImg      : 'cancel.png', // The path to the cancel image for the default file queue item container
+					wmode          : 'opaque', // The wmode of the flash file
+					scriptAccess   : 'sameDomain', // Set to "always" to allow script access across domains
+					fileDataName   : 'Filedata', // The name of the file collection object in the backend upload script
+					method         : 'POST', // The method for sending variables to the backend upload script
+					queueSizeLimit : 999, // The maximum size of the file queue
+					simUploadLimit : 1, // The number of simultaneous uploads allowed
+					queueID        : false, // The optional ID of the queue container
+					displayData    : 'percentage', // Set to "speed" to show the upload speed in the default queue item
+					onInit         : function() {}, // Function to run when uploadify is initialized
+					onSelect       : function() {}, // Function to run when a file is selected
+					onQueueFull    : function() {}, // Function to run when the queue reaches capacity
+					onCheck        : function() {}, // Function to run when script checks for duplicate files on the server
+					onCancel       : function() {}, // Function to run when an item is cleared from the queue
+					onError        : function() {}, // Function to run when an upload item returns an error
+					onProgress     : function() {}, // Function to run each time the upload progress is updated
+					onComplete     : function() {}, // Function to run when an upload is completed
+					onAllComplete  : function() {}  // Functino to run when all uploads are completed
+				}, options);
+				var pagePath = location.pathname;
+				pagePath = pagePath.split('/');
+				pagePath.pop();
+				pagePath = pagePath.join('/') + '/';
+				var data = {};
+				data.uploadifyID = settings.id;
+				data.pagepath = pagePath;
+				if (settings.buttonImg) data.buttonImg = escape(settings.buttonImg);
+				if (settings.buttonText) data.buttonText = escape(settings.buttonText);
+				if (settings.rollover) data.rollover = true;
+				data.script = settings.script;
+				data.folder = escape(settings.folder);
+				if (settings.scriptData) {
+					var scriptDataString = '';
+					for (var name in settings.scriptData) {
+						scriptDataString += '&' + name + '=' + settings.scriptData[name];
+					}
+					data.scriptData = escape(scriptDataString.substr(1));
+				}
+				data.width          = settings.width;
+				data.height         = settings.height;
+				data.wmode          = settings.wmode;
+				data.method         = settings.method;
+				data.queueSizeLimit = settings.queueSizeLimit;
+				data.simUploadLimit = settings.simUploadLimit;
+				if (settings.hideButton)   data.hideButton   = true;
+				if (settings.fileDesc)     data.fileDesc     = settings.fileDesc;
+				if (settings.fileExt)      data.fileExt      = settings.fileExt;
+				if (settings.multi)        data.multi        = true;
+				if (settings.auto)         data.auto         = true;
+				if (settings.sizeLimit)    data.sizeLimit    = settings.sizeLimit;
+				if (settings.checkScript)  data.checkScript  = settings.checkScript;
+				if (settings.fileDataName) data.fileDataName = settings.fileDataName;
+				if (settings.queueID)      data.queueID      = settings.queueID;
+				if (settings.onInit() !== false) {
+					jQuery(this).css('display','none');
+					jQuery(this).after('<div id="' + jQuery(this).attr('id') + 'Uploader"></div>');
+					swfobject.embedSWF(settings.uploader, settings.id + 'Uploader', settings.width, settings.height, '9.0.24', settings.expressInstall, data, {'quality':'high','wmode':settings.wmode,'allowScriptAccess':settings.scriptAccess});
+					if (settings.queueID == false) {
+						jQuery("#" + jQuery(this).attr('id') + "Uploader").after('<div id="' + jQuery(this).attr('id') + 'Queue" class="uploadifyQueue"></div>');
+					}
+				}
+				if (typeof(settings.onOpen) == 'function') {
+					jQuery(this).bind("uploadifyOpen", settings.onOpen);
+				}
+				jQuery(this).bind("uploadifySelect", {'action': settings.onSelect, 'queueID': settings.queueID}, function(event, ID, fileObj) {
+					if (event.data.action(event, ID, fileObj) !== false) {
+						var byteSize = Math.round(fileObj.size / 1024 * 100) * .01;
+						var suffix = 'KB';
+						if (byteSize > 1000) {
+							byteSize = Math.round(byteSize *.001 * 100) * .01;
+							suffix = 'MB';
+						}
+						var sizeParts = byteSize.toString().split('.');
+						if (sizeParts.length > 1) {
+							byteSize = sizeParts[0] + '.' + sizeParts[1].substr(0,2);
+						} else {
+							byteSize = sizeParts[0];
+						}
+						if (fileObj.name.length > 20) {
+							fileName = fileObj.name.substr(0,20) + '...';
+						} else {
+							fileName = fileObj.name;
+						}
+						queue = '#' + jQuery(this).attr('id') + 'Queue';
+						if (event.data.queueID) {
+							queue = '#' + event.data.queueID;
+						}
+						jQuery(queue).append('<div id="' + jQuery(this).attr('id') + ID + '" class="uploadifyQueueItem">\
+								<div class="cancel">\
+									<a href="javascript:jQuery(\'#' + jQuery(this).attr('id') + '\').uploadifyCancel(\'' + ID + '\')"><img src="' + settings.cancelImg + '" border="0" /></a>\
+								</div>\
+								<span class="fileName">' + fileName + ' (' + byteSize + suffix + ')</span><span class="percentage"></span>\
+								<div class="uploadifyProgress">\
+									<div id="' + jQuery(this).attr('id') + ID + 'ProgressBar" class="uploadifyProgressBar"><!--Progress Bar--></div>\
+								</div>\
+							</div>');
+					}
+				});
+				if (typeof(settings.onSelectOnce) == 'function') {
+					jQuery(this).bind("uploadifySelectOnce", settings.onSelectOnce);
+				}
+				jQuery(this).bind("uploadifyQueueFull", {'action': settings.onQueueFull}, function(event, queueSizeLimit) {
+					if (event.data.action(event, queueSizeLimit) !== false) {
+						alert('The queue is full.  The max size is ' + queueSizeLimit + '.');
+					}
+				});
+				jQuery(this).bind("uploadifyCheckExist", {'action': settings.onCheck}, function(event, checkScript, fileQueueObj, folder, single) {
+					var postData = new Object();
+					postData = fileQueueObj;
+					postData.folder = pagePath + folder;
+					if (single) {
+						for (var ID in fileQueueObj) {
+							var singleFileID = ID;
+						}
+					}
+					jQuery.post(checkScript, postData, function(data) {
+						for(var key in data) {
+							if (event.data.action(event, checkScript, fileQueueObj, folder, single) !== false) {
+								var replaceFile = confirm("Do you want to replace the file " + data[key] + "?");
+								if (!replaceFile) {
+									document.getElementById(jQuery(event.target).attr('id') + 'Uploader').cancelFileUpload(key, true,true);
+								}
+							}
+						}
+						if (single) {
+							document.getElementById(jQuery(event.target).attr('id') + 'Uploader').startFileUpload(singleFileID, true);
+						} else {
+							document.getElementById(jQuery(event.target).attr('id') + 'Uploader').startFileUpload(null, true);
+						}
+					}, "json");
+				});
+				jQuery(this).bind("uploadifyCancel", {'action': settings.onCancel}, function(event, ID, fileObj, data, clearFast) {
+					if (event.data.action(event, ID, fileObj, data, clearFast) !== false) {
+						var fadeSpeed = (clearFast == true) ? 0 : 250;
+						jQuery("#" + jQuery(this).attr('id') + ID).fadeOut(fadeSpeed, function() { jQuery(this).remove() });
+					}
+				});
+				if (typeof(settings.onClearQueue) == 'function') {
+					jQuery(this).bind("uploadifyClearQueue", settings.onClearQueue);
+				}
+				var errorArray = [];
+				jQuery(this).bind("uploadifyError", {'action': settings.onError}, function(event, ID, fileObj, errorObj) {
+					if (event.data.action(event, ID, fileObj, errorObj) !== false) {
+						var fileArray = new Array(ID, fileObj, errorObj);
+						errorArray.push(fileArray);
+						jQuery("#" + jQuery(this).attr('id') + ID + " .percentage").text(" - " + errorObj.type + " Error");
+						jQuery("#" + jQuery(this).attr('id') + ID).addClass('uploadifyError');
+					}
+				});
+				jQuery(this).bind("uploadifyProgress", {'action': settings.onProgress, 'toDisplay': settings.displayData}, function(event, ID, fileObj, data) {
+					if (event.data.action(event, ID, fileObj, data) !== false) {
+						jQuery("#" + jQuery(this).attr('id') + ID + "ProgressBar").css('width', data.percentage + '%');
+						if (event.data.toDisplay == 'percentage') displayData = ' - ' + data.percentage + '%';
+						if (event.data.toDisplay == 'speed') displayData = ' - ' + data.speed + 'KB/s';
+						if (event.data.toDisplay == null) displayData = ' ';
+						jQuery("#" + jQuery(this).attr('id') + ID + " .percentage").text(displayData);
+					}
+				});
+				jQuery(this).bind("uploadifyComplete", {'action': settings.onComplete}, function(event, ID, fileObj, response, data) {
+					if (event.data.action(event, ID, fileObj, unescape(response), data) !== false) {
+						jQuery("#" + jQuery(this).attr('id') + ID + " .percentage").text(' - Completed');
+						jQuery("#" + jQuery(this).attr('id') + ID).fadeOut(250, function() { jQuery(this).remove()});
+					}
+				});
+				if (typeof(settings.onAllComplete) == 'function') {
+					jQuery(this).bind("uploadifyAllComplete", {'action': settings.onAllComplete}, function(event, uploadObj) {
+						if (event.data.action(event, uploadObj) !== false) {
+							errorArray = [];
+						}
+					});
+				}
+			});
+		},
+		uploadifySettings:function(settingName, settingValue, resetObject) {
+			var returnValue = false;
+			jQuery(this).each(function() {
+				if (settingName == 'scriptData' && settingValue != null) {
+					if (resetObject) {
+						var scriptData = settingValue;
+					} else {
+						var scriptData = jQuery.extend(settings.scriptData, settingValue);
+					}
+					var scriptDataString = '';
+					for (var name in scriptData) {
+						scriptDataString += '&' + name + '=' + escape(scriptData[name]);
+					}
+					settingValue = scriptDataString.substr(1);
+				}
+				returnValue = document.getElementById(jQuery(this).attr('id') + 'Uploader').updateSettings(settingName, settingValue);
+			});
+			if (settingValue == null) {
+				if (settingName == 'scriptData') {
+					var returnSplit = unescape(returnValue).split('&');
+					var returnObj   = new Object();
+					for (var i = 0; i < returnSplit.length; i++) {
+						var iSplit = returnSplit[i].split('=');
+						returnObj[iSplit[0]] = iSplit[1];
+					}
+					returnValue = returnObj;
+				}
+				return returnValue;
+			}
+		},
+		uploadifyUpload:function(ID) {
+			jQuery(this).each(function() {
+				document.getElementById(jQuery(this).attr('id') + 'Uploader').startFileUpload(ID, false);
+			});
+		},
+		uploadifyCancel:function(ID) {
+			jQuery(this).each(function() {
+				document.getElementById(jQuery(this).attr('id') + 'Uploader').cancelFileUpload(ID, true, false);
+			});
+		},
+		uploadifyClearQueue:function() {
+			jQuery(this).each(function() {
+				document.getElementById(jQuery(this).attr('id') + 'Uploader').clearFileUploadQueue(false);
+			});
+		}
+	})
+})(jQuery);

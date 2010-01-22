@@ -265,6 +265,17 @@ a.sbconnection {
 a.sbconnection:hover {
   border-bottom:0;
 }
+#pub1-upload {
+  position:relative;
+}
+#pub1-uploaderUploader {
+  position:absolute;
+  top:0;
+  left:0;
+}
+#pub1-uploaderQueue .cancel a {
+  border:0;
+}
 /*
 vim:ts=2:sw=2
  */
