@@ -273,8 +273,31 @@ a.sbconnection:hover {
   top:0;
   left:0;
 }
-#pub1-uploaderQueue .cancel a {
+.uploadifyQueueItem {
+  width:588px;
+}
+.uploadifyProgress {
+  width:92%;
+  display:inline-block;
+}
+.uploadifyProgressBar {
+  height:13px;
+}
+.uploadifyQueueItem .cancel {
+  height:16px;
+}
+.uploadifyQueueItem .cancel a {
   border:0;
+}
+#pub1-uploaderQueue .fileMeta,
+.uploadifyMeter {
+  float:left;
+  overflow:hidden;
+  width:289px;
+  padding:5px 5px 0 0;
+}
+.uploadifyError {
+  border:0 !important;
 }
 /*
 vim:ts=2:sw=2

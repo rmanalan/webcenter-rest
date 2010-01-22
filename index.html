@@ -13,7 +13,7 @@
     <script src="http://aconmt01.us.oracle.com/js/autoresize.js"></script>
     <script src="http://aconmt01.us.oracle.com/js/xLazyLoader.js"></script>
     <script src="http://aconmt01.us.oracle.com/js/swfobject.js"></script>
-    <script src="http://aconmt01.us.oracle.com/js/uploadify.js"></script>
+    <script src="http://aconmt01.us.oracle.com/js/suploadify.js"></script>
     <link href="http://aconmt01.us.oracle.com/css/screen.css" type="text/css" media="screen" rel="stylesheet"/>
     <link href="http://aconmt01.us.oracle.com/css/uploadify.css" type="text/css" media="screen" rel="stylesheet"/>
     <script>
@@ -22,7 +22,7 @@
     var assetPort = 80;
     var apiPort = (hostname=='wc') ? 80 : 8911;
     $.xLazyLoader({
-      js: $.map(['wcutils.js', 'wcrest.js','application.js'],function(n){
+      js: $.map(['wcutils.js', 'wcrest.js','uploadify.js','application.js'],function(n){
         return 'http://' + hostname + ':' + assetPort + '/' + 'js/' + n;
       }),
       css: $.map(['style.css'],function(n){

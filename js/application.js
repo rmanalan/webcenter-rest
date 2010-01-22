@@ -1,17 +1,27 @@
 $(document).ajaxStart(function(){$('#loading-ind').show()}).ajaxStop(function(){$('#loading-ind').hide()});
 
+var dump;
 $(function(){
   $('#pub1-uploader').uploadify({
     'wmode' : 'transparent',
     'hideButton' : true,
     'uploader' : 'http://aconmt01.us.oracle.com/js/uploadify.swf',
     'cancelImg' : '../images/cancel.png',
-    'script' : 'http://localhost:9393/',
+    'script' : 'http://localhost:9393',
+    'fileDataName' : 'file',
     'scriptAccess' : 'always',
-    'sizeLimit' : 2097152,
     'height' : 16,
     'width' : 70,
-    'multi' : true
+//    'sizeLimit' : 2097152,
+    'multi' : true,
+    'auto' : true,
+    'onComplete' : function(event,queueID,fileObj,response,data) {
+      console.log(response);
+    },
+    'onError': function (event, queueID ,fileObj, errorObj) {
+      dump = {'event':event, 'queueID': queueID, 'fileObj' : fileObj, 'errorObj' : errorObj};
+      console.log(errorObj.info)
+    }
   });
 
   // Set up placeholder text for publisher

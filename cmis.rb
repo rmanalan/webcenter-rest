@@ -29,7 +29,7 @@ class UploadService < Sinatra::Default
 
   post '/' do
     attachment = FileAttachment.create(:file => params[:file])
-    redirect attachment.file.url(:medium)
+    attachment.file.url(:medium)
   end
 end
 
