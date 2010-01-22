@@ -2,7 +2,7 @@ $(document).ajaxStart(function(){$('#loading-ind').show()}).ajaxStop(function(){
 
 $(function(){
   $('#pub1-attachment').uploadify({
-    'uploader' : '../js/uploadify.swf',
+    'uploader' : 'http://aconmt01.us.oracle.com/js/uploadify.swf',
     'script' : 'upload'
   });
 
