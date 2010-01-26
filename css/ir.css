@@ -24,8 +24,7 @@ div.irNav td.xpe {
 div.irNav div.x1l6,
 dir.irNav div.x1l7 {
   border-left:0;
-  background-color:transparent;
-  background-image:none;
+  background-image:none !important;
 }
 div.irNav div.x1a[theme=dark] {
   padding:0 5px;
