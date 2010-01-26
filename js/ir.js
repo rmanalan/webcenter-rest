@@ -9,7 +9,7 @@ $(function(){
   gs.html('<select id="gs" onchange="location=this.value"><option class="gsspace spacename url@value selected1@selected" value="/webcenter/spaces/home">Home</option></select>');
   var spacesCached = $.DOMCached.get('groups','webcenter');
   if(spacesCached){
-    $('.gsspace').autoRender(bindData);
+    console.log('got cached');
     $('.gsspace').clone(true).appendTo('#gs').autoRender(spacesCached);
   }
   webCenter.init({},function(){
@@ -27,9 +27,8 @@ $(function(){
       };
       bindData['gsspace'].unshift({'name':'', 'spacename':'Home', 'url':'/webcenter/spaces/home'});
       bindData['gsspace'].push({'spacename':'Browse Group Space', 'url':'/webcenter/faces/oracle/webcenter/community/view/pages/manage/ManageSpaces-SpacesTab.jspx' });
-      //bindData['gsspace'][2].selected1 = 'selected';
+      bindData['gsspace'][0].selected1 = 'selected';
       $.DOMCached.set('groups',bindData,86400,'webcenter');
-      console.log($.DOMCached.get('groups','webcenter'));
       if(spacesCached) return;
       $('.gsspace').clone(true).appendTo('#gs').autoRender(bindData);
       $('.gsspace').autoRender(bindData);
