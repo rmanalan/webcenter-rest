@@ -9,6 +9,7 @@ div.irNav {
   border:1px solid #ccc;
   background-color:#e3e9ee;
 }
+div.irNav table.xot,
 div.irNav td.xp4,
 div.irNav td.xp8,
 div.irNav td.xpc,
@@ -18,8 +19,11 @@ div.irNav td.xpa,
 div.irNav td.xpe {
   background-image:none !important;
 }
-div.irNav div.x1l6 {
+div.irNav div.x1l6,
+dir.irNav dir.x1l7 {
   border-left:0;
+  background-color:transparent;
+  background-image:none;
 }
 div.irNav div.x1a[theme=dark] {
   padding:0 5px;

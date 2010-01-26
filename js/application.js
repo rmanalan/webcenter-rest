@@ -105,6 +105,7 @@ $(function(){
            'urn:oracle:webcenter:activities:stream',true));
 
       // Setup Lists drop-down
+      /*
       currentUser.getListNames(function(){
         if(currentUser.listNames.length==0) return;
         var bindData = {
@@ -118,6 +119,7 @@ $(function(){
         $('.lfopts').clone(true).appendTo('#listfilter').autoRender(bindData);
         $('.lfopts:last').clone(true).appendTo('#listfilter').val('').html('Create a new list');
       });
+      */
 
 
       $('#groupfilter').bind('change',function(e){
