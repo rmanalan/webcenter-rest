@@ -9,7 +9,9 @@ div.irNav {
   border:1px solid #ccc;
   background-color:#e3e9ee;
 }
-div.irNav table.xot,
+div.irNav table.xot {
+  display:none;
+}
 div.irNav td.xp4,
 div.irNav td.xp8,
 div.irNav td.xpc,
@@ -20,7 +22,7 @@ div.irNav td.xpe {
   background-image:none !important;
 }
 div.irNav div.x1l6,
-dir.irNav dir.x1l7 {
+dir.irNav div.x1l7 {
   border-left:0;
   background-color:transparent;
   background-image:none;
