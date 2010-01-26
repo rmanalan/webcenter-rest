@@ -25,24 +25,23 @@ $(function(){
            }
          })
       };
-	var test1 = 'test123';
-  bindData['gsspace'].unshift({'name':'', 'spacename':'Home', 'url':'/webcenter/spaces/home'});
-	bindData['gsspace'].push({'spacename':'Browse Group Space', 'url':'/webcenter/faces/oracle/webcenter/community/view/pages/manage/ManageSpaces-SpacesTab.jspx' });
-	bindData['gsspace'][2].selected1 = 'selected';
+      bindData['gsspace'].unshift({'name':'', 'spacename':'Home', 'url':'/webcenter/spaces/home'});
+      bindData['gsspace'].push({'spacename':'Browse Group Space', 'url':'/webcenter/faces/oracle/webcenter/community/view/pages/manage/ManageSpaces-SpacesTab.jspx' });
+      //bindData['gsspace'][2].selected1 = 'selected';
       $.DOMCached.set('groups',bindData,86400,'webcenter');
+      console.log("cache set");
       if(spacesCached) return;
       $('.gsspace').clone(true).appendTo('#gs').autoRender(bindData);
       $('.gsspace').autoRender(bindData);
       for (index in bindData['gsspace']) {
         $('#gs option')[2].selected = true;
         if (bindData['gsspace'][index].name == currentGroupSpace) {
-	        $('#gs option')[index].selected = true;
+          $('#gs option')[index].selected = true;
         }
       }
       $('#gs option')[2].selected = true;
     });
   });
-
 });
 /* 
 vim:ts=2:sw=2:expandtab
