@@ -10,7 +10,7 @@ $(function(){
   var spacesCached = $.DOMCached.get('groups','webcenter');
   if(spacesCached){
     console.log('got cached');
-    $('.gsspace').clone(true).appendTo('#gs').autoRender(spacesCached);
+    //$('.gsspace').clone(true).appendTo('#gs').autoRender(spacesCached);
   }
   webCenter.init({},function(){
     currentUser.getSpaces(function(){
