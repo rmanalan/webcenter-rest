@@ -5,7 +5,7 @@ $(function(){
   $('#pub1-uploader').uploadify({
     'wmode' : 'transparent',
     'hideButton' : true,
-    'uploader' : 'http://aconmt01.us.oracle.com/js/uploadify.swf',
+    'uploader' : 'http://weblogic-stage.us.oracle.com/js/uploadify.swf',
     'cancelImg' : '../images/cancel.png',
     'script' : 'http://localhost:9393',
     'fileDataName' : 'file',
