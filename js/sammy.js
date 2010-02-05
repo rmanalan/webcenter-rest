@@ -28,13 +28,13 @@
     });
 	};
 	
-	if (typeof window.console != 'undefined') {
+  if (typeof window.console != 'undefined') {
     Sammy.addLogger(function() {
-      window.console.log.apply(window.console, arguments);
+  //    window.console.log.apply(window.console, arguments);
     });
   } else if (typeof console != 'undefined') {
     Sammy.addLogger.push(function() {
-      console.log.apply(console, arguments);
+  //    console.log.apply(console, arguments);
     });
   }
     
