@@ -71,7 +71,7 @@ div[id='T:secondaryTabSet'] table tr td {
 }
 div[id='T:pt_psl3'],
 div[id='T:pt_psl2::c'] {
-	overflow:auto !important;
+	overflow:visible !important;
 }
 div[id='T:secondaryTabSet'] table tr td a.p_AFSelected,
 div[id='T:secondaryTabSet'] table tr td a:hover,
