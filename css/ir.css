@@ -159,7 +159,7 @@ div[id='T:pt_psl5::c'] {
 	/*top:22px !important;*/
 }
 div[id='T:pt_db1'] {
-	margin:0;
+	margin:0 !important;
 }
 span[id='T:secondaryTabSet::oc'] {
 	margin-left:15px;
