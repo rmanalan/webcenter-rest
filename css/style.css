@@ -37,6 +37,7 @@ a.no-underline, a.no-underline:active, a.no-underline:visited, a.no-underline:li
 }
 #groupfiltercontainer {
   float:left;
+  margin-bottom:10px;
 }
 span.refresh {
 	float:right;
@@ -115,7 +116,7 @@ li.messages {
   padding:5px 10px;
 	background: url(../images/pubbg.png) repeat-x;
   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(255, 255, 255)), color-stop(1, rgb(230, 230, 230)));
-	margin: 10px 0;
+	margin: 10px 0 0 0;
   width:610px;
 }
 #pub1-share {
