@@ -143,8 +143,8 @@ li.messages {
 	float:left;
 	resize:vertical;
   margin:0 4px 0 0;
-	padding:3px 5px;
-  width:516px;
+	padding:4px 5px;
+  width:542px;
   height:18px;
   font-size:11pt;
 	font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;
@@ -170,7 +170,7 @@ input[type='submit'], input[type='button'], .button {
   -moz-box-shadow:0 0 5px #fff;
   -webkit-box-shadow:0 0 5px #fff;
   width:52px;
-  height:27px;
+  height:28px;
 }
 button:hover, .button:hover {
 	color:#000 !important;
