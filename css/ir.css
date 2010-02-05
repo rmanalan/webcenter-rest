@@ -12,7 +12,8 @@ div.irNav {
   background-color:#e3e9ee;
 }
 div.irNav table.xot,
-a[id='T:oc_3228768355region1:photoRefresher'] {
+a[id='T:oc_3228768355region1:photoRefresher'],
+div[id='T:pt_ps1::d'] {
   display:none;
 }
 div.irNav td.xp4,
@@ -152,7 +153,7 @@ div[id='T:pt_psl5::t'] {
 	height:25px !important;
 }
 div[id='T:pt_psl5::c'] {
-	top:22px !important;
+	/*top:22px !important;*/
 }
 span[id='T:secondaryTabSet::oc'] {
 	margin-left:15px;
