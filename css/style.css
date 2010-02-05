@@ -169,6 +169,8 @@ input[type='submit'], input[type='button'], .button {
   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(255, 255, 255)), color-stop(1, rgb(194, 192, 191)));
   -moz-box-shadow:0 0 5px #fff;
   -webkit-box-shadow:0 0 5px #fff;
+  width:52px;
+  height:27px;
 }
 button:hover, .button:hover {
 	color:#000 !important;
