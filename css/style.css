@@ -35,9 +35,14 @@ a.no-underline, a.no-underline:active, a.no-underline:visited, a.no-underline:li
 	text-decoration:none;
 	border-bottom:0;
 }
+#groupfiltercontainer {
+  float:left;
+}
+span.refresh {
+	float:right;
+}
 #refresh span{display:none}
 #refresh, #refresh:hover, #refresh:focus {
-	float:right;
 	border-bottom:0;
 	text-decoration:none;
 	display:block;
