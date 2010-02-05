@@ -177,7 +177,7 @@ $(function(){
 
     app.post('#/message',function(c){
       var msg = this.params['body'];
-      if(msg == "") return false; 
+      if(msg == "" || msg == "Share something...") return false; 
       $.ajax({
         url: this.params['puburl'],
         type: "post",
