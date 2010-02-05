@@ -59,6 +59,7 @@ a.no-underline, a.no-underline:active, a.no-underline:visited, a.no-underline:li
 }
 .span-avatar {
 	width:50px;
+  margin-bottom:20px;
 }
 .span-activity {
 	width:570px;
