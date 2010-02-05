@@ -78,6 +78,9 @@ div[id='T:pt_ps1'],
 div[id='T:pt_psl6::c']{
 	overflow:visible !important;
 }
+div[id='T:pt_ps1::f'] {
+	margin-bottom:-4px;
+}
 div[id='T:secondaryTabSet'] table tr td a.p_AFSelected,
 div[id='T:secondaryTabSet'] table tr td a:hover,
 div[id='T:irmenu'] ul li:hover,
