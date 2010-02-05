@@ -196,3 +196,6 @@ span[id='T:secondaryTabSet::oc'] a.xfc {
 span[id='T:secondaryTabSet::oc'] a.p_AFSelected {
 	background:#e4e4e4;
 }
+table[id='T:pt_pgl2'] {
+	padding:0 10px !important;
+}
