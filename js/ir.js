@@ -1,29 +1,35 @@
 var assetHost = 'http://aconmt01.us.oracle.com/';
-//var apiPort = 8893;
 $.xLazyLoader({
   'css' : $.map(['dd','ir'],function(n){return assetHost+'css/'+n+'.css'}),
   'js' : $.map(['pure','json','domcached','dd','wcutils','wcrest'],function(n){return assetHost+'js/'+n+'.js'})
 });
 $(function(){
+  // _adf.ctrl-state param needs to be passed on each request
+  // to prevent mem leaks
+  var ctrlState = $.map(location.search.split('&'),function(i){
+    var t=i.split('=');
+    if(t[0].match('_adf.ctrl-state')) return ['_adf.ctrl-state',t[1]].join('=');
+  });
+  if(ctrlState) ctrlState = "?" + ctrlState[0];
+  else ctrlState = "";
   function renderSwitcher(d,currGS){
     for (i in d['gsspace']) {
-      console.log(i);
       if(d['gsspace'][i].name == currGS) {
-        $('#gs option')[i].selected1 = true;
-      }else{
-        $('#gs option')[i].selected1 = false;
+        d['gsspace'][i].selected1 = 1;
+      } else {
+        d['gsspace'][i].selected1 = "";
       }
     }
-    $('.gsspace').clone(true).appendTo('#gs').autoRender(d)
+    $('.gsspace').clone(true).appendTo('#gs').autoRender(d);
+    $('#gs').msDropDown();
   }
 
   var gs = $('#group-switcher');
-  gs.html('<select id="gs" onchange="location=this.value"><option class="gsspace spacename url@value selected1@selected" value="/webcenter/spaces/home">Home</option></select>');
+  gs.html('<select id="gs" onchange="location=this.value" class="hide"><option class="gsspace spacename url@value selected1@selected" value="/webcenter/spaces/home'+ctrlState+'">Home</option></select>');
   var spacesCached = $.DOMCached.get('groups','webcenter');
   if(spacesCached){
-    console.log('got cached');
-    //renderSwitcher(spacesCached,currentGroupSpace);
-  }
+    renderSwitcher(spacesCached,currentGroupSpace);
+  };
   webCenter.init({},function(){
     currentUser.getSpaces(function(){
       var bindData = {
@@ -31,17 +37,17 @@ $(function(){
            return {
              'spacename' : n.displayName,
              'name' : n.name,
-             'url' : '/webcenter/spaces/' + n.name,
+             'url' : '/webcenter/spaces/' + n.name + ctrlState,
              'selected1' : false
            }
          })
       };
       bindData['gsspace'].push({
         'spacename':'Browse Group Space', 
-        'url':'/webcenter/faces/oracle/webcenter/community/view/pages/manage/ManageSpaces-SpacesTab.jspx' 
+        'url':'/webcenter/faces/oracle/webcenter/community/view/pages/manage/ManageSpaces-SpacesTab.jspx?' + ctrlState 
       });
       $.DOMCached.set('groups',bindData,86400,'webcenter');
-      //if(spacesCached) return;
+      if(spacesCached) return;
       renderSwitcher(bindData,currentGroupSpace);
 
     });
@@ -50,4 +56,3 @@ $(function(){
 /* 
 vim:ts=2:sw=2:expandtab
 */
-
