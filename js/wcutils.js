@@ -11,7 +11,7 @@ var utils = function(){
 
   function resolveURLs(str) {
     // Caja's html_sanitizer prevents XSS/code injection attacks
-    str = html_sanitize(str,function(url){if(/^https?:\/\//.test(url)){return url}}, function(id){return id}));
+    str = html_sanitize(str,function(url){if(/^https?:\/\//.test(url))return url},function(id){return id});
     
     // based on Gruber's liberal regex pattern enhanced by Alan Storm
     // http://alanstorm.com/url_regex_explained
