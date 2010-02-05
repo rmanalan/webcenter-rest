@@ -32,47 +32,8 @@ $(function(){
       .blur(function(){if(this.value.replace(' ')=='')$(this).val(placeholder)});
   }
 
-  function pageThroughSpaces(startIndex,perPage){
-    currentUser.getSpacesPaged(startIndex,perPage,function(d){
-      var widgetData = {
-        'sbspace' : $.map(d, function(d){
-          var descr = "";
-          var iconUrl = "";
-          if(typeof(d.description)=='undefined') descr="";
-          else descr = d.description;
-          if(typeof(d.iconUrl)=='undefined') iconUrl = "";
-          else iconUrl = d.iconUrl;
-          if(!d.isOffline) {
-            return {
-              'spspaceiconimg' : iconUrl,
-              'sbspacename' : d.displayName,
-              'sbspacelink' : '/webcenter/spaces/' + d.name,
-              'sbspacedescr' : descr
-            }
-          }
-        })
-      };
-      var template = $('.sbspace:first');
-      $('#sb-spaces ul').empty().append(template).autoRender(widgetData);
-    });
-  }
-
-  $('#sbspaces-pager-next').click(function(c){
-    var page = this.params['page'];
-    var perPage = 5;
-    var startIndex = (((page-1)*perPage)+1);
-    pageThroughSpaces(startIndex,perPage);
-  });
-
   function initApp(callback){
     webCenter.init({},function(){
-      // show who's logged in
-      $('ul.headnav li').autoRender({
-        'username' : currentUser.name.formatted,
-        'url' : webCenter.getResourceURL(currentUser.links,
-          'urn:oracle:webcenter:spaces:profile',false)
-      }).show();
-
       // Listen for <enter> key inside the publisher textarea
       $('#pub-text').bind('keyup',function(e){
         if(e.keyCode==13){
@@ -95,36 +56,15 @@ $(function(){
         return false;
       });
 
-      $('#listfilter').bind('change',function(e){
-        location = '#/list/' + $('option:selected',this).text();
-      });
-
       // Sets url for default stream
       $('.lfopts:first').attr('value',
          webCenter.getResourceURL(webCenter.resourceIndex.links,
            'urn:oracle:webcenter:activities:stream',true));
 
-      // Setup Lists drop-down
-      /*
-      currentUser.getListNames(function(){
-        if(currentUser.listNames.length==0) return;
-        var bindData = {
-          'lfopts' : $.map(currentUser.listNames,function(d){
-             return {
-               'lfoptname' : d.name,
-               'lfoptval' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:activities:stream',true)
-             };
-           })
-        };
-        $('.lfopts').clone(true).appendTo('#listfilter').autoRender(bindData);
-        $('.lfopts:last').clone(true).appendTo('#listfilter').val('').html('Create a new list');
-      });
-      */
-
-
       $('#groupfilter').bind('change',function(e){
         location = '#/group/' + $('option:selected',this).text();
       });
+
       // Sets url for default stream
       $('#grouppub option:first').attr('value',
           webCenter.getResourceURL(webCenter.resourceIndex.links,
@@ -149,51 +89,12 @@ $(function(){
             };
           })
         };
-        var widgetData = {
-          'sbspace' : $.map(currentUser.spaces, function(d){
-            var descr = "";
-            var iconUrl = "";
-            if(typeof(d.description)=='undefined') descr="";
-            else descr = d.description;
-            if(typeof(d.iconUrl)=='undefined') iconUrl = "";
-            else iconUrl = d.iconUrl;
-            if(!d.isOffline) {
-              return {
-                'spspaceiconimg' : iconUrl,
-                'sbspacename' : d.displayName,
-                'sbspacelink' : '/webcenter/spaces/' + d.name,
-                'sbspacedescr' : descr
-              }
-            }
-          }).slice(0,5) // show me just the first five groups
-        };
         $('#grouppub option:first').clone(true).appendTo('#grouppub').autoRender(filterData);
         $('#groupfilter option:first').clone(true).appendTo('#groupfilter').autoRender(filterData);
-        //$('.sbspace').autoRender(widgetData).parent().show();
         callback(); 
 
       });
 
-      /*
-      currentUser.getConnections(function(){
-        if(currentUser.connections.length==0) {
-          callback();
-          return;
-        }
-        var connectionData = {
-          'sbconnection' : $.map(currentUser.connections,function(d){
-            return {
-              'sbconnectionlink' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:spaces:profile',false),
-              'sbconnectionimg' : userProfile.avatarSmall(d.guid),
-              'sbconnectionname' : d.displayName
-            };
-          })
-        };
-        $('.sbconnection').autoRender(connectionData);
-        // Don't process anything until everything is set up
-      })
-      */
-      
     });
 
   };
@@ -238,16 +139,19 @@ $(function(){
     var lastLocation;
     app.element_selector = '#main-content';
 
+
     app.before(function(c){
       var currLocation = app.getLocation();
       if(!appStarted){
         initApp(function(){
           appStarted = true;
-          app.refresh(); //required to get stream to render
+					// Bug: needed to render the stream... shouldn't have to do this since
+					// activityStreamApp.run('#/') already does it
+					app.runRoute('get','#/')
         });
-        return false;
-      };
-      app.trigger('update-filters', currLocation);
+				return false;
+			}
+    	app.trigger('update-filters', currLocation);
     });
 
     app.after(function(){
@@ -259,30 +163,11 @@ $(function(){
       renderStream(webCenter.resourceIndex.links, 0,true);
     });
 
-    app.get('#/list/:name',function(c){
-      var listName = this.params['name'];
-      if(listName=='All%20contacts'){
-        renderStream(webCenter.resourceIndex.links, 0,true);
-      } else if(listName=='Create%20a%20new%20list') {
-        alert('Patience little grasshopper... not implemented yet')
-        if(lastLocation) this.redirect(lastLocation);
-      } else {
-        var url = $.grep($('#listfilter option'),function(n){return $(n).text()==decodeURI(listName)})[0].value;
-        var activityTemplate = $('li.messages:first');
-        $('ol.results').empty().append(activityTemplate);
-        renderStream(url, 0,true);
-      }
-    });
-
     app.get('#/group/:name',function(c){
-      var groupName = this.params['name'];
-      if(groupName=='My%20connections'){
-        $('#listfilter').attr('disabled',false);
-        $('#listfilter option:first').attr('selected',true);
-        renderStream(webCenter.resourceIndex.links, 0,true);
+      var groupName = this.params['name'];	  
+      if(groupName=='My connections'){
+        this.redirect('#/');
       } else {
-        $('#listfilter').attr('disabled',true);
-        $('#listfilter option:first').attr('selected',true);
         var url = $.grep($('#groupfilter option'),function(n){return $(n).text()==decodeURI(groupName)})[0].value;
         var activityTemplate = $('li.messages:first');
         $('ol.results').empty().append(activityTemplate);
@@ -322,17 +207,6 @@ $(function(){
     });
 
     app.bind('update-filters',function(e,currLocation){
-      if(/\#\/list\//.test(currLocation)){
-        var selectedVal = currLocation.split('#/list/')[1].split('/')[0];
-        $('#listfilter option').each(function(i,n){
-          var opt = $(n);
-          if(opt.text()==selectedVal){
-            opt.attr('selected','1');
-          } else {
-            opt.removeAttr('selected');
-          }
-        })
-      };
       if(/\#\/group\//.test(currLocation)){
         var selectedVal = currLocation.split('#/group/')[1].split('/')[0];
         $('#groupfilter option').each(function(i,n){
@@ -352,3 +226,4 @@ $(function(){
 /* 
 vim:ts=2:sw=2:expandtab
 */
+
