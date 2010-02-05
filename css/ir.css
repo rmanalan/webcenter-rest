@@ -70,7 +70,12 @@ div[id='T:secondaryTabSet'] table tr td {
 	height:23px;
 }
 div[id='T:pt_psl3'],
-div[id='T:pt_psl2::c'] {
+div[id='T:pt_psl2::c'],
+div[id='T:pt_psl2'],
+div[id='T:pt_psl3::c'],
+div[id='T:pt_ps1::f'],
+div[id='T:pt_ps1'],
+div[id='T:pt_psl6::c']{
 	overflow:visible !important;
 }
 div[id='T:secondaryTabSet'] table tr td a.p_AFSelected,
