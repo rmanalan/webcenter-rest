@@ -7,8 +7,8 @@
 	float:left;
 }
 .dd .ddTitle {
-	background:#f2f2f2;
-	border:1px solid #c3c3c3;
+	background-image:none;
+	border:0;
 	padding:3px;
 	text-indent:0;
 	cursor:default;
@@ -27,7 +27,7 @@
 }
 .dd .ddChild {
 	position:absolute;
-	border:1px solid #c3c3c3;
+	border:0;
 	border-top:none;
 	display:none;
 	margin:0;
@@ -60,3 +60,5 @@
 }
 .hidden {display:none;}
 s
+
+
