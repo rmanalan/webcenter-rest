@@ -65,7 +65,7 @@ $(function(){
   });
 
   function initApp(callback){
-    webCenter.init(function(){
+    webCenter.init({},function(){
       // show who's logged in
       $('ul.headnav li').autoRender({
         'username' : currentUser.name.formatted,
