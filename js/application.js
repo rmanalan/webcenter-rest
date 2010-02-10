@@ -38,7 +38,7 @@ $(function(){
       bl: { radius: 5 },
       br: { radius: 5 },
       antiAlias: true,
-      autoPad: true
+      autoPad: false
     });
   };
 
