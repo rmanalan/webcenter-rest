@@ -10,14 +10,6 @@ $(function(){
     var t=i.split('=');
     if(t[0].match('_adf.ctrl-state')) return ['_adf.ctrl-state',t[1]].join('=');
   });
-  $('.dd').corner({
-    tl: { radius: 5 },
-    tr: { radius: 5 },
-    bl: { radius: 5 },
-    br: { radius: 5 },
-    antiAlias: true,
-    autoPad: false
-  });
   if(ctrlState) ctrlState = "?" + ctrlState[0];
   else ctrlState = "";
   function renderSwitcher(d,currGS){
@@ -57,6 +49,14 @@ $(function(){
       $.DOMCached.set('groups',bindData,86400,'webcenter');
       if(spacesCached) return;
       renderSwitcher(bindData,currentGroupSpace);
+      $('.dd').corner({
+        tl: { radius: 5 },
+        tr: { radius: 5 },
+        bl: { radius: 5 },
+        br: { radius: 5 },
+        antiAlias: true,
+        autoPad: false
+      });
 
     });
   });
