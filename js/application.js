@@ -32,7 +32,7 @@ $(function(){
       .blur(function(){if(this.value.replace(' ')=='')$(this).val(placeholder)});
   }
   if($.browser.msie) {
-    $('#publisher').corner({          
+    $('#publisher, #pub1-text textarea, #share').corner({          
       tl: { radius: 5 },
       tr: { radius: 5 },
       bl: { radius: 5 },
