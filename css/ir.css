@@ -23,27 +23,27 @@ div[id='T:pt_ps1::d'] {
   display:none;
 }
 div.irNav td.xp4 {
-  background:url(../images/nav_ul.png) no-repeat -1px 0 !important;
+  background:url(../images/nav-ul.png) no-repeat 0 0 !important;
 }
 div.irNav td.xp8 {
-  background:url(../images/nav_um.png) repeat-x !important;
+  background:url(../images/nav-um.png) repeat-x !important;
 }
 div.irNav td.xpc {
-  background:url(../images/nav_ur.png) no-repeat -5px 0 !important;
+  background:url(../images/nav-ur.png) no-repeat 0 0 !important;
 }
 div.irNav td.xp6 {
-  background:url(../images/nav_ll.png) no-repeat -1px 0 !important;
+  background:url(../images/nav-ll.png) no-repeat 0 0 !important;
 }
 div.irNav td.xpa {
-  background:url(../images/nav_lm.png) repeat-x !important;
+  background:url(../images/nav-lm.png) repeat-x !important;
 }
 div.irNav td.xpe {
-  background:url(../images/nav_lr.png) no-repeat -4px 0 !important;
+  background:url(../images/nav-lr.png) no-repeat 0 0 !important;
 }
 div.irNav div.x1l6 {
   border-left:0;
   background-image:none !important;
-  background:#dee4ea url(../images/nav_body.png) repeat-y top right !important;
+  background:#dee4ea url(../images/nav-body.png) repeat-y top right !important;
 }
 div.irNav div.x1a[theme=dark] {
   padding:0 5px;
