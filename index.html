@@ -30,10 +30,10 @@
     var apiPort = 80;
     $.xLazyLoader({
       js: $.map(['wcrest.js','application.js'],function(n){
-        return 'http://' + hostname + ':' + assetPort + '/js/' + n;
+        return 'http://' + hostname + ':' + assetPort + '/owccustom/js/' + n;
       }),
       css: $.map(['style.css'],function(n){
-        return 'http://' + hostname + ':' + assetPort + '/' + 'css/' + n;
+        return 'http://' + hostname + ':' + assetPort + '/owccustom/css/' + n;
       })
     })
     </script>
