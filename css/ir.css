@@ -41,7 +41,7 @@ div.irNav td.xpe {
   background:url(../images/nav-lr.png) no-repeat 0 0 !important;
 }
 div.irNav div.x1l6 {
-  border-left:0;
+  border-left:1px solid #ccc;
   background-image:none !important;
   background:#dee4ea url(../images/nav-body.png) repeat-y top right !important;
 }
