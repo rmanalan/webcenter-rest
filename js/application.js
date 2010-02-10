@@ -31,7 +31,7 @@ $(function(){
       .focus(function(){if(this.value==placeholder)$(this).val('')})
       .blur(function(){if(this.value.replace(' ')=='')$(this).val(placeholder)});
   }
-  if($.browser.ie) {
+  if($.browser.msie) {
     $('#publisher').corner({          
       tl: { radius: 5 },
       tr: { radius: 5 },
