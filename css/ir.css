@@ -15,6 +15,9 @@ div.irNav {
   background-color:#e3e9ee;
 */
 }
+body.x11d {
+  background-color:#ccc !important;
+}
 a[id='T:oc_3228768355region1:photoRefresher'],
 div[id='T:pt_ps1::d'] {
   display:none;
