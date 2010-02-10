@@ -90,7 +90,6 @@ $(function(){
             };
           })
         };
-        console.log(filterData);
         $('#grouppub option:first').clone(true).appendTo('#grouppub').autoRender(filterData);
         $('#groupfilter option:first').clone(true).appendTo('#groupfilter').autoRender(filterData);
         callback(); 
