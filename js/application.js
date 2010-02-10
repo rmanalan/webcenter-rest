@@ -85,7 +85,7 @@ $(function(){
                 'groupname' : d.displayName,
                 'groupval' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:activities:stream',true),
                 'groupmsgboard' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:messageBoard',false),
-                'cmuploadurl' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:cmis:folder',false),
+                'cmuploadurl' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:cmis:folder',false)
               };
             };
           })
