@@ -31,6 +31,16 @@ $(function(){
       .focus(function(){if(this.value==placeholder)$(this).val('')})
       .blur(function(){if(this.value.replace(' ')=='')$(this).val(placeholder)});
   }
+  if($.browser.ie) {
+    $('#publisher').corner({          
+      tl: { radius: 5 },
+      tr: { radius: 5 },
+      bl: { radius: 5 },
+      br: { radius: 5 },
+      antiAlias: true,
+      autoPad: true
+    });
+  };
 
   function initApp(callback){
     webCenter.init({},function(){
