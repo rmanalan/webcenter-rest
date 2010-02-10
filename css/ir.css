@@ -6,31 +6,40 @@
   background-color:transparent;
 }
 div.irNav {
+/*
   -moz-border-radius:5px;
   -webkit-border-radius:5px;
   -moz-box-shadow:2px 2px 3px #777;
   -webkit-box-shadow:2px 2px 3px #777;
   border:1px solid #ccc;
   background-color:#e3e9ee;
+*/
 }
-div.irNav table.xot,
 a[id='T:oc_3228768355region1:photoRefresher'],
 div[id='T:pt_ps1::d'] {
   display:none;
 }
-div.irNav td.xp4,
-div.irNav td.xp8,
-div.irNav td.xpc,
-div.irNav div.x1l6,
-div.irNav td.xp6,
-div.irNav td.xpa,
-div.irNav td.xpe {
-  background-image:none !important;
+div.irNav td.xp4 {
+  background:url(../images/nav_ul.png) no-repeat !important;
 }
-div.irNav div.x1l6,
-div.irNav div.x1l7 {
+div.irNav td.xp8 {
+  background:url(../images/nav_um.png) repeat-x !important;
+}
+div.irNav td.xpc {
+  background:url(../images/nav_ur.png) no-repeat !important;
+}
+div.irNav td.xp6 {
+  background:url(../images/nav_ll.png) no-repeat !important;
+}
+div.irNav td.xpa {
+  background:url(../images/nav_lm.png) repeat-x !important;
+}
+div.irNav td.xpe {
+  background:url(../images/nav_lr.png) no-repeat !important;
+}
+div.irNav div.x1l6 {
   border-left:0;
-  background-image:none !important;
+  background:url(../images/nav_body.png) repeat-y !important;
 }
 div.irNav div.x1a[theme=dark] {
   padding:0 5px;
@@ -58,7 +67,7 @@ div[id='T:search'] {
 }
 div[id='T:secondaryTabSet'] table {
   margin:10px 0 0 -5px;
-  width:188px;
+  width:184px;
 }
 div[id='T:secondaryTabSet'] table div.xh7 {
   display:none;
@@ -79,7 +88,7 @@ div[id='T:pt_psl6::c']{
 	overflow:visible !important;
 }
 div[id='T:pt_ps1::f'] {
-	margin-bottom:4px !important;
+	margin-bottom:-1px !important;
 }
 div[id='T:secondaryTabSet'] table tr td a.p_AFSelected,
 div[id='T:secondaryTabSet'] table tr td a:hover,
@@ -104,7 +113,7 @@ div[id='T:irmenu'] {
 	margin-top:10px;
 }
 div[id='T:irmenu'] ul {
-	margin:0 -5px 0 -8px !important;
+	margin:0 5px 0 -8px !important;
 	padding:0 !important;
 }
 div[id='T:irmenu'] ul li {
@@ -135,11 +144,12 @@ div[id='T:irmenu'] ul li a.selected span {
   -webkit-box-shadow:2px 2px 8px #333;
   text-shadow:1px 1px 0 #fff;
 }
+#group-switcher,
 #gs_msdd {
-  width:175px !important;
+  width:168px !important;
 }
 #gs_child {
-  width:173px !important;
+  width:168px !important;
   background:#333;
   opacity:.9;
   -moz-border-radius:5px;
@@ -199,3 +209,4 @@ span[id='T:secondaryTabSet::oc'] a.p_AFSelected {
 table[id='T:pt_pgl2'] {
 	padding:0 10px !important;
 }
+
