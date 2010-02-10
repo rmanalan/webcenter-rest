@@ -111,6 +111,7 @@ div[id='T:secondaryTabSet'] table tr td a:hover span {
   text-shadow:1px 1px 0 #666;
 }
 div[id='T:pt_pgl8'] {
+  margin-left:-1px;
   overflow:hidden !important;
 }
 div[id='T:irmenu'] {
