@@ -48,17 +48,22 @@ var webCenter = function(callback){
     }
   };
 
-  function getResourceURL(links, urn, startIndex, perPage, params) {
+  function getResourceURL(links, urn, startIndex, perPage, params, projections) {
     if(!perPage) perPage = settings.perPage;
+    if(projections) {
+      var projectParam = "&projection=details";
+    } else {
+      var projectParam = "";
+    }
     var results = $.grep(links, function(n){
         return n.resourceType == urn;
-      });
+    });
     if(results.length>0){
       //return href if startIndex is false
-      if(startIndex==false && typeof(startIndex)=='boolean') return results[0].href;
+      if(startIndex==false && typeof(startIndex)=='boolean') return results[0].href + projectParam;
       if(results[0].template){
         // return template url if startIndex is true
-        if(startIndex==true && typeof(startIndex)=='boolean') return results[0].template;
+        if(startIndex==true && typeof(startIndex)=='boolean') return results[0].template + projectParam;
         // return paged url if startIndex is a number
         var url = results[0].template.replace("{itemsPerPage}", perPage);
         if(!startIndex) startIndex = "0";
@@ -68,7 +73,7 @@ var webCenter = function(callback){
             url = url.replace('{'+param+'}',params[param]);
           }
         }
-        return url;
+        return url + projectParam;
       } else {
         return results[0].href;
       }
@@ -191,7 +196,7 @@ var userProfile = function(){
   }
 
   function getSpaces(callback){
-    $.getJSON(webCenter.getResourceURL(webCenter.resourceIndex.links,'urn:oracle:webcenter:spaces',false),function(d){
+    $.getJSON(webCenter.getResourceURL(webCenter.resourceIndex.links,'urn:oracle:webcenter:spaces',false,null,null,true),function(d){
       var obj = $.extend(currentUser,{"spaces":d.items});
       if(callback) {
         callback(obj);

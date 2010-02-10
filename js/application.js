@@ -83,12 +83,14 @@ $(function(){
             if(!d.isOffline) {
               return {
                 'groupname' : d.displayName,
-                // TODO the following URL won't work... need to figure out what to publish to for groups
-                'groupval' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:activities:stream',true)
+                'groupval' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:activities:stream',true),
+                'groupmsgboard' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:messageBoard',false),
+                'cmuploadurl' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:cmis:folder',false),
               };
             };
           })
         };
+        console.log(filterData);
         $('#grouppub option:first').clone(true).appendTo('#grouppub').autoRender(filterData);
         $('#groupfilter option:first').clone(true).appendTo('#groupfilter').autoRender(filterData);
         callback(); 

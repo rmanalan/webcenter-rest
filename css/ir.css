@@ -215,6 +215,10 @@ table[id='T:pt_pgl2'] {
 }
 table[id='T:pt_pgl2'] tbody tr td a {
   color:#333 !important;
+  text-shadow:1px 1px 0 #fff;
+}
+table[id='T:pt_pgl7'] {
+  margin-right:10px;
 }
 /*
 vim:ts=2:sw=2

@@ -6,38 +6,36 @@
     <!--[if IE]>
     <script src="http://html5shiv.googlecode com/svn/trunk/html5.js"></script> 
     <![endif]-->
-    <script src="./js/jquery.js"></script>
-    <script src="./js/xLazyLoader.js"></script>
-    <script src="./js/pure.js"></script>
-    <script src="./js/timeago.js"></script>
-    <script src="./js/sammy.js"></script>
-    <script src="./js/sammy.json.js"></script>
-    <script src="./js/autoresize.js"></script>
-    <script src="./js/xLazyLoader.js"></script>
-    <script src="./js/swfobject.js"></script>
-    <script src="./js/uploadify.js"></script>
-    <script src="./js/html-sanitizer-minified.js"></script>
-    <script src="./js/wcutils.js"></script>
-    <script src="./js/wcrest.js"></script>
-    <script src="./js/application.js"></script>
-    <link href="./css/screen.css" type="text/css" media="screen" rel="stylesheet"/>
-    <link href="./css/uploadify.css" type="text/css" media="screen" rel="stylesheet"/>
-    <link href="./css/style.css" type="text/css" media="screen" rel="stylesheet"/>
+    <script src="http://webcenter-stage.us.oracle.com/owccustom/js/jquery.js"></script>
+    <script src="http://webcenter-stage.us.oracle.com/owccustom/js/xLazyLoader.js"></script>
+    <script src="http://webcenter-stage.us.oracle.com/owccustom/js/pure.js"></script>
+    <script src="http://webcenter-stage.us.oracle.com/owccustom/js/timeago.js"></script>
+    <script src="http://webcenter-stage.us.oracle.com/owccustom/js/sammy.js"></script>
+    <script src="http://webcenter-stage.us.oracle.com/owccustom/js/sammy.json.js"></script>
+    <script src="http://webcenter-stage.us.oracle.com/owccustom/js/autoresize.js"></script>
+    <script src="http://webcenter-stage.us.oracle.com/owccustom/js/xLazyLoader.js"></script>
+    <script src="http://webcenter-stage.us.oracle.com/owccustom/js/swfobject.js"></script>
+    <script src="http://webcenter-stage.us.oracle.com/owccustom/js/uploadify.js"></script>
+    <script src="http://webcenter-stage.us.oracle.com/owccustom/js/html-sanitizer-minified.js"></script>
+    <script src="http://webcenter-stage.us.oracle.com/owccustom/js/wcutils.js"></script>
+    <!--script src="http://webcenter-stage.us.oracle.com/owccustom/js/wcrest.js"></script>
+    <script src="http://webcenter-stage.us.oracle.com/owccustom/js/application.js"></script-->
+    <link href="http://webcenter-stage.us.oracle.com/owccustom/css/screen.css" type="text/css" media="screen" rel="stylesheet"/>
+    <link href="http://webcenter-stage.us.oracle.com/owccustom/css/uploadify.css" type="text/css" media="screen" rel="stylesheet"/>
+    <!--link href="./css/style.css" type="text/css" media="screen" rel="stylesheet"/-->
     <script>
     // Lazy load the application scripts/css so I can work on them locally
-    /*
-    var hostname = location.hostname;
+    var hostname = (location.hostname == 'wc')? 'wc' : location.hostname;
     var assetPort = 80;
     var apiPort = 80;
     $.xLazyLoader({
-      js: $.map(['wcutils.js', 'wcrest.js','application.js'],function(n){
-        return 'http://' + hostname + ':' + assetPort + '/owccustom/' + 'js/' + n;
+      js: $.map(['wcrest.js','application.js'],function(n){
+        return 'http://' + hostname + ':' + assetPort + '/js/' + n;
       }),
       css: $.map(['style.css'],function(n){
         return 'http://' + hostname + ':' + assetPort + '/' + 'css/' + n;
       })
     })
-    */
     </script>
     <title>WebCenter Activities</title>
   </head>
@@ -53,9 +51,9 @@
         <div id="publisher" class="clearfix">
           <form id="pub-form" action="#/message" method="post">
             <div id="pub1-share" class="loud">
-              <!--Share something with-->
-              <select id="grouppub" name="puburl" class="hide">
-                <option class="groupopt groupname groupval@value" value="">Everyone</option>
+              Share something with
+              <select id="grouppub" name="puburl">
+                <option class="groupopt groupname groupmsgboard@value" value="">My Connections</option>
               </select>
             </div>
             <div id="pub1-text" class="clearfix">
