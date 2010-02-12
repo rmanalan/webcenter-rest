@@ -197,22 +197,23 @@ $(function(){
         data: JSON.stringify({'body': utils.resolveURLs(msg)}),
         success: function(d){
           $('#pub-text').val('').css('height',18);
-          var profileUrl = webCenter.getResourceURL(d.author.links,
-            'urn:oracle:webcenter:spaces:profile');
-          var data = {
-              'messages' : [{
-                'id' : activityStream.nextActivityId(),
-                'avatar' : userProfile.avatarSmall(d.author.guid),
-                'name' : d.author.displayName,
-                'url' : profileUrl,
-                'activity' : utils.linkTo(profileUrl, d.author.displayName) + ' posted a message',
-                'detail' : d.body,
-                'reltime' : utils.timeAgoInWords(d.created)
-              }]
-            };
+          //var profileUrl = webCenter.getResourceURL(d.author.links,
+          //  'urn:oracle:webcenter:spaces:profile');
+          //var data = {
+          //    'messages' : [{
+          //      'id' : activityStream.nextActivityId(),
+          //      'avatar' : userProfile.avatarSmall(d.author.guid),
+          //      'name' : d.author.displayName,
+          //      'url' : profileUrl,
+          //      'activity' : utils.linkTo(profileUrl, d.author.displayName) + ' posted a message',
+          //      'detail' : d.body,
+          //      'reltime' : utils.timeAgoInWords(d.created)
+          //    }]
+          //  };
           // don't re-render the entire stream, just prepend the latest to the top
-          $('li.messages:first').clone(true).prependTo('ol.results')
-            .autoRender(data).show(300);
+          //$('li.messages:first').clone(true).prependTo('ol.results')
+          //  .autoRender(data).show(300);
+          renderStream($('#stream').data('currentStreamUrl'),0,true);
         }
       });
     });
