@@ -129,7 +129,7 @@ $(function(){
             'name' : webCenter.getTemplateItem(d.templateParams.items,'user').displayName,
             'url' : webCenter.getResourceURL(webCenter.getTemplateItem(d.templateParams.items, 'user').links,
               'urn:oracle:webcenter:people:person'),
-            'activity' : webCenter.resolveBindItems(d.message, d.templateParams.items),
+            'activity' : webCenter.resolveBindItems(d),
             'detail' : detail,
             'reltime' : utils.timeAgoInWords(d.createdDate)
             }

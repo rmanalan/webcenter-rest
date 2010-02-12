@@ -60,7 +60,17 @@ var webCenter = function(callback){
     });
     if(results.length>0){
       //return href if startIndex is false
-      if(startIndex==false && typeof(startIndex)=='boolean') return results[0].href + projectParam;
+      if(startIndex==false && typeof(startIndex)=='boolean') {
+        // in some nodes, there are more than one of the same resourceType, like groupSpace.
+        // in this case we have to search for the one with the 'alternate' view
+        if(results.length>1){
+          var results = $.grep(links,function(n){return n.rel=='alternate'});
+          if(results==1) return results[0].href + projectParam;
+          else return null;
+        } else {
+          return results[0].href + projectParam;
+        }
+      }
       if(results[0].template){
         // return template url if startIndex is true
         if(startIndex==true && typeof(startIndex)=='boolean') return results[0].template + projectParam;
@@ -93,9 +103,9 @@ var webCenter = function(callback){
     }
   }
 
-  function resolveBindItems(str, items) {
-    return str.replace(/\{[^\}]*\}/g, function(key){
-      var item = $.grep(items, function(n){
+  function resolveBindItems(d) {
+    var activityDescr = d.message.replace(/\{[^\}]*\}/g, function(key){
+      var item = $.grep(d.templateParams.items, function(n){
           return n.key == key;
         })[0];
       var url = $.grep(item.links, function(l){
@@ -103,6 +113,13 @@ var webCenter = function(callback){
         })[0].href;
       return ' <a href="' + url + '" target="_top">' + item.displayName + '</a> '; 
     });
+    if(d.groupSpace){
+      console.log(d.groupSpace);
+      activityDescr += ' in <a href="' + webCenter.getResourceURL(d.groupSpace.links,'urn:oracle:webcenter:space',false) 
+        + '" target="_top">' + d.groupSpace.displayName + '</a>';
+    };
+    return activityDescr;
+    
   }
 
   function getPerPage(){
