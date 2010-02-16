@@ -212,8 +212,10 @@ var userProfile = function(){
     });
   }
 
-  function getSpaces(callback){
-    $.getJSON(webCenter.getResourceURL(webCenter.resourceIndex.links,'urn:oracle:webcenter:spaces',false,null,null,true),function(d){
+  function getSpaces(callback,projection){
+    if(projection) var projectParam = true
+    else var projectParam = false
+    $.getJSON(webCenter.getResourceURL(webCenter.resourceIndex.links,'urn:oracle:webcenter:spaces',false,null,null,projectParam),function(d){
       var obj = $.extend(currentUser,{"spaces":d.items});
       if(callback) {
         callback(obj);
