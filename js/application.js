@@ -5,10 +5,10 @@ $(function(){
   $('#pub1-uploader').uploadify({
     'wmode' : 'transparent',
     'hideButton' : true,
-    'uploader' : 'http://weblogic-stage.us.oracle.com/js/uploadify.swf',
+    'uploader' : 'http://aconmt01.us.oracle.com/js/uploadify.swf',
     'cancelImg' : '../images/cancel.png',
-    'script' : 'http://localhost:9393',
-    'fileDataName' : 'file',
+    'script' : 'http://weblogic:welcome1@wc/cmisrestprelim/cmis/children/stanl18/IDC:Folder%2F995097011',
+    'fileDataName' : 'fileUpload',
     'scriptAccess' : 'always',
     'height' : 16,
     'width' : 70,
@@ -43,7 +43,7 @@ $(function(){
   };
 
   function initApp(callback){
-    webCenter.init({},function(){
+    webCenter.init({'perPage':20},function(){
       // Listen for <enter> key inside the publisher textarea
       $('#pub-text').bind('keyup',function(e){
         if(e.keyCode==13){
@@ -197,22 +197,6 @@ $(function(){
         data: JSON.stringify({'body': utils.resolveURLs(msg)}),
         success: function(d){
           $('#pub-text').val('').css('height',18);
-          //var profileUrl = webCenter.getResourceURL(d.author.links,
-          //  'urn:oracle:webcenter:spaces:profile');
-          //var data = {
-          //    'messages' : [{
-          //      'id' : activityStream.nextActivityId(),
-          //      'avatar' : userProfile.avatarSmall(d.author.guid),
-          //      'name' : d.author.displayName,
-          //      'url' : profileUrl,
-          //      'activity' : utils.linkTo(profileUrl, d.author.displayName) + ' posted a message',
-          //      'detail' : d.body,
-          //      'reltime' : utils.timeAgoInWords(d.created)
-          //    }]
-          //  };
-          // don't re-render the entire stream, just prepend the latest to the top
-          //$('li.messages:first').clone(true).prependTo('ol.results')
-          //  .autoRender(data).show(300);
           renderStream($('#stream').data('currentStreamUrl'),0,true);
         }
       });

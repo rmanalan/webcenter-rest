@@ -1,1 +1,1 @@
-javascript:var%20b=document.body;var%20WEBCENTER___bookmarklet_domain='http://www.oracle.com';if(b&&!document.xmlVersion){void(z=document.createElement('script'));void(z.type='text/javascript');void(z.src='http://webcenter-stage.us.oracle.com/owccustom/bookmarklet.js');void(b.appendChild(z));}else{}
+javascript:var%20b=document.body;var%20WEBCENTER___bookmarklet_domain='http://www.oracle.com';if(b&&!document.xmlVersion){void(z=document.createElement('script'));void(z.type='text/javascript');void(z.src='http://wc/js/bookmarklet.js');void(b.appendChild(z));}else{}
