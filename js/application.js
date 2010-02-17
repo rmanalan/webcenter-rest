@@ -5,9 +5,9 @@ $(function(){
   $('#pub1-uploader').uploadify({
     'wmode' : 'transparent',
     'hideButton' : true,
-    'uploader' : 'http://aconmt01.us.oracle.com/js/uploadify.swf',
+    'uploader' : 'http://webcenter-stage.us.oracle.com/owccustom/js/uploadify.swf',
     'cancelImg' : '../images/cancel.png',
-    'script' : 'http://weblogic:welcome1@wc/cmisrestprelim/cmis/children/stanl18/IDC:Folder%2F995097011',
+    'script' : 'http://webcenter-stage.us.oracle.com/cmisrestprelim/cmis/children/UCM/IDC:Folder%2F18503',
     'fileDataName' : 'fileUpload',
     'scriptAccess' : 'always',
     'height' : 16,
