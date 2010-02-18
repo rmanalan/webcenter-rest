@@ -6,7 +6,7 @@ $(function(){
     'wmode' : 'transparent',
     'hideButton' : true,
     'uploader' : 'http://webcenter-stage.us.oracle.com/owccustom/js/uploadify.swf',
-    'cancelImg' : '../images/cancel.png',
+    'cancelImg' : 'http://webcenter-stage.us.oracle.com/owccustom/images/cancel.png',
     'script' : 'http://webcenter-stage.us.oracle.com/cmisrestprelim/cmis/children/UCM/IDC:Folder%2F2',
     'fileDataName' : 'fileUpload',
     'scriptAccess' : 'always',
@@ -20,7 +20,7 @@ $(function(){
     },
     'onError': function (event, queueID ,fileObj, errorObj) {
       dump = {'event':event, 'queueID': queueID, 'fileObj' : fileObj, 'errorObj' : errorObj};
-      console.log(errorObj.info)
+      console.log(dump)
     }
   });
 
