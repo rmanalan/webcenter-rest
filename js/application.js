@@ -7,7 +7,7 @@ $(function(){
     'hideButton' : true,
     'uploader' : 'http://webcenter-stage.us.oracle.com/owccustom/js/uploadify.swf',
     'cancelImg' : '../images/cancel.png',
-    'script' : 'http://webcenter-stage.us.oracle.com/cmisrestprelim/cmis/children/UCM/IDC:Folder%2F18503',
+    'script' : 'http://webcenter-stage.us.oracle.com/cmisrestprelim/cmis/children/UCM/IDC:Folder%2F2',
     'fileDataName' : 'fileUpload',
     'scriptAccess' : 'always',
     'height' : 16,

@@ -114,7 +114,6 @@ var webCenter = function(callback){
       return ' <a href="' + url + '" target="_top">' + item.displayName + '</a> '; 
     });
     if(d.groupSpace){
-      console.log(d.groupSpace);
       activityDescr += ' in <a href="' + webCenter.getResourceURL(d.groupSpace.links,'urn:oracle:webcenter:space',false) 
         + '" target="_top">' + d.groupSpace.displayName + '</a>';
     };
