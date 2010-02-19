@@ -172,11 +172,13 @@ input[type='submit'], input[type='button'], .button {
   width:52px;
   height:28px;
 }
+/*
 button:hover, .button:hover {
 	color:#000 !important;
 	border:1px solid #666 !important;
   -webkit-box-shadow:0 0 5px #999 !important;
 }
+*/
 #pub1-attachment {
 	color:#333;
 	text-decoration:none;

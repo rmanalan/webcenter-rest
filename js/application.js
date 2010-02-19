@@ -2,26 +2,39 @@ $(document).ajaxStart(function(){$('#loading-ind').show()}).ajaxStop(function(){
 
 var dump;
 $(function(){
-  $('#pub1-uploader').uploadify({
-    'wmode' : 'transparent',
-    'hideButton' : true,
-    'uploader' : 'http://webcenter-stage.us.oracle.com/owccustom/js/uploadify.swf',
-    'cancelImg' : 'http://webcenter-stage.us.oracle.com/owccustom/images/cancel.png',
-    'script' : 'http://webcenter-stage.us.oracle.com/cmisrestprelim/cmis/children/UCM/IDC:Folder%2F2',
-    'fileDataName' : 'fileUpload',
-    'scriptAccess' : 'always',
-    'height' : 16,
-    'width' : 70,
-//    'sizeLimit' : 2097152,
-    'multi' : true,
-    'auto' : true,
-    'onComplete' : function(event,queueID,fileObj,response,data) {
-      console.log(response);
-    },
-    'onError': function (event, queueID ,fileObj, errorObj) {
-      dump = {'event':event, 'queueID': queueID, 'fileObj' : fileObj, 'errorObj' : errorObj};
-      console.log(dump)
-    }
+  //$('#pub1-uploader').uploadify({
+  //  'wmode' : 'transparent',
+  //  'hideButton' : true,
+  //  'uploader' : '../js/uploadify.swf',
+  //  'cancelImg' : '../images/cancel.png',
+  //  'script' : 'http://webcenter-stage.us.oracle.com/cmisrestprelim/cmis/children/UCM/IDC:Folder%2F2',
+  //  'fileDataName' : 'fileUpload',
+  //  'scriptAccess' : 'always',
+  //  'height' : 16,
+  //  'width' : 70,
+////    'sizeLimit' : 2097152,
+  //  'multi' : true,
+  //  'auto' : true,
+  //  'onComplete' : function(event,queueID,fileObj,response,data) {
+  //    console.log(response);
+  //  },
+  //  'onError': function (event, queueID ,fileObj, errorObj) {
+  //    dump = {'event':event, 'queueID': queueID, 'fileObj' : fileObj, 'errorObj' : errorObj};
+  //    console.log(dump)
+  //  }
+  //});
+  
+  $('a#pub1-attachment').bind('click',function(){
+    $('#pub-form').attr('action','#/upload');
+    $(this).hide();
+    $('#pub1-upload-field').removeClass('hide');
+    $('#pub1-upload-field input').trigger('focus');
+  });
+  $('#pub1-upload-field button').bind('click',function(){
+    $('#pub-form').attr('action','#/message');
+    $('#pub1-upload-field input').val('');
+    $('#pub1-upload-field').addClass('hide');
+    $('a#pub1-attachment').show();
   });
 
   // Set up placeholder text for publisher
@@ -76,9 +89,12 @@ $(function(){
       });
 
       // Sets url for default stream
-      $('#grouppub option:first').attr('value',
-          webCenter.getResourceURL(webCenter.resourceIndex.links,
-            'urn:oracle:webcenter:messageBoard',false));
+      currentUser.getPublicFolderCmisUrl(function(url){
+        $('#grouppub option:first').attr('value',
+          JSON.stringify({'msgBoard' : webCenter.getResourceURL(webCenter.resourceIndex.links,
+            'urn:oracle:webcenter:messageBoard',false), 'cmisUpload' : url}));
+      })
+
       $('#groupfilter option:first').attr('value',
           webCenter.getResourceURL(webCenter.resourceIndex.links,
             'urn:oracle:webcenter:activities:stream',false));
@@ -94,8 +110,11 @@ $(function(){
               return {
                 'groupname' : d.displayName,
                 'groupval' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:activities:stream',true),
-                'groupmsgboard' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:messageBoard',false),
-                'cmuploadurl' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:cmis:folder',false)
+                'grouppuburls' : JSON.stringify({
+                  'msgBoard' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:messageBoard',false),
+                  'cmisUpload' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:cmis:folder',false)
+                    .replace('/folder/','/children/')
+                })
               };
             };
           })
@@ -104,7 +123,7 @@ $(function(){
         $('#groupfilter option:first').clone(true).appendTo('#groupfilter').autoRender(filterData);
         callback(); 
 
-      });
+      },true);
 
     });
 
@@ -190,7 +209,7 @@ $(function(){
       var msg = this.params['body'];
       if(msg == "" || msg == "Share something...") return false; 
       $.ajax({
-        url: this.params['puburl'],
+        url: JSON.parse(this.params['puburl']).msgBoard,
         type: "post",
         dataType: "json",
         contentType: "application/json",
@@ -200,6 +219,29 @@ $(function(){
           renderStream($('#stream').data('currentStreamUrl'),0,true);
         }
       });
+    });
+
+    app.post('#/upload',function(c){
+      var params = this.params;
+      var msg = params['body'];
+      if(msg == "" || msg == "Share something...") return false;
+      var strName = ("uploader" + (new Date()).getTime());
+      var iFrame = $('<iframe name="' + strName + '" src="about:blank" class="hide" />');
+      iFrame.load(function(){
+        console.log(window.frames[strName].document);
+        // TODO need to parse out the response from successful creation
+        var ifUploadBody = window.frames[strName].document;
+        dump = ifUploadBody;
+        var ifBody = $(ifUploadBody);
+        setTimeout(function(){iFrame.remove()}, 100);          
+      });
+      $('body:last').append(iFrame);
+      var uploadUrl = JSON.parse(params['puburl']).cmisUpload;
+      $('#pub-form').attr('action',uploadUrl)
+        .attr( "method", "post" )
+        .attr( "enctype", "multipart/form-data" )
+        .attr( "encoding", "multipart/form-data" )        
+        .attr('target',strName).submit();
     });
 
     app.bind('update-filters',function(e,currLocation){

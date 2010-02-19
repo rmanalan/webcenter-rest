@@ -6,23 +6,23 @@
     <!--[if IE]>
     <script src="http://html5shiv.googlecode com/svn/trunk/html5.js"></script> 
     <![endif]-->
-    <script src="http://webcenter-stage.us.oracle.com/owccustom/js/jquery.js"></script>
-    <script src="http://webcenter-stage.us.oracle.com/owccustom/js/xLazyLoader.js"></script>
-    <script src="http://webcenter-stage.us.oracle.com/owccustom/js/curvy.js"></script>
-    <script src="http://webcenter-stage.us.oracle.com/owccustom/js/pure.js"></script>
-    <script src="http://webcenter-stage.us.oracle.com/owccustom/js/timeago.js"></script>
-    <script src="http://webcenter-stage.us.oracle.com/owccustom/js/sammy.js"></script>
-    <script src="http://webcenter-stage.us.oracle.com/owccustom/js/sammy.json.js"></script>
-    <script src="http://webcenter-stage.us.oracle.com/owccustom/js/autoresize.js"></script>
-    <script src="http://webcenter-stage.us.oracle.com/owccustom/js/xLazyLoader.js"></script>
-    <script src="http://webcenter-stage.us.oracle.com/owccustom/js/swfobject.js"></script>
-    <script src="http://webcenter-stage.us.oracle.com/owccustom/js/uploadify.js"></script>
-    <script src="http://webcenter-stage.us.oracle.com/owccustom/js/html-sanitizer-minified.js"></script>
-    <script src="http://webcenter-stage.us.oracle.com/owccustom/js/wcutils.js"></script>
-    <!--script src="http://webcenter-stage.us.oracle.com/owccustom/js/wcrest.js"></script>
-    <script src="http://webcenter-stage.us.oracle.com/owccustom/js/application.js"></script-->
-    <link href="http://webcenter-stage.us.oracle.com/owccustom/css/screen.css" type="text/css" media="screen" rel="stylesheet"/>
-    <link href="http://webcenter-stage.us.oracle.com/owccustom/css/uploadify.css" type="text/css" media="screen" rel="stylesheet"/>
+    <script src="../js/jquery.js"></script>
+    <script src="../js/xLazyLoader.js"></script>
+    <script src="../js/curvy.js"></script>
+    <script src="../js/pure.js"></script>
+    <script src="../js/timeago.js"></script>
+    <script src="../js/sammy.js"></script>
+    <script src="../js/sammy.json.js"></script>
+    <script src="../js/autoresize.js"></script>
+    <script src="../js/xLazyLoader.js"></script>
+    <script src="../js/swfobject.js"></script>
+    <script src="../js/uploadify.js"></script>
+    <script src="../js/html-sanitizer-minified.js"></script>
+    <script src="../js/wcutils.js"></script>
+    <!--script src="../js/wcrest.js"></script>
+    <script src="../js/application.js"></script-->
+    <link href="../css/screen.css" type="text/css" media="screen" rel="stylesheet"/>
+    <link href="../css/uploadify.css" type="text/css" media="screen" rel="stylesheet"/>
     <!--link href="./css/style.css" type="text/css" media="screen" rel="stylesheet"/-->
     <script>
     // Lazy load the application scripts/css so I can work on them locally
@@ -31,10 +31,10 @@
     var apiPort = 80;
     $.xLazyLoader({
       js: $.map(['wcrest.js','application.js'],function(n){
-        return 'http://' + hostname + ':' + assetPort + '/owccustom/js/' + n;
+        return '../js/' + n;
       }),
       css: $.map(['style.css'],function(n){
-        return 'http://' + hostname + ':' + assetPort + '/owccustom/css/' + n;
+        return '../css/' + n;
       })
     })
     </script>
@@ -50,11 +50,11 @@
       </ul>  
       <div id="main-content" class="span-16 first">
         <div id="publisher" class="clearfix">
-          <form id="pub-form" action="#/message" method="post">
+          <form id="pub-form" action="#/message" method="post" enctype="multipart/form-data">
             <div id="pub1-share" class="loud">
               Share something with
               <select id="grouppub" name="puburl">
-                <option class="groupopt groupname groupmsgboard@value" value="">My Connections</option>
+                <option class="groupopt groupname grouppuburls@value" value="">My Connections</option>
               </select>
             </div>
             <div id="pub1-text" class="clearfix">
@@ -63,7 +63,10 @@
             </div>
             <div id="pub1-upload">
               <a href="#" id="pub1-attachment" class="no-underline">Attach file</a>
-              <div id="pub1-uploader"></div>
+              <div id="pub1-upload-field" class="hide">
+                <input type="file" name="fileUpload" />
+                <button>Cancel</button>
+              </div>
             </div>
           </form>
         </div><!-- #publisher -->

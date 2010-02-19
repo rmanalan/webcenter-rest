@@ -1,6 +1,7 @@
 // Currently logged in user. Gets init when webCenter.init() is called
 var currentUser;
 var user;
+if($.browser.msie) var console = {log: alert};
 
 // Main WebCenter resource module
 var webCenter = function(callback){
@@ -125,6 +126,49 @@ var webCenter = function(callback){
     return settings.perPage;
   }
 
+  function nsNode(nodeName){
+    if($.browser.webkit)
+      return "[nodeName=" + nodeName + "]";
+    else
+      return nodeName.split(':').join('\\:');
+  }
+
+  function getCmisResource(url,callback) {
+    // http://docs.jquery.com/Specifying_the_Data_Type_for_AJAX_Requests
+    $.ajax({
+      type: 'get',
+      dataType: ($.browser.msie) ? "text" : "xml",
+      url: url, 
+      error: function(xhr,t){ console.log(t) },
+      success: function(data) {
+        var xml;
+        if (typeof data == "string") {
+          xml = new ActiveXObject("Microsoft.XMLDOM");
+          xml.async = false;
+          xml.loadXML(data);
+        } else {
+          xml = data;
+        }
+        callback(xml);
+      }
+    });
+  }
+
+  function getCmisResourceIndex(callback){
+    getCmisResource(webCenter.getResourceURL(webCenter.resourceIndex.links,'urn:oracle:webcenter:cmis',false,null,null),callback);
+  }
+
+  function getCmisObjectByPath(path, callback) {
+    getCmisResourceIndex(function(d){
+      var tmpltNode = $.grep($(d).find(nsNode('cmisra:uritemplate')),function(e){
+        return $(e).find(nsNode('cmisra:type')).text() == 'objectbypath';
+      });
+      var tmplt = $(tmpltNode).find(nsNode('cmisra:template')).text();
+      tmplt = tmplt.split('&')[0].replace(/\{[^\}]*\}/g,path);
+      callback(tmplt);
+    });
+  }
+
   return {
     'init' : init,
     'currentServer' : currentServer,
@@ -132,7 +176,9 @@ var webCenter = function(callback){
     'getResourceURL' : getResourceURL,
     'getTemplateItem' : getTemplateItem,
     'resolveBindItems' : resolveBindItems,
-    'getPerPage' : getPerPage
+    'getPerPage' : getPerPage,
+    'getCmisObjectByPath' : getCmisObjectByPath,
+    'getCmisResource' : getCmisResource
   }
 }();
 
@@ -184,10 +230,27 @@ var userProfile = function(){
     props['getSpacesPaged'] = getSpacesPaged;
     props['getConnections'] = getConnections;
     props['getStatus'] = getStatus;
+    props['getPublicFolderPath'] = getPublicFolderPath;
+    props['getPublicFolderCmisUrl'] = getPublicFolderCmisUrl;
     currUserObj = props;
     return currUserObj;
   }
-  
+
+  function getPublicFolderPath() {
+    //return '/PersonalSpaces/' + currentUser.emails.value + '/Public';
+    return '/Contribution Folders/Manalang';
+  }
+
+  function getPublicFolderCmisUrl(callback) {
+    webCenter.getCmisObjectByPath(getPublicFolderPath(),function(url){
+      webCenter.getCmisResource(url,function(d){
+        var childrenFolderUrl = $($.grep($(d).find('a'),function(e){return $(e).text()=="down"})).attr('href');
+        $.extend(currentUser,{"publicFolderUrl":childrenFolderUrl});
+        if(callback) callback(childrenFolderUrl);
+      });
+    });
+  }
+
   function getCurrentUser(callback){
     if(!currUserObj){
       $.getJSON(webCenter.getResourceURL(webCenter.resourceIndex.links,'urn:oracle:webcenter:people',false),function(data){ 
@@ -199,6 +262,7 @@ var userProfile = function(){
       return currUserObj;
     }
   }
+
 
   function getListNames(callback){
     $.getJSON(webCenter.getResourceURL(currentUser.links,'urn:oracle:webcenter:people:person:listNames',false),function(d){
