@@ -237,8 +237,8 @@ var userProfile = function(){
   }
 
   function getPublicFolderPath() {
-    //return '/PersonalSpaces/' + currentUser.emails.value + '/Public';
-    return '/Contribution Folders';
+    return '/PersonalSpaces/' + currentUser.emails.value + '/Public';
+    //return '/Contribution Folders';
   }
 
   function getPublicFolderCmisUrl(callback) {
