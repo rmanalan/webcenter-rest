@@ -238,7 +238,7 @@ var userProfile = function(){
 
   function getPublicFolderPath() {
     //return '/PersonalSpaces/' + currentUser.emails.value + '/Public';
-    return '/Contribution Folders/Manalang';
+    return '/Contribution Folders';
   }
 
   function getPublicFolderCmisUrl(callback) {

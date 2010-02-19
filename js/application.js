@@ -113,7 +113,6 @@ $(function(){
                 'grouppuburls' : JSON.stringify({
                   'msgBoard' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:messageBoard',false),
                   'cmisUpload' : webCenter.getResourceURL(d.links,'urn:oracle:webcenter:cmis:folder',false)
-                    .replace('/folder/','/children/')
                 })
               };
             };
