@@ -14,9 +14,14 @@
       $('#log').ajaxError(function(e,r,s){
 	if(r.responseText!='') var resp = '<textarea style="width:100%;height:200px">' + r.responseText + '</textarea>';
 	else var resp = '';
-	$(this).html('<strong>' + ((r.status==0)?'302':r.status) + '</strong> on ' + s.url + '<br/>' + resp)
-	  .fadeIn(1000);
-        $('#cmispath').text('could not retrieve the CMIS path... try changing the UCM path');
+	if(r.status==0){
+	  var stat = '302'
+	  $(this).html('You are not loged in... please <a href="http://webcenter-stage.us.oracle.com/webcenter/wcAuthentication/?login=true&success_url=/owccustom/cmistester.html">login</a> first').fadeIn(1000);
+	}else{
+          $(this).html('<strong>' + r.status + '</strong> on ' + s.url + '<br/>' + resp)
+	    .fadeIn(1000);
+          $('#cmispath').text('could not retrieve the CMIS path... try changing the UCM path');
+      	}
       });
       $('#path').bind('change',function(){
 	$('#log').hide();
@@ -30,7 +35,7 @@
       webCenter.init(function(){
 	$('#path').val(currentUser.getPublicFolderPath());
 	if(currentUser.id) $('#user').text('Loged in as ' + currentUser.id);
-	else $('#user').html('You are not loged in... please <a href="http://webcenter-stage.us.oracle.com/webcenter/wcAuthentication/?login=true&success_url=/owccustom/cmistester.html">login</a> first');
+	else 
 	currentUser.getPublicFolderCmisUrl(function(url){
 	  $('#cmispath').text(url);
 	})
