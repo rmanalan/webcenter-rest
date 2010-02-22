@@ -27,6 +27,8 @@
       });
       webCenter.init(function(){
 	$('#path').val(currentUser.getPublicFolderPath());
+	if(currentUser.id) $('#user').text('Loged in as ' + currentUser.id);
+	else $('#user').html('You are not loged in... please <a href="http://webcenter-stage.us.oracle.com/webcenter/wcAuthentication/?login=true&success_url=/owccustom/cmistester.html">login</a> first');
 	currentUser.getPublicFolderCmisUrl(function(url){
 	  $('#cmispath').text(url);
 	})
@@ -42,6 +44,8 @@
   <body>
     <h2>CMIS Upload Tester</h2>
     <div id="log"></div>
+    <div id="user"></div>
+    </p>
     <p>
       <label for="path">UCM path to upload to:</label><br/>
       <input id="path" type="input" name="path" value="" size="50"/><br/>
