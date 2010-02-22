@@ -242,10 +242,11 @@ var userProfile = function(){
   }
 
   function getPublicFolderCmisUrl(path,callback) {
-    console.log(typeof path);
     if(typeof path=='function') path = getPublicFolderPath();
     webCenter.getCmisObjectByPath(path,function(url){
+      console.log(url);
       webCenter.getCmisResource(url,function(d){
+        console.log(d);
         var childrenFolderUrl = $($.grep($(d).find('a'),function(e){return $(e).text()=="down"})).attr('href');
         $.extend(currentUser,{"publicFolderUrl":childrenFolderUrl});
         if(callback) callback(childrenFolderUrl);
