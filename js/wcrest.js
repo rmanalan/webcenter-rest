@@ -26,7 +26,8 @@ var webCenter = function(callback){
   }
 
   function init(options,callback){
-    $.extend(settings,options);
+    if(typeof options=="object") $.extend(settings,options);
+    else callback = options;
     getResourceIndex(function(){
         // setup current user
         userProfile.getCurrentUser(function(d){
@@ -139,7 +140,6 @@ var webCenter = function(callback){
       type: 'get',
       dataType: ($.browser.msie) ? "text" : "xml",
       url: url, 
-      error: function(xhr,t){ console.log(t) },
       success: function(data) {
         var xml;
         if (typeof data == "string") {
@@ -241,8 +241,9 @@ var userProfile = function(){
     //return '/Contribution Folders';
   }
 
-  function getPublicFolderCmisUrl(callback) {
-    webCenter.getCmisObjectByPath(getPublicFolderPath(),function(url){
+  function getPublicFolderCmisUrl(path,callback) {
+    if(typeof path=='function') path = getPublicFolderPath();
+    webCenter.getCmisObjectByPath(path,function(url){
       webCenter.getCmisResource(url,function(d){
         var childrenFolderUrl = $($.grep($(d).find('a'),function(e){return $(e).text()=="down"})).attr('href');
         $.extend(currentUser,{"publicFolderUrl":childrenFolderUrl});
