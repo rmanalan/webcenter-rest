@@ -13,7 +13,7 @@
     var dump;
     $(function(){
       $('#log').ajaxError(function(e,r,s){
-	if(r.responseText!='') var resp = '<textarea style="width:100%;height:200px">' + r.responseText + '</textarea>';
+	if(r.responseText!='') var resp = '<textarea style="width:100%;height:80px">' + r.responseText + '</textarea>';
 	else var resp = '';
 	if(r.status==0){
 	  var stat = '302'
