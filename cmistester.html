@@ -40,17 +40,6 @@
 	  $('#cmispath').text(url);
 	})
       });
-      var strName = ("uploader" + (new Date()).getTime());
-      var iFrame = $('<iframe name="' + strName + '" src="about:blank" class="hide" />');
-      iFrame.load(function(){
-        // TODO need to parse out the response from successful creation
-        var ifUploadBody = window.frames[strName].document;
-	var ifBody = $(ifUploadBody);
-	$('#log').html('<textarea style="width:100%;height:200px">' + ifBody.text() + '</textarea>').fadeIn(1000);
-        setTimeout(function(){iFrame.remove()}, 100);          
-      });
-      $('body:last').append(iFrame);
-      $('form').attr('target',strName).submit();
 
     })
     </script>
