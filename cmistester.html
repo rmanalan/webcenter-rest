@@ -12,10 +12,9 @@
     <script>
     $(function(){
       $('#log').ajaxError(function(e,r,s){
-	console.log({e:e,r:r,s:s})
 	if(r.responseText!='') var resp = '<textarea style="width:100%;height:200px">' + r.responseText + '</textarea>';
 	else var resp = '';
-	$(this).html('<strong>' + r.status + '</strong> on ' + s.url + '<br/>' + resp)
+	$(this).html('<strong>' + ((r.status==0)?'302':r.status) + '</strong> on ' + s.url + '<br/>' + resp)
 	  .fadeIn(1000);
         $('#cmispath').text('could not retrieve the CMIS path... try changing the UCM path');
       });
