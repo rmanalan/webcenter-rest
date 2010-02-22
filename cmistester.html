@@ -16,7 +16,7 @@
 	else var resp = '';
 	if(r.status==0){
 	  var stat = '302'
-	  $(this).html('You are not loged in... please <a href="http://webcenter-stage.us.oracle.com/webcenter/wcAuthentication/?login=true&success_url=/owccustom/cmistester.html">login</a> first').fadeIn(1000);
+	  $(this).html('You are not loged in... please <a href="http://webcenter-stage.us.oracle.com/webcenter/wcAuthentication/?login=true&success_url=/../owccustom/cmistester.html">login</a> first').fadeIn(1000);
 	}else{
           $(this).html('<strong>' + r.status + '</strong> on ' + s.url + '<br/>' + resp)
 	    .fadeIn(1000);
