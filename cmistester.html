@@ -36,8 +36,9 @@
       });
       webCenter.init(function(){
 	$('#path').val(currentUser.getPublicFolderPath());
+	console.log('hi: ');
 	currentUser.getPublicFolderCmisUrl(function(url){
-	    console.log('hi: ' + url)
+	  console.log('url: ' + url);
 	  $('#cmispath').text(url);
 	  $('form').attr('action',url);
 	});
