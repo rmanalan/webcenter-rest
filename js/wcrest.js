@@ -243,8 +243,8 @@ var userProfile = function(){
 
   function getPublicFolderCmisUrl(path,callback) {
     if(typeof path=='function'){
-      path = getPublicFolderPath();
       callback = path;
+      path = getPublicFolderPath();
     }
     webCenter.getCmisObjectByPath(path,function(url){
       webCenter.getCmisResource(url,function(d){
