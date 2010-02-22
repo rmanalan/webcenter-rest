@@ -39,6 +39,7 @@
 	if(currentUser.id) $('#user').html('Logged in as <strong>' + currentUser.id + '</strong>');
 	currentUser.getPublicFolderCmisUrl(function(url){
 	  $('#cmispath').text(url);
+	  $('form').attr('action',url);
 	})
       });
       $('form').submit(function(){
