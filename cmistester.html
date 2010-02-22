@@ -10,6 +10,7 @@
     <script src="./js/wcutils.js"></script>
     <script src="./js/wcrest.js"></script>
     <script>
+    var dump;
     $(function(){
       $('#log').ajaxError(function(e,r,s){
 	if(r.responseText!='') var resp = '<textarea style="width:100%;height:200px">' + r.responseText + '</textarea>';
@@ -47,6 +48,7 @@
 	  // TODO need to parse out the response from successful creation
 	  var ifUploadBody = window.frames[strName].document;
 	  var ifBody = $(ifUploadBody);
+	  dump = ifUploadBody;
 	  $('#log').html('<textarea style="width:100%;height:200px">' + ifBody.html() + '</textarea>').fadeIn(1000);
 	  setTimeout(function(){iFrame.remove()}, 100);          
 	});
