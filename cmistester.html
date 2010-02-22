@@ -29,6 +29,7 @@
 	if(path.val()!="") {
 	  currentUser.getPublicFolderCmisUrl(path.val(),function(url){
 	    $('#cmispath').text(url);
+	    $('form').attr('action',url);
 	  })
 	}
       });
