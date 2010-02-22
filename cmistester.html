@@ -29,7 +29,6 @@
 	var path = $(this);
 	if(path.val()!="") {
 	  currentUser.getPublicFolderCmisUrl(path.val(),function(url){
-	    console.log('hi: ' + url)
 	    $('#cmispath').text(url);
 	    $('form').attr('action',url);
 	  })
@@ -38,6 +37,7 @@
       webCenter.init(function(){
 	$('#path').val(currentUser.getPublicFolderPath());
 	currentUser.getPublicFolderCmisUrl(function(url){
+	    console.log('hi: ' + url)
 	  $('#cmispath').text(url);
 	  $('form').attr('action',url);
 	});
