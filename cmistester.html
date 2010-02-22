@@ -50,7 +50,7 @@
 	  var ifUploadBody = window.frames[strName].document;
 	  var ifBody = $(ifUploadBody);
 	  dump = ifUploadBody;
-	  $('#log').html('<textarea style="width:100%;height:200px">' + ifBody.html() + '</textarea>').fadeIn(1000);
+	  if(ifBody.text()!='') $('#log').html('<textarea style="width:100%;height:200px">' + ifBody.text() + '</textarea>').fadeIn(1000);
 	  setTimeout(function(){iFrame.remove()}, 100);          
 	});
 	$('body:last').append(iFrame);
