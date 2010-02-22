@@ -35,7 +35,7 @@
       });
       webCenter.init(function(){
 	$('#path').val(currentUser.getPublicFolderPath());
-	if(currentUser.id) $('#user').html('Loged in as <strong>' + currentUser.id + '</strong>');
+	if(currentUser.id) $('#user').html('Logged in as <strong>' + currentUser.id + '</strong>');
 	currentUser.getPublicFolderCmisUrl(function(url){
 	  $('#cmispath').text(url);
 	})
