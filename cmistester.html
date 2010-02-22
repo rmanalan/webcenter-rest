@@ -17,7 +17,7 @@
 	if(r.status==0){
 	  var stat = '302'
 	  $(this).html('You are not loged in... please <a href="/webcenter/wcAuthentication/?login=true&success_url=/../owccustom/cmistester.html">login</a> first').fadeIn(1000);
-	}else{
+	} else {
           $(this).html('<strong>' + r.status + '</strong> on ' + s.url + '<br/>' + resp)
 	    .fadeIn(1000);
           $('#cmispath').text('could not retrieve the CMIS path... try changing the UCM path');
@@ -35,7 +35,6 @@
       webCenter.init(function(){
 	$('#path').val(currentUser.getPublicFolderPath());
 	if(currentUser.id) $('#user').html('Loged in as <strong>' + currentUser.id + '</strong>');
-	else 
 	currentUser.getPublicFolderCmisUrl(function(url){
 	  $('#cmispath').text(url);
 	})
