@@ -24,24 +24,27 @@
           $('#cmispath').text('could not retrieve the CMIS path... try changing the UCM path');
       	}
       });
-      $('#path').bind('change',function(){
-	$('#log').hide();
-	var path = $(this);
-	if(path.val()!="") {
-	  currentUser.getPublicFolderCmisUrl(path.val(),function(url){
-	    $('#cmispath').text(url);
-	    $('form').attr('action',url);
-	  })
-	}
-      });
+
       webCenter.init(function(){
 	$('#path').val(currentUser.getPublicFolderPath());
-	currentUser.getPublicFolderCmisUrl(function(url){
+	currentUser.getCmisFolderUrl(function(url){
 	  $('#cmispath').text(url);
 	  $('form').attr('action',url);
 	});
 	if(currentUser.id) $('#user').html('Logged in as <strong>' + currentUser.id + '</strong>');
       });
+
+      $('#path').bind('change',function(){
+	$('#log').hide();
+	var path = $(this);
+	if(path.val()!="") {
+	  currentUser.getCmisFolderUrl(path.val(),function(url){
+	    $('#cmispath').text(url);
+	    $('form').attr('action',url);
+	  })
+	}
+      });
+
       $('form').submit(function(){
 	var strName = ("uploader" + (new Date()).getTime());
 	var iFrame = $('<iframe name="' + strName + '" src="about:blank" style="display:none" />');
@@ -49,11 +52,22 @@
 	  // TODO need to parse out the response from successful creation
 	  var ifUploadBody = window.frames[strName].document;
 	  var ifBody = $(ifUploadBody);
-	  if(ifBody.text()!='') $('#log').html('<textarea style="width:100%;height:80px">' + (new XMLSerializer()).serializeToString(ifUploadBody) + '</textarea>').fadeIn(1000);
-	  setTimeout(function(){iFrame.remove()}, 100);          
+
+	  if(ifBody.text()=='') {
+	    // FIXME this badly assumes that the upload was successful because we can't check the response code
+	    var url = webCenter.cmisObjectByPathUri + $('#path').val() + '/' + $('#fileupload').val().split('/').splice(-1);
+	    console.log(url);
+	    webCenter.getCmisResource(url,function(xml){
+	      $('#log').html('File uploaded: ' + url + '<textarea style="width:100%;height:80px">' + (new XMLSerializer()).serializeToString(xml) + '</textarea>').fadeIn(100);
+	    })
+	  } else {
+       	    $('#log').html('<textarea style="width:100%;height:80px">' + (new XMLSerializer()).serializeToString(ifUploadBody) + '</textarea>')
+	      .fadeIn(1000);     
+	  }
+	  setTimeout(function(){iFrame.remove()}, 100);
 	});
 	$('body:last').append(iFrame);
-	$(this).attr('target',strName).submit();
+	$(this).attr('target',strName);
       });
     })
     </script>
@@ -78,7 +92,7 @@
       enctype="multipart/form-data">
       <p>
       	<label for="fileUpload">Select a document to upload:</label><br/>
-      	<input type="file" name="fileUpload" size="50"/>
+      	<input id="fileupload" type="file" name="fileUpload" size="50"/>
       </p>
       <p>
       	<label for="contentId">Content ID:</label><br/>

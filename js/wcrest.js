@@ -26,6 +26,7 @@ var webCenter = function(callback){
   }
 
   function init(options,callback){
+    $.extend(webCenter,{'settings':settings});
     if(typeof options=="object") $.extend(settings,options);
     else callback = options;
     getResourceIndex(function(){
@@ -158,15 +159,20 @@ var webCenter = function(callback){
     getCmisResource(webCenter.getResourceURL(webCenter.resourceIndex.links,'urn:oracle:webcenter:cmis',false,null,null),callback);
   }
 
-  function getCmisObjectByPath(path, callback) {
-    getCmisResourceIndex(function(d){
-      var tmpltNode = $.grep($(d).find(nsNode('cmisra:uritemplate')),function(e){
-        return $(e).find(nsNode('cmisra:type')).text() == 'objectbypath';
+  function getCmisObjectByPathUrl(path, callback) {
+    if(!webCenter.cmisObjectByPathUri) {
+      getCmisResourceIndex(function(d){
+        var tmpltNode = $.grep($(d).find(nsNode('cmisra:uritemplate')),function(e){
+          return $(e).find(nsNode('cmisra:type')).text() == 'objectbypath';
+        });
+        var tmplt = $(tmpltNode).find(nsNode('cmisra:template')).text();
+        tmplt = tmplt.split('&')[0].replace(/\{[^\}]*\}/g,'');
+        $.extend(webCenter,{'cmisObjectByPathUri':tmplt});
+        callback(tmplt+path);
       });
-      var tmplt = $(tmpltNode).find(nsNode('cmisra:template')).text();
-      tmplt = tmplt.split('&')[0].replace(/\{[^\}]*\}/g,path);
-      callback(tmplt);
-    });
+    } else {
+      callback(webCenter.cmisObjectByPathUri+path);
+    }
   }
 
   return {
@@ -177,7 +183,7 @@ var webCenter = function(callback){
     'getTemplateItem' : getTemplateItem,
     'resolveBindItems' : resolveBindItems,
     'getPerPage' : getPerPage,
-    'getCmisObjectByPath' : getCmisObjectByPath,
+    'getCmisObjectByPathUrl' : getCmisObjectByPathUrl,
     'getCmisResource' : getCmisResource
   }
 }();
@@ -231,7 +237,7 @@ var userProfile = function(){
     props['getConnections'] = getConnections;
     props['getStatus'] = getStatus;
     props['getPublicFolderPath'] = getPublicFolderPath;
-    props['getPublicFolderCmisUrl'] = getPublicFolderCmisUrl;
+    props['getCmisFolderUrl'] = getCmisFolderUrl;
     currUserObj = props;
     return currUserObj;
   }
@@ -241,12 +247,12 @@ var userProfile = function(){
     //return '/Contribution Folders';
   }
 
-  function getPublicFolderCmisUrl(path,callback) {
+  function getCmisFolderUrl(path,callback) {
     if(typeof path=='function'){
       callback = path;
       path = getPublicFolderPath();
     }
-    webCenter.getCmisObjectByPath(path,function(url){
+    webCenter.getCmisObjectByPathUrl(path,function(url){
       webCenter.getCmisResource(url,function(d){
         var childrenFolderUrl = $($.grep($(d).find('a'),function(e){return $(e).text()=="down"})).attr('href');
         $.extend(currentUser,{"publicFolderUrl":childrenFolderUrl});

@@ -89,7 +89,7 @@ $(function(){
       });
 
       // Sets url for default stream
-      currentUser.getPublicFolderCmisUrl(function(url){
+      currentUser.getCmisFolderUrl(function(url){
         $('#grouppub option:first').attr('value',
           JSON.stringify({'msgBoard' : webCenter.getResourceURL(webCenter.resourceIndex.links,
             'urn:oracle:webcenter:messageBoard',false), 'cmisUpload' : url}));
