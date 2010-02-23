@@ -55,11 +55,12 @@
 
 	  if(ifBody.text()=='') {
 	    // FIXME this badly assumes that the upload was successful because we can't check the response code
-	    var url = webCenter.cmisObjectByPathUri + $('#path').val() + '/' + $('#fileupload').val().split('/').splice(-1);
-	    console.log(url);
-	    webCenter.getCmisResource(url,function(xml){
-	      $('#log').html('File uploaded: ' + url + '<textarea style="width:100%;height:80px">' + (new XMLSerializer()).serializeToString(xml) + '</textarea>').fadeIn(100);
-	    })
+	    setTimeout(function(){)
+	      var url = webCenter.cmisObjectByPathUri + $('#path').val() + '/' + $('#fileupload').val().split('/').splice(-1);
+	      webCenter.getCmisResource(url,function(xml){
+	        $('#log').html('File uploaded: ' + url + '<textarea style="width:100%;height:80px">' + (new XMLSerializer()).serializeToString(xml) + '</textarea>').fadeIn(100);
+	      })
+	    ,5000);
 	  } else {
        	    $('#log').html('<textarea style="width:100%;height:80px">' + (new XMLSerializer()).serializeToString(ifUploadBody) + '</textarea>')
 	      .fadeIn(1000);     
