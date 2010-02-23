@@ -26,7 +26,7 @@ $(function(){
 
   var gs = $('#group-switcher');
   gs.html('<select id="gs" onchange="location=this.value" class="hide"><option class="gsspace spacename url@value selected1@selected" value="/webcenter/spaces/home'+ctrlState+'">Home</option></select>');
-  var spacesCached = $.DOMCached.get('groups','webcenter');
+  var spacesCached = $.DOMCached.get('groups'+ctrlState,'webcenter');
   if(spacesCached){
     renderSwitcher(spacesCached,currentGroupSpace);
   };
@@ -46,7 +46,7 @@ $(function(){
         'spacename':'Browse Group Space', 
         'url':'/webcenter/faces/oracle/webcenter/community/view/pages/manage/ManageSpaces-SpacesTab.jspx?' + ctrlState 
       });
-      $.DOMCached.set('groups',bindData,86400,'webcenter');
+      $.DOMCached.set('groups' + ctrlState,bindData,86400,'webcenter');
       if(spacesCached) return;
       renderSwitcher(bindData,currentGroupSpace);
     });
