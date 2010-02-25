@@ -47,11 +47,11 @@
       });
 
       $('#fileupload').uploadify({
-	'uploader'  : '../js/uploadify.swf',
+	'uploader'  : './js/uploadify.swf',
 	'script'    : function(){
           return $('#cmispath').text();
 	},
-	'cancelImg' : '../images/cancel.png',
+	'cancelImg' : './images/cancel.png',
 	'auto'      : true,
 	'onComplete' : function(event,queueID,fileObj,response,data) {
 	  dump = {e:event, q:queueID, f:fileObj, r:response, d:data};
