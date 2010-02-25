@@ -9,6 +9,14 @@ var utils = function(){
     return $.timeago(dttm.replace(/\.[^\-]*.\-/,'-'));
   }
 
+  function S4() {
+    return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+  }
+
+  function guid() {
+    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+  }
+
   function resolveURLs(str) {
     // Caja's html_sanitizer prevents XSS/code injection attacks
     str = html_sanitize(str,function(url){if(/^https?:\/\//.test(url))return url},function(id){return id});
@@ -76,6 +84,7 @@ var utils = function(){
   return {
     'linkTo' : linkTo,
     'resolveURLs' : resolveURLs,
-    'timeAgoInWords' : timeAgoInWords
+    'timeAgoInWords' : timeAgoInWords,
+    'guid' : guid
   };
 }();
