@@ -56,7 +56,12 @@ $(function(){
   };
 
   function initApp(callback){
-    webCenter.init({'perPage':20},function(){
+    webCenter.init({'perPage':20},function(success){
+      if(!success) {
+        $('#msg').html('You are not loged in... please <a href="/webcenter/wcAuthentication/?login=true&success_url=/../owccustom/cmistester.html">login</a> first').fadeIn(1000);
+      return false;
+      }
+        
       // Listen for <enter> key inside the publisher textarea
       $('#pub-text').bind('keyup',function(e){
         if(e.keyCode==13){
