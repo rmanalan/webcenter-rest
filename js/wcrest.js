@@ -193,7 +193,7 @@ var webCenter = function(callback){
           if(p[1]) {
             fileMeta[p[0]] = (p[1]=='[null]') ? null : p[1];
           } else {
-            var p = p.split(': ');
+            var p = $(e).text().split(': ');
             if(p[1]) fileMeta[p[0]] = (p[1]=='[null]') ? null : p[1];
           }
         })
