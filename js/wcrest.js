@@ -140,7 +140,11 @@ var webCenter = function(callback){
     $.ajax({
       type: 'get',
       dataType: ($.browser.msie) ? "text" : "xml",
-      url: url, 
+      url: url,
+      error: function(x,t,e){
+        console.log(this);
+        console.log({x:x,t:t,e:e})
+      },
       success: function(data) {
         var xml;
         if (typeof data == "string") {
