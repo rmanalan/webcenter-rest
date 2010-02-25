@@ -135,15 +135,17 @@ var webCenter = function(callback){
       return nodeName.split(':').join('\\:');
   }
 
-  function getCmisResource(url,callback) {
+  function getCmisResource(url,callback,retry,retryCount) {
     // http://docs.jquery.com/Specifying_the_Data_Type_for_AJAX_Requests
     $.ajax({
       type: 'get',
       dataType: ($.browser.msie) ? "text" : "xml",
       url: url,
       error: function(x,t,e){
-        console.log(this);
         console.log({x:x,t:t,e:e})
+        if(retry && retryCount > 0) {
+          getCmisResource(url,callback,retry, retryCount-1);
+        }
       },
       success: function(data) {
         var xml;
