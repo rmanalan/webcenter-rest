@@ -143,7 +143,7 @@ var webCenter = function(callback){
       url: url,
       error: function(x,t,e){
         if(retry && retry.count > 0 && retry.frequency > 0) {
-          getCmisResource(url,callback,retry,retryCount-1,retryFrequency);
+          getCmisResource(url,callback,retry,retry.count-1,retry.frequency);
         }
       },
       success: function(data) {
