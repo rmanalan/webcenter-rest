@@ -48,7 +48,7 @@ var webCenter = function(callback){
           console.log({x:x,t:t,e:e});
         },
         'success' : function(data,textStatus){
-          console.log(textStatus)
+          dump = data;
           resourceIndex = data;
           $.extend(webCenter,{'resourceIndex': data});
           if(callback) callback(data);
