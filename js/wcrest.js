@@ -184,7 +184,7 @@ var webCenter = function(callback){
 
   function getCmisObject(filePath,callback,poll) {
     var url = webCenter.cmisObjectByPathUri + filePath;
-    if(poll) var retry = {'count': 5, 'frequency': 300};
+    if(poll) var retry = {'count': 10, 'frequency': 1000};
     else var retry = false;
     webCenter.getCmisResource(url,function(xml){
         var fileMeta = {};
