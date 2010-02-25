@@ -190,13 +190,14 @@ var webCenter = function(callback){
         var fileMeta = {};
         $('li:not(:contains(a))',xml).each(function(i,e){
           var p = $(e).text().split(' = ');
-          if(p[1]) fileMeta[p[0]] = (p[1]=='[null]') ? null : p[1];
+          if(p[1]) {
+            fileMeta[p[0]] = (p[1]=='[null]') ? null : p[1];
+          } else {
+            var p = p.split(': ');
+            if(p[1]) fileMeta[p[0]] = (p[1]=='[null]') ? null : p[1];
+          }
         })
-        $('li:contains(a)',xml).each(function(i,e){
-          var p = $(e).text().split(' = ');
-          if(p[1]) fileMeta[p[0]] = (p[1]=='[null]') ? null : p[1];
-        })
-        $('li:contains(a)>a',xml).each(function(i,e){
+        $('li>a',xml).each(function(i,e){
           var p = $(e);
           fileMeta[p.text()] = p.attr('href');
         })
