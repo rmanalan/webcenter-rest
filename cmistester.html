@@ -14,8 +14,12 @@
     var dump;
     $(function(){
       $('#log').ajaxError(function(e,r,s){
-	if(r.responseText!='') var resp = '<textarea style="width:100%;height:80px">' + r.responseText + '</textarea>';
-	else var resp = '';
+	console.log({e:e,r:r,s:s})
+	if(r.responseText!='') {
+	  var resp = '<textarea style="width:100%;height:80px">' + r.responseText + '</textarea>';
+	} else { 
+	  var resp = '';
+        }
 	if(r.status==0 || r.status==302){
 	  $(this).html('You are not loged in... please <a href="/webcenter/wcAuthentication/?login=true&success_url=/../owccustom/cmistester.html">login</a> first').fadeIn(1000);
 	} else {
