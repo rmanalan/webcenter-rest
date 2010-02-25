@@ -8,7 +8,8 @@ var webCenter = function(callback){
   var settings = {
     'hostname' : location.hostname,
     'port' : location.port,
-    'perPage' : 10
+    'perPage' : 10,
+    'dynConverterUri' : '/idc/idcplg?IdcService=GET_DYNAMIC_CONVERSION&RevisionSelectionMethod=LatestReleased&dDocName='
   };
 
   var resourceIndex = null;

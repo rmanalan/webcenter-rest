@@ -59,7 +59,9 @@
 	      $('#log').html('File uploaded: ' 
 	        + '<a href="' + meta['edit-media'] +'" target="_blank">'
 		  + meta.dDocTitle
-		+ '</a>'
+		+ '</a> '
+	      	+ '<a href="' + webCenter.settings.dynConverterUri + meta.dDocName + ' target="_blank"">'
+                  + 'Converted Version</a>'
 		+ '<textarea style="width:100%;height:80px">' 
 		+ (new XMLSerializer()).serializeToString(xml) + '</textarea>').fadeIn(100);
             },true);
