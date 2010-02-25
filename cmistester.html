@@ -46,12 +46,13 @@
 	}
       });
 
+      var cmisPath = function(){
+        console.log($('#cmispath').text());
+        return $('#cmispath').text();
+      }();
       $('#fileupload').uploadify({
 	'uploader'  : './js/uploadify.swf',
-	'script'    : function(){
-	  console.log($('#cmispath').text());
-          return $('#cmispath').text();
-	},
+	'script'    : cmisPath,
 	'cancelImg' : './images/cancel.png',
 	'auto'      : true,
 	'onComplete' : function(event,queueID,fileObj,response,data) {
