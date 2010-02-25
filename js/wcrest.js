@@ -30,30 +30,25 @@ var webCenter = function(callback){
     $.extend(webCenter,{'settings':settings});
     if(typeof options=="object") $.extend(settings,options);
     else callback = options;
-    getResourceIndex(function(){
-        // setup current user
-        userProfile.getCurrentUser(function(d){
-          currentUser = d;
-          callback();
-        });
+    getResourceIndex(function(data){
+      // assumes that the user is not logged in
+      if(!data) callback(false);
+
+      // setup current user
+      userProfile.getCurrentUser(function(d){
+        currentUser = d;
+        callback(true);
       });
+    });
   }
 
   function getResourceIndex(callback){
     if(!resourceIndex) {
-      $.ajax({
-        'url' : getResourceIndexURL(),
-        'dataType' : 'json',
-        'error' : function(x,t,e) {
-          console.log({x:x,t:t,e:e});
-        },
-        'success' : function(data,textStatus){
-          dump = data;
-          resourceIndex = data;
-          $.extend(webCenter,{'resourceIndex': data});
-          if(callback) callback(data);
-          return resourceIndex;
-        }
+      $.getJSON(getResourceIndexURL(), function(data){
+        resourceIndex = data;
+        $.extend(webCenter,{'resourceIndex': data});
+        if(callback) callback(data);
+        return resourceIndex;
       });
     } else {
       return resourceIndex;
