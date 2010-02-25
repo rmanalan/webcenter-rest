@@ -41,11 +41,19 @@ var webCenter = function(callback){
 
   function getResourceIndex(callback){
     if(!resourceIndex) {
-      $.getJSON(getResourceIndexURL(), function(data){
-        resourceIndex = data;
-        $.extend(webCenter,{'resourceIndex': data});
-        if(callback) callback(data);
-        return resourceIndex;
+      $.ajax({
+        'url' : getResourceIndexURL(),
+        'dataType' : 'json',
+        'error' : function(x,t,e) {
+          console.log({x:x,t:t,e:e});
+        },
+        'success' : function(data,textStatus){
+          console.log(textStatus)
+          resourceIndex = data;
+          $.extend(webCenter,{'resourceIndex': data});
+          if(callback) callback(data);
+          return resourceIndex;
+        }
       });
     } else {
       return resourceIndex;
