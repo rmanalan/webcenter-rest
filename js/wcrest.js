@@ -187,8 +187,19 @@ var webCenter = function(callback){
     if(poll) var retry = {'count': 5, 'frequency': 300};
     else var retry = false;
     webCenter.getCmisResource(url,function(xml){
-        //TODO parse out meta
         var fileMeta = {};
+        $('li:not(:contains(a))',xml).each(function(i,e){
+          var p = $(e).text().split(' = ');
+          if(p[1]) fileMeta[p[0]] = (p[1]=='[null]') ? null : p[1];
+        })
+        $('li:contains(a)',xml).each(function(i,e){
+          var p = $(e).text().split(' = ');
+          if(p[1]) fileMeta[p[0]] = (p[1]=='[null]') ? null : p[1];
+        })
+        $('li:contains(a)>a',xml).each(function(i,e){
+          var p = $(e);
+          fileMeta[p.text()] = p.attr('href');
+        })
         callback(xml,fileMeta);
     },retry);
   }

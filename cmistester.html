@@ -55,9 +55,9 @@
 	  if(ifBody.text()=='') {
 	    var filePath = $('#path').val() + '/' + $('#fileupload').val().split('/').splice(-1);
 	    webCenter.getCmisObject(filePath,function(xml,meta){
-	      dump = xml;
+	      dump = meta;
 	      $('#log').html('File uploaded: ' 
-	      	+ url 
+	      	+ filePath 
 		+ '<textarea style="width:100%;height:80px">' 
 		+ (new XMLSerializer()).serializeToString(xml) + '</textarea>').fadeIn(100);
             },true);
