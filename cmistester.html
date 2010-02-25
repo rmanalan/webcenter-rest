@@ -6,6 +6,8 @@
     <script src="http://html5shiv.googlecode com/svn/trunk/html5.js"></script> 
     <![endif]-->
     <script src="./js/jquery.js"></script>
+    <script src="./js/swfobject.js"></script>
+    <script src="./js/uploadify.js"></script>
     <script src="./js/wcutils.js"></script>
     <script src="./js/wcrest.js"></script>
     <script>
@@ -42,6 +44,23 @@
 	    $('form').attr('action',url);
 	  })
 	}
+      });
+
+      $('#fileupload').uploadify({
+	'uploader'  : '../js/uploadify.swf',
+	'script'    : function(){
+          return $('#cmispath').text();
+	},
+	'cancelImg' : '../images/cancel.png',
+	'auto'      : true,
+	'onComplete' : function(event,queueID,fileObj,response,data) {
+	  dump = {e:event, q:queueID, f:fileObj, r:response, d:data};
+	  console.log(dump);
+        },
+        'onError': function (event, queueID ,fileObj, errorObj) {
+          dump = {'event':event, 'queueID': queueID, 'fileObj' : fileObj, 'errorObj' : errorObj};
+          console.log(dump)
+        }
       });
 
       $('form').submit(function(){
