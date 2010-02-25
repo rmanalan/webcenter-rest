@@ -49,6 +49,7 @@
       $('#fileupload').uploadify({
 	'uploader'  : './js/uploadify.swf',
 	'script'    : function(){
+	  console.log($('#cmispath').text());
           return $('#cmispath').text();
 	},
 	'cancelImg' : './images/cancel.png',
