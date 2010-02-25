@@ -199,7 +199,8 @@ var webCenter = function(callback){
     'resolveBindItems' : resolveBindItems,
     'getPerPage' : getPerPage,
     'getCmisObjectByPathUrl' : getCmisObjectByPathUrl,
-    'getCmisResource' : getCmisResource
+    'getCmisResource' : getCmisResource,
+    'getCmisObject' : getCmisObject
   }
 }();
 
