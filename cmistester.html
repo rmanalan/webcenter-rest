@@ -39,9 +39,10 @@
 	  $('#cmispath').text(url);
 	  $('form').attr('action',url);
 
+	  console.log(url);
 	  $('#fileupload').uploadify({
 	    'uploader'  : './js/uploadify.swf',
-	    'script'    : unescape(url),
+	    'script'    : url,
 	    'fileDataName' : 'fileUpload',
 	    'scriptData' : {
 	      'contentId' : Math.floor(Math.random()*99999999999999999999),
