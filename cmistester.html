@@ -29,6 +29,7 @@
       });
 
       webCenter.init(function(success){
+	console.log(success);
 	if(!success) {
 	  $(this).html('You are not loged in... please <a href="/webcenter/wcAuthentication/?login=true&success_url=/../owccustom/cmistester.html">login</a> first').fadeIn(1000);
 	  return false;
