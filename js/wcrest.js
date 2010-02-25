@@ -142,6 +142,8 @@ var webCenter = function(callback){
       dataType: ($.browser.msie) ? "text" : "xml",
       url: url,
       error: function(x,t,e){
+        // Added polling support because UCM can take a while to post process a file
+        // and callbacks aren't supported
         if(retry && retry.count > 0 && retry.frequency > 0) {
           getCmisResource(url,callback,retry,retry.count-1,retry.frequency);
         }
@@ -185,7 +187,9 @@ var webCenter = function(callback){
     if(poll) var retry = {'count': 5, 'frequency': 300};
     else var retry = false;
     webCenter.getCmisResource(url,function(xml){
-        callback(xml);
+        //TODO parse out meta
+        var fileMeta = {};
+        callback(xml,fileMeta);
     },retry);
   }
 

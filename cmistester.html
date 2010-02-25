@@ -54,7 +54,7 @@
 
 	  if(ifBody.text()=='') {
 	    var filePath = $('#path').val() + '/' + $('#fileupload').val().split('/').splice(-1);
-	    webCenter.getCmisObject(filePath,function(xml){
+	    webCenter.getCmisObject(filePath,function(xml,meta){
 	      dump = xml;
 	      $('#log').html('File uploaded: ' 
 	      	+ url 
