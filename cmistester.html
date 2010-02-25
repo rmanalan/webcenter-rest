@@ -46,8 +46,8 @@
 	      dump = {e:event, q:queueID, f:fileObj, r:response, d:data};
 	      console.log(dump);
 	    },
-	    'onError': function (event, queueID ,fileObj, errorObj, data) {
-	      dump = {e:event, q:queueID, f:fileObj, r:response, d:data};
+	    'onError': function (event, queueID ,fileObj, errorObj) {
+	      dump = {e:event, q:queueID, f:fileObj, e:errorObj};
 	      console.log(dump)
 	    }
 	  });
