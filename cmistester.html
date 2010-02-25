@@ -42,7 +42,7 @@
 	  console.log(url);
 	  $('#fileupload').uploadify({
 	    'uploader'  : './js/uploadify.swf',
-	    'script'    : url,
+	    'script'    : url.split("%").join("%25"),
 	    'fileDataName' : 'fileUpload',
 	    'scriptData' : {
 	      'contentId' : Math.floor(Math.random()*99999999999999999999),
