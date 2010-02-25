@@ -135,14 +135,14 @@ var webCenter = function(callback){
       return nodeName.split(':').join('\\:');
   }
 
-  function getCmisResource(url,callback,retry,retryCount,retryFrequency) {
+  function getCmisResource(url,callback,retry) {
     // http://docs.jquery.com/Specifying_the_Data_Type_for_AJAX_Requests
     $.ajax({
       type: 'get',
       dataType: ($.browser.msie) ? "text" : "xml",
       url: url,
       error: function(x,t,e){
-        if(retry && retryCount > 0 && retryFrequency > 0) {
+        if(retry && retry.count > 0 && retry.frequency > 0) {
           getCmisResource(url,callback,retry,retryCount-1,retryFrequency);
         }
       },
@@ -179,6 +179,16 @@ var webCenter = function(callback){
       callback(webCenter.cmisObjectByPathUri+path);
     }
   }
+
+  function getCmisObject(filePath,callback,poll) {
+    var url = webCenter.cmisObjectByPathUri + filePath;
+    if(poll) var retry = {'count': 5, 'frequency': 300};
+    else var retry = false;
+    webCenter.getCmisResource(url,function(xml){
+        callback(xml);
+    },retry);
+  }
+
 
   return {
     'init' : init,
