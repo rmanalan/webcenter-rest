@@ -246,7 +246,7 @@ $(function() {
             console.log(url);
             webCenter.getCmisObject(url,function(xml,meta){
               console.log(xml, meta);
-            },true);
+            });
           } else {
             $('#msg').html('A problem was encountered while uploading your file');
           }
