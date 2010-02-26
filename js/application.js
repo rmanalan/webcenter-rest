@@ -251,7 +251,7 @@ $(function() {
           } else {
             $('#msg').html('A problem was encountered while uploading your file');
           }
-          setTimeout(function(){iFrame.remove()},100);
+          //setTimeout(function(){iFrame.remove()},100);
         });
         $('body:last').append(iFrame);
 
