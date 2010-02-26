@@ -250,11 +250,12 @@ $(function() {
       // Resolve CMIS URL to post to
       var cmisName = JSON.parse(params['puburl']).spaceName;
       var UCMPath = cmisName ? "/Spaces/" + cmisName : null;
-      console.log('cmisName: ' + cmisName);
+      console.log(UCMPath);
       currentUser.getCmisFolderUrl(UCMPath, function(url){
+          console.log(url);
         $('#pub-form[name="contentId"]').val(utils.randBase32());
         $('#pub-form[name="comments"]').val(msg);
-			  $('#pub-form').attr('action', url).attr('target', strName).submit();
+			  //$('#pub-form').attr('action',url).attr('target',strName).submit();
       });
 
 		});
