@@ -235,8 +235,8 @@ $(function() {
 
         // Prepare uploader iframe
         var strName = ("uploader" + (new Date()).getTime());
-        var iFrame = $('<iframe name="' + strName + '" class="hide" />');
-        iFrame.load(function() {
+        var iFrame = $('<iframe id="' + strName + '" name="' + strName + '" class="hide" />');
+        $('#' + strName).ready(function() {
           var ifUploadBody = window.frames[strName].document;
           dump = this;
           console.log(ifUploadBody, this);
