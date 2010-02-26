@@ -227,35 +227,37 @@ $(function() {
 			var msg = params['body'];
 			if (msg == "" || msg == "Share something...") return false;
 
-      var strName = ("uploader" + (new Date()).getTime());
-			var iFrame = $('<iframe name="' + strName + '" src="about:blank" class="hide" />');
-			iFrame.load(function() {
-				var ifUploadBody = window.frames[strName].document;
-				dump = ifUploadBody;
-				var ifBody = $(ifUploadBody);
-        if(ifBody.text()!='') {          
-          var url = $(ifBody).find('location-header').text();
-          console.log(url);
-          webCenter.getCmisObject(url,function(xml,meta){
-            console.log(xml, meta);
-          },true);
-        } else {
-          $('#msg').html('');     
-        }
-				setTimeout(function(){iFrame.remove()},100);
-			});
-
-      $('body:last').append(iFrame);
-
       // Resolve CMIS URL to post to
       var cmisName = JSON.parse(params['puburl']).spaceName;
       var UCMPath = cmisName ? "/Spaces/" + cmisName : null;
       console.log(UCMPath);
       currentUser.getCmisFolderUrl(UCMPath, function(url){
-          console.log(url);
-        $('#pub-form[name="contentId"]').val(utils.randBase32());
-        $('#pub-form[name="comments"]').val(msg);
-			  //$('#pub-form').attr('action',url).attr('target',strName).submit();
+
+        // Prepare uploader iframe
+        var strName = ("uploader" + (new Date()).getTime());
+        var iFrame = $('<iframe name="' + strName + '" src="about:blank" class="hide" />');
+        iFrame.load(function() {
+          var ifUploadBody = window.frames[strName].document;
+          dump = ifUploadBody;
+          var ifBody = $(ifUploadBody);
+          if(ifBody.text()!='') {          
+            $('#msg').html('');
+            var url = ifBody.text();
+            console.log(url);
+            webCenter.getCmisObject(url,function(xml,meta){
+              console.log(xml, meta);
+            },true);
+          } else {
+            $('#msg').html('A problem was encountered while uploading your file');
+          }
+          setTimeout(function(){iFrame.remove()},100);
+        });
+        $('body:last').append(iFrame);
+
+
+        $('#pub-form input[name="contentId"]').val(utils.randBase32());
+        $('#pub-form input[name="comments"]').val(msg);
+			  $('#pub-form').attr('action',url).attr('target',strName).submit();
       });
 
 		});
