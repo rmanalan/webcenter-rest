@@ -238,8 +238,7 @@ $(function() {
         var iFrame = $('<iframe name="' + strName + '" class="hide" />');
         iFrame.load(function() {
           var ifUploadBody = window.frames[strName].document;
-          dump = ifUploadBody;
-          dump2 = this;
+          console.log(ifUploadBody, this);
           var ifBody = $(ifUploadBody);
           if(ifBody.text()!='') {          
             $('#msg').html('');
