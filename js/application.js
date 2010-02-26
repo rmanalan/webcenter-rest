@@ -243,7 +243,7 @@ $(function() {
           var contentUrl = $(ifUploadBody).text();
           if(/^http/.test(contentUrl)) {          
             $('#msg').html('');
-            var url = ifBody.text();
+            var url = contentUrl;
             $('#pub-text').val('').css('height', 18);
             $('#pub1-upload-field button').trigger('click');
             renderStream($('#stream').data('currentStreamUrl'), 0, true);
