@@ -28,6 +28,7 @@ $(function() {
 		$('#pub1-upload-field input').val('');
 		$('#pub1-upload-field').addClass('hide');
 		$('a#pub1-attachment').show();
+    return false;
 	});
 
   // IE specific UI tweaks
