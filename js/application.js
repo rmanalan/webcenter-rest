@@ -4,7 +4,7 @@ $(document).ajaxStart(function() {
 	$('#loading-ind').hide();
 });
 
-var dump;
+var dump, dump2;
 $(function() {
 
 	// Set up placeholder text for publisher
@@ -239,6 +239,7 @@ $(function() {
         iFrame.load(function() {
           var ifUploadBody = window.frames[strName].document;
           dump = ifUploadBody;
+          dump2 = this;
           var ifBody = $(ifUploadBody);
           if(ifBody.text()!='') {          
             $('#msg').html('');
