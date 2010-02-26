@@ -197,8 +197,7 @@ var webCenter = function(callback) {
 		}
 	}
 
-	function getCmisObject(filePath, callback, poll) {
-		var url = webCenter.cmisObjectByPathUri + filePath;
+	function getCmisObject(url, callback, poll) {
 		if (poll) var retry = {
 			'count': 10,
 			'frequency': 1000
