@@ -247,13 +247,10 @@ $(function() {
             $('#pub-text').val('').css('height', 18);
             $('#pub1-upload-field button').trigger('click');
             renderStream($('#stream').data('currentStreamUrl'), 0, true);
-            webCenter.getCmisObject(url,function(xml,meta){
-              console.log(xml, meta);
-            });
           } else {
             $('#msg').html('A problem was encountered while uploading your file');
           }
-          //setTimeout(function(){iFrame.remove()},100);
+          setTimeout(function(){iFrame.remove()},100);
         });
         $('body:last').append(iFrame);
 
