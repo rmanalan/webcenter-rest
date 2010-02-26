@@ -41,7 +41,7 @@
 
 	  $('#fileupload').uploadify({
 	    'uploader'  : './js/uploadify.swf',
-	    'script'    : url.split("%").join("%25"),
+	    'script'    : "http://webcenter-stage.us.oracle.com:80/cmisrestprelim/cmis/children/UCM/IDC:Folder%2F2".split("%").join("%25"),
 	    'fileDataName' : 'fileUpload',
 	    'scriptData' : {
 	      'contentId' : Math.floor(Math.random()*99999999999999999999),
