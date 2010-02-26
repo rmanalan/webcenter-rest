@@ -255,7 +255,6 @@ $(function() {
         });
         $('body:last').append(iFrame);
 
-
         $('#pub-form input[name="contentId"]').val(utils.randBase32());
         $('#pub-form input[name="comments"]').val(msg);
         $('#pub-form input[name="simpleResponse"]').val(true);
