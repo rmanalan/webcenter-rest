@@ -243,7 +243,9 @@ $(function() {
           if(ifBody.text()!='') {          
             $('#msg').html('');
             var url = ifBody.text();
-            console.log(url);
+            $('#pub-text').val('').css('height', 18);
+            $('#pub1-upload-field button').trigger('click');
+            renderStream($('#stream').data('currentStreamUrl'), 0, true);
             webCenter.getCmisObject(url,function(xml,meta){
               console.log(xml, meta);
             });
