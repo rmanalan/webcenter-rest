@@ -39,26 +39,26 @@
 	  $('#cmispath').text(url);
 	  $('form').attr('action',url);
 
-	  $('#fileupload').uploadify({
-	    'uploader'  : './js/uploadify.swf',
-	    'script'    : url.split("%").join("%25"),
-	    'fileDataName' : 'fileUpload',
-	    'scriptData' : {
-	      'contentId' : Math.floor(Math.random()*99999999999999999999),
-	      'comments' : 'test comment',
-	      'simpleResponse' : 'true'
-	    },
-	    'cancelImg' : './images/cancel.png',
-	    'auto'      : true,
-	    'onComplete' : function(event,queueID,fileObj,response,data) {
-	      dump = {e:event, q:queueID, f:fileObj, r:response, d:data};
-	      console.log(dump);
-	    },
-	    'onError': function (event, queueID ,fileObj, errorObj) {
-	      dump = {evt:event, q:queueID, f:fileObj, e:errorObj};
-	      console.log(dump)
-	    }
-	  });
+	  //$('#fileupload').uploadify({
+	  //  'uploader'  : './js/uploadify.swf',
+	  //  'script'    : url.split("%").join("%25"),
+	  //  'fileDataName' : 'fileUpload',
+	  //  'scriptData' : {
+	  //    'contentId' : Math.floor(Math.random()*99999999999999999999),
+	  //    'comments' : 'test comment',
+	  //    'simpleResponse' : 'true'
+	  //  },
+	  //  'cancelImg' : './images/cancel.png',
+	  //  'auto'      : true,
+	  //  'onComplete' : function(event,queueID,fileObj,response,data) {
+	  //    dump = {e:event, q:queueID, f:fileObj, r:response, d:data};
+	  //    console.log(dump);
+	  //  },
+	  //  'onError': function (event, queueID ,fileObj, errorObj) {
+	  //    dump = {evt:event, q:queueID, f:fileObj, e:errorObj};
+	  //    console.log(dump)
+	  //  }
+	  //});
 	});
 	if(currentUser.id) $('#user').html('Logged in as <strong>' + currentUser.id + '</strong>');
       });
