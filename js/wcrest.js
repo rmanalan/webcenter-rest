@@ -299,11 +299,14 @@ var userProfile = function() {
 	}
 
 	function getCmisFolderUrl(path, callback) {
-		if (typeof path == 'function' || !path) {
+		if(typeof path == 'function') {
 			callback = path;
-			path = getPublicFolderPath();
+			var folderPath = getPublicFolderPath();
 		}
-		webCenter.getCmisObjectByPathUrl(path, function(url) {
+    if(path==null) {
+      var folderPath = getPublicFolderPath();
+    }
+		webCenter.getCmisObjectByPathUrl(folderPath, function(url) {
 			webCenter.getCmisResource(url, function(d) {
 				var childrenFolderUrl = $($.grep($(d).find('a'), function(e) {
 					return $(e).text() == "down"
