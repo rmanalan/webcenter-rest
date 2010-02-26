@@ -230,7 +230,6 @@ $(function() {
       // Resolve CMIS URL to post to
       var cmisName = JSON.parse(params['puburl']).spaceName;
       var UCMPath = cmisName ? "/Spaces/" + cmisName : null;
-      console.log(UCMPath);
       currentUser.getCmisFolderUrl(UCMPath, function(url){
 
         // Prepare uploader iframe

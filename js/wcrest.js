@@ -298,12 +298,15 @@ var userProfile = function() {
 	}
 
 	function getCmisFolderUrl(path, callback) {
-		if(typeof path == 'function') {
+		if(typeof path=='function') {
 			callback = path;
 			var folderPath = getPublicFolderPath();
 		}
     if(path==null) {
       var folderPath = getPublicFolderPath();
+    }
+    if(typeof path=='string') {
+      var folderPath = path;
     }
 		webCenter.getCmisObjectByPathUrl(folderPath, function(url) {
 			webCenter.getCmisResource(url, function(d) {
