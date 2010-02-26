@@ -9,12 +9,8 @@ var utils = function(){
     return $.timeago(dttm.replace(/\.[^\-]*.\-/,'-'));
   }
 
-  function S4() {
-    return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
-  }
-
-  function guid() {
-    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
+  function randBase32() {
+    return Math.floor(Math.random()*100000000000000000000000000000000000).toString(36)
   }
 
   function resolveURLs(str) {
@@ -85,6 +81,6 @@ var utils = function(){
     'linkTo' : linkTo,
     'resolveURLs' : resolveURLs,
     'timeAgoInWords' : timeAgoInWords,
-    'guid' : guid
+    'randBase32' : randBase32
   };
 }();
