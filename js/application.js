@@ -254,9 +254,7 @@ $(function() {
       currentUser.getCmisFolderUrl(UCMPath, function(url){
         $('#pub-form[name="contentId"]').val(utils.randBase32());
         $('#pub-form[name="comments"]').val(msg);
-			  $('#pub-form').attr('action', uploadUrl)
-          .attr('action', url)
-          .attr('target', strName).submit();
+			  $('#pub-form').attr('action', url).attr('target', strName).submit();
       });
 
 		});
