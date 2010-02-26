@@ -235,20 +235,20 @@ $(function() {
 
         // Prepare uploader iframe
         var strName = ("uploader" + (new Date()).getTime());
-        var iFrame = $('<iframe id="' + strName + '" name="' + strName + '" class="hide" />');
-        $('#' + strName).ready(function() {
+        var iFrame = $('<iframe name="' + strName + '" class="hide" />');
+        iFrame.load(function() {
           var ifUploadBody = window.frames[strName].document;
           dump = this;
           console.log(ifUploadBody, this);
-          var ifBody = $(ifUploadBody);
-          if(ifBody.text()!='') {          
+          var contentUrl = $(ifUploadBody).text();
+          if(/^http/.test(contentUrl)) {          
             $('#msg').html('');
             var url = ifBody.text();
             $('#pub-text').val('').css('height', 18);
             $('#pub1-upload-field button').trigger('click');
             renderStream($('#stream').data('currentStreamUrl'), 0, true);
             setTimeout(function(){iFrame.remove()},100);
-          } else {
+          } else if(contentUrl!='' && !/^http/.test(contentUrl)) {
             $('#msg').html('A problem was encountered while uploading your file');
           }
         });
