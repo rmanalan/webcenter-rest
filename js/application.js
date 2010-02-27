@@ -55,7 +55,7 @@ $(function() {
     $('#pub-msg').html(m).show();
     setTimeout(function(){
       $('#pub-msg').fadeOut(1000);
-    },1000);
+    },1500);
   }
 
 	function initApp(callback) {
