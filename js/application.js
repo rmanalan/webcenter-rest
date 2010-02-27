@@ -109,7 +109,7 @@ $(function() {
 
 			currentUser.getSpaces(function() {
 				if (currentUser.spaces.length == 0) {
-					callback();
+					callback;
 					return;
 				}
 				var filterData = {
@@ -128,14 +128,14 @@ $(function() {
 				};
 				$('#grouppub option:first').clone(true).appendTo('#grouppub').autoRender(filterData);
 				$('#groupfilter option:first').clone(true).appendTo('#groupfilter').autoRender(filterData);
-				callback();
+				callback;
       });
 
 		});
 
 	};
 
-	function renderStream(url, startIndex, clearActivities) {
+	function renderStream(url, startIndex, clearActivities, callback) {
 		activityStream.getActivities(url, startIndex, function(data) {
 			// Store off current stream url for paging purposes
 			$('#stream').data('currentStreamUrl', url);
@@ -165,6 +165,7 @@ $(function() {
 			}
 			var template = $('li.messages:last').clone(true).appendTo('ol.results');
 			template.autoRender(bindData).removeClass('hide');
+      if(callback) callback;
 		});
 	};
 
@@ -257,10 +258,11 @@ $(function() {
             var url = contentUrl;
             $('#pub-text').val('').css('height', 18);
             $('#pub1-upload-field button').trigger('click');
-            renderStream($('#stream').data('currentStreamUrl'), 0, true);
-            setTimeout(function(){iFrame.remove()},100);
-            $('#pub-msg').html('').hide();
-            $('#pub-loading').hide();
+            renderStream($('#stream').data('currentStreamUrl'), 0, true,function(){
+              $('#pub-msg').html('').hide();
+              $('#pub-loading').hide();
+              setTimeout(function(){iFrame.remove()},100);
+            });
           } else if(contentUrl!='' && !/^http/.test(contentUrl)) {
             pubMessage('A problem was encountered while uploading your file');
             $('#pub-loading').hide();
