@@ -109,7 +109,7 @@ $(function() {
 
 			currentUser.getSpaces(function() {
 				if (currentUser.spaces.length == 0) {
-					callback;
+					callback();
 					return;
 				}
 				var filterData = {
@@ -128,7 +128,7 @@ $(function() {
 				};
 				$('#grouppub option:first').clone(true).appendTo('#grouppub').autoRender(filterData);
 				$('#groupfilter option:first').clone(true).appendTo('#groupfilter').autoRender(filterData);
-				callback;
+				callback();
       });
 
 		});
@@ -165,7 +165,7 @@ $(function() {
 			}
 			var template = $('li.messages:last').clone(true).appendTo('ol.results');
 			template.autoRender(bindData).removeClass('hide');
-      if(callback) callback;
+      if(callback) callback();
 		});
 	};
 
