@@ -241,7 +241,7 @@ $(function() {
         pubMessage("Don't forget to attach a file");
         return false;
       }
-      $('#pub-loading').removeClass('hide');
+      $('#pub-loading').show();
 
       // Resolve CMIS URL to post to
       var cmisName = JSON.parse(params['puburl']).spaceName;
