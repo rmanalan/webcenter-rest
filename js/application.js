@@ -239,7 +239,7 @@ $(function() {
         pubMessage("Don't forget to attach a file");
         return false;
       }
-      $('#pub-loading').show();
+      $('#pub-loading').removeClass('hide');
 
       // Resolve CMIS URL to post to
       var cmisName = JSON.parse(params['puburl']).spaceName;
@@ -260,12 +260,12 @@ $(function() {
             $('#pub1-upload-field button').trigger('click');
             renderStream($('#stream').data('currentStreamUrl'), 0, true,function(){
               $('#pub-msg').html('').hide();
-              $('#pub-loading').hide();
+              $('#pub-loading').addClass('hide');
               setTimeout(function(){iFrame.remove()},100);
             });
           } else if(contentUrl!='' && !/^http/.test(contentUrl)) {
             pubMessage("A duplicate file was found. Sorry, we can't handle dups right now.");
-            $('#pub-loading').hide();
+            $('#pub-loading').addClass('hide');
           }
         });
         $('body:last').append(iFrame);
