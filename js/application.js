@@ -264,7 +264,7 @@ $(function() {
               setTimeout(function(){iFrame.remove()},100);
             });
           } else if(contentUrl!='' && !/^http/.test(contentUrl)) {
-            pubMessage('A problem was encountered while uploading your file');
+            pubMessage("A duplicate file was found. Sorry, we can't handle dups right now.");
             $('#pub-loading').hide();
           }
         });
