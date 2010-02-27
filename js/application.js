@@ -17,6 +17,8 @@ $(function() {
 		});
 	}
 
+  $('#pub-loading, #pub-msg').hide();
+
   // Set up attachment controls
 	$('a#pub1-attachment').bind('click', function() {
 		$('#pub-form').attr('action', '#/upload');
@@ -231,7 +233,7 @@ $(function() {
 		});
 
 		app.post('#/upload', function(c) {
-      $('#pub-msg').html('').addClass('hide');
+      $('#pub-msg').html('').hide();
 			var params = this.params;
 			var msg = params['body'];
       var fileUpload = $('#pub-form input[name="fileUpload"]').val();
@@ -260,12 +262,12 @@ $(function() {
             $('#pub1-upload-field button').trigger('click');
             renderStream($('#stream').data('currentStreamUrl'), 0, true,function(){
               $('#pub-msg').html('').hide();
-              $('#pub-loading').addClass('hide');
+              $('#pub-loading').hide();
               setTimeout(function(){iFrame.remove()},100);
             });
           } else if(contentUrl!='' && !/^http/.test(contentUrl)) {
             pubMessage("A duplicate file was found. Sorry, we can't handle dups right now.");
-            $('#pub-loading').addClass('hide');
+            $('#pub-loading').hide();
           }
         });
         $('body:last').append(iFrame);
