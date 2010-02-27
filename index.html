@@ -15,14 +15,11 @@
     <script src="./js/sammy.json.js"></script>
     <script src="./js/autoresize.js"></script>
     <script src="./js/xLazyLoader.js"></script>
-    <script src="./js/swfobject.js"></script>
-    <script src="./js/uploadify.js"></script>
     <script src="./js/html-sanitizer-minified.js"></script>
     <script src="./js/wcutils.js"></script>
     <!--script src="./js/wcrest.js"></script>
     <script src="./js/application.js"></script-->
     <link href="./css/screen.css" type="text/css" media="screen" rel="stylesheet"/>
-    <link href="./css/uploadify.css" type="text/css" media="screen" rel="stylesheet"/>
     <!--link href="./css/style.css" type="text/css" media="screen" rel="stylesheet"/-->
     <script>
     // Lazy load the application scripts/css so I can work on them locally
@@ -72,6 +69,10 @@
               </div>
             </div>
           </form>
+          <div id="pub-notifications">
+            <img id="pub-loading" src="images/ajax-loader.gif" width="16px" height="16px" alt="loading..." class="hide"/>
+            <div id="pub-msg" class="hide"></div>
+          </div>
         </div><!-- #publisher -->
 
         <div id="stream">
@@ -95,7 +96,7 @@
           <ol class="results">
             <li id="act-template" class="messages id@id hide">
               <div class="span-avatar column first">
-                <img class="avatarimg avatar@src" src="images/loader.gif"/>
+                <img class="avatarimg avatar@src" src=""/>
               </div>
               <div class="span-activity column last">
                 <span class="activity"></span>
@@ -106,43 +107,6 @@
           </ol>
         </div><!-- #stream -->
       </div><!-- #main-content -->
-
-      <!--div id="sidebar" class="span-6 last">
-        <div class="sidebar-widget">
-          <div class="sb-widget-titlebar">
-            <h4>My Group Spaces</h5>
-          </div>
-          <div id="sb-spaces" class="sb-widget-body clearfix">
-            <ul class="hide">
-              <li class="sbspace clearfix">
-                <div class="sbspaceicon">
-                  <img class="spspaceiconimg@src spacename@alt" src="" width="25px" height="25px" alt=""/>
-                </div>
-                <div class="sbspaceinfo">
-                  <h5><a href="" class="sbspacelink@href sbspacename" target="_top"></a></h5>
-                  <p class="sbspacedescr"></p>
-                </div>
-              </li>
-            </ul>
-            <div class="pager">
-              <a href="#" id="sbspaces-pager-prev" class="hide">&laquo; Previous</a>
-              <a href="#" id="sbspaces-pager-next" class="hide">Next &raquo;</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="sidebar-widget">
-          <div class="sb-widget-titlebar">
-            <h4>My Connections</h4>
-          </div>
-          <div id="sb-connections" class="sb-widget-body">
-            <a class="sbconnection sbconnectionlink@href sbconnectionname@title" href="" target="_top">
-              <img class="sbconnectionimg@src sbconnectionname@alt" src=""/>
-            </a>
-          </div>
-        </div>
-      </div--><!-- #sidebar -->
-      
     </div><!-- #main -->
   </body>
 </html>

@@ -107,6 +107,8 @@ li.messages {
   margin:10px 0 0 0;
 }
 #publisher {
+	position:relative;
+	border: 1px solid red; 
   border:1px solid #ccc;
   -moz-border-radius:7px;
   -webkit-border-radius:7px;
@@ -309,6 +311,11 @@ a.sbconnection:hover {
 }
 .uploadifyError {
   border:0 !important;
+}
+#pub-notifications {
+	position: absolute; 
+	right: 13px;
+	bottom:4px
 }
 /*
 vim:ts=2:sw=2

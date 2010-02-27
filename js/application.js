@@ -51,6 +51,13 @@ $(function() {
 		});
 	};
 
+  function pubMessage(m) {
+    $('#pub-msg').html(m).show();
+    setTimeout(function(){
+      $('#pub-msg').fadeOut(1000);
+    },2000);
+  }
+
 	function initApp(callback) {
 		webCenter.init({'perPage': 20},function(success) {
 			if (!success) {
@@ -223,10 +230,15 @@ $(function() {
 		});
 
 		app.post('#/upload', function(c) {
+      $('#pub-msg').html('').addClass('hide');
 			var params = this.params;
-      console.log(params);
 			var msg = params['body'];
-			if (msg == "" || msg == "Share something...") return false;
+      var fileUpload = $('#pub-form input[name="fileUpload"]').val();
+			if (!fileUpload) {
+        pubMessage("Don't forget to attach a file");
+        return false;
+      }
+      $('#pub-loading').removeClass('hide');
 
       // Resolve CMIS URL to post to
       var cmisName = JSON.parse(params['puburl']).spaceName;
@@ -248,8 +260,9 @@ $(function() {
             $('#pub1-upload-field button').trigger('click');
             renderStream($('#stream').data('currentStreamUrl'), 0, true);
             setTimeout(function(){iFrame.remove()},100);
+            $('#pub-msg').html('').addClass('hide');
           } else if(contentUrl!='' && !/^http/.test(contentUrl)) {
-            $('#msg').html('A problem was encountered while uploading your file');
+            pubMessage('A problem was encountered while uploading your file');
           }
         });
         $('body:last').append(iFrame);
@@ -258,8 +271,8 @@ $(function() {
         $('#pub-form input[name="comments"]').val(msg);
         $('#pub-form input[name="simpleResponse"]').val(true);
 			  $('#pub-form').attr('action',url).attr('target',strName).submit();
+        $('#pub-loading').addClass('hide');
       });
-
 		});
 
 		app.bind('update-filters', function(e, currLocation) {
