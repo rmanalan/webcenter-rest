@@ -238,7 +238,7 @@ $(function() {
         pubMessage("Don't forget to attach a file");
         return false;
       }
-      $('#pub-loading').removeClass('hide');
+      $('#pub-loading').show();
 
       // Resolve CMIS URL to post to
       var cmisName = JSON.parse(params['puburl']).spaceName;
@@ -251,7 +251,6 @@ $(function() {
         iFrame.load(function() {
           var ifUploadBody = window.frames[strName].document;
           dump = this;
-          console.log(ifUploadBody, this);
           var contentUrl = $(ifUploadBody).text();
           if(/^http/.test(contentUrl)) {          
             $('#msg').html('');
@@ -260,9 +259,11 @@ $(function() {
             $('#pub1-upload-field button').trigger('click');
             renderStream($('#stream').data('currentStreamUrl'), 0, true);
             setTimeout(function(){iFrame.remove()},100);
-            $('#pub-msg').html('').addClass('hide');
+            $('#pub-msg').html('').hide();
+            $('#pub-loading').hide();
           } else if(contentUrl!='' && !/^http/.test(contentUrl)) {
             pubMessage('A problem was encountered while uploading your file');
+            $('#pub-loading').hide();
           }
         });
         $('body:last').append(iFrame);
@@ -271,7 +272,6 @@ $(function() {
         $('#pub-form input[name="comments"]').val(msg);
         $('#pub-form input[name="simpleResponse"]').val(true);
 			  $('#pub-form').attr('action',url).attr('target',strName).submit();
-        $('#pub-loading').addClass('hide');
       });
 		});
 
