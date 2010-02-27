@@ -233,6 +233,7 @@ $(function() {
 		});
 
 		app.post('#/upload', function(c) {
+      alert('hi');
       $('#pub-msg').html('').hide();
 			var params = this.params;
 			var msg = params['body'];
