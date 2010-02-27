@@ -233,13 +233,13 @@ $(function() {
 		});
 
 		app.post('#/upload', function(c) {
-      alert('hi');
       $('#pub-msg').html('').hide();
 			var params = this.params;
 			var msg = params['body'];
       var fileUpload = $('#pub-form input[name="fileUpload"]').val();
 			if (!fileUpload) {
         pubMessage("Don't forget to attach a file");
+        $('#pub-form').attr('action', '#/upload');
         return false;
       }
       $('#pub-loading').show();
@@ -267,6 +267,7 @@ $(function() {
               setTimeout(function(){iFrame.remove()},100);
             });
           } else if(contentUrl!='' && !/^http/.test(contentUrl)) {
+            $('#pub-form').attr('action', '#/upload');
             pubMessage("A duplicate file was found. Sorry, we can't handle dups right now.");
             $('#pub-loading').hide();
           }
