@@ -315,7 +315,10 @@ a.sbconnection:hover {
 #pub-notifications {
 	position: absolute; 
 	right: 13px;
-	bottom:4px
+	bottom:8px
+}
+#pub-msg {
+  font-size:10.5px;
 }
 /*
 vim:ts=2:sw=2
