@@ -73,7 +73,7 @@ var webCenter = function(callback) {
 			var projectParam = "";
 		}
 		var results = $.grep(links, function(n) {
-			return n.resourceType == urn;
+			if(n.resourceType == urn || n.rel == urn) return true;
 		});
 		if (results.length > 0) {
 			//return href if startIndex is false
@@ -107,8 +107,8 @@ var webCenter = function(callback) {
 				return results[0].href;
 			}
 		} else {
-			return null;
-		}
+      return null;
+ 		}
 	};
 
 	function getTemplateItem(items, type) {
@@ -248,7 +248,7 @@ var activityStream = function() {
 		if (startIndex == 0) {
 			activityId = - 1;
 		};
-		if (typeof(links) == 'object') var url = webCenter.getResourceURL(links, 'urn:oracle:webcenter:activities:stream', startIndex);
+		if (typeof(links) == 'object') var url = webCenter.getResourceURL(links, "urn:oracle:webcenter:activities:stream:connections", startIndex);
 		else var url = links.replace("{startIndex}", startIndex).replace("{itemsPerPage}", webCenter.getPerPage());
 		$.getJSON(url, callback);
 	}

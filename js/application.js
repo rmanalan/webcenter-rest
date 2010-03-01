@@ -197,7 +197,7 @@ $(function() {
 		});
 
 		app.get('#/', function(c) {
-			renderStream(webCenter.resourceIndex.links, 0, true);
+			renderStream(currentUser.links, 0, true);
 		});
 
 		app.get('#/group/:name', function(c) {
