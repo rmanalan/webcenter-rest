@@ -188,8 +188,8 @@ $(function() {
       // make sure inlined images aren't too big
       $('img.inline').load(function(){
         var img = $(this)
-        if(img.width()>400){
-          img.width(400);
+        if(img.width()>570){
+          img.width(570);
         };
         img.fadeIn();
       });
