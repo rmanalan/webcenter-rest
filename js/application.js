@@ -154,11 +154,10 @@ $(function() {
           var activitySummary = webCenter.resolveBindItems(d);
           var detail = "";
           if(d.activityType=='create-document'){
-            var filename = $(activitySummary).last('a');
-            if(/(jpg|gif|png)$/i.test(filename.text())) {
+            var filename = $.grep($('a',activitySummary),function(e){ return /(jpg|gif|png)$/i.test($(e).text()) });
+            if(filename[0]) {
               detail = d.detail ? d.detail: "";
-
-              detail += '<p><img class="inline hide" src="' + filename.attr('href') + '" /></p>';
+              detail += '<p><img class="inline hide" src="' + $(filename[0]).attr('href') + '" /></p>';
             } else {
               detail = d.detail ? d.detail: "";
             };
