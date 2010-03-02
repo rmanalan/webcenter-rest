@@ -154,6 +154,7 @@ $(function() {
           var activitySummary = webCenter.resolveBindItems(d);
           var detail = "";
           if(d.activityType=='create-document'){
+            dump = activitySummary;
             var filename = $.grep($('a',$(activitySummary)),function(e){ return /(jpg|gif|png)$/i.test($(e).text()) });
             console.log(filename);
             if(filename[0]) {
