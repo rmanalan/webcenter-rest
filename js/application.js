@@ -30,8 +30,7 @@ $(function() {
 		$('#pub-form').attr('action', '#/message');
 		$('#pub1-upload-field input').val('');
 		$('#pub1-upload-field').addClass('hide');
-		$('a#pub1-attachment').show();
-    $('#pub1-attachment-descr').show()
+		$('a#pub1-attachment, #pub1-attachment-descr').show();
     return false;
 	});
 
