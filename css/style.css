@@ -320,7 +320,7 @@ a.sbconnection:hover {
 #pub-msg {
   font-size:10.5px;
 	position:absolute;
-	width:500px
+	width:500px;
 	top:50%;
 	left:50%;
 	background:#000;
