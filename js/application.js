@@ -155,7 +155,7 @@ $(function() {
             if(/(jpg|gif|png)$/i.test(filename.text())) {
               detail = d.detail ? d.detail: "";
 
-              detail += '<p><img class="inline" src="' + filename.attr('href') + '" /></p>';
+              detail += '<p><img class="inline hide" src="' + filename.attr('href') + '" /></p>';
             } else {
               detail = d.detail ? d.detail: "";
             };
@@ -191,6 +191,7 @@ $(function() {
         if(img.width()>400){
           img.width(400);
         };
+        img.removeClass('hide');
       });
       if(callback) callback();
 		});
