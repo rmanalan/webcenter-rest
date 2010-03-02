@@ -1,9 +1,5 @@
 // Currently logged in user. Gets init when webCenter.init() is called
 var currentUser;
-var user;
-if ($.browser.msie) var console = {
-	log: alert
-};
 
 // Main WebCenter resource module
 var webCenter = function(callback) {

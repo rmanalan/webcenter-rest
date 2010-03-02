@@ -18,7 +18,7 @@ html[xmlns] .clearfix {
 body {
 	overflow-x:hidden;
 	overflow-y:auto;	
-	background:#fff url(../images/pagefade.png) no-repeat fixed 645px top;
+	/* background:#fff url(../images/pagefade.png) no-repeat fixed 645px top; */
 }
 .main{
 	margin-left:10px;
