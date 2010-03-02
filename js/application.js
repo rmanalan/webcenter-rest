@@ -191,7 +191,7 @@ $(function() {
         if(img.width()>400){
           img.width(400);
         };
-        img.removeClass('hide');
+        img.fadeIn();
       });
       if(callback) callback();
 		});
