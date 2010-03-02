@@ -63,7 +63,6 @@ $(function() {
 	function initApp(callback) {
 		webCenter.init({'perPage': 20},function(success) {
 			if (!success) {
-        console.log('fail')
 				$('#msg').html('You are not loged in... please <a href="/webcenter/wcAuthentication/?login=true&success_url=/../owccustom/index.html">login</a> first').show();
 				return false;
 			}
