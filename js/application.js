@@ -146,16 +146,33 @@ $(function() {
 				moreActivities = false;
 				return;
 			}
-
 			var bindData = {
 				'messages': $.map(data.items, function(d) {
-					var detail = d.detail ? d.detail: "";
+          var activitySummary = webCenter.resolveBindItems(d);
+          var detail = "";
+          if(d.activityType=='create-document'){
+            var filename = $(activitySummary).last('a');
+            console.log(filename);
+            if(/(jpg|gif|png)$/i.test(filename.text())) {
+              detail = d.detail ? d.detail: "";
+              detail += '<p><img src="' + filename.attr('href') + '" width="400px" /></p>';
+            } else {
+              detail = d.detail ? d.detail: "";
+            };
+          } else {
+            detail = d.detail ? d.detail: "";
+          };
+          // TODO
+          if(d.activityType=='updateStatus') {
+            
+          } else {
+          }
 					return {
 						'id': activityStream.nextActivityId(),
 						'avatar': userProfile.avatarSmall(webCenter.getTemplateItem(d.templateParams.items, 'user').guid),
 						'name': webCenter.getTemplateItem(d.templateParams.items, 'user').displayName,
 						'url': webCenter.getResourceURL(webCenter.getTemplateItem(d.templateParams.items, 'user').links, 'urn:oracle:webcenter:people:person'),
-						'activity': webCenter.resolveBindItems(d),
+						'activity': activitySummary,
 						'detail': detail,
 						'reltime': utils.timeAgoInWords(d.createdDate)
 					}
