@@ -40,8 +40,10 @@ var webCenter = function(callback) {
 		else callback = options;
 		getResourceIndex(function(data) {
 			// assumes that the user is not logged in
-      console.log(data);
-			if (!data) callback(false);
+			if (!data) {
+        callback(false);
+        return false;
+      }
 
 			// setup current user
 			userProfile.getCurrentUser(function(d) {
