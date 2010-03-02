@@ -57,7 +57,7 @@ $(function() {
     $('#msg').html(m).slideDown();
     setTimeout(function(){
       $('#msg').fadeOut(1000);
-    },1500);
+    },200);
   }
 
 	function initApp(callback) {
