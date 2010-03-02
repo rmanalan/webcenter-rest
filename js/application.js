@@ -54,7 +54,7 @@ $(function() {
 	};
 
   function pubMessage(m) {
-    $('#msg').html(m).show();
+    $('#msg').html(m).slideDown();
     setTimeout(function(){
       $('#msg').fadeOut(1000);
     },1500);

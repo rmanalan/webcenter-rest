@@ -322,6 +322,9 @@ a.sbconnection:hover {
 	background:#ffffcc;
 	border-bottom:1px solid #FFEE99;
 	position:fixed;
+	z-index:100;
+	opacity:.9;
+	width:100%;
 }
 /*
 vim:ts=2:sw=2
