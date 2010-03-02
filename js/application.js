@@ -17,7 +17,7 @@ $(function() {
 		});
 	}
 
-  $('#pub-loading, #pub-msg').hide();
+  $('#pub-loading, #msg').hide();
 
   // Set up attachment controls
 	$('a#pub1-attachment').bind('click', function() {
@@ -54,9 +54,9 @@ $(function() {
 	};
 
   function pubMessage(m) {
-    $('#pub-msg').html(m).show();
+    $('#msg').html(m).show();
     setTimeout(function(){
-      $('#pub-msg').fadeOut(1000);
+      $('#msg').fadeOut(1000);
     },1500);
   }
 
@@ -233,7 +233,7 @@ $(function() {
 		});
 
 		app.post('#/upload', function(c) {
-      $('#pub-msg').html('').hide();
+      $('#msg').html('').hide();
 			var params = this.params;
 			var msg = params['body'];
       var fileUpload = $('#pub-form input[name="fileUpload"]').val();
@@ -262,7 +262,7 @@ $(function() {
             $('#pub-text').val('').css('height', 18);
             $('#pub1-upload-field button').trigger('click');
             renderStream($('#stream').data('currentStreamUrl'), 0, true,function(){
-              $('#pub-msg').html('').hide();
+              $('#msg').html('').hide();
               $('#pub-loading').hide();
               setTimeout(function(){iFrame.remove()},100);
             });
