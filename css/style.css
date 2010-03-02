@@ -318,18 +318,10 @@ a.sbconnection:hover {
 	bottom:8px
 }
 #msg {
-  font-size:10.5px;
-	position:absolute;
-	width:500px;
-	padding:20px;
-	top:50%;
-	left:50%;
-	background:#000;
-	opacity:.7;
-	color:#fff;
-	font-size:24px;
-	-moz-border-radius:30px;
-	-webkit-border-radius:30px;
+	padding:5px 10px;
+	background:#ffffcc;
+	border-bottom:1px solid #FFEE99;
+	position:fixed;
 }
 /*
 vim:ts=2:sw=2
