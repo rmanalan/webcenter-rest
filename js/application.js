@@ -152,7 +152,6 @@ $(function() {
           var detail = "";
           if(d.activityType=='create-document'){
             var filename = $(activitySummary).last('a');
-            console.log(filename);
             if(/(jpg|gif|png)$/i.test(filename.text())) {
               detail = d.detail ? d.detail: "";
 
