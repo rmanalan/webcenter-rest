@@ -156,7 +156,6 @@ $(function() {
           if(d.activityType=='create-document'){
             dump = activitySummary;
             var filename = $.grep($(activitySummary).filter('a'),function(e){ return /(jpg|gif|png)$/i.test($(e).text()) });
-            console.log(filename);
             if(filename[0]) {
               detail = d.detail ? d.detail: "";
               detail += '<p><img class="inline hide" src="' + $(filename[0]).attr('href') + '" /></p>';
