@@ -155,7 +155,7 @@ $(function() {
           var detail = "";
           if(d.activityType=='create-document'){
             dump = activitySummary;
-            var filename = $.grep($('a',$(activitySummary)),function(e){ return /(jpg|gif|png)$/i.test($(e).text()) });
+            var filename = $.grep($(activitySummary).filter('a'),function(e){ return /(jpg|gif|png)$/i.test($(e).text()) });
             console.log(filename);
             if(filename[0]) {
               detail = d.detail ? d.detail: "";
