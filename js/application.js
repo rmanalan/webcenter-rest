@@ -155,7 +155,8 @@ $(function() {
             console.log(filename);
             if(/(jpg|gif|png)$/i.test(filename.text())) {
               detail = d.detail ? d.detail: "";
-              detail += '<p><img src="' + filename.attr('href') + '" width="400px" /></p>';
+
+              detail += '<p><img class="inline" src="' + filename.attr('href') + '" /></p>';
             } else {
               detail = d.detail ? d.detail: "";
             };
@@ -184,6 +185,14 @@ $(function() {
 			}
 			var template = $('li.messages:last').clone(true).appendTo('ol.results');
 			template.autoRender(bindData).removeClass('hide');
+      
+      // make sure inlined images aren't too big
+      $('img.inline').each(function(){
+        var img = $(this)
+        if(img.width()>400){
+          img.width(400);
+        };
+      });
       if(callback) callback();
 		});
 	};

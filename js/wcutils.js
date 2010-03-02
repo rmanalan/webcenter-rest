@@ -47,7 +47,7 @@ var utils = function() {
 	}
 	function resolveImages(str) {
 		return str.replace(/(^|[\n ])http(|s):\/\/.+(jpg|gif|png|bmp)/i, function(token) {
-			return '<p><img src="' + token + '" alt=""/></p>';
+			return '<p><img class="inline" src="' + token + '" alt=""/></p>';
 		});
 	}
 	function resolveYouTubeURLs(str) {
