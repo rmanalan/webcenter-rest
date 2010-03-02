@@ -326,6 +326,10 @@ a.sbconnection:hover {
 	opacity:.9;
 	width:100%;
 }
+img.inline {
+	-moz-box-shadow:3px 4px 5px #666666;
+	-webkit-box-shadow:3px 4px 5px #666666;
+}
 /*
 vim:ts=2:sw=2
  */
