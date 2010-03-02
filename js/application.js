@@ -23,6 +23,7 @@ $(function() {
 	$('a#pub1-attachment').bind('click', function() {
 		$('#pub-form').attr('action', '#/upload');
 		$(this).hide();
+    $('#pub1-attachment-descr').hide()
 		$('#pub1-upload-field').removeClass('hide');
 	});
 	$('#pub1-upload-field button').bind('click', function() {
@@ -30,6 +31,7 @@ $(function() {
 		$('#pub1-upload-field input').val('');
 		$('#pub1-upload-field').addClass('hide');
 		$('a#pub1-attachment').show();
+    $('#pub1-attachment-descr').show()
     return false;
 	});
 
