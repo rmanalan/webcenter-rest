@@ -330,6 +330,9 @@ img.inline {
 	-moz-box-shadow:3px 3px 10px #999;
 	-webkit-box-shadow:3px 3px 10px #999;
 }
+a.inline {
+	border-bottom:0;
+}
 #no-activities {
 	-moz-border-radius:10px 10px 10px 10px;
 	-webkit-border-radius:10px 10px 10px 10px;
