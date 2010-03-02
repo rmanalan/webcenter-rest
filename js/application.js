@@ -158,7 +158,7 @@ $(function() {
             var filename = $.grep($(activitySummary).filter('a'),function(e){ return /(jpg|gif|png)$/i.test($(e).text()) });
             if(filename[0]) {
               detail = d.detail ? d.detail: "";
-              detail += '<p><img class="inline hide" src="' + $(filename[0]).attr('href') + '" /></p>';
+              detail += '<p><a class="inline" href="' + $(filename[0]).attr('href') + '" target="_blank"><img class="inline hide" src="' + $(filename[0]).attr('href') + '" /></a></p>';
             } else {
               detail = d.detail ? d.detail: "";
             };
