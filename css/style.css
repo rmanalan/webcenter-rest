@@ -188,7 +188,7 @@ button:hover, .button:hover {
 	padding-left:12px;
 	background:url(../images/file.png) no-repeat 0 1px;
 }
-#pub1-attachment span {
+#pub1-upload span {
 	font-size:11px;
 	color:#999;
 }
