@@ -327,8 +327,8 @@ a.sbconnection:hover {
 	width:100%;
 }
 img.inline {
-	-moz-box-shadow:3px 4px 5px #666666;
-	-webkit-box-shadow:3px 4px 5px #666666;
+	-moz-box-shadow:3px 3px 10px #999;
+	-webkit-box-shadow:3px 3px 10px #999;
 }
 #no-activities {
 	-moz-border-radius:10px 10px 10px 10px;
