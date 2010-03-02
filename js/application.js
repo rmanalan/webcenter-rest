@@ -97,7 +97,7 @@ $(function() {
 			$('.lfopts:first').attr('value', webCenter.getResourceURL(webCenter.resourceIndex.links, 'urn:oracle:webcenter:activities:stream', true));
 
 			$('#groupfilter').bind('change', function(e) {
-				location = '#/group/' + $('option:selected', this).text();
+				location.hash = '#/group/' + escape($('option:selected', this).text());
 			});
 
 			// Sets url for default stream
@@ -143,9 +143,12 @@ $(function() {
 			$('#stream').data('currentStreamUrl', url);
 
 			if (data.items.length == 0) {
+        $('#no-activities').removeClass('hide');
 				moreActivities = false;
 				return;
-			}
+			} else {
+        $('#no-activities').addClass('hide');
+      }
 			var bindData = {
 				'messages': $.map(data.items, function(d) {
           var activitySummary = webCenter.resolveBindItems(d);
@@ -309,7 +312,7 @@ $(function() {
 
 		app.bind('update-filters', function(e, currLocation) {
 			if (/\#\/group\//.test(currLocation)) {
-				var selectedVal = currLocation.split('#/group/')[1].split('/')[0];
+				var selectedVal = unescape(currLocation.split('#/group/')[1].split('/')[0]);
 				$('#groupfilter option').each(function(i, n) {
 					var opt = $(n);
 					if (opt.text() == selectedVal) {

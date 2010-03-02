@@ -330,6 +330,18 @@ img.inline {
 	-moz-box-shadow:3px 4px 5px #666666;
 	-webkit-box-shadow:3px 4px 5px #666666;
 }
+#no-activities {
+	-moz-border-radius:10px 10px 10px 10px;
+	-webkit-border-radius:10px 10px 10px 10px;
+	background:none repeat scroll 0 0 #F8F8F8;
+	clear:both;
+	color:#CCCCCC;
+	font-size:16px;
+	padding:10px;
+	text-align:center;
+	text-shadow:1px 1px #FFFFFF;
+}
+
 /*
 vim:ts=2:sw=2
  */
