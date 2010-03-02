@@ -186,7 +186,7 @@ $(function() {
 			template.autoRender(bindData).removeClass('hide');
       
       // make sure inlined images aren't too big
-      $('img.inline').each(function(){
+      $('img.inline').load(function(){
         var img = $(this)
         if(img.width()>400){
           img.width(400);
