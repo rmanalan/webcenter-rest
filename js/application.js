@@ -130,10 +130,9 @@ $(function() {
 				};
         console.log(filterData)
 				$('#grouppub option:first').clone(true).appendTo('#grouppub');
-        console.log($('#grouppub'));
-        $('#grouppub').autoRender(filterData);
+        $('#grouppub option:first').autoRender(filterData);
 				$('#groupfilter option:first').clone(true).appendTo('#groupfilter');
-        $('#groupfilter').autoRender(filterData);
+        $('#groupfilter option:first').autoRender(filterData);
 				callback();
       });
 
