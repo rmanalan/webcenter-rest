@@ -182,10 +182,14 @@ $(function() {
 			};
 			if (clearActivities) {
 				var activityTemplate = $('li.messages:first');
-				$('ol.results').empty().append(activityTemplate);
+				$('ol.results').empty().append(activityTemplate).autoRender(bindData);
+				$('ol.results *').show();
+			} else {
+				var template = $('li.messages:last').clone().appendTo('ol.results');
+				template.autoRender(bindData)
+				$('ol.results').removeClass('hide');
 			}
-			var template = $('li.messages:last').clone(true).appendTo('ol.results');
-			template.autoRender(bindData).removeClass('hide');
+      
       
       // make sure inlined images aren't too big
       $('img.inline').load(function(){
