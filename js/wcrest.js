@@ -122,7 +122,6 @@ var webCenter = function(callback) {
 	}
 
 	function resolveBindItems(d) {
-    if(typeof dump == "undefined") dump = d;
 		var activityDescr = d.message.replace(/\{[^\}]*\}/g, function(key) {
 			var item = $.grep(d.templateParams.items, function(n) {
 				return n.key == key;
@@ -133,6 +132,7 @@ var webCenter = function(callback) {
 			return ' <a href="' + url + '" target="_top">' + item.displayName + '</a> ';
 		});
 		if (d.groupSpace) {
+      dump = d;
 			activityDescr += ' in <a href="' + webCenter.getResourceURL(d.groupSpace.links, 'urn:oracle:webcenter:space', false) + '" target="_top">' + d.groupSpace.displayName + '</a>';
 		};
 		return activityDescr;
