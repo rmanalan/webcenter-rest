@@ -4,7 +4,6 @@ $(document).ajaxStart(function() {
 	$('#loading-ind').hide();
 });
 
-var dump, dump2;
 $(function() {
 
 	// Set up placeholder text for publisher
@@ -155,7 +154,6 @@ $(function() {
           var activitySummary = webCenter.resolveBindItems(d);
           var detail = "";
           if(d.activityType=='create-document'){
-            dump = activitySummary;
             var filename = $.grep($(activitySummary).filter('a'),function(e){ return /(jpg|gif|png)$/i.test($(e).text()) });
             if(filename[0]) {
               detail = d.detail ? d.detail: "";
@@ -284,7 +282,6 @@ $(function() {
         var iFrame = $('<iframe name="' + strName + '" class="hide" />');
         iFrame.load(function() {
           var ifUploadBody = window.frames[strName].document;
-          dump = this;
           var contentUrl = $(ifUploadBody).text();
           if(/^http/.test(contentUrl)) {          
             $('#msg').html('');

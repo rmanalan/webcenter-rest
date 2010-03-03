@@ -1,5 +1,5 @@
 // Currently logged in user. Gets init when webCenter.init() is called
-var currentUser;
+var currentUser, dump;
 
 // Main WebCenter resource module
 var webCenter = function(callback) {
@@ -132,6 +132,7 @@ var webCenter = function(callback) {
 			return ' <a href="' + url + '" target="_top">' + item.displayName + '</a> ';
 		});
 		if (d.groupSpace) {
+      if(!dump) dump = d;
 			activityDescr += ' in <a href="' + webCenter.getResourceURL(d.groupSpace.links, 'urn:oracle:webcenter:space', false) + '" target="_top">' + d.groupSpace.displayName + '</a>';
 		};
 		return activityDescr;
