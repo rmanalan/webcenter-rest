@@ -3,7 +3,6 @@
   <context-root>owccustom</context-root>
   <container-descriptor>
     <servlet-reload-check-secs>0</servlet-reload-check-secs>
-    <page-check-seconds>0</page-check-seconds>
     <resource-reload-check-secs>0</resource-reload-check-secs>
   </container-descriptor>
 </weblogic-web-app>
