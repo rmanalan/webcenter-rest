@@ -129,8 +129,8 @@ $(function() {
 					})
 				};
         console.log(filterData)
-				$('#grouppub option:first').clone(true).appendTo('#grouppub');
-        $('#grouppub option:first').autoRender(filterData);
+				$('#grouppub option:first').clone(true).appendTo('#grouppub').attr('class','appended');
+        $('#grouppub option.appended').autoRender(filterData);
 				$('#groupfilter option:first').clone(true).appendTo('#groupfilter');
         $('#groupfilter option:first').autoRender(filterData);
 				callback();
