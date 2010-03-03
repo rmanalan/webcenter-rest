@@ -129,10 +129,9 @@ $(function() {
 					})
 				};
         console.log(filterData)
-				$('#grouppub option:first').clone(true).appendTo('#grouppub').attr('class','appended');
+				$('#grouppub option:first').clone().appendTo('#grouppub').attr('class','appended');
         $('#grouppub option.appended').first().autoRender(filterData);
-				$('#groupfilter option:first').clone(true).appendTo('#groupfilter');
-        $('#groupfilter option:first').autoRender(filterData);
+				$('#groupfilter option:first').clone().appendTo('#groupfilter').autoRender(filterData);
 				callback();
       });
 
