@@ -1,5 +1,5 @@
 // Currently logged in user. Gets init when webCenter.init() is called
-var currentUser, dump;
+var currentUser;
 
 // Main WebCenter resource module
 var webCenter = function(callback) {
@@ -81,9 +81,9 @@ var webCenter = function(callback) {
 				// in this case we have to search for the one with the 'alternate' view
 				if (results.length > 1) {
 					var results = $.grep(links, function(n) {
-						return n.rel == 'alternate'
+						return n.rel == 'alternate';
 					});
-					if (results == 1) return results[0].href + projectParam;
+					if (results.length == 1) return results[0].href + projectParam;
 					else return null;
 				} else {
 					return results[0].href + projectParam;
@@ -132,7 +132,6 @@ var webCenter = function(callback) {
 			return ' <a href="' + url + '" target="_top">' + item.displayName + '</a> ';
 		});
 		if (d.groupSpace) {
-      dump = d;
 			activityDescr += ' in <a href="' + webCenter.getResourceURL(d.groupSpace.links, 'urn:oracle:webcenter:space', false) + '" target="_top">' + d.groupSpace.displayName + '</a>';
 		};
 		return activityDescr;
