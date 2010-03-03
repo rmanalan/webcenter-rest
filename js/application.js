@@ -130,7 +130,7 @@ $(function() {
 				};
         console.log(filterData)
 				$('#grouppub option:first').clone(true).appendTo('#grouppub').attr('class','appended');
-        $('#grouppub option.appended').autoRender(filterData);
+        $('#grouppub option.appended').first().autoRender(filterData);
 				$('#groupfilter option:first').clone(true).appendTo('#groupfilter');
         $('#groupfilter option:first').autoRender(filterData);
 				callback();
