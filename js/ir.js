@@ -1,4 +1,4 @@
-var assetHost = 'http://aconmt01.us.oracle.com/';
+var assetHost = '/';
 $.xLazyLoader({
   'css' : $.map(['dd','ir'],function(n){return assetHost+'css/'+n+'.css'}),
   'js' : $.map(['curvy','pure','json','domcached','dd','wcutils','wcrest'],function(n){return assetHost+'js/'+n+'.js'})
