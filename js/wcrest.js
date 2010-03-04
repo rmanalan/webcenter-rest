@@ -356,9 +356,9 @@ var userProfile = function() {
 				"spaces": d.items
 			});
 			if (callback) {
-				callback(obj);
+				callback(d.items);
 			} else {
-				return obj;
+				return d.items;
 			}
 		});
 	}

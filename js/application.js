@@ -3,7 +3,7 @@ $(document).ajaxStart(function() {
 }).ajaxStop(function() {
 	$('#loading-ind').hide();
 });
-
+var dump;
 $(function() {
 
 	// Set up placeholder text for publisher
@@ -109,29 +109,27 @@ $(function() {
       // Sets url for default stream filter
 			$('#groupfilter option:first').attr('value', webCenter.getResourceURL(webCenter.resourceIndex.links, 'urn:oracle:webcenter:activities:stream', false));
 
-			currentUser.getSpaces(function() {
+			currentUser.getSpaces(function(d) {
 				if (currentUser.spaces.length == 0) {
 					callback();
 					return;
 				}
-				var filterData = {
-					'groupopt': $.map(currentUser.spaces, function(d) {
-						if (!d.isOffline) {
-							return {
-								'groupname': d.displayName,
-								'groupval': webCenter.getResourceURL(d.links, 'urn:oracle:webcenter:activities:stream', true),
-								'grouppuburls': JSON.stringify({
-									'msgBoard': webCenter.getResourceURL(d.links, 'urn:oracle:webcenter:messageBoard', false),
-									'spaceName': d.name
-								})
-							};
-						};
-					})
-				};
-        console.log(filterData)
-				$('#grouppub option:first').clone().appendTo('#grouppub').attr('class','appended');
-        $('#grouppub option.appended').first().autoRender(filterData);
-				$('#groupfilter option:first').clone().appendTo('#groupfilter').autoRender(filterData);
+        $.each(d,function(i,o){
+          var urls = JSON.stringify({
+            'msgBoard': webCenter.getResourceURL(o.links, 'urn:oracle:webcenter:messageBoard', false),
+            'spaceName': o.name
+          });
+
+          // populate the publish to drop down
+          var pubOption = $('#grouppub option:first').clone().val(urls).text(o.displayName);
+          $('#grouppub').append(pubOption);
+
+          // populate the view by drop down
+          var asUrl = webCenter.getResourceURL(o.links, 'urn:oracle:webcenter:activities:stream', true);
+          var viewByOption = $('#groupfilter option:first').clone().val(asUrl).text(o.displayName);
+          $('#groupfilter').append(viewByOption);
+        });
+
 				callback();
       });
 
@@ -146,10 +144,12 @@ $(function() {
 
 			if (data.items.length == 0) {
         $('#no-activities').removeClass('hide');
+        $('ol.results').hide();
 				moreActivities = false;
 				return;
 			} else {
         $('#no-activities').addClass('hide');
+        $('ol.results').show();
       }
 			var bindData = {
 				'messages': $.map(data.items, function(d) {
@@ -243,7 +243,7 @@ $(function() {
 					return $(n).text() == decodeURI(groupName)
 				})[0].value;
 				var activityTemplate = $('li.messages:first');
-				$('ol.results').empty().append(activityTemplate);
+				$('ol.results').empty().append(activityTemplate).hide();
 				renderStream(url, 0, true);
 			}
 		});
