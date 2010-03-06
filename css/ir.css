@@ -23,16 +23,16 @@ a[id='T:oc_3228768355region1:photoRefresher'],
 div[id='T:pt_ps1::d'] {
   display:none;
 }
-div.irNav td.xpe,
-div.irNav td.xp4 {
+div.irNav table:first-child td.xpe,
+div.irNav table:first-child td.xp4 {
   background:url(../images/nav-ul.png) no-repeat 0 0 !important;
 }
-div.irNav td.xpi,
-div.irNav td.xp8 {
+div.irNav table:first-child td.xpi,
+div.irNav table:first-child td.xp8 {
   background:url(../images/nav-um.png) repeat-x !important;
 }
-div.irNav td.xpm,
-div.irNav td.xpc {
+div.irNav table:first-child td.xpm,
+div.irNav table:first-child td.xpc {
   background:url(../images/nav-ur.png) no-repeat 0 0 !important;
 }
 div.irNav td.xpg,
@@ -126,7 +126,7 @@ div[id='T:irmenu'] {
   margin-top:10px;
 }
 div[id='T:irmenu'] ul {
-  margin:0 5px 0 -8px !important;
+  margin:0 3px 0 -8px !important;
   padding:0 !important;
 }
 div[id='T:irmenu'] ul li {
@@ -244,8 +244,7 @@ div[id='T:pt_db1::c'] {
 div[id='T:pt_psl5::c'] {
 	top: 23px !important;
 }
-a[id='T:irselectedspace'],
-a[id='T:irselectedspace']:visited {
+a[id='T:irselectedspace'] {
 	display:block;
   background: url(../images/nav-switcher-bg.png) repeat-x;
   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(255, 255, 255)), color-stop(1, rgb(230, 230, 230)));
@@ -254,11 +253,13 @@ a[id='T:irselectedspace']:visited {
   -webkit-border-radius:5px;
   -moz-box-shadow:2px 2px 8px #333;
   -webkit-box-shadow:2px 2px 8px #333;
-  text-shadow:1px 1px 0 #fff;
-  color:#000 !important;
-  font-weight:bold;
   padding:5px;
   width:150px;
+}
+a[id='T:irselectedspace'] span {
+  text-shadow:1px 1px 0 #fff;
+  color:#333 !important;
+  font-weight:bold;
 }
 a[id='T:irhomespace'],
 a[id='T:irbrowsegroupspaces'],
