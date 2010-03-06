@@ -244,8 +244,10 @@ div[id='T:pt_db1::c'] {
 div[id='T:pt_psl5::c'] {
 	top: 23px !important;
 }
+div[id='T:irhomespace'],
+div[id='T:irbrowsegroupspaces'],
+div[id='T:irrecentgroupspaces'],
 div[id='T:irgroupspaces'] {
-	/* TODO */
 	display:none;
 }
 /*
