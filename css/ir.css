@@ -1,6 +1,7 @@
 .hide {display:none;}
 .WCContent, .x179,
-.WCContent, .x178 {
+.WCContent, .x178, 
+div[id='T:wcCont'].x17b {
   border-top:0;
   background-image:none;
   background-color:transparent;
@@ -22,25 +23,25 @@ a[id='T:oc_3228768355region1:photoRefresher'],
 div[id='T:pt_ps1::d'] {
   display:none;
 }
-div.irNav td.xp4 {
+div.irNav td.xpe {
   background:url(../images/nav-ul.png) no-repeat 0 0 !important;
 }
-div.irNav td.xp8 {
+div.irNav td.xpi {
   background:url(../images/nav-um.png) repeat-x !important;
 }
-div.irNav td.xpc {
+div.irNav td.xpm {
   background:url(../images/nav-ur.png) no-repeat 0 0 !important;
 }
-div.irNav td.xp6 {
+div.irNav td.xpg {
   background:url(../images/nav-ll.png) no-repeat 0 0 !important;
 }
-div.irNav td.xpa {
+div.irNav td.xpk {
   background:url(../images/nav-lm.png) repeat-x !important;
 }
-div.irNav td.xpe {
+div.irNav td.xpo {
   background:url(../images/nav-lr.png) no-repeat 0 0 !important;
 }
-div.irNav div.x1l6 {
+div.irNav div.x1l9 {
   border-left:1px solid #ccc;
   background-image:none !important;
   background:#dee4ea url(../images/nav-body.png) repeat-y top right !important;
@@ -224,6 +225,19 @@ table[id='T:pt_pgl7'] {
 .x18u {
 	background-color:transparent;
 }
+div[id='T:profileSnapShot::div2'] {
+	background-color:transparent;
+}
+div[id='T:pt_db1::l'] {
+	display:none;
+}
+div[id='T:pt_db1::c'] {
+	left:0 !important;
+}
+div[id='T:pt_psl5::c'] {
+	top: 23px !important;
+}
 /*
 vim:ts=2:sw=2
  */
+
