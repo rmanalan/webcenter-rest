@@ -244,8 +244,22 @@ div[id='T:pt_db1::c'] {
 div[id='T:pt_psl5::c'] {
 	top: 23px !important;
 }
-div[id='T:irhomespace'],
-div[id='T:irbrowsegroupspaces'],
+a[id='T:irselectedspace'] {
+	display:block;
+  background: url(../images/nav-switcher-bg.png) repeat-x;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(255, 255, 255)), color-stop(1, rgb(230, 230, 230)));
+  border:1px solid #ccc;
+  -moz-border-radius:5px;
+  -webkit-border-radius:5px;
+  -moz-box-shadow:2px 2px 8px #333;
+  -webkit-box-shadow:2px 2px 8px #333;
+  text-shadow:1px 1px 0 #fff;
+  color:#000;
+  font-weight:bold;
+  padding:5px;
+}
+a[id='T:irhomespace'],
+a[id='T:irbrowsegroupspaces'],
 div[id='T:irrecentgroupspaces'],
 div[id='T:irgroupspaces'] {
 	display:none;
@@ -253,5 +267,6 @@ div[id='T:irgroupspaces'] {
 /*
 vim:ts=2:sw=2
  */
+
 
 
