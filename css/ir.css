@@ -23,22 +23,28 @@ a[id='T:oc_3228768355region1:photoRefresher'],
 div[id='T:pt_ps1::d'] {
   display:none;
 }
-div.irNav td.xpe {
+div.irNav td.xpe,
+div.irNav td.xp4 {
   background:url(../images/nav-ul.png) no-repeat 0 0 !important;
 }
-div.irNav td.xpi {
+div.irNav td.xpi,
+div.irNav td.xp8 {
   background:url(../images/nav-um.png) repeat-x !important;
 }
-div.irNav td.xpm {
+div.irNav td.xpm,
+div.irNav td.xpc {
   background:url(../images/nav-ur.png) no-repeat 0 0 !important;
 }
-div.irNav td.xpg {
+div.irNav td.xpg,
+div.irNav td.xp6 {
   background:url(../images/nav-ll.png) no-repeat 0 0 !important;
 }
-div.irNav td.xpk {
+div.irNav td.xpk,
+div.irNav td.xpa {
   background:url(../images/nav-lm.png) repeat-x !important;
 }
-div.irNav td.xpo {
+div.irNav td.xpo,
+div.irNav td.xpe {
   background:url(../images/nav-lr.png) no-repeat 0 0 !important;
 }
 div.irNav div.x1l9 {
@@ -244,4 +250,5 @@ div[id='T:irgroupspaces'] {
 /*
 vim:ts=2:sw=2
  */
+
 
