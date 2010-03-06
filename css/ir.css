@@ -237,6 +237,10 @@ div[id='T:pt_db1::c'] {
 div[id='T:pt_psl5::c'] {
 	top: 23px !important;
 }
+div[id='T:irgroupswitcher'] {
+	/* TODO */
+	display:none;
+}
 /*
 vim:ts=2:sw=2
  */
