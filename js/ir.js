@@ -3,6 +3,7 @@ $.xLazyLoader({
   'css' : $.map(['dd','ir'],function(n){return assetHost+'css/'+n+'.css'}),
   'js' : $.map(['curvy','pure','json','domcached','dd','wcutils','wcrest'],function(n){return assetHost+'js/'+n+'.js'})
 });
+/*
 $(function(){
   // _adf.ctrl-state param needs to be passed on each request
   // to prevent mem leaks
@@ -52,6 +53,7 @@ $(function(){
     });
   });
 });
+*/
 /* 
 vim:ts=2:sw=2:expandtab
 */
