@@ -267,6 +267,10 @@ div[id='T:irrecentgroupspaces'],
 div[id='T:irgroupspaces'] {
 	display:none;
 }
+div[id='T:act_splitter_div::d'],
+div[id='T:act_splitter_div::s'] {
+	background-color:#fff;
+}
 /*
 vim:ts=2:sw=2
  */
