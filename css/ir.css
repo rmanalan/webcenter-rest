@@ -125,6 +125,7 @@ div[id='T:pt_pgl8'] {
 div[id='T:irmenu'] {
 	position:absolute;
 	top:36px;
+	width:182px;
 }
 div[id='T:irmenu'] ul {
   margin:0 3px 0 -8px !important;
