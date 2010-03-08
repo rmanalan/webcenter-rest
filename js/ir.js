@@ -12,13 +12,11 @@ $(function(){
 
   var switcher = $('div[id="T:irgroupswitcher"]');
   var switcherPosn = switcher.offset();
-  console.log(switcherPosn)
   switcher.appendTo('body:last').css({
     'top' : switcherPosn.top,
     'left' : switcherPosn.left + 5
   });
   $('<li id="managepages"></li>').appendTo('div[id="T:irmenu"] ul').append($('a[id="T:managePagesLink"]'));
-  console.log(switcher.position())
   var switcherContents = $("a[id='T:irhomespace'], a[id='T:irbrowsegroupspaces'], div[id='T:irrecentgroupspaces'], div[id='T:irgroupspaces']");
   switcher.hover(
     function(){
