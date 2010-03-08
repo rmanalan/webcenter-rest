@@ -3,8 +3,13 @@ $.xLazyLoader({
   'css' : $.map(['dd','ir'],function(n){return assetHost+'css/'+n+'.css'}),
   'js' : $.map(['curvy','pure','json','domcached','dd','wcutils','wcrest'],function(n){return assetHost+'js/'+n+'.js'})
 });
-/*
 $(function(){
+
+  // bump up content div when secondary tab is not there
+  if($('div[id="T:pt_psl5::t"]').length==0) {
+    $('div[id="T:pt_psl5::c"]').css('top','0 !important');
+  }
+/*
   // _adf.ctrl-state param needs to be passed on each request
   // to prevent mem leaks
   var ctrlState = $.map(location.search.split('&'),function(i){
@@ -52,8 +57,8 @@ $(function(){
       renderSwitcher(bindData,currentGroupSpace);
     });
   });
-});
 */
+});
 /* 
 vim:ts=2:sw=2:expandtab
 */
