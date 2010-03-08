@@ -7,7 +7,7 @@ $(function(){
 
   // bump up content div when secondary tab is not there
   if($('div[id="T:pt_psl5::t"]').length==0) {
-    $('div[id="T:pt_psl5::c"]').css('top','0 !important');
+    $('div[id="T:pt_psl5::c"]').css('cssText','top: 0 !important');
   }
 /*
   // _adf.ctrl-state param needs to be passed on each request
