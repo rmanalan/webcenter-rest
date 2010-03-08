@@ -9,6 +9,26 @@ $(function(){
   if($('div[id="T:pt_psl5::t"]').length==0) {
     $('div[id="T:pt_psl5::c"]').css('cssText','top: 0 !important');
   }
+
+  var switcher = $('div[id="T:irgroupswitcher"]');
+  var switcherPosn = switcher.offset();
+  console.log(switcherPosn)
+  switcher.appendTo('body:last').css({
+    'top' : switcherPosn.top,
+    'left' : switcherPosn.left + 5
+  });
+  $('<li id="managepages"></li>').appendTo('div[id="T:irmenu"] ul').append($('a[id="T:managePagesLink"]'));
+  console.log(switcher.position())
+  var switcherContents = $("a[id='T:irhomespace'], a[id='T:irbrowsegroupspaces'], div[id='T:irrecentgroupspaces'], div[id='T:irgroupspaces']");
+  switcher.hover(
+    function(){
+      switcherContents.show();
+    },
+    function(){
+     switcherContents.hide();
+    }
+  );
+  
 /*
   // _adf.ctrl-state param needs to be passed on each request
   // to prevent mem leaks
@@ -62,3 +82,4 @@ $(function(){
 /* 
 vim:ts=2:sw=2:expandtab
 */
+

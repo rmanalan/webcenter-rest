@@ -123,7 +123,8 @@ div[id='T:pt_pgl8'] {
   overflow:hidden !important;
 }
 div[id='T:irmenu'] {
-  margin-top:10px;
+	position:absolute;
+	top:36px;
 }
 div[id='T:irmenu'] ul {
   margin:0 3px 0 -8px !important;
@@ -266,14 +267,27 @@ a[id='T:irbrowsegroupspaces'],
 div[id='T:irrecentgroupspaces'],
 div[id='T:irgroupspaces'] {
 	display:none;
+	z-index:100;
 }
 div[id='T:act_splitter_div::d'],
 div[id='T:act_splitter_div::s'] {
 	background-color:#fff;
 }
+div[id='T:irgroupswitcher'] {
+	position:absolute;
+	background:#eee;
+	z-index:100;
+}
+li#managepages a {
+	border-top:1px solid #CCCCCC;
+	margin:5px 21px;
+	padding:7px 0;
+}
 /*
 vim:ts=2:sw=2
  */
+
+
 
 
 
