@@ -97,10 +97,10 @@ $(function(){
 
   switcher.hover(
     function(){
-      mainSwitcherContainer.fadeIn();
+      mainSwitcherContainer.show();
     },
     function(){
-      mainSwitcherContainer.fadeOut();
+      mainSwitcherContainer.hide();
     }
   );
   
