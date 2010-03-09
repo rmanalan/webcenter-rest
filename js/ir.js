@@ -1,10 +1,16 @@
+var dump;
 var assetHost = '/owccustom/';
 $.xLazyLoader({
-  'css' : $.map(['dd','ir'],function(n){return assetHost+'css/'+n+'.css'}),
-  'js' : $.map(['curvy','pure','json','domcached','dd','wcutils','wcrest'],function(n){return assetHost+'js/'+n+'.js'})
+  'css' : $.map(['ir'],function(n){return assetHost+'css/'+n+'.css'}),
+  'js' : $.map(['curvy'],function(n){return assetHost+'js/'+n+'.js'})
 });
+// http://ejohn.org/blog/javascript-array-remove
+Array.prototype.remove = function(from, to){
+  var rest = this.slice((to || from) + 1 || this.length);
+  this.length = from < 0 ? this.length + from : from;
+  return this.push.apply(this, rest);
+};
 $(function(){
-
   // bump up content div when secondary tab is not there
   if($('div[id="T:pt_psl5::t"]').length==0) {
     $('div[id="T:pt_psl5::c"]').css('cssText','top: 0 !important');
@@ -17,13 +23,84 @@ $(function(){
     'left' : switcherPosn.left + 5
   });
   $('<li id="managepages"></li>').appendTo('div[id="T:irmenu"] ul').append($('a[id="T:managePagesLink"]'));
-  var switcherContents = $("a[id='T:irhomespace'], a[id='T:irbrowsegroupspaces'], div[id='T:irrecentgroupspaces'], div[id='T:irgroupspaces']");
+
+  var allSpaces = $('div[id="T:irgroupspaces"] ul li a');
+  var recentSpaces = $('div[id="T:irrecentgroupspaces"] ul li a');
+
+  var allSpaces = $.map(allSpaces,function(e,i){
+    var d = $(e);
+    return {
+      'name': d.text(),
+      'url' : d.attr('href'),
+      'imgUrl' : $('img',d).attr('src')
+    }
+  }).sort(function(x,y){return x.name.toLowerCase() > y.name.toLowerCase()});
+ 
+  var recentSpaces = $.map(recentSpaces,function(e,i){
+    var d = $(e);
+    return {
+      'name': d.text(),
+      'url' : d.attr('href'),
+      'imgUrl' : $('img',d).attr('src')
+    }
+  });
+
+  // flatten recent and all spaces so that recent spaces
+  // are ordered first
+  $.each(recentSpaces,function(){
+    var rs = this;
+    var match = $.grep(allSpaces,function(e){
+      return e.name == rs.name;
+    });
+    if(match.length>0){
+      $.each(allSpaces,function(i,e){
+        if(this.name == match[0].name) {
+          allSpaces.remove(i);
+        }
+      });
+    };
+  });
+  var spacesMerged = recentSpaces.concat(allSpaces);
+
+  var mainSwitcherContainer = $('<div id="switcher" class="hide"></div>');
+
+  var homeSwitcherContainer = $('<ul id="homeswitcher" class="switch clearfix"></ul>');
+  var homeAnchor = $('a[id="T:irhomespace"]')
+  $('<li><div class="icon"><img src="/owccustom/images/Home.png" width="28px" alt="' 
+      + homeAnchor.text() + '"/></div><div class="gsitem"><strong><a href="'
+      + homeAnchor.attr('href') + '">'
+      + homeAnchor.text() + '</a></strong></div></li>').appendTo(homeSwitcherContainer);
+  var browseGSAnchor = $('a[id="T:irbrowsegroupspaces"]')
+  $('<li><div class="icon"><img src="/owccustom/images/Home.png" width="28px" alt="' 
+      + browseGSAnchor.text() + '"/></div><div class="gsitem"><strong><a href="'
+      + browseGSAnchor.attr('href') + '">'
+      + browseGSAnchor.text() + '</a></strong></div></li>').appendTo(homeSwitcherContainer);
+
+  var gsSwitcherContainer = $('<ul id="gsswitcher" class="switch clearfix"></ul>');
+  $.each(spacesMerged,function(){
+    $('<li><div class="icon"><img src="' 
+        + this.imgUrl + '" width="28px" alt="' 
+        + this.name + '"/></div><div class="gsitem"><strong><a href="'
+        + this.url + '">'
+        + this.name + '</a></strong></div></li>').appendTo(gsSwitcherContainer);
+  });
+
+  homeSwitcherContainer.appendTo(mainSwitcherContainer);
+  if(spacesMerged.length > 0) {
+    $('<h3>My Group Spaces</h3>').appendTo(mainSwitcherContainer);
+    gsSwitcherContainer.appendTo(mainSwitcherContainer);
+  };  
+  mainSwitcherContainer.appendTo(switcher);
+  
+  var cols = Math.floor(Math.sqrt(spacesMerged.length));
+  mainSwitcherContainer.css('width', (cols * 173) + 80);
+
   switcher.hover(
     function(){
-      switcherContents.show();
+      mainSwitcherContainer.show();
     },
     function(){
-     switcherContents.hide();
+      mainSwitcherContainer.hide();
     }
   );
   

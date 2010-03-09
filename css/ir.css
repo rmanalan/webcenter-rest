@@ -1,3 +1,6 @@
+.clearfix:after, .container:after {content:"\0020";display:block;height:0;clear:both;visibility:hidden;overflow:hidden;}
+.clearfix, .container {display:block;}
+.clear {clear:both;}
 .hide {display:none;}
 .WCContent, .x179,
 .WCContent, .x178, 
@@ -283,6 +286,52 @@ li#managepages a {
 	border-top:1px solid #CCCCCC;
 	margin:5px 21px;
 	padding:7px 0;
+}
+div#switcher {
+	background-color:#000;
+	opacity:.8;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	-moz-box-shadow: 3px 3px 5px #666;
+	margin:0 30px 0 0;
+	padding:10px;
+}
+div#switcher h3 {
+	margin:0 0 14px 0;
+	border-bottom:1px solid #111;
+	color:#666;
+	text-shadow:1px 1px 0 #000;
+	padding-bottom:5px;
+}
+ul.switch {
+	margin:0;
+	padding:0;
+}
+ul.switch li {
+	float:left;
+	list-style-type:none;
+	margin:0 10px 0 0;
+	padding:0;
+	height: 32px;
+	overflow:hidden;
+}
+ul.switch li div.icon {
+  float:left;
+	margin-right:5px;
+	width:28px;
+}
+ul.switch li div.gsitem {
+  float:left;
+	width: 140px;
+}
+ul.switch a {
+  color:#fff;
+	text-shadow:1px 1px 0px #000;
+	text-decoration:none;
+}
+ul.switch a:hover {
+	text-decoration:underline;
 }
 /*
 vim:ts=2:sw=2
