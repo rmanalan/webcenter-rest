@@ -316,7 +316,7 @@ ul.switch li {
 	list-style-type:none;
 	margin:0 10px 0 0;
 	padding:0;
-	height: 32px;
+	height: 38px;
 	overflow:hidden;
 }
 ul.switch li div.icon {
@@ -327,6 +327,7 @@ ul.switch li div.icon {
 ul.switch li div.gsitem {
   float:left;
 	width: 140px;
+	overflow:hidden;
 }
 ul.switch a {
   color:#fff;
