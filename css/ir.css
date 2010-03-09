@@ -349,6 +349,10 @@ ul.switch a {
 ul.switch a:hover {
 	text-decoration:underline;
 }
+textarea[id='T:oc_7904462599region1:sit1::content'] {
+	background-color:transparent;
+	border:0;
+}
 /*
 vim:ts=2:sw=2
  */
