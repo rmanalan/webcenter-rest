@@ -317,6 +317,7 @@ ul.switch li {
 	list-style-type:none;
 	margin:0 10px 0 0;
 	padding:0;
+	width:161px;
 	height: 38px;
 	overflow:hidden;
 }
