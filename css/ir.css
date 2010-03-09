@@ -297,12 +297,13 @@ div#switcher {
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
 	-moz-box-shadow: 3px 3px 5px #666;
+	-webkit-box-shadow: 3px 3px 5px #666;
 	margin:0 30px 0 0;
 	padding:10px;
 }
 div#switcher h3 {
 	margin:0 0 14px 0;
-	border-bottom:1px solid #333;
+	border-bottom:1px solid #666;
 	color:#999;
 	text-shadow:1px 1px 0 #000;
 	padding-bottom:5px;
@@ -322,7 +323,7 @@ ul.switch li {
 ul.switch li div.icon {
   float:left;
 	margin-right:5px;
-	width:28px;
+	width:16px;
 }
 ul.switch li div.gsitem {
   float:left;

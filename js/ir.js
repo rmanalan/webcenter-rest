@@ -67,22 +67,22 @@ $(function(){
   var homeSwitcherContainer = $('<ul id="homeswitcher" class="switch clearfix"></ul>');
   var homeAnchor = $('a[id="T:irhomespace"]')
   $('<li><div class="icon"><img src="/owccustom/images/Home.png" width="16px" alt="' 
-      + homeAnchor.text() + '"/></div><div class="gsitem"><strong><a href="'
+      + homeAnchor.text() + '"/></div><div class="gsitem"><a href="'
       + homeAnchor.attr('href') + '">'
-      + homeAnchor.text() + '</a></strong></div></li>').appendTo(homeSwitcherContainer);
+      + homeAnchor.text() + '</a></div></li>').appendTo(homeSwitcherContainer);
   var browseGSAnchor = $('a[id="T:irbrowsegroupspaces"]')
   $('<li><div class="icon"><img src="/owccustom/images/application_view_icons.png" width="16px" alt="' 
-      + browseGSAnchor.text() + '"/></div><div class="gsitem"><strong><a href="'
+      + browseGSAnchor.text() + '"/></div><div class="gsitem"><a href="'
       + browseGSAnchor.attr('href') + '">'
-      + browseGSAnchor.text() + '</a></strong></div></li>').appendTo(homeSwitcherContainer);
+      + browseGSAnchor.text() + '</a></div></li>').appendTo(homeSwitcherContainer);
 
   var gsSwitcherContainer = $('<ul id="gsswitcher" class="switch clearfix"></ul>');
   $.each(spacesMerged,function(){
     $('<li><div class="icon"><img src="' 
         + this.imgUrl + '" width="16px" height="16px" alt="' 
-        + this.name + '"/></div><div class="gsitem"><strong><a href="'
+        + this.name + '"/></div><div class="gsitem"><a href="'
         + this.url + '">'
-        + this.name + '</a></strong></div></li>').appendTo(gsSwitcherContainer);
+        + this.name + '</a></div></li>').appendTo(gsSwitcherContainer);
   });
 
   homeSwitcherContainer.appendTo(mainSwitcherContainer);
