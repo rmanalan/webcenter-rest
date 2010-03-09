@@ -302,8 +302,8 @@ div#switcher {
 }
 div#switcher h3 {
 	margin:0 0 14px 0;
-	border-bottom:1px solid #111;
-	color:#666;
+	border-bottom:1px solid #333;
+	color:#999;
 	text-shadow:1px 1px 0 #000;
 	padding-bottom:5px;
 }
