@@ -350,8 +350,8 @@ ul.switch a:hover {
 	text-decoration:underline;
 }
 textarea[id='T:oc_7904462599region1:sit1::content'] {
-	background-color:transparent;
-	border:0;
+	background-color:transparent !important;
+	border:0 !important;
 }
 /*
 vim:ts=2:sw=2
