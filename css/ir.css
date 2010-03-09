@@ -2,6 +2,9 @@
 .clearfix, .container {display:block;}
 .clear {clear:both;}
 .hide {display:none;}
+body {
+	background-color:transparent !important;
+}
 .WCContent, .x179,
 .WCContent, .x178, 
 div[id='T:wcCont'].x17b {
