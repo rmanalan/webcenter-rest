@@ -66,12 +66,12 @@ $(function(){
 
   var homeSwitcherContainer = $('<ul id="homeswitcher" class="switch clearfix"></ul>');
   var homeAnchor = $('a[id="T:irhomespace"]')
-  $('<li><div class="icon"><img src="/owccustom/images/Home.png" width="28px" alt="' 
+  $('<li><div class="icon"><img src="/owccustom/images/Home.png" width="16px" alt="' 
       + homeAnchor.text() + '"/></div><div class="gsitem"><strong><a href="'
       + homeAnchor.attr('href') + '">'
       + homeAnchor.text() + '</a></strong></div></li>').appendTo(homeSwitcherContainer);
   var browseGSAnchor = $('a[id="T:irbrowsegroupspaces"]')
-  $('<li><div class="icon"><img src="/owccustom/images/Home.png" width="28px" alt="' 
+  $('<li><div class="icon"><img src="/owccustom/images/application_view_icons.png" width="16px" alt="' 
       + browseGSAnchor.text() + '"/></div><div class="gsitem"><strong><a href="'
       + browseGSAnchor.attr('href') + '">'
       + browseGSAnchor.text() + '</a></strong></div></li>').appendTo(homeSwitcherContainer);
