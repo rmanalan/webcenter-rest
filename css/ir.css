@@ -263,6 +263,8 @@ a[id='T:irselectedspace'] {
   -webkit-box-shadow:2px 2px 8px #333;
   padding:5px;
   width:150px;
+	overflow:hidden;
+	text-overflow:ellipsis;
 }
 a[id='T:irselectedspace'] span {
   text-shadow:1px 1px 0 #fff;
