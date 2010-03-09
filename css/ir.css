@@ -297,8 +297,8 @@ img[id='T:irselectedspace::icon'] {
 	height:16px;
 }
 div#switcher {
-	background-color:#000;
-	opacity:.8;
+	background-color:#333;
+	opacity:.9;
 	border-radius:10px;
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
@@ -311,7 +311,7 @@ div#switcher h3 {
 	margin:0 0 14px 0;
 	border-bottom:1px solid #666;
 	color:#999;
-	text-shadow:1px 1px 0 #000;
+	text-shadow:2px 2px 0 #000;
 	padding-bottom:5px;
 }
 ul.switch {
