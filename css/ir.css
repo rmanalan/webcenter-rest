@@ -329,6 +329,10 @@ ul.switch li {
 	height: 38px;
 	overflow:hidden;
 }
+ul.switch li:hover {
+  background: url(../images/nav-item-selected.png) repeat-x;
+  background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(116,176,222)), color-stop(1, rgb(21, 128, 194)));
+}
 ul.switch li div.icon {
   float:left;
 	margin-right:5px;
