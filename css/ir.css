@@ -290,6 +290,10 @@ li#managepages a {
 	margin:5px 21px;
 	padding:7px 0;
 }
+img[id='T:irselectedspace::icon'] {
+	width:16px;
+	height:16px;
+}
 div#switcher {
 	background-color:#000;
 	opacity:.8;
@@ -330,6 +334,8 @@ ul.switch li div.gsitem {
   float:left;
 	width: 140px;
 	overflow:hidden;
+	-o-text-overflow: ellipsis;
+	text-overflow: ellipsis;
 }
 ul.switch a {
   color:#fff;
