@@ -22,7 +22,9 @@ $(function(){
     'top' : switcherPosn.top,
     'left' : switcherPosn.left + 5
   });
+  $('a[id="T:managePagesLink"]').hide();
   $('<li id="managepages"></li>').appendTo('div[id="T:irmenu"] ul').append($('a[id="T:managePagesLink"]'));
+  $('a[id="T:managePagesLink"]').show();
 
   var allSpaces = $('div[id="T:irgroupspaces"] ul li a');
   var recentSpaces = $('div[id="T:irrecentgroupspaces"] ul li a');
