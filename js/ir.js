@@ -79,7 +79,7 @@ $(function(){
   var gsSwitcherContainer = $('<ul id="gsswitcher" class="switch clearfix"></ul>');
   $.each(spacesMerged,function(){
     $('<li><div class="icon"><img src="' 
-        + this.imgUrl + '" width="28px" alt="' 
+        + this.imgUrl + '" width="16px" height="16px" alt="' 
         + this.name + '"/></div><div class="gsitem"><strong><a href="'
         + this.url + '">'
         + this.name + '</a></strong></div></li>').appendTo(gsSwitcherContainer);
