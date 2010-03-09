@@ -302,6 +302,8 @@ div#switcher {
 	border-radius:10px;
 	-moz-border-radius:10px;
 	-webkit-border-radius:10px;
+	-moz-border-radius-topleft:0;
+	-webkit-border-top-left-radius:0;
 	-moz-box-shadow: 3px 3px 5px #666;
 	-webkit-box-shadow: 3px 3px 5px #666;
 	margin:0 30px 0 0;
