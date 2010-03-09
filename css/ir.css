@@ -310,7 +310,7 @@ div#switcher {
 div#switcher h3 {
 	margin:0 0 14px 0;
 	border-bottom:1px solid #666;
-	color:#999;
+	color:#fff;
 	text-shadow:2px 2px 0 #000;
 	padding-bottom:5px;
 }
@@ -321,7 +321,7 @@ ul.switch {
 ul.switch li {
 	float:left;
 	list-style-type:none;
-	margin:0 10px 0 0;
+	margin:0 20px 0 0;
 	padding:0;
 	width:161px;
 	height: 38px;

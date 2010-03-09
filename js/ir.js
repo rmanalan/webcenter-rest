@@ -93,7 +93,7 @@ $(function(){
   mainSwitcherContainer.appendTo(switcher);
   
   var cols = Math.floor(Math.sqrt(spacesMerged.length));
-  mainSwitcherContainer.css('width', (cols * 171) + 50);
+  mainSwitcherContainer.css('width', (cols * 171) + 60);
 
   switcher.hover(
     function(){
