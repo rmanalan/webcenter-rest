@@ -282,7 +282,7 @@ div[id='T:act_splitter_div::s'] {
 }
 div[id='T:irgroupswitcher'] {
 	position:absolute;
-	background:#eee;
+	background:transparent;
 	z-index:100;
 }
 li#managepages a {
