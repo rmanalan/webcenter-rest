@@ -12,7 +12,7 @@ div[id='T:wcCont'].x17b {
   background-image:none;
   background-color:transparent;
 }
-div.irNav {
+div.irnav {
 /*
   -moz-border-radius:5px;
   -webkit-border-radius:5px;
@@ -29,50 +29,50 @@ a[id='T:oc_3228768355region1:photoRefresher'],
 div[id='T:pt_ps1::d'] {
   display:none;
 }
-div.irNav table:first-child td.xpe,
-div.irNav table:first-child td.xp4 {
+div.irnav table:first-child td.xpe,
+div.irnav table:first-child td.xp4 {
   background:url(../images/nav-ul.png) no-repeat 0 0 !important;
 }
-div.irNav table:first-child td.xpi,
-div.irNav table:first-child td.xp8 {
+div.irnav table:first-child td.xpi,
+div.irnav table:first-child td.xp8 {
   background:url(../images/nav-um.png) repeat-x !important;
 }
-div.irNav table:first-child td.xpm,
-div.irNav table:first-child td.xpc {
+div.irnav table:first-child td.xpm,
+div.irnav table:first-child td.xpc {
   background:url(../images/nav-ur.png) no-repeat 0 0 !important;
 }
-div.irNav td.xpg,
-div.irNav td.xp6 {
+div.irnav td.xpg,
+div.irnav td.xp6 {
   background:url(../images/nav-ll.png) no-repeat 0 0 !important;
 }
-div.irNav td.xpk,
-div.irNav td.xpa {
+div.irnav td.xpk,
+div.irnav td.xpa {
   background:url(../images/nav-lm.png) repeat-x !important;
 }
-div.irNav td.xpo,
-div.irNav td.xpe {
+div.irnav td.xpo,
+div.irnav td.xpe {
   background:url(../images/nav-lr.png) no-repeat 0 0 !important;
 }
-div.irNav div.x1l9,
-div.irNav div.x1l6 {
+div.irnav div.x1l9,
+div.irnav div.x1l6 {
   border-left:1px solid #ccc;
   background-image:none !important;
   background:#dee4ea url(../images/nav-body.png) repeat-y top right !important;
 }
-div.irNav div.x1a[theme=dark] {
+div.irnav div.x1a[theme=dark] {
   padding:0 5px;
 }
-div.irNav hr {
+div.irnav hr {
   display:none;
 }
-div.irNav table[id='T:infoUserMenuBar'] {
+div.irnav table[id='T:infoUserMenuBar'] {
 /*  display:none; */
 }
-div.irNav a[id='T:managePagesLink'] span {
+div.irnav a[id='T:managePagesLink'] span {
   color:#333;
   font-size:11px;
 }
-div.irNav a[id='T:managePagesLink']:hover span {
+div.irnav a[id='T:managePagesLink']:hover span {
   color:#000;
 }
 div[id='T:j_id__ctru11pc7::c']{
