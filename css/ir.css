@@ -143,6 +143,8 @@ div[id='T:irmenu'] ul li {
 div[id='T:irmenu'] ul li a {
   display:block;
   padding:5px 2px 5px 20px;
+	overflow:hidden;
+	text-overflow:ellipsis;
 }
 div[id='T:irmenu'] ul li a span {
   color:#000 !important;
