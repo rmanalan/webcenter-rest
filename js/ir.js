@@ -13,7 +13,7 @@ Array.prototype.remove = function(from, to){
 $(function(){
   // bump up content div when secondary tab is not there
   if($('span.irsubtabs').html()!="") {
-    $('span.irsubtabs').parent().next().css('cssText','top: 23px !important');
+    $('span.irsubtabs').parent().next().css('top','23px');
   }
 
   var switcher = $('div.irgroupswitcher');
