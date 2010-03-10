@@ -142,7 +142,7 @@ div[id='T:irmenu'] ul li {
 }
 div[id='T:irmenu'] ul li a {
   display:block;
-  padding:5px 2px 5px 20px;
+  padding:5px 15px 5px 20px;
 	overflow:hidden;
 	text-overflow:ellipsis;
 }
