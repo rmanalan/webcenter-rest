@@ -83,8 +83,11 @@ div[id='T:j_id__ctru11pc7::c']{
 }
 div.searchBox {
   position:absolute;
-  top:9px;
+  top:6px;
   left:17px;
+}
+div.searchBox input {
+	padding:3px;
 }
 div[id='T:secondaryTabSet'] table {
   margin:10px 0 0 -5px;
@@ -339,11 +342,9 @@ textarea[id='T:oc_7904462599region1:sit1::content'] {
 	background-color:transparent !important;
 	border:0 !important;
 }
+table[id='T:pt_pgl7'] {
+	padding:8px 10px;
+}
 /*
 vim:ts=2:sw=2
  */
-
-
-
-
-
