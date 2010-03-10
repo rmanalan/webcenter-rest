@@ -21,20 +21,6 @@
     <script src="./js/application.js"></script>
     <link href="./css/screen.css" type="text/css" media="screen" rel="stylesheet"/>
     <link href="./css/style.css" type="text/css" media="screen" rel="stylesheet"/>
-    <script>
-    // Lazy load the application scripts/css so I can work on them locally
-    var hostname = (location.hostname == 'wc')? 'wc' : location.hostname;
-    var assetPort = 80;
-    var apiPort = 80;
-    $.xLazyLoader({
-      js: $.map(['wcrest.js','application.js'],function(n){
-        return './js/' + n;
-      }),
-      css: $.map(['style.css'],function(n){
-        return './css/' + n;
-      })
-    })
-    </script>
     <title>WebCenter Activities</title>
   </head>
   <body>
