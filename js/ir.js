@@ -82,7 +82,7 @@ $(function(){
   var browseGSAnchor = $('a.irbrowsegroupspaces');
   $('<li><div class="icon"><img src="/owccustom/images/application_view_icons.png" width="16px" alt="' 
       + browseGSAnchor.text() + '"/></div><div class="gsitem"><a href="'
-      + browseGSAnchor.attr('href') + :'">'
+      + browseGSAnchor.attr('href') + '">'
       + browseGSAnchor.text() + '</a></div></li>').appendTo(homeSwitcherContainer);
 
   var gsSwitcherContainer = $('<ul id="gsswitcher" class="switch clearfix"></ul>');
