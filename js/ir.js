@@ -12,11 +12,11 @@ Array.prototype.remove = function(from, to){
 };
 $(function(){
   // bump up content div when secondary tab is not there
-  if($('div[id="T:pt_psl5::t"]').length==0) {
-    $('div[id="T:pt_psl5::c"]').css('cssText','top: 0 !important');
+  if($('span.irsubtabs').html()=="") {
+    $('span.irsubtabs').parent().next().css('cssText','top: 0 !important');
   }
 
-  var switcher = $('div[id="T:irgroupswitcher"]');
+  var switcher = $('div.irgroupswitcher');
   var switcherPosn = switcher.offset();
   switcher.appendTo('body:last').css({
     'top' : switcherPosn.top,
@@ -24,8 +24,8 @@ $(function(){
   });
   $('<li id="managepages"></li>').appendTo('div[id="T:irmenu"] ul').append($('a[id="T:managePagesLink"]'));
 
-  var allSpaces = $('div[id="T:irgroupspaces"] ul li a');
-  var recentSpaces = $('div[id="T:irrecentgroupspaces"] ul li a');
+  var allSpaces = $('div.irgroupspaces ul li a');
+  var recentSpaces = $('div.irrecentgroupspaces ul li a');
 
   var allSpaces = $.map(allSpaces,function(e,i){
     var d = $(e);
