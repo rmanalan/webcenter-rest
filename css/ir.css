@@ -5,6 +5,9 @@
 body {
 	background-color:transparent !important;
 }
+div[id='T:pt_ps2::f']{
+  width:211px;
+}
 .WCContent, .x179,
 .WCContent, .x178, 
 div[id='T:wcCont'].x17b {
@@ -80,8 +83,8 @@ div[id='T:j_id__ctru11pc7::c']{
 }
 div.searchBox {
   position:absolute;
-  top:5px;
-  left:5px;
+  top:9px;
+  left:17px;
 }
 div[id='T:secondaryTabSet'] table {
   margin:10px 0 0 -5px;
