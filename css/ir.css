@@ -6,7 +6,7 @@ body {
 	background-color:transparent !important;
 }
 div[id='T:pt_ps2::f']{
-  width:211px;
+  width:211px !important;
 }
 .WCContent, .x179,
 .WCContent, .x178, 
