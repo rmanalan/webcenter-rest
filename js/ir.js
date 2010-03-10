@@ -10,6 +10,9 @@ Array.prototype.remove = function(from, to){
   return this.push.apply(this, rest);
 };
 $(function(){
+  // hide panel splitter
+  $('div.irltregion').parent().next().hide();
+
   // bump up content div when secondary tab is not there
   if($('span.irsubtabs').html()!="") {
     $('span.irsubtabs').parent().next().css('top','23px');
