@@ -266,7 +266,6 @@ div[id='T:act_splitter_div::s'] {
 	background-color:#fff;
 }
 div.irgroupswitcher {
-	display:none;
 	position:absolute;
 	background:transparent;
 	z-index:100;
