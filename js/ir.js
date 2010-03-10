@@ -25,7 +25,7 @@ $(function(){
     'top' : switcherPosn.top,
     'left' : switcherPosn.left + 5
   });
-  $('<li id="managepages"></li>').appendTo('div[id="T:irmenu"] ul').append($('a[id="T:managePagesLink"]'));
+  $('<li id="managepages"></li>').appendTo('div.irmenu ul').append($('a[id*="managePagesLink"]'));
 
   var allSpaces = $('div.irgroupspaces ul li a');
   var recentSpaces = $('div.irrecentgroupspaces ul li a');
