@@ -14,6 +14,12 @@ $(function(){
   $('div.irltregion').parent().next().hide();
   $('div.irltregion').parent().next().next().css('left','197px');
 
+  // logo area size
+  $('div[id*="pt_ps2::f"]').css('width','211px');
+
+  // padding around top right header links
+  $('table[id*="pt_pgl7"]').css('padding','8px 10px');
+
   // bump up content div when secondary tab is not there
   if($('span.irsubtabs').html()!="") {
     $('span.irsubtabs').parent().next().css('top','23px');
