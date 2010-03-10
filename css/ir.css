@@ -78,7 +78,7 @@ div.irnav a[id='T:managePagesLink']:hover span {
 div[id='T:j_id__ctru11pc7::c']{
   top:30px !important;
 }
-div[id='T:search'] {
+div.searchBox {
   position:absolute;
   top:5px;
   left:5px;
@@ -110,8 +110,8 @@ div[id='T:pt_ps1::f'] {
 }
 div[id='T:secondaryTabSet'] table tr td a.p_AFSelected,
 div[id='T:secondaryTabSet'] table tr td a:hover,
-div[id='T:irmenu'] ul li:hover,
-div[id='T:irmenu'] ul li a.selected {
+div.irmenu ul li:hover,
+div.irmenu ul li a.selected {
   background: url(../images/nav-item-selected.png) repeat-x;
   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(116,176,222)), color-stop(1, rgb(21, 128, 194)));
   font-weight:normal;
@@ -128,30 +128,30 @@ div[id='T:pt_pgl8'] {
   margin-left:-1px;
   overflow:hidden !important;
 }
-div[id='T:irmenu'] {
+div.irmenu {
 	position:absolute;
 	top:36px;
 	width:182px;
 }
-div[id='T:irmenu'] ul {
+div.irmenu ul {
   margin:0 3px 0 -8px !important;
   padding:0 !important;
 }
-div[id='T:irmenu'] ul li {
+div.irmenu ul li {
   list-style-type:none;
 }
-div[id='T:irmenu'] ul li a {
+div.irmenu ul li a {
   display:block;
   padding:5px 15px 5px 20px;
 	overflow:hidden;
 	text-overflow:ellipsis;
 }
-div[id='T:irmenu'] ul li a span {
+div.irmenu ul li a span {
   color:#000 !important;
   text-shadow:1px 1px 0 #fff;
 }
-div[id='T:irmenu'] ul li a:hover span,
-div[id='T:irmenu'] ul li a.selected span {
+div.irmenu ul li a:hover span,
+div.irmenu ul li a.selected span {
   color:#fff !important;
   text-shadow:1px 1px 0 #666;
   text-decoration:none;
@@ -202,10 +202,7 @@ div[id='T:pt_psl5::t'] {
 div[id='T:pt_ps1::s'] {
   left:197px !important;
 }
-div[id='T:pt_psl5::c'] {
-  /*top:22px !important;*/
-}
-div[id='T:pt_db1'] {
+ddiv[id='T:pt_db1'] {
   margin:0 !important;
 }
 span[id='T:secondaryTabSet::oc'] {
@@ -229,19 +226,6 @@ span[id='T:secondaryTabSet::oc'] a.xfc {
 span[id='T:secondaryTabSet::oc'] a.p_AFSelected {
   background:#e4e4e4;
 }
-table[id='T:pt_pgl2'] {
-  padding:0 10px !important;
-}
-table[id='T:pt_pgl2'] tbody tr td a {
-  color:#333 !important;
-  text-shadow:1px 1px 0 #fff;
-}
-table[id='T:pt_pgl7'] {
-  margin-right:10px;
-}
-.x18u {
-	background-color:transparent;
-}
 div[id='T:profileSnapShot::div2'] {
 	background-color:transparent;
 }
@@ -251,10 +235,10 @@ div[id='T:pt_db1::l'] {
 div[id='T:pt_db1::c'] {
 	left:0 !important;
 }
-div[id='T:pt_psl5::c'] {
+div.irrtregion>div {
 	top: 23px !important;
 }
-a[id='T:irselectedspace'] {
+a.irselectedspace {
 	display:block;
   background: url(../images/nav-switcher-bg.png) repeat-x;
   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(255, 255, 255)), color-stop(1, rgb(230, 230, 230)));
@@ -268,15 +252,15 @@ a[id='T:irselectedspace'] {
 	overflow:hidden;
 	text-overflow:ellipsis;
 }
-a[id='T:irselectedspace'] span {
+a.irselectedspace span {
   text-shadow:1px 1px 0 #fff;
   color:#333 !important;
   font-weight:bold;
 }
-a[id='T:irhomespace'],
-a[id='T:irbrowsegroupspaces'],
-div[id='T:irrecentgroupspaces'],
-div[id='T:irgroupspaces'] {
+a.irhomespace,
+a.irbrowsegroupspaces,
+div.irrecentgroupspaces,
+div.irgroupspaces {
 	display:none;
 	z-index:100;
 }
@@ -284,7 +268,7 @@ div[id='T:act_splitter_div::d'],
 div[id='T:act_splitter_div::s'] {
 	background-color:#fff;
 }
-div[id='T:irgroupswitcher'] {
+div.irgroupswitcher {
 	position:absolute;
 	background:transparent;
 	z-index:100;
@@ -294,7 +278,7 @@ li#managepages a {
 	margin:5px 21px;
 	padding:7px 0;
 }
-img[id='T:irselectedspace::icon'] {
+a.irselectedspace img {
 	width:16px;
 	height:16px;
 }
