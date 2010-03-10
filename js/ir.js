@@ -12,9 +12,9 @@ Array.prototype.remove = function(from, to){
 };
 $(function(){
   // bump up content div when secondary tab is not there
-  //if($('span.irsubtabs').html()=="") {
-  //  $('span.irsubtabs').parent().next().css('cssText','top: 0 !important');
-  //}
+  if($('span.irsubtabs').html()!="") {
+    $('div[id="T:pt_psl5::c"]').parent().next().css('cssText','top: 23px !important');
+  }
 
   var switcher = $('div.irgroupswitcher');
   var switcherPosn = switcher.offset();
