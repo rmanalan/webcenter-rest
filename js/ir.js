@@ -12,6 +12,7 @@ Array.prototype.remove = function(from, to){
 $(function(){
   // hide panel splitter
   $('div.irltregion').parent().next().hide();
+  $('div.irltregion').parent().next().next().css('left','197px');
 
   // bump up content div when secondary tab is not there
   if($('span.irsubtabs').html()!="") {
