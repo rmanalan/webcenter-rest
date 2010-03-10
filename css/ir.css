@@ -235,9 +235,6 @@ div[id='T:pt_db1::l'] {
 div[id='T:pt_db1::c'] {
 	left:0 !important;
 }
-div.irrtregion>div {
-	top: 23px !important;
-}
 a.irselectedspace {
 	display:block;
   background: url(../images/nav-switcher-bg.png) repeat-x;
