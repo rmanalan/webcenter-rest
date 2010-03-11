@@ -144,7 +144,7 @@ $(function() {
 			// Store off current stream url for paging purposes
 			$('#stream').data('currentStreamUrl', url);
 
-			if (data.items.length == 0) {
+			if (data.items.length == 0 && startIndex == 0) {
         $('#no-activities').removeClass('hide');
         $('ol.results').hide();
 				moreActivities = false;
