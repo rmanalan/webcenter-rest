@@ -72,7 +72,11 @@ var webCenter = function(callback) {
 			var projectParam = "";
 		}
 		var results = $.grep(links, function(n) {
-			if(n.resourceType == urn || n.rel == urn) return true;
+			if(typeof urn == 'object') {
+				if(n.rel == urn.rel && n.resourceType == urn.resourceType) return true;
+			} else {
+				if(n.rel == urn || n.resourceType == urn) return true;				
+			}
 		});
 		if (results.length > 0) {
 			//return href if startIndex is false
@@ -247,8 +251,16 @@ var activityStream = function() {
 		if (startIndex == 0) {
 			activityId = - 1;
 		};
-		if (typeof(links) == 'object') var url = webCenter.getResourceURL(links, "urn:oracle:webcenter:activities:stream:connections", startIndex);
-		else var url = links.replace("{startIndex}", startIndex).replace("{itemsPerPage}", webCenter.getPerPage());
+		if (typeof(links) == 'object'){
+      var url = webCenter.getResourceURL(links, {
+					"resourceType": "urn:oracle:webcenter:activities:stream",
+					"rel": "urn:oracle:webcenter:activities:stream"
+				}, startIndex);
+			url = url.replace('{personal}',true).replace('{connections}',true).replace('{groupSpaces}',true)
+				.replace('{serviceIds}','');
+		} else {
+      var url = links.replace("{startIndex}", startIndex).replace("{itemsPerPage}", webCenter.getPerPage());
+    }
 		$.getJSON(url, callback);
 	}
 	function nextActivityId() {
@@ -425,4 +437,3 @@ var userProfile = function() {
 /* 
 vim:ts=2:sw=2:expandtab
 */
-
