@@ -20,6 +20,8 @@ $(function(){
   // padding around top right header links
   $('table[id*="pt_pgl7"]').css('padding','8px 10px');
 
+  $('table[id*="pt_pgl2"]').css('padding-right','10px');
+
   // bump up content div when secondary tab is not there
   if($('span.irsubtabs').html()!="") {
     $('span.irsubtabs').parent().next().css('top','23px');
