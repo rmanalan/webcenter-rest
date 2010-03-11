@@ -115,19 +115,21 @@ $(function() {
 					return;
 				}
         $.each(d,function(i,o){
-          var urls = JSON.stringify({
-            'msgBoard': webCenter.getResourceURL(o.links, 'urn:oracle:webcenter:messageBoard', false),
-            'spaceName': o.name
-          });
+          if(!o.isOffline) {
+            var urls = JSON.stringify({
+              'msgBoard': webCenter.getResourceURL(o.links, 'urn:oracle:webcenter:messageBoard', false),
+              'spaceName': o.name
+            });
 
-          // populate the publish to drop down
-          var pubOption = $('#grouppub option:first').clone().val(urls).text(o.displayName);
-          $('#grouppub').append(pubOption);
+            // populate the publish to drop down
+            var pubOption = $('#grouppub option:first').clone().val(urls).text(o.displayName);
+            $('#grouppub').append(pubOption);
 
-          // populate the view by drop down
-          var asUrl = webCenter.getResourceURL(o.links, 'urn:oracle:webcenter:activities:stream', true);
-          var viewByOption = $('#groupfilter option:first').clone().val(asUrl).text(o.displayName);
-          $('#groupfilter').append(viewByOption);
+            // populate the view by drop down
+            var asUrl = webCenter.getResourceURL(o.links, 'urn:oracle:webcenter:activities:stream', true);
+            var viewByOption = $('#groupfilter option:first').clone().val(asUrl).text(o.displayName);
+            $('#groupfilter').append(viewByOption);
+          }
         });
 
 				callback();
