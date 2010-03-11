@@ -331,6 +331,9 @@ textarea[id='T:oc_7904462599region1:sit1::content'] {
 table[id='T:pt_pgl7'] {
 	padding:8px 10px;
 }
+div[id='T:act_splitter_div'] {
+	background-color:#fff;
+}
 div[id='T:act_splitter_div::d']{
 	display:none;
 }
