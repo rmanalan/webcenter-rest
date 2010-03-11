@@ -255,9 +255,12 @@ var activityStream = function() {
       var url = webCenter.getResourceURL(links, {
 					"resourceType": "urn:oracle:webcenter:activities:stream",
 					"rel": "urn:oracle:webcenter:activities:stream"
-				}, startIndex);
-			url = url.replace('{personal}',true).replace('{connections}',true).replace('{groupSpaces}',true)
-				.replace('{serviceIds}','');
+				}, startIndex, null,{
+          'personal': true,
+          'connections': true,
+          'groupSpaces': true,
+          'serviceIds': ''
+        });
 		} else {
       var url = links.replace("{startIndex}", startIndex).replace("{itemsPerPage}", webCenter.getPerPage());
     }
