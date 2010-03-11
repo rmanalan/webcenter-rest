@@ -310,6 +310,8 @@ $(function() {
         $('#pub-form input[name="contentId"]').val(utils.randBase32());
         $('#pub-form input[name="comments"]').val(msg);
         $('#pub-form input[name="simpleResponse"]').val(true);
+        // ugly hack required after Sammy 0.5.1 upgrade... needed to move the form
+        // into the iframe in order to avoid Sammy from handling the post route
 			  $('#pub-form').attr('action',url).attr('target',strName).clone(true).appendTo(iFrame).submit();
       });
 		});
