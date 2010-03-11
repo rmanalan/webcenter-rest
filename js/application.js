@@ -310,7 +310,7 @@ $(function() {
         $('#pub-form input[name="contentId"]').val(utils.randBase32());
         $('#pub-form input[name="comments"]').val(msg);
         $('#pub-form input[name="simpleResponse"]').val(true);
-			  $('#pub-form').attr('action',url).attr('target',strName).submit();
+			  $('#pub-form').attr('action',url).attr('target',strName).clone(true).appendTo(iFrame).submit();
       });
 		});
 
