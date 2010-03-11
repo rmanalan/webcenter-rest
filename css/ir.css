@@ -169,8 +169,10 @@ div.irmenu ul li a.selected span {
   border:1px solid #ccc;
   -moz-border-radius:5px;
   -webkit-border-radius:5px;
+  border-radius:5px;
   -moz-box-shadow:2px 2px 8px #333;
   -webkit-box-shadow:2px 2px 8px #333;
+  box-shadow:2px 2px 8px #333;
   text-shadow:1px 1px 0 #fff;
 }
 #group-switcher,
@@ -183,8 +185,10 @@ div.irmenu ul li a.selected span {
   opacity:.9;
   -moz-border-radius:5px;
   -webkit-border-radius:5px;
+  border-radius:5px;
   -moz-box-shadow:4px 4px 4px #333;
   -webkit-box-shadow:4px 4px 4px #333;
+  box-shadow:4px 4px 4px #333;
 }
 #gs_child a {
   color:#fff;
@@ -208,29 +212,8 @@ div[id='T:pt_psl5::t'] {
 div[id='T:pt_ps1::s'] {
   left:197px !important;
 }
-ddiv[id='T:pt_db1'] {
+div[id='T:pt_db1'] {
   margin:0 !important;
-}
-span[id='T:secondaryTabSet::oc'] {
-  margin-left:15px;
-}
-span[id='T:secondaryTabSet::oc'] span.xhf {
-  display:none;
-}
-span[id='T:secondaryTabSet::oc'] a.xfc {
-  padding:2px 10px 8px 10px;
-  margin: 0 3px 0 0;
-  background:#fafafc;
-  border:1px solid #ccc;
-  -moz-border-radius-topleft:5px;
-  -moz-border-radius-topright:5px;
-  -webkit-border-top-left-radius:5px;
-  -webkit-border-top-right-radius:5px;
-  -webkit-box-shadow:1px 1px 2px #999;
-  text-shadow:1px 1px 0 #fff;
-}
-span[id='T:secondaryTabSet::oc'] a.p_AFSelected {
-  background:#e4e4e4;
 }
 div[id='T:profileSnapShot::div2'] {
 	background-color:transparent;
@@ -248,8 +231,10 @@ a.irselectedspace {
   border:1px solid #ccc;
   -moz-border-radius:5px;
   -webkit-border-radius:5px;
+  border-radius:5px;
   -moz-box-shadow:2px 2px 8px #333;
   -webkit-box-shadow:2px 2px 8px #333;
+  box-shadow:2px 2px 8px #333;
   padding:5px;
   width:150px;
 	overflow:hidden;
