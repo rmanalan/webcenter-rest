@@ -78,6 +78,7 @@ span.refresh {
 
 #filters{
 	margin-bottom:10px;
+	clear:both;
 }
 ul.headnav {
 	display:none;
