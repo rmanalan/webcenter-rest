@@ -87,6 +87,10 @@ $(function() {
 				}
 			});
 
+      $('img.youtube').live('click',function(){
+        $(this).hide().next().removeClass('hide');
+      })
+
       // Refresh button
 			$('#refresh').bind('click', function() {
 				renderStream($('#stream').data('currentStreamUrl'), 0, true);
