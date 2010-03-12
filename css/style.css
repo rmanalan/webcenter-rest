@@ -21,7 +21,10 @@ body {
 	/* background:#fff url(../images/pagefade.png) no-repeat fixed 645px top; */
 }
 .main{
-	margin-left:10px;
+	padding:0 10px;
+}
+#main-content {
+	width:100%;
 }
 a, a:active, a:visited, a:link {
 	text-decoration:none;
@@ -54,7 +57,7 @@ span.refresh {
 #loading-ind {
   position:fixed;
   bottom:20px;
-  left:587px;
+  right:20px;
   height:43px;
   width:48px;
   background:url(../images/ss.gif) no-repeat;
@@ -64,13 +67,15 @@ span.refresh {
   -webkit-box-shadow:2px 2px 5px #999;
 }
 .span-avatar {
-	width:50px;
-  margin-bottom:20px;
+	width:60px;
+	vertical-align: top;
+	padding:0 0 10px 0;
 }
 .span-activity {
-	width:570px;
-	margin-bottom:15px;
+	padding:0 0 10px 0;
+	vertical-align: top;
 }
+
 #filters{
 	margin-bottom:10px;
 }
@@ -84,13 +89,8 @@ ul.headnav li {
   float:right;
   list-style-type:none;
 }
-ol.results {
+table.results {
 	margin:0;
-}
-li.messages {
-	clear:both;
-	list-style-type:none;
-	margin-bottom:10px;
 }
 .activity {
   font-size:12px;
@@ -120,10 +120,9 @@ li.messages {
 	-ms-filter: "progid:DXImageTransform.Microsoft.dropshadow(OffX=2px, OffY=2px, Color='#666666')"; /* IE8 */	
   border:1px solid #ccc;
   padding:5px 10px;
+	margin:10px 0;
 	background: url(../images/pubbg.png) repeat-x;
   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(255, 255, 255)), color-stop(1, rgb(230, 230, 230)));
-	margin: 10px 0 5px 0;
-  width:610px;
 }
 #pub1-share {
   text-shadow:#fff 1px 1px 0;
@@ -131,6 +130,19 @@ li.messages {
   font-size:11pt;
   font-weight:bold;
   margin-bottom:5px;
+}
+table#pub-table {
+	margin:0;
+}
+table#pub-table td {
+	padding:0;
+}
+td.pub-share-textarea {
+	width:100%;
+	padding-right:15px !important;
+}
+td.pub-share-button {
+	width:52px;
 }
 .pub1-dd {
   cursor:pointer;
@@ -147,10 +159,9 @@ li.messages {
 }
 #pub1-text textarea {
 	float:left;
-	resize:vertical;
   margin:0 4px 0 0;
 	padding:4px 5px;
-  width:540px;
+  width:100%;
   height:18px;
   font-size:11pt;
 	font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;
@@ -159,6 +170,7 @@ li.messages {
   -webkit-box-shadow:0 0 3px #ccc;
 	border:1px solid #999;
 	background:#fff;
+	resize:vertical;
 }
 input[type='submit'], input[type='button'], .button {
 	float:left;

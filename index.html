@@ -27,11 +27,11 @@
     
     <div id="loading-ind" class="hide"></div>
     <div class="main">
-      <ul class="headnav span-24">
+      <ul class="headnav">
         <li class="hide">Logged in as <a href="" class="url@href username strong"></a></li>
       </ul>  
-      <div id="main-content" class="span-16 first">
-        <div id="publisher" class="clearfix">
+      <div id="main-content">
+        <div id="publisher">
           <form id="pub-form" action="#/message" method="post" enctype="multipart/form-data">
             <div id="pub1-share" class="loud">
               Share something with
@@ -39,9 +39,19 @@
                 <option value="">My Connections</option>
               </select>
             </div>
-            <div id="pub1-text" class="clearfix">
-                <textarea id="pub-text" name="body" class="autoresize" placeholder="Share something..."></textarea>
-                <input id="share" type="submit" value="Share"/>
+            <div id="pub1-text">
+              <table id="pub-table" cellpadding="0" cellspacing="0" border="0">
+                <tbody>
+                  <tr>
+                    <td class="pub-share-textarea">
+                      <textarea id="pub-text" name="body" class="autoresize" placeholder="Share something..."></textarea>
+                    </td>
+                    <td class="pub-share-button">
+                      <input id="share" type="submit" value="Share"/>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
             <div id="pub1-upload">
               <a href="#" id="pub1-attachment" class="no-underline">Attach file</a>
@@ -61,7 +71,7 @@
         </div><!-- #publisher -->
 
         <div id="stream">
-          <div id="filters">
+          <div id="filters" class="clearfix">
             <span class="filter" id="groupfiltercontainer">
             <label for="groupfilter">View:</label>
             <select name="groupfilter" id="groupfilter">
@@ -79,18 +89,20 @@
             </span>
           </div>
           <div id="no-activities" class="hide">No activities found.</div>
-          <ol class="results">
-            <li id="act-template" class="messages id@id hide">
-              <div class="span-avatar column first">
-                <img class="avatarimg avatar@src" src=""/>
-              </div>
-              <div class="span-activity column last">
-                <span class="activity"></span>
-                <span class="reltime"></span>
-                <div class="detail">Loading...</div>
-              </div>
-            </li>
-          </ol>
+          <table class="results" cellspacing="0" cellpadding="0" border="0">
+            <tbody>
+              <tr id="act-template" class="messages id@id hide">
+                <td class="span-avatar">
+                  <img class="avatarimg avatar@src" src=""/>
+                </td>
+                <td class="span-activity">
+                  <span class="activity"></span>
+                  <span class="reltime"></span>
+                  <div class="detail">Loading...</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div><!-- #stream -->
       </div><!-- #main-content -->
     </div><!-- #main -->

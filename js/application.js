@@ -83,7 +83,7 @@ $(function() {
 			// Infinite scroll pager
 			$(window).scroll(function() {
 				if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-					renderStream($('#stream').data('currentStreamUrl'), activityStream.currentActivityId(), false);
+					renderStream($('#stream').data('currentStreamUrl'), activityStream.currentActivityId()+1, false);
 				}
 			});
 
@@ -185,13 +185,13 @@ $(function() {
 				})
 			};
 			if (clearActivities) {
-				var activityTemplate = $('li.messages:first');
-				$('ol.results').empty().append(activityTemplate).autoRender(bindData);
-				$('ol.results *').show();
+				var activityTemplate = $('tr.messages:first');
+				$('table.results').empty().append(activityTemplate).autoRender(bindData);
+				$('table.results *').show();
 			} else {
-				var template = $('li.messages:last').clone().appendTo('ol.results');
+				var template = $('tr.messages:last').clone().appendTo('table.results');
 				template.autoRender(bindData)
-				$('ol.results').removeClass('hide');
+				$('table.results').removeClass('hide');
 			}
       
       
