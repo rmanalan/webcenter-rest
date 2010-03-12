@@ -87,8 +87,8 @@ $(function() {
 				}
 			});
 
-      $('img.youtube').live('click',function(){
-        $(this).hide().next().removeClass('hide');
+      $('img.playvid').live('click',function(){
+        $(this).parent().hide().next().removeClass('hide');
       })
 
       // Refresh button

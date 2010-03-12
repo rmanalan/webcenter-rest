@@ -371,6 +371,16 @@ a.inline {
 	width:100%;
   height:60px;
 }
+div.youtube {
+	position:relative;
+	height:90px;
+	width:120px;
+}
+img.playvid {
+	position:absolute;
+  left:22px;
+	top:7px
+}
 /*
 vim:ts=2:sw=2
  */
