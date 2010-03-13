@@ -173,7 +173,7 @@ $(function() {
                 var ucmid = $(ppt[0]).attr('rel').split(':').splice(-1);
                 var dynConvUrl = webCenter.settings.dynConverterUri + ucmid;
                 $.get(dynConvUrl,function(d){
-                  console.log(d);
+                  console.log($('img',$(d)));
                 }); 
               } else {
                 detail = d.detail ? d.detail: "";
