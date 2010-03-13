@@ -180,7 +180,6 @@ $(function() {
                     var slide = $('<li><img src="' + slideImage.attr('src') + '" width="600" /></li>');
                     slide.appendTo(slides);
                   });
-                  slides.jCarouselLite();
                   console.log(slides);
                   slides.appendTo('tr#' + activityStream.nextActivityId() + ' div.detail');
                 }); 
