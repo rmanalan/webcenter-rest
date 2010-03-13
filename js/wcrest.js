@@ -133,7 +133,7 @@ var webCenter = function(callback) {
 			var url = $.grep(item.links, function(l) {
 				return l.type == 'text/html';
 			})[0].href;
-			return ' <a href="' + url + '" target="_top">' + item.displayName + '</a> ';
+			return ' <a href="' + url + '" target="_top" class="' + item.type + '" rel="' + item.id + '">' + item.displayName + '</a> ';
 		});
 		if (d.groupSpace) {
 			activityDescr += ' in <a href="' + webCenter.getResourceURL(d.groupSpace.links, 'urn:oracle:webcenter:space', false) + '" target="_top">' + d.groupSpace.displayName + '</a>';

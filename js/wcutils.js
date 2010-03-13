@@ -16,7 +16,7 @@ var utils = function() {
 	function resolveURLs(str) {
 		// Caja's html_sanitizer prevents XSS/code injection attacks
 		str = html_sanitize(str, function(url) {
-			if (/^https?:\/\//.test(url)) return url
+			if (/^https?:\/\//.test(url)) return url;
 		},
 		function(id) {
 			return id

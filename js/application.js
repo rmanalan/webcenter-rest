@@ -162,21 +162,26 @@ $(function() {
           var activitySummary = webCenter.resolveBindItems(d);
           var detail = "";
           if(d.activityType=='create-document'){
-            var filename = $.grep($(activitySummary).filter('a'),function(e){ return /(jpg|gif|png)$/i.test($(e).text()) });
-            if(filename[0]) {
+            var image = $.grep($(activitySummary).filter('a'),function(e){ return /\.(jpg|gif|png)$/i.test($(e).text()) });
+            if(image[0]) {
               detail = d.detail ? d.detail: "";
-              detail += '<p><a class="inline" href="' + $(filename[0]).attr('href') + '" target="_blank"><img class="inline hide" src="' + $(filename[0]).attr('href') + '" /></a></p>';
+              detail += '<p><a class="inline" href="' + $(image[0]).attr('href') + '" target="_blank"><img class="inline hide" src="' + $(image[0]).attr('href') + '" /></a></p>';
             } else {
-              detail = d.detail ? d.detail: "";
+              var ppt = $.grep($(activitySummary).filter('a'),function(e){ return /\.ppt$/i.test($(e).text()) });
+              if(ppt[0]){
+                detail = d.detail ? d.detail: "";
+                var ucmid = $(ppt[0]).attr('rel').split(':').splice(-1);
+                var dynConvUrl = webCenter.settings.dynConverterUri + ucmid;
+                $.get(dynConvUrl,function(d){
+                  console.log(d);
+                }); 
+              } else {
+                detail = d.detail ? d.detail: "";
+              }
             };
           } else {
             detail = d.detail ? d.detail: "";
           };
-          // TODO
-          if(d.activityType=='updateStatus') {
-            
-          } else {
-          }
 					return {
 						'id': activityStream.nextActivityId(),
 						'avatar': userProfile.avatarSmall(webCenter.getTemplateItem(d.templateParams.items, 'user').guid),
