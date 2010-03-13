@@ -173,7 +173,16 @@ $(function() {
                 var ucmid = $(ppt[0]).attr('rel').split(':').splice(-1);
                 var dynConvUrl = webCenter.settings.dynConverterUri + ucmid;
                 $.get(dynConvUrl,function(d){
-//                  console.log($('img',$(d)));
+                  var slideImages = $('img',$(d));
+                  var slides = $('<ul class="slides"></ul>');
+                  slideImages.each(function(){
+                    var slideImage = $(this);
+                    var slide = $('<li><img src="' + slideImage.attr('src') + '" width="600" /></li>');
+                    slide.appendTo(slides);
+                  });
+                  slides.jCarouselLite();
+                  console.log(slides);
+                  slides.appendTo('tr#' + activityStream.nextActivityId() + ' div.detail');
                 }); 
               } else {
                 detail = d.detail ? d.detail: "";
