@@ -178,9 +178,7 @@ $(function() {
                 slide.appendTo(slides);
               });
               slides.appendTo(detail);
-              slides.load(function(){
-                $(this).jCarouselLite({"visible":1});
-              });
+              console.log(detail)
             }); 
           };
         };
