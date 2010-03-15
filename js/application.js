@@ -157,60 +157,44 @@ $(function() {
         $('#no-activities').addClass('hide');
         $('ol.results').show();
       }
-			var bindData = {
-				'messages': $.map(data.items, function(d) {
-          var activitySummary = webCenter.resolveBindItems(d);
-          var detail = "";
-          if(d.activityType=='create-document'){
-            var image = $.grep($(activitySummary).filter('a'),function(e){ return /\.(jpg|gif|png)$/i.test($(e).text()) });
-            if(image[0]) {
-              detail = d.detail ? d.detail: "";
-              detail += '<p><a class="inline" href="' + $(image[0]).attr('href') + '" target="_blank"><img class="inline hide" src="' + $(image[0]).attr('href') + '" /></a></p>';
-            } else {
-              var ppt = $.grep($(activitySummary).filter('a'),function(e){ return /\.ppt$/i.test($(e).text()) });
-              if(ppt[0]){
-                detail = d.detail ? d.detail: "";
-                var ucmid = $(ppt[0]).attr('rel').split(':').splice(-1);
-                var dynConvUrl = webCenter.settings.dynConverterUri + ucmid;
-                $.get(dynConvUrl,function(d){
-                  var slideImages = $('img',$(d));
-                  var slides = $('<ul class="slides"></ul>');
-                  slideImages.each(function(){
-                    var slideImage = $(this);
-                    var slide = $('<li><img src="' + slideImage.attr('src') + '" width="600" /></li>');
-                    slide.appendTo(slides);
-                  });
-                  dump = slides;
-                  slides.appendTo('tr#' + activityStream.nextActivityId() + ' div.detail');
-                }); 
-              } else {
-                detail = d.detail ? d.detail: "";
-              }
-            };
-          } else {
-            detail = d.detail ? d.detail: "";
-          };
-					return {
-						'id': activityStream.nextActivityId(),
-						'avatar': userProfile.avatarSmall(webCenter.getTemplateItem(d.templateParams.items, 'user').guid),
-						'name': webCenter.getTemplateItem(d.templateParams.items, 'user').displayName,
-						'url': webCenter.getResourceURL(webCenter.getTemplateItem(d.templateParams.items, 'user').links, 'urn:oracle:webcenter:people:person'),
-						'activity': activitySummary,
-						'detail': detail,
-						'reltime': utils.timeAgoInWords(d.createdDate)
-					}
-				})
-			};
-			if (clearActivities) {
-				var activityTemplate = $('tr.messages:first');
-				$('table.results').empty().append(activityTemplate).autoRender(bindData);
-				$('table.results *').show();
-			} else {
-				var template = $('tr.messages:last').clone().appendTo('table.results');
-				template.autoRender(bindData)
-				$('table.results').removeClass('hide');
-			}
       
+      var as = $("<div></div>");
+      $.each(data.items, function(i,d){
+        var activitySummary = webCenter.resolveBindItems(d);
+        var detail = $('<p>' + (d.detail ? d.detail: "") + '</p>');
+        if(d.activityType=='create-document'){
+          var image, ppt;
+          if((image = $.grep($(activitySummary).filter('a'),function(e){ return /\.(jpg|gif|png)$/i.test($(e).text()) }))[0]) {
+            $('<p><a class="inline" href="' + $(image[0]).attr('href') + '" target="_blank"><img class="inline hide" src="' + $(image[0]).attr('href') + '" /></a></p>').appendTo(detail);
+          } else if((ppt = $.grep($(activitySummary).filter('a'),function(e){ return /\.ppt$/i.test($(e).text()) }))[0]) {
+            var ucmid = $(ppt[0]).attr('rel').split(':').splice(-1);
+            var dynConvUrl = webCenter.settings.dynConverterUri + ucmid;
+            $.get(dynConvUrl,function(d){
+              var slideImages = $('img',$(d));
+              var slides = $('<ul class="slides"></ul>');
+              slideImages.each(function(){
+                var slideImage = $(this);
+                var slide = $('<li><img src="' + slideImage.attr('src') + '" width="600" /></li>');
+                slide.appendTo(slides);
+              });
+              slides.jCarouselLite({"visible":1}).appendTo(detail);
+            }); 
+          };
+        };
+        var asTmplt = $('tr.messages:first').clone();
+        asTmplt.attr('id',activityStream.nextActivityId())
+        $('img.avatar',asTmplt).attr('src',userProfile.avatarSmall(webCenter.getTemplateItem(d.templateParams.items, 'user').guid));
+        $('span.activity',asTmplt).html(activitySummary);
+        $('span.reltime',asTmplt).html(utils.timeAgoInWords(d.createdDate));
+        $('div.detail',asTmplt).html(detail.html());
+        asTmplt.appendTo(as);
+      });
+      if (clearActivities) {
+        $('table.results').empty().append(as.contents());
+        $('table.results *').show();
+      } else {
+        $('table.results').append(as.contents()).removeClass('hide');
+      }
       
       // make sure inlined images aren't too big
       $('img.inline').load(function(){

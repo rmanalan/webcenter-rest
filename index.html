@@ -12,6 +12,7 @@
     <script src="./js/timeago.js"></script>
     <script src="./js/sammy.js"></script>
     <script src="./js/sammy.json.js"></script>
+    <script src="./js/sammy.mustache.js"></script>
     <script src="./js/autoresize.js"></script>
     <script src="./js/jcarousellite.js"></script>
     <script src="./js/html-sanitizer-minified.js"></script>
@@ -92,11 +93,11 @@
           <div id="no-activities" class="hide">No activities found.</div>
           <table class="results" cellspacing="0" cellpadding="0" border="0">
             <tbody>
-              <tr id="act-template" class="messages id@id hide">
-                <td class="span-avatar">
-                  <img class="avatarimg avatar@src" src=""/>
+              <tr class="messages hide">
+                <td class="avatar">
+                  <img class="avatar" src=""/>
                 </td>
-                <td class="span-activity">
+                <td class="activity">
                   <span class="activity"></span>
                   <span class="reltime"></span>
                   <div class="detail">Loading...</div>

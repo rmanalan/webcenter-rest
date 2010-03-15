@@ -62,15 +62,15 @@ span.refresh {
   width:48px;
   background:url(../images/ss.gif) no-repeat;
 }
-.avatarimg {
+img.avatar {
   -moz-box-shadow:2px 2px 5px #999;
   -webkit-box-shadow:2px 2px 5px #999;
 }
-.span-avatar {
+td.avatar {
 	width:50px;
 	vertical-align: top;
 }
-.span-activity {
+tr.activity {
 	padding:0 0 10px 0;
 	vertical-align: top;
 }
@@ -92,7 +92,7 @@ ul.headnav li {
 table.results {
 	margin:0;
 }
-.activity {
+span.activity {
   font-size:12px;
 	color:#666;
 }
