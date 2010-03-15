@@ -177,7 +177,10 @@ $(function() {
                 var slide = $('<li><img src="' + slideImage.attr('src') + '" width="600" /></li>');
                 slide.appendTo(slides);
               });
-              slides.jCarouselLite({"visible":1}).appendTo(detail);
+              slides.appendTo(detail);
+              slides.load(function(){
+                $(this).jCarouselLite({"visible":1});
+              });
             }); 
           };
         };
