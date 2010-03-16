@@ -189,7 +189,7 @@ $(function() {
                   slides += '<li><img src="' + $(this).attr('src') + '" width="600" /></li>';
                 });
                 slides = '<div id="det-' + actId + '" class="swvp"><ul>' + slides + '</ul></div>';
-                $(slides).appendTo('#act-' + actId + ' div.swvp').slideViewerPro();
+                $(slides).appendTo('#act-' + actId + ' div.detail').slideViewerPro();
               }); 
             };
           };
