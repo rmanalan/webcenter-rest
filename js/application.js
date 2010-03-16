@@ -188,8 +188,8 @@ $(function() {
                 slideImages.each(function(){
                   slides += '<li><img src="' + $(this).attr('src') + '" width="600" /></li>';
                 });
-                slides = '<ul class="slides">' + slides + '</ul>';
-                $(slides).appendTo('#act-' + actId + ' div.detail');
+                slides = '<div id="det-' + actId + '" class="swvp"><ul>' + slides + '</ul></div>';
+                $(slides).appendTo('#act-' + actId + ' div.swvp').slideViewerPro();
               }); 
             };
           };
