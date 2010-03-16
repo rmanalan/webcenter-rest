@@ -193,7 +193,10 @@ $(function() {
                   galBorderWidth: 0,
                   thumbsBorderWidth: 1,
                   thumbsBorderColor: '#000',
-                  thumbsBorderOpacity: .7
+                  thumbs:7,
+                  thumbsBorderOpacity: .7,
+                  leftButtonInner: '&laquo;',
+                  rightButtonInner: '&raquo;'
                 });
               }); 
             };
