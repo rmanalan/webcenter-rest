@@ -192,6 +192,7 @@ $(function() {
                 $(slides).appendTo('#act-' + actId + ' div.detail').slideViewerPro({
                   galBorderWidth: 0,
                   thumbsBorderWidth: 1,
+                  thumbsTopMargin: 8,
                   thumbsBorderColor: '#ccc',
                   thumbs:7,
                   thumbsBorderOpacity: .7,
