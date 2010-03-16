@@ -186,10 +186,14 @@ $(function() {
                 var slideImages = $('img',$(d));
                 var slides = "";
                 slideImages.each(function(){
-                  slides += '<li><img src="' + $(this).attr('src') + '" width="600" /></li>';
+                  slides += '<li><img src="' + $(this).attr('src') + '" width="500" /></li>';
                 });
                 slides = '<div id="det-' + actId + '" class="swvp"><ul>' + slides + '</ul></div>';
-                $(slides).appendTo('#act-' + actId + ' div.detail').slideViewerPro();
+                $(slides).appendTo('#act-' + actId + ' div.detail').slideViewerPro({
+                  galBorderWidth: 0,
+                  thumbsBorderWidth: 1,
+                  
+                });
               }); 
             };
           };
