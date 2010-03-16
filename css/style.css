@@ -402,7 +402,7 @@ img.playvid {
 .slideViewer ul li {
 	float:left;
 }
-.slideViewer ul li img {
+div.slideViewer {
 	-moz-box-shadow:3px 3px 10px #999;
 	-webkit-box-shadow:3px 3px 10px #999;
 	box-shadow:3px 3px 10px #999;
@@ -453,6 +453,7 @@ a.left, a.right { /*the left and right buttons (links)*/
 	color: #ff0000;
 	font: bold 16px Arial;
 	overflow: hidden;
+	border:0;
 }
 a.left span, a.right span{
 
