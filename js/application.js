@@ -150,51 +150,70 @@ $(function() {
 
 			if (data.items.length == 0 && startIndex == 0) {
         $('#no-activities').removeClass('hide');
-        $('ol.results').hide();
+        $('table.results').hide();
 				moreActivities = false;
 				return;
 			} else {
         $('#no-activities').addClass('hide');
-        $('ol.results').show();
+        $('table.results').show();
       }
       
-      var as = $("<div></div>");
+      var as;
       $.each(data.items, function(i,d){
         var activitySummary = webCenter.resolveBindItems(d);
-        var detail = $('<p>' + (d.detail ? d.detail: "") + '</p>');
+        var detail = d.detail ? d.detail : "";
+        var actId = activityStream.nextActivityId();
         if(d.activityType=='create-document'){
-          var image, ppt;
-          if((image = $.grep($(activitySummary).filter('a'),function(e){ return /\.(jpg|gif|png)$/i.test($(e).text()) }))[0]) {
-            $('<p><a class="inline" href="' + $(image[0]).attr('href') + '" target="_blank"><img class="inline hide" src="' + $(image[0]).attr('href') + '" /></a></p>').appendTo(detail);
-          } else if((ppt = $.grep($(activitySummary).filter('a'),function(e){ return /\.ppt$/i.test($(e).text()) }))[0]) {
-            var ucmid = $(ppt[0]).attr('rel').split(':').splice(-1);
-            var dynConvUrl = webCenter.settings.dynConverterUri + ucmid;
-            $.get(dynConvUrl,function(d){
-              var slideImages = $('img',$(d));
-              var slides = $('<ul class="slides"></ul>');
-              slideImages.each(function(){
-                var slideImage = $(this);
-                var slide = $('<li><img src="' + slideImage.attr('src') + '" width="600" /></li>');
-                slide.appendTo(slides);
-              });
-              slides.appendTo(detail);
-              console.log(detail)
-            }); 
+          // inline images
+          var image = $.grep($(activitySummary).filter('a'),function(e){ 
+            return /\.(jpg|gif|png)$/i.test($(e).text()) 
+          });
+          if(image[0]) {
+            detail += '<p>'
+                      + '<a class="inline" href="' + $(image[0]).attr('href') + '" target="_blank">'
+                        + '<img class="inline hide" src="' + $(image[0]).attr('href') + '" />'
+                      + '</a>'
+                    + '</p>';
+          } else {
+            // inline ppts
+            var ppt = $.grep($(activitySummary).filter('a'),function(e){ 
+              return /\.ppt$/i.test($(e).text()) 
+            });
+            if (ppt[0]) {
+              var ucmid = $(ppt[0]).attr('rel').split(':').splice(-1);
+              var dynConvUrl = webCenter.settings.dynConverterUri + ucmid;
+              $.get(dynConvUrl,function(d){
+                var slideImages = $('img',$(d));
+                var slides = "";
+                slideImages.each(function(){
+                  slides += '<li><img src="' + $(this).attr('src') + '" width="600" /></li>';
+                });
+                slides += '<ul class="slides">' + slides + '</ul>';
+                $('#act-' + actId + ' div.detail').append(slides);
+              }); 
+            };
           };
         };
-        var asTmplt = $('tr.messages:first').clone();
-        asTmplt.attr('id',activityStream.nextActivityId())
-        $('img.avatar',asTmplt).attr('src',userProfile.avatarSmall(webCenter.getTemplateItem(d.templateParams.items, 'user').guid));
-        $('span.activity',asTmplt).html(activitySummary);
-        $('span.reltime',asTmplt).html(utils.timeAgoInWords(d.createdDate));
-        $('div.detail',asTmplt).html(detail.html());
-        asTmplt.appendTo(as);
+
+        as += '<tr id="act-' + actId + '" class="messages">'
+              + '<td class="avatar">'
+                + '<img class="avatar" src="' 
+                  + userProfile.avatarSmall(webCenter.getTemplateItem(d.templateParams.items, 'user').guid) 
+                + '"/>'
+              + '</td>'
+              + '<td class="activity">'
+                + '<span class="activity">' + activitySummary + '</span> '
+                + '<span class="reltime">' + utils.timeAgoInWords(d.createdDate) + '</span>'
+                + '<div class="detail">' + detail + '</div>'
+              + '</td>'
+            + '</tr>';
       });
       if (clearActivities) {
-        $('table.results').empty().append(as.contents());
+        $('table.results').empty().append($(as));
         $('table.results *').show();
       } else {
-        $('table.results').append(as.contents()).removeClass('hide');
+        $('table.results').append($(as));
+        $('table.results *').show();
       }
       
       // make sure inlined images aren't too big
