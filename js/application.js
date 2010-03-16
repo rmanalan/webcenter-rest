@@ -192,7 +192,7 @@ $(function() {
                 $(slides).appendTo('#act-' + actId + ' div.detail').slideViewerPro({
                   galBorderWidth: 0,
                   thumbsBorderWidth: 1,
-                  thumbsBorderColor: #000,
+                  thumbsBorderColor: '#000',
                   thumbsBorderOpacity: .7
                 });
               }); 
