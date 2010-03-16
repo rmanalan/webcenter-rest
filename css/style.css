@@ -348,6 +348,7 @@ a.sbconnection:hover {
 img.inline {
 	-moz-box-shadow:3px 3px 10px #999;
 	-webkit-box-shadow:3px 3px 10px #999;
+	box-shadow:3px 3px 10px #999;
 }
 a.inline {
 	border-bottom:0;
@@ -401,7 +402,11 @@ img.playvid {
 .slideViewer ul li {
 	float:left;
 }
-
+.slideViewer ul li img {
+	-moz-box-shadow:3px 3px 10px #999;
+	-webkit-box-shadow:3px 3px 10px #999;
+	box-shadow:3px 3px 10px #999;
+}
 /*typographic info*/
 .slideViewer span.typo{ 
 	padding: 6px; /* do not modify padding */
