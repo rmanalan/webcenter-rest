@@ -188,7 +188,7 @@ $(function() {
                 slideImages.each(function(){
                   slides += '<li><img src="' + $(this).attr('src') + '" width="600" /></li>';
                 });
-                slides += '<ul class="slides">' + slides + '</ul>';
+                slides = '<ul class="slides">' + slides + '</ul>';
                 $(slides).appendTo('#act-' + actId + ' div.detail');
               }); 
             };
