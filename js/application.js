@@ -190,7 +190,8 @@ $(function() {
                 });
                 slides = '<div id="det-' + actId + '" class="swvp"><ul>' + slides + '</ul></div>';
                 $(slides).appendTo('#act-' + actId + ' div.detail').slideViewerPro({
-                  galBorderWidth: 0,
+                  galBorderWidth: 1,
+                  galBorderColor: #ccc,
                   thumbsBorderWidth: 1,
                   thumbsTopMargin: 8,
                   thumbsBorderColor: '#ccc',
@@ -199,6 +200,11 @@ $(function() {
                   leftButtonInner: '&laquo;',
                   rightButtonInner: '&raquo;'
                 });
+								$('img',slides).click(function(){
+									var src = $(this).parent().next().find('img').attr('src');
+									dump = {s:slides,src:src};
+									slides.next().find('img[src*="'+src+'"]').parent().trigger('click');
+								});                
               }); 
             };
           };
