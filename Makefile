@@ -1,9 +1,15 @@
-all: clean compile-as-js compile-as-css compile-ir-js compile-ir-css
+all: clean-js clean-css compile-as-js compile-as-css compile-ir-js compile-ir-css
 
-clean:
+all-js: clean-js compile-as-js compile-ir-js
+
+all-css: clean-css compile-as-css compile-ir-css
+
+clean-js:
 	rm -rf js/base-as.js
-	rm -rf css/base-as.css
 	rm -rf js/base-ir.js
+
+clean-css:
+	rm -rf css/base-as.css
 	rm -rf css/base-ir.css
 
 compile-as-js:
