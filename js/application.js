@@ -115,35 +115,36 @@ $(function () {
       // Sets url for default stream filter
       $('#groupfilter option:first').attr('value', webCenter.getResourceURL(webCenter.resourceIndex.links, 'urn:oracle:webcenter:activities:stream', false));
 
-//      currentUser.getSpaces(function (d) {
-//        if (currentUser.spaces.length == 0) {
-//          callback();
-//          return;
-//        }
-//        $.each(d, function (i, o) {
-//          if (!o.isOffline) {
-//            var urls = JSON.stringify({
-//              'msgBoard': webCenter.getResourceURL(o.links, 'urn:oracle:webcenter:messageBoard', false),
-//              'spaceName': o.name
-//            });
-//
-//            // populate the publish to drop down
-//            var pubOption = $('#grouppub option:first').clone().val(urls).text(o.displayName);
-//            $('#grouppub').append(pubOption);
-//
-//            // populate the view by drop down
-//            var asUrl = webCenter.getResourceURL(o.links, 'urn:oracle:webcenter:activities:stream', true);
-//            var viewByOption = $('#groupfilter option:first').clone().val(asUrl).text(o.displayName);
-//            $('#groupfilter').append(viewByOption);
-//          }
-//        });
-//
-//        callback();
-//      });
-//
-//    });
+      /*currentUser.getSpaces(function (d) {
+        if (currentUser.spaces.length == 0) {
+          callback();
+          return;
+        }
+        $.each(d, function (i, o) {
+          if (!o.isOffline) {
+            var urls = JSON.stringify({
+              'msgBoard': webCenter.getResourceURL(o.links, 'urn:oracle:webcenter:messageBoard', false),
+              'spaceName': o.name
+            });
 
+            // populate the publish to drop down
+            var pubOption = $('#grouppub option:first').clone().val(urls).text(o.displayName);
+            $('#grouppub').append(pubOption);
+
+            // populate the view by drop down
+            var asUrl = webCenter.getResourceURL(o.links, 'urn:oracle:webcenter:activities:stream', true);
+            var viewByOption = $('#groupfilter option:first').clone().val(asUrl).text(o.displayName);
+            $('#groupfilter').append(viewByOption);
+          }
+        });
+
+        callback();
+      });
+
+      */
       callback();
+
+    });
   };
 
   function renderStream(url, startIndex, clearActivities, callback) {
