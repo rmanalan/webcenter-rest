@@ -1,13 +1,13 @@
 $(function() {
 var assetHost = '/owccustom/';
   $.xLazyLoader({
-    'css': $.map(['ir'], function(n) {
-      return assetHost + 'css/' + n + '.css'
-    }),
     'js': $.map(['curvy'], function(n) {
       return assetHost + 'js/' + n + '.js'
     })
   });
+
+  $('<link href="/owccustom/css/base-ir.css" type="text/css" media="screen" rel="stylesheet"/>').appendTo('head');
+
 	// http://ejohn.org/blog/javascript-array-remove
 	Array.prototype.remove = function(from, to) {
 		var rest = this.slice((to || from) + 1 || this.length);
