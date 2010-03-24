@@ -1,10 +1,10 @@
-$(document).ajaxStart(function () {
-  $('#loading-ind').show();
-}).ajaxStop(function () {
-  $('#loading-ind').hide();
-});
 var dump;
-$(function () {
+(function($) {
+  $(document).ajaxStart(function () {
+    $('#loading-ind').show();
+  }).ajaxStop(function () {
+    $('#loading-ind').hide();
+  });
 
   // Set up placeholder text for publisher
   if (!("placeholder" in document.createElement("textarea"))) {
@@ -360,7 +360,7 @@ $(function () {
 
   });
   activityStreamApp.run('#/');
-});
+})(jQuery);
 /* 
  vim:ts=2:sw=2:expandtab
  */
