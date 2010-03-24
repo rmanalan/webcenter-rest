@@ -130,10 +130,14 @@ var webCenter = function(callback) {
 			var item = $.grep(d.templateParams.items, function(n) {
 				return n.key == key;
 			})[0];
-			var url = $.grep(item.links, function(l) {
-				return l.type == 'text/html';
-			})[0].href;
-			return ' <a href="' + url + '" target="_top" class="' + item.type + '" rel="' + item.id + '">' + item.displayName + '</a> ';
+      try{
+        var url = $.grep(item.links, function(l) {
+          return l.type == 'text/html';
+        })[0].href;
+        return ' <a href="' + url + '" target="_top" class="' + item.type + '" rel="' + item.id + '">' + item.displayName + '</a> ';
+      } catch(err) {
+        return ' ' + item.displayName;
+      }
 		});
 		if (d.groupSpace) {
 			activityDescr += ' in <a href="' + webCenter.getResourceURL(d.groupSpace.links, 'urn:oracle:webcenter:space', false) + '" target="_top">' + d.groupSpace.displayName + '</a>';

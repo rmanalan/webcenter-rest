@@ -1,17 +1,17 @@
 var dump;
-(function($) {
-  $(document).ajaxStart(function () {
+$(function() {
+  $(document).ajaxStart(function() {
     $('#loading-ind').show();
-  }).ajaxStop(function () {
+  }).ajaxStop(function() {
     $('#loading-ind').hide();
   });
 
   // Set up placeholder text for publisher
-  if (!("placeholder" in document.createElement("textarea"))) {
+  if (! ("placeholder" in document.createElement("textarea"))) {
     var placeholder = $('#pub-text').attr('placeholder');
-    $('#pub-text').val(placeholder).focus(function () {
+    $('#pub-text').val(placeholder).focus(function() {
       if (this.value == placeholder) $(this).val('')
-    }).blur(function () {
+    }).blur(function() {
       if (this.value.replace(' ') == '') $(this).val(placeholder)
     });
   }
@@ -19,13 +19,13 @@ var dump;
   $('#pub-loading, #msg').hide();
 
   // Set up attachment controls
-  $('a#pub1-attachment').bind('click', function () {
+  $('a#pub1-attachment').bind('click', function() {
     $('#pub-form').attr('action', '#/upload');
     $(this).hide();
     $('#pub1-attachment-descr').hide()
     $('#pub1-upload-field').removeClass('hide');
   });
-  $('#pub1-upload-field button').bind('click', function () {
+  $('#pub1-upload-field button').bind('click', function() {
     $('#pub-form').attr('action', '#/message');
     $('#pub1-upload-field input').val('');
     $('#pub1-upload-field').addClass('hide');
@@ -55,22 +55,24 @@ var dump;
 
   function pubMessage(m) {
     $('#msg').html(m).slideDown();
-    setTimeout(function () {
+    setTimeout(function() {
       $('#msg').fadeOut(1000);
-    }, 2000);
+    },
+    2000);
   }
 
   function initApp(callback) {
     webCenter.init({
       'perPage': 20
-    }, function (success) {
+    },
+    function(success) {
       if (!success) {
         $('#msg').html('You are not loged in... please <a href="/webcenter/wcAuthentication/?login=true&success_url=/../owccustom/index.html">login</a> first').show();
         return false;
       }
 
       // Listen for <enter> key inside the publisher textarea
-      $('#pub-text').bind('keyup', function (e) {
+      $('#pub-text').bind('keyup', function(e) {
         if (e.keyCode == 13) {
           $('#pub-form').submit();
           return false;
@@ -83,18 +85,18 @@ var dump;
       });
 
       // Infinite scroll pager
-      $(window).scroll(function () {
+      $(window).scroll(function() {
         if ($(window).scrollTop() == $(document).height() - $(window).height()) {
           renderStream($('#stream').data('currentStreamUrl'), activityStream.currentActivityId() + 1, false);
         }
       });
 
-      $('img.playvid').live('click', function () {
+      $('img.playvid').live('click', function() {
         $(this).parent().hide().next().removeClass('hide');
       })
 
       // Refresh button
-      $('#refresh').bind('click', function () {
+      $('#refresh').bind('click', function() {
         renderStream($('#stream').data('currentStreamUrl'), 0, true);
         return false;
       });
@@ -102,7 +104,7 @@ var dump;
       // Sets url for default stream
       $('.lfopts:first').attr('value', webCenter.getResourceURL(webCenter.resourceIndex.links, 'urn:oracle:webcenter:activities:stream', true));
 
-      $('#groupfilter').bind('change', function (e) {
+      $('#groupfilter').bind('change', function(e) {
         location.hash = '#/group/' + escape($('option:selected', this).text());
       });
 
@@ -115,12 +117,12 @@ var dump;
       // Sets url for default stream filter
       $('#groupfilter option:first').attr('value', webCenter.getResourceURL(webCenter.resourceIndex.links, 'urn:oracle:webcenter:activities:stream', false));
 
-      currentUser.getSpaces(function (d) {
+      currentUser.getSpaces(function(d) {
         if (currentUser.spaces.length == 0) {
           callback();
           return;
         }
-        $.each(d, function (i, o) {
+        $.each(d, function(i, o) {
           if (!o.isOffline) {
             var urls = JSON.stringify({
               'msgBoard': webCenter.getResourceURL(o.links, 'urn:oracle:webcenter:messageBoard', false),
@@ -138,13 +140,15 @@ var dump;
           }
         });
 
-        callback();
+        // not sure we need to wait for the spaces api to return before we can render the stream
+        //callback();
       });
+      callback();
     });
   };
 
   function renderStream(url, startIndex, clearActivities, callback) {
-    activityStream.getActivities(url, startIndex, function (data) {
+    activityStream.getActivities(url, startIndex, function(data) {
       // Store off current stream url for paging purposes
       $('#stream').data('currentStreamUrl', url);
 
@@ -159,29 +163,29 @@ var dump;
       }
 
       var as;
-      $.each(data.items, function (i, d) {
+      $.each(data.items, function(i, d) {
         var activitySummary = webCenter.resolveBindItems(d);
-        var detail = d.detail ? d.detail : "";
+        var detail = d.detail ? d.detail: "";
         var actId = activityStream.nextActivityId();
         if (d.activityType == 'create-document') {
           // inline images
-          var image = $.grep($(activitySummary).filter('a'), function (e) {
+          var image = $.grep($(activitySummary).filter('a'), function(e) {
             return /\.(jpg|gif|png)$/i.test($(e).text())
           });
           if (image[0]) {
             detail += '<p>' + '<a class="inline" href="' + $(image[0]).attr('href') + '" target="_blank">' + '<img class="inline hide" src="' + $(image[0]).attr('href') + '" />' + '</a>' + '</p>';
           } else {
             // inline ppts
-            var ppt = $.grep($(activitySummary).filter('a'), function (e) {
+            var ppt = $.grep($(activitySummary).filter('a'), function(e) {
               return /\.ppt$/i.test($(e).text())
             });
             if (ppt[0]) {
-              var ucmid = $(ppt[0]).attr('rel').split(':').splice(-1);
+              var ucmid = $(ppt[0]).attr('rel').split(':').splice( - 1);
               var dynConvUrl = webCenter.settings.dynConverterUri + ucmid;
-              $.get(dynConvUrl, function (d) {
+              $.get(dynConvUrl, function(d) {
                 var slideImages = $('img', $(d));
                 var slides = "";
-                slideImages.each(function () {
+                slideImages.each(function() {
                   slides += '<li><img src="' + $(this).attr('src') + '" width="500" height="375" /></li>';
                 });
                 slides = '<div id="det-' + actId + '" class="swvp"><ul>' + slides + '</ul></div>';
@@ -196,7 +200,7 @@ var dump;
                   leftButtonInner: '&laquo;',
                   rightButtonInner: '&raquo;'
                 });
-                $('img', slides).click(function () {
+                $('img', slides).click(function() {
                   var src = $(this).parent().next().find('img').attr('src');
                   slides.next().find('img[src*="' + src + '"]').parent().trigger('click');
                 });
@@ -216,7 +220,7 @@ var dump;
       }
 
       // make sure inlined images aren't too big
-      $('img.inline').load(function () {
+      $('img.inline').load(function() {
         var img = $(this)
         if (img.width() > 570) {
           img.width(570);
@@ -228,15 +232,15 @@ var dump;
   };
 
   // App Controller
-  var activityStreamApp = $.sammy(function (app) {
+  var activityStreamApp = $.sammy(function(app) {
     var appStarted = false;
     var lastLocation;
     app.element_selector = '#main-content';
 
-    app.before(function (c) {
+    app.before(function(c) {
       var currLocation = app.getLocation();
       if (!appStarted) {
-        initApp(function () {
+        initApp(function() {
           appStarted = true;
           // Bug: needed to render the stream... shouldn't have to do this since
           // activityStreamApp.run('#/') already does it
@@ -247,21 +251,21 @@ var dump;
       app.trigger('update-filters', currLocation);
     });
 
-    app.after(function () {
+    app.after(function() {
       // Save off last location
       lastLocation = app.getLocation();
     });
 
-    app.get('#/', function (c) {
+    app.get('#/', function(c) {
       renderStream(currentUser.links, 0, true);
     });
 
-    app.get('#/group/:name', function (c) {
+    app.get('#/group/:name', function(c) {
       var groupName = this.params['name'];
       if (groupName == 'My connections') {
         this.redirect('#/');
       } else {
-        var url = $.grep($('#groupfilter option'), function (n) {
+        var url = $.grep($('#groupfilter option'), function(n) {
           return $(n).text() == decodeURI(groupName)
         })[0].value;
         var activityTemplate = $('li.messages:first');
@@ -270,7 +274,7 @@ var dump;
       }
     });
 
-    app.post('#/message', function (c) {
+    app.post('#/message', function(c) {
       var msg = this.params['body'];
       if (msg == "" || msg == "Share something...") return false;
       $.ajax({
@@ -281,14 +285,14 @@ var dump;
         data: JSON.stringify({
           'body': utils.resolveURLs(msg)
         }),
-        success: function (d) {
+        success: function(d) {
           $('#pub-text').val('').css('height', 18);
           renderStream($('#stream').data('currentStreamUrl'), 0, true);
         }
       });
     });
 
-    app.post('#/upload', function (c) {
+    app.post('#/upload', function(c) {
       $('#msg').html('').hide();
       var params = this.params;
       var msg = params['body'];
@@ -302,13 +306,13 @@ var dump;
 
       // Resolve CMIS URL to post to
       var cmisName = JSON.parse(params['puburl']).spaceName;
-      var UCMPath = cmisName ? "/Spaces/" + cmisName : null;
-      currentUser.getCmisFolderUrl(UCMPath, function (url) {
+      var UCMPath = cmisName ? "/Spaces/" + cmisName: null;
+      currentUser.getCmisFolderUrl(UCMPath, function(url) {
 
         // Prepare uploader iframe
         var strName = ("uploader" + (new Date()).getTime());
         var iFrame = $('<iframe name="' + strName + '" class="hide" />');
-        iFrame.load(function () {
+        iFrame.load(function() {
           var ifUploadBody = window.frames[strName].document;
           var contentUrl = $(ifUploadBody).text();
           if (/^http/.test(contentUrl)) {
@@ -316,14 +320,15 @@ var dump;
             var url = contentUrl;
             $('#pub-text').val('').css('height', 18);
             $('#pub1-upload-field button').trigger('click');
-            renderStream($('#stream').data('currentStreamUrl'), 0, true, function () {
+            renderStream($('#stream').data('currentStreamUrl'), 0, true, function() {
               $('#msg').html('').hide();
               $('#pub-loading').hide();
-              setTimeout(function () {
+              setTimeout(function() {
                 iFrame.remove()
-              }, 100);
+              },
+              100);
             });
-          } else if (contentUrl != '' && !/^http/.test(contentUrl)) {
+          } else if (contentUrl != '' && ! /^http/.test(contentUrl)) {
             $('#pub-form').attr('action', '#/upload');
             pubMessage("A duplicate file was found. Sorry, we can't handle dups right now.");
             $('#pub-loading').hide();
@@ -340,10 +345,10 @@ var dump;
       });
     });
 
-    app.bind('update-filters', function (e, currLocation) {
+    app.bind('update-filters', function(e, currLocation) {
       if (/\#\/group\//.test(currLocation)) {
         var selectedVal = unescape(currLocation.split('#/group/')[1].split('/')[0]);
-        $('#groupfilter option').each(function (i, n) {
+        $('#groupfilter option').each(function(i, n) {
           var opt = $(n);
           if (opt.text() == selectedVal) {
             opt.attr('selected', '1');
@@ -356,7 +361,8 @@ var dump;
 
   });
   activityStreamApp.run('#/');
-})(jQuery);
+});
+
 /* 
  vim:ts=2:sw=2:expandtab
  */
