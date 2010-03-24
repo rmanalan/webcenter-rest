@@ -198,7 +198,8 @@ $(function() {
                   thumbs: 5,
                   thumbsBorderOpacity: .7,
                   leftButtonInner: '&laquo;',
-                  rightButtonInner: '&raquo;'
+                  rightButtonInner: '&raquo;',
+                  thumbsPercentReduction: 8
                 });
                 $('img', slides).click(function() {
                   var src = $(this).parent().next().find('img').attr('src');
