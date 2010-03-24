@@ -1,5 +1,5 @@
+$('<link href="/owccustom/css/base-ir.css" type="text/css" media="screen" rel="stylesheet"/>').appendTo('head');
 $(function() {
-  $('<link href="/owccustom/css/base-ir.css" type="text/css" media="screen" rel="stylesheet"/>').appendTo('head');
 
 	// http://ejohn.org/blog/javascript-array-remove
 	Array.prototype.remove = function(from, to) {
