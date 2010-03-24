@@ -115,7 +115,7 @@ var dump;
       // Sets url for default stream filter
       $('#groupfilter option:first').attr('value', webCenter.getResourceURL(webCenter.resourceIndex.links, 'urn:oracle:webcenter:activities:stream', false));
 
-      /*currentUser.getSpaces(function (d) {
+      currentUser.getSpaces(function (d) {
         if (currentUser.spaces.length == 0) {
           callback();
           return;
@@ -140,10 +140,6 @@ var dump;
 
         callback();
       });
-
-      */
-      callback();
-
     });
   };
 
