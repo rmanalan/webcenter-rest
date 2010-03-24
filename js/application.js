@@ -121,7 +121,7 @@ $(function() {
 			$('img.slide').live('click', function() {
 				var src = $(this).parent().next().find('img').attr('src');
         var slides = $(this).parents('div.swvp');
-				slides.next().find('img[src*="' + src + '"]').parent().trigger('click');
+				slides.next().find('img[src*="' + src.split('/').slice(-1)[0] + '"]').parent().trigger('click');
 			});
 
 			currentUser.getSpaces(function(d) {
