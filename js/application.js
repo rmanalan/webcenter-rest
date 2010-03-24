@@ -201,7 +201,7 @@ $(function() {
                   rightButtonInner: '&raquo;',
                   thumbsPercentReduction: 16
                 });
-                $('img', slides).click(function() {
+                $('img', slides).live('click',function() {
                   var src = $(this).parent().next().find('img').attr('src');
                   slides.next().find('img[src*="' + src + '"]').parent().trigger('click');
                 });
