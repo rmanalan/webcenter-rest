@@ -184,7 +184,7 @@ $(function() {
 					} else {
 						// inline ppts
 						var ppt = $.grep($(activitySummary).filter('a'), function(e) {
-							return /\.ppt$/i.test($(e).text())
+							return /\.ppt$|\.pptx$/i.test($(e).text())
 						});
 						if (ppt[0]) {
 							var ucmid = $(ppt[0]).attr('rel').split(':').splice( - 1);
