@@ -469,7 +469,9 @@ a.l_dis span, a.r_dis span {
 	display: none;
 }
 a:focus {outline:none;}
-
+div.swvp {
+  margin-top:10px;
+}
 
 /*
 vim:ts=2:sw=2
