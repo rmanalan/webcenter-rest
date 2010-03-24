@@ -202,7 +202,7 @@ $(function() {
 									thumbsBorderWidth: 1,
 									thumbsTopMargin: 8,
 									thumbsBorderColor: '#ccc',
-									thumbs: 7,
+									thumbs: 5,
 									thumbsBorderOpacity: .7,
 									leftButtonInner: '&laquo;',
 									rightButtonInner: '&raquo;',
