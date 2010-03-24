@@ -199,7 +199,7 @@ $(function() {
                   thumbsBorderOpacity: .7,
                   leftButtonInner: '&laquo;',
                   rightButtonInner: '&raquo;',
-                  thumbsPercentReduction: 20
+                  thumbsPercentReduction: 15
                 });
                 $('img', slides).click(function() {
                   var src = $(this).parent().next().find('img').attr('src');
