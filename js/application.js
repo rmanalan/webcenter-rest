@@ -193,7 +193,7 @@ $(function() {
 								var slideImages = $('img', $(d));
 								var slides = "";
 								slideImages.each(function() {
-									slides += '<li><img class="slide" src="' + $(this).attr('src') + '" width="350" height="262" /></li>';
+									slides += '<li><img class="slide" src="' + $(this).attr('src') + '" width="500" height="375" /></li>';
 								});
 								slides = '<div id="det-' + actId + '" class="swvp"><ul>' + slides + '</ul></div>';
 								$(slides).appendTo('#act-' + actId + ' div.detail').slideViewerPro({
@@ -202,7 +202,7 @@ $(function() {
 									thumbsBorderWidth: 1,
 									thumbsTopMargin: 8,
 									thumbsBorderColor: '#ccc',
-									thumbs: 5,
+									thumbs: 7,
 									thumbsBorderOpacity: .7,
 									leftButtonInner: '&laquo;',
 									rightButtonInner: '&raquo;',
