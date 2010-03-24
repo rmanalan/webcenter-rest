@@ -472,6 +472,9 @@ a:focus {outline:none;}
 div.swvp {
   margin-top:10px;
 }
+img.slide {
+  cursor:pointer;
+}
 
 /*
 vim:ts=2:sw=2
