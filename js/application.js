@@ -120,6 +120,7 @@ $(function() {
       // Adds click handler to advance slide by one
 			$('img.slide').live('click', function() {
 				var src = $(this).parent().next().find('img').attr('src');
+        var slides = $(this).parents('div.swvp');
 				slides.next().find('img[src*="' + src + '"]').parent().trigger('click');
 			});
 
