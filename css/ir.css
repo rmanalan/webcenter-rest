@@ -121,6 +121,7 @@ div.irmenu ul li:hover,
 div.irmenu ul li a.selected {
   background: url(../images/nav-item-selected.png) repeat-x;
   background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(116,176,222)), color-stop(1, rgb(21, 128, 194)));
+  background-image: -moz-linear-gradient(top, rgb(116,176,222), rgb(21, 128, 194));
   font-weight:normal;
 }
 div[id='T:secondaryTabSet'] table tr td a:hover {
