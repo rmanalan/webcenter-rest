@@ -3,25 +3,25 @@ function runTests() {
 
 		module('webCenter.init');
 
-		test('get resourceIndex', function() {
+		test('should get resourceIndex', function() {
 			isType(webCenter.resourceIndex, "Object");
 		});
 
-		test('get links with 10 items', function() {
-			equals(webCenter.resourceIndex.links.length, 10, "resourceIndex should have 10 services available");
+		test('should get links with 11 items', function() {
+			equals(webCenter.resourceIndex.links.length, 11, "resourceIndex should have 11 services available");
 		});
 
-		test('setup currentUser', function() {
+		test('should setup currentUser', function() {
 			isType(currentUser, "Object");
 		});
 
 		module('webCenter.init => currentUser');
 
-		test('have proper resourceType', function() {
+		test('should have proper resourceType', function() {
 			equals(currentUser.resourceType, 'urn:oracle:webcenter:people:person');
 		});
 
-		test('have the query based activity stream link', function() {
+		test('should have the query based activity stream link', function() {
 			// this tests makes sure Don Hayler's on PS2 is available
 			var nodes = $.grep(currentUser.links, function(n) {
 				if (n.rel == "urn:oracle:webcenter:activities:stream" && n.resourceType == "urn:oracle:webcenter:activities:stream") return true;
@@ -29,9 +29,13 @@ function runTests() {
 			equals(nodes.length, 1);
 		});
 
-		test('have a status object', function() {
+		test('should have a status object', function() {
 			equals(currentUser.status.resourceType, "urn:oracle:webcenter:people:person:status");
 		});
+
+    test('description',function(){
+      
+    });
 	}
 };
 
