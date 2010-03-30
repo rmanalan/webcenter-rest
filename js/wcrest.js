@@ -268,7 +268,17 @@ var activityStream = function() {
 		} else {
       var url = links.replace("{startIndex}", startIndex).replace("{itemsPerPage}", webCenter.getPerPage());
     }
-		$.getJSON(url, callback);
+		//$.getJSON(url, callback);
+    $.ajax({
+      url: url,
+			type: "get",
+      cache: false,
+			dataType: "json",
+			contentType: "application/json",
+			success: function(d) {
+				callback(d);
+			}
+    });
 	}
 	function nextActivityId() {
 		return activityId += 1;
