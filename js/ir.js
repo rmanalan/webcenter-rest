@@ -58,7 +58,11 @@ $(function() {
 		return {
 			'name': d.text(),
 			'url': d.attr('href'),
-			'imgUrl': $('img', d).attr('src')
+			'imgUrl': function(d){
+        var srcUrl = $('img', d).attr('src');
+        if(srcUrl) return srcUrl;
+        else return "/owccustom/images/default.png";
+      }
 		}
 	});
 
