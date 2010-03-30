@@ -1,4 +1,9 @@
-$('<link href="/owccustom/css/base-ir.css" type="text/css" media="screen" rel="stylesheet"/>').appendTo('head');
+var lnk = document.createElement('link');
+lnk.rel='stylesheet';
+lnk.type='text/css';
+lnk.href='/owccustom/css/base-ir.css';
+document.getElementsByTagName('head')[0].appendChild(lnk);
+
 $(function() {
 
 	// http://ejohn.org/blog/javascript-array-remove
@@ -32,6 +37,7 @@ $(function() {
 		'left': switcherPosn.left + 5
 	});
 	$('<li id="managepages"></li>').appendTo('div.irmenu ul').append($('a[id*="managePagesLink"]'));
+  $('li#managepages a').show();
 
 	var allSpaces = $('div.irgroupspaces ul li a');
 	var recentSpaces = $('div.irrecentgroupspaces ul li a');
@@ -106,4 +112,5 @@ $(function() {
 /* 
 vim:ts=2:sw=2:expandtab
 */
+
 

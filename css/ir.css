@@ -338,6 +338,7 @@ div[id='T:act_splitter_div'] {
 div[id='T:act_splitter_div::d']{
 	display:none;
 }
+a[id='T:managePagesLink'] { display:none }
 /*
 vim:ts=2:sw=2
  */
