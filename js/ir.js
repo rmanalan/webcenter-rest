@@ -53,6 +53,7 @@ $(function() {
 		return x.name.toLowerCase() > y.name.toLowerCase()
 	});
 
+	var recentSpaces = $('div.irrecentgroupspaces ul li a');
 	var recentSpaces = $.map(recentSpaces, function(e, i) {
 		var d = $(e);
 		return {
@@ -93,7 +94,7 @@ $(function() {
 
 	var gsSwitcherContainer = $('<ul id="gsswitcher" class="switch clearfix"></ul>');
 	$.each(spacesMerged, function() {
-		$('<li><div class="icon"><img src="' + this.imgUrl + '" width="16px" height="16px" alt="' + this.name + '"/></div><div class="gsitem"><a href="' + this.url + '">' + this.name + '</a></div></li>').appendTo(gsSwitcherContainer);
+		$('<li><div class="icon"><img src="' + this.imgUrl() + '" width="16px" height="16px" alt="' + this.name + '"/></div><div class="gsitem"><a href="' + this.url + '">' + this.name + '</a></div></li>').appendTo(gsSwitcherContainer);
 	});
 
 	homeSwitcherContainer.appendTo(mainSwitcherContainer);
