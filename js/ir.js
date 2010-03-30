@@ -42,16 +42,19 @@ $(function() {
 	var allSpaces = $('div.irgroupspaces ul li a');
 	var recentSpaces = $('div.irrecentgroupspaces ul li a');
 
+  var getImageUrl = function(d){
+    var srcUrl = $('img', d).attr('src');
+    if(srcUrl) return srcUrl;
+    else return "/owccustom/images/default.png";
+  }
+
 	var allSpaces = $.map(allSpaces, function(e, i) {
 		var d = $(e);
+    var imgUrl = getImageUrl(d);
 		return {
 			'name': d.text(),
 			'url': d.attr('href'),
-			'imgUrl': function(d){
-        var srcUrl = $('img', d).attr('src');
-        if(srcUrl) return srcUrl;
-        else return "/owccustom/images/default.png";
-      }
+			'imgUrl': imgUrl
 		}
 	}).sort(function(x, y) {
 		return x.name.toLowerCase() > y.name.toLowerCase()
@@ -59,14 +62,11 @@ $(function() {
 
 	var recentSpaces = $.map(recentSpaces, function(e, i) {
 		var d = $(e);
+    var imgUrl = getImageUrl(d);
 		return {
 			'name': d.text(),
 			'url': d.attr('href'),
-			'imgUrl': function(d){
-        var srcUrl = $('img', d).attr('src');
-        if(srcUrl) return srcUrl;
-        else return "/owccustom/images/default.png";
-      }
+			'imgUrl': imgUrl
 		}
 	});
 
@@ -97,7 +97,7 @@ $(function() {
 
 	var gsSwitcherContainer = $('<ul id="gsswitcher" class="switch clearfix"></ul>');
 	$.each(spacesMerged, function() {
-		$('<li><div class="icon"><img src="' + this.imgUrl() + '" width="16px" height="16px" alt="' + this.name + '"/></div><div class="gsitem"><a href="' + this.url + '">' + this.name + '</a></div></li>').appendTo(gsSwitcherContainer);
+		$('<li><div class="icon"><img src="' + this.imgUrl + '" width="16px" height="16px" alt="' + this.name + '"/></div><div class="gsitem"><a href="' + this.url + '">' + this.name + '</a></div></li>').appendTo(gsSwitcherContainer);
 	});
 
 	homeSwitcherContainer.appendTo(mainSwitcherContainer);
