@@ -47,13 +47,16 @@ $(function() {
 		return {
 			'name': d.text(),
 			'url': d.attr('href'),
-			'imgUrl': $('img', d).attr('src')
+			'imgUrl': function(d){
+        var srcUrl = $('img', d).attr('src');
+        if(srcUrl) return srcUrl;
+        else return "/owccustom/images/default.png";
+      }
 		}
 	}).sort(function(x, y) {
 		return x.name.toLowerCase() > y.name.toLowerCase()
 	});
 
-	var recentSpaces = $('div.irrecentgroupspaces ul li a');
 	var recentSpaces = $.map(recentSpaces, function(e, i) {
 		var d = $(e);
 		return {
