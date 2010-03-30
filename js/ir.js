@@ -72,7 +72,7 @@ $(function() {
 
 	// flatten recent and all spaces so that recent spaces
 	// are ordered first
-	$.each(recentSpaces, function() {
+	$.each(recentSpaces.reverse(), function() {
 		var rs = this;
 		var match = $.grep(allSpaces, function(e) {
 			return e.name == rs.name;
@@ -81,11 +81,13 @@ $(function() {
 			$.each(allSpaces, function(i, e) {
 				if (this.name == match[0].name) {
 					allSpaces.remove(i);
+          allSpaces.unshift(match);
 				}
 			});
 		};
 	});
-	var spacesMerged = recentSpaces.concat(allSpaces);
+	//var spacesMerged = recentSpaces.concat(allSpaces);
+	var spacesMerged = allSpaces;
 
 	var mainSwitcherContainer = $('<div id="switcher" class="hide"></div>');
 
