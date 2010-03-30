@@ -81,7 +81,7 @@ $(function() {
 			$.each(allSpaces, function(i, e) {
 				if (this.name == match[0].name) {
 					allSpaces.remove(i);
-          allSpaces.unshift(match);
+          allSpaces.unshift(match[0]);
 				}
 			});
 		};
@@ -122,5 +122,6 @@ $(function() {
 /* 
 vim:ts=2:sw=2:expandtab
 */
+
 
 
