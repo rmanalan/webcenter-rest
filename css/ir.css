@@ -237,9 +237,6 @@ a.irselectedspace {
   -moz-box-shadow:2px 2px 8px #333;
   -webkit-box-shadow:2px 2px 8px #333;
   box-shadow:2px 2px 8px #333;
-  filter:  progid:DXImageTransform.Microsoft.dropshadow(OffX=2px, OffY=2px, Color='#999999'); /* IE6,IE7 */
-  -ms-filter: "progid:DXImageTransform.Microsoft.dropshadow(OffX=2px, OffY=2px, Color='#999999')"; /* IE8 */
-  
   padding:5px;
   width:150px;
 	overflow:hidden;
