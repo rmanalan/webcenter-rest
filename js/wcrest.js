@@ -1,6 +1,5 @@
-$.ajaxSetup({
-  'cache': false
-});
+// A shitty fucking hack to tell IE never to cache ajax responses
+$.ajaxSetup({'cache': false});
 
 // Currently logged in user. Gets init when webCenter.init() is called
 var currentUser;
