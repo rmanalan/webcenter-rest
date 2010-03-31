@@ -1,8 +1,9 @@
-var lnk = document.createElement('link');
-lnk.rel='stylesheet';
-lnk.type='text/css';
-lnk.href='/owccustom/css/base-ir.css';
-document.getElementsByTagName('head')[0].appendChild(lnk);
+// Dynamically load css
+//var lnk = document.createElement('link');
+//lnk.rel='stylesheet';
+//lnk.type='text/css';
+//lnk.href='/owccustom/css/base-ir.css';
+//document.getElementsByTagName('head')[0].appendChild(lnk);
 $(function() {
 
 	// http://ejohn.org/blog/javascript-array-remove
