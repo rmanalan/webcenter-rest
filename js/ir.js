@@ -56,8 +56,6 @@ $(function() {
 			'url': d.attr('href'),
 			'imgUrl': imgUrl
 		}
-	}).sort(function(x, y) {
-		return x.name.toLowerCase() > y.name.toLowerCase()
 	});
 
 	var recentSpaces = $.map(recentSpaces, function(e, i) {
