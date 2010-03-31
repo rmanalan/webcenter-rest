@@ -1,9 +1,3 @@
-var lnk = document.createElement('link');
-lnk.rel='stylesheet';
-lnk.type='text/css';
-lnk.href='/owccustom/css/base-ir.css';
-document.getElementsByTagName('head')[0].appendChild(lnk);
-
 $(function() {
 
 	// http://ejohn.org/blog/javascript-array-remove
@@ -37,20 +31,20 @@ $(function() {
 		'left': switcherPosn.left + 5
 	});
 	$('<li id="managepages"></li>').appendTo('div.irmenu ul').append($('a[id*="managePagesLink"]'));
-  $('li#managepages a').show();
+	$('li#managepages a').show();
 
 	var allSpaces = $('div.irgroupspaces ul li a');
 	var recentSpaces = $('div.irrecentgroupspaces ul li a');
 
-  var getImageUrl = function(d){
-    var srcUrl = $('img', d).attr('src');
-    if(srcUrl) return srcUrl;
-    else return "/owccustom/images/default.png";
-  }
+	var getImageUrl = function(d) {
+		var srcUrl = $('img', d).attr('src');
+		if (srcUrl) return srcUrl;
+		else return "/owccustom/images/default.png";
+	}
 
 	var allSpaces = $.map(allSpaces, function(e, i) {
 		var d = $(e);
-    var imgUrl = getImageUrl(d);
+		var imgUrl = getImageUrl(d);
 		return {
 			'name': d.text(),
 			'url': d.attr('href'),
@@ -60,7 +54,7 @@ $(function() {
 
 	var recentSpaces = $.map(recentSpaces, function(e, i) {
 		var d = $(e);
-    var imgUrl = getImageUrl(d);
+		var imgUrl = getImageUrl(d);
 		return {
 			'name': d.text(),
 			'url': d.attr('href'),
@@ -79,7 +73,7 @@ $(function() {
 			$.each(allSpaces, function(i, e) {
 				if (this.name == match[0].name) {
 					allSpaces.remove(i);
-          allSpaces.unshift(match[0]);
+					allSpaces.unshift(match[0]);
 				}
 			});
 		};
@@ -113,13 +107,12 @@ $(function() {
 
 	switcher.hover(function() {
 		mainSwitcherContainer.show();
-	},function() {
+	},
+	function() {
 		mainSwitcherContainer.hide();
 	});
 });
 /* 
 vim:ts=2:sw=2:expandtab
 */
-
-
 
