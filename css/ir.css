@@ -3,7 +3,8 @@
 .clear {clear:both;}
 .hide {display:none;}
 body {
-	background-color:transparent !important;
+	background-color:#ABAEB3 !important;
+  background-image:url(/webcenter/adf/spaces/skins/whitefx/images/page_background_white.png) repeat-x !important;
 }
 div[id='T:pt_ps2::f']{
   width:211px !important;
