@@ -46,7 +46,7 @@ var utils = function() {
 		});
 	}
 	function resolveImages(str) {
-		return str.replace(/(^|[\n ])http(|s):\/\/.+(jpg|gif|png|bmp)/i, function(token) {
+		return str.replace(/(^|[\n ])http(|s):\/\/.+(jpg|jpeg|gif|png|bmp)/i, function(token) {
 			return '<p><a class="inline" href="' + token + '" target="_blank"><img class="inline" src="' + token + '" alt=""/></a></p>';
 		});
 	}
