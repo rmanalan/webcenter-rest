@@ -91,10 +91,6 @@ $(function() {
 				}
 			});
 
-			$('img.playvid').live('click', function() {
-				$(this).parent().hide().next().removeClass('hide');
-			})
-
 			// Refresh button
 			$('#refresh').bind('click', function() {
 				renderStream($('#stream').data('currentStreamUrl'), 0, true);
