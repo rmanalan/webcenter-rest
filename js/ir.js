@@ -5,6 +5,7 @@
 //lnk.href='/owccustom/css/base-ir.css';
 //document.getElementsByTagName('head')[0].appendChild(lnk);
 
+// Mint http://mint.us.oracle.com/wcmint
 //var mint = document.createElement('script');
 //mint.type='text/javascript';
 //mint.src='http://appslab-7.us.oracle.com/wcmint/?js';

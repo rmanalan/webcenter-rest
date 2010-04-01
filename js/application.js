@@ -188,7 +188,7 @@ $(function() {
 						var ppt = $.grep($(activitySummary).filter('a'), function(e) {
 							return /\.ppt$|\.pptx$/i.test($(e).text())
 						});
-						if (ppt[0]) {
+						if (ppt[0] && !$.browser.msie) {
 							var ucmid = $(ppt[0]).attr('rel').split(':').splice( - 1);
 							var dynConvUrl = webCenter.settings.dynConverterUri + ucmid;
 							$.get(dynConvUrl, function(d) {
