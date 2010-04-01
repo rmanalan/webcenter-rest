@@ -52,7 +52,7 @@ var utils = function() {
 	}
 	function resolveYouTubeURLs(str) {
 		return str.replace(/http:\/\/(www.)?youtube\.com\/watch\?v=([A-Za-z0-9._%-]*)[&\w;=\+_\-]*/, function(url, token1, id) {
-			return linkTo(url, url, true) + '<p><object id="vid' + id + '" width="500" height="300" class="hide">' + '<param name="movie" value="http://www.youtube.com/v/' + id + '?autoplay=1"></param>' + '<param name="wmode" value="transparent"></param>' + '<embed src="http://www.youtube.com/v/' + id + '?autoplay=0" type="application/x-shockwave-flash" wmode="transparent" ' + 'width="500" height="300"></embed></object></p>';
+			return linkTo(url, url, true) + '<p><object id="vid' + id + '" width="500" height="300">' + '<param name="movie" value="http://www.youtube.com/v/' + id + '?autoplay=1"></param>' + '<param name="wmode" value="transparent"></param>' + '<embed src="http://www.youtube.com/v/' + id + '?autoplay=0" type="application/x-shockwave-flash" wmode="transparent" ' + 'width="500" height="300"></embed></object></p>';
 		});
 	}
 	function resolveVimeoURLs(str) {
