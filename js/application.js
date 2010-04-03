@@ -120,8 +120,8 @@ $(function() {
 				slides.next().find('img[src*="' + src.split('/').slice(-1)[0] + '"]').parent().trigger('click');
 			});
 
-			currentUser.getSpaces(function(d) {
-				if (currentUser.spaces.length == 0) {
+			currentUser.getSpacesPaged(0,1000,function(d) {
+				if (currentUser.spaces && currentUser.spaces.length == 0) {
 					callback();
 					return;
 				}
@@ -211,7 +211,7 @@ $(function() {
 					};
 				};
 
-				as += '<tr id="act-' + actId + '" class="messages">' + '<td class="avatar">' + '<img class="avatar" src="' + userProfile.avatarSmall(webCenter.getTemplateItem(d.templateParams.items, 'user').guid) + '"/>' + '</td>' + '<td class="activity">' + '<span class="activity">' + activitySummary + '</span> ' + '<span class="reltime">' + utils.timeAgoInWords(d.createdDate) + '</span>' + '<div class="detail">' + detail + '</div>' + '</td>' + '</tr>';
+				as += '<tr id="act-' + actId + '" class="messages">' + '<td class="avatar">' + '<img class="avatar" width="50" height="50" src="' + userProfile.avatarSmall(webCenter.getTemplateItem(d.templateParams.items, 'user').guid) + '"/>' + '</td>' + '<td class="activity">' + '<span class="activity">' + activitySummary + '</span> ' + '<span class="reltime">' + utils.timeAgoInWords(d.createdDate) + '</span>' + '<div class="detail">' + detail + '</div>' + '</td>' + '</tr>';
 			});
 			if (clearActivities) {
 				$('table.results').empty().append($(as));

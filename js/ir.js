@@ -109,7 +109,7 @@ $(function() {
 
 	homeSwitcherContainer.appendTo(mainSwitcherContainer);
 	if (spacesMerged.length > 0) {
-		$('<h3 style="clear:both">My Group Spaces</h3>').appendTo(mainSwitcherContainer);
+		$('<h3 style="clear:both">Recently Visited Group Spaces</h3>').appendTo(mainSwitcherContainer);
 		gsSwitcherContainer.appendTo(mainSwitcherContainer);
 	};
 	mainSwitcherContainer.appendTo(switcher);
