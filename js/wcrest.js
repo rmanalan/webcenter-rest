@@ -169,13 +169,12 @@ var webCenter = function(callback) {
 	}
 
 	function getCmisFolderUrl(path, callback) {
-    console.log(path);
 		if (typeof path == 'function') {
 			callback = path;
-			var folderPath = getPublicFolderPath();
+			var folderPath = webCenter.currentUser.publicFolderPath;
 		}
 		if (path == null) {
-			var folderPath = getPublicFolderPath();
+			var folderPath = webCenter.currentUser.publicFolderPath;
 		}
 		if (typeof path == 'string') {
 			var folderPath = path;
@@ -242,6 +241,7 @@ var webCenter = function(callback) {
 		}
 
 		function setCurrentUser(props) {
+      props['publicFolderPath'] = '/PersonalSpaces/' + props.emails.value + '/Public';
 			props['updateStatus'] = updateStatus;
 			props['avatar'] = function(size) {
 				size = size ? size: '';
@@ -252,14 +252,8 @@ var webCenter = function(callback) {
 			props['getSpacesPaged'] = getSpacesPaged;
 			props['getConnections'] = getConnections;
 			props['getStatus'] = getStatus;
-			props['getPublicFolderPath'] = getPublicFolderPath;
 			currUserObj = props;
 			return currUserObj;
-		}
-
-		function getPublicFolderPath() {
-			return '/PersonalSpaces/' + webCenter.currentUser.emails.value + '/Public';
-			//return '/Contribution Folders';
 		}
 
 		function getCurrentUser(callback) {
