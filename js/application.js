@@ -30,7 +30,7 @@
 			$('#pub1-attachment-descr').hide()
 			$('#pub1-upload-field').removeClass('hide');
 		});
-		$('#pub1-upload-field button').bind('click', function() {
+		$('#pub1-upload-field a.cancel').bind('click', function() {
 			$('#pub-form').attr('action', '#/message');
 			$('#pub1-upload-field input').val('');
 			$('#pub1-upload-field').addClass('hide');
@@ -324,7 +324,7 @@
 							$('#msg').html('');
 							var url = contentUrl;
 							$('#pub-text').val('').css('height', 18);
-							$('#pub1-upload-field button').trigger('click');
+							$('#pub1-upload-field a.cancel').trigger('click');
 							renderStream($('#stream').data('currentStreamUrl'), 0, true, function() {
 								$('#msg').html('').hide();
 								$('#pub-loading').hide();
