@@ -169,6 +169,7 @@ var webCenter = function(callback) {
 	}
 
 	function getCmisFolderUrl(path, callback) {
+    console.log(path);
 		if (typeof path == 'function') {
 			callback = path;
 			var folderPath = getPublicFolderPath();
