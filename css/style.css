@@ -140,8 +140,10 @@ table#pub-table td {
 td.pub-share-textarea {
 	width:100%;
 	padding-right:15px !important;
+  vertical-align:top;
 }
 td.pub-share-button {
+  vertical-align:top;
 	width:52px;
 }
 .pub1-dd {
