@@ -16,8 +16,8 @@ compile-as-js:
 	java -jar lib/compiler.jar\
 	  --js=js/curvy.js\
 	  --js=js/timeago.js\
-	  --js=js/sammy.js\
-	  --js=js/sammy.json.js\
+	  --js=js/sammy-latest.min.js\
+	  --js=js/sammy.json-latest.min.js\
 	  --js=js/autoresize.js\
 	  --js=js/slideviewpro.js\
 	  --js=js/html-sanitizer-minified.js\
