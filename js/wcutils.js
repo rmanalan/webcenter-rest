@@ -10,7 +10,7 @@ var utils = function() {
 	}
 
 	function randBase32() {
-		return Math.floor(Math.random() * 100000000000000000000000000000000000).toString(36);
+		return Math.floor(Math.random() * 1000000000000000000).toString(36);
 	}
 
 	function resolveURLs(str) {

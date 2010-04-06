@@ -316,10 +316,11 @@
 					// Prepare uploader iframe
 					var strName = ("uploader" + (new Date()).getTime());
 					var iFrame = $('<iframe name="' + strName + '" class="hide" />');
+          dump = { name :strName, frame : iFrame}
 					iFrame.load(function() {
 						var ifUploadBody = window.frames[strName].document;
 						var contentUrl = $(ifUploadBody).text();
-						if (/^http/.test(contentUrl)) {
+						if (/location\-header/.test(contentUrl)) {
 							$('#msg').html('');
 							var url = contentUrl;
 							$('#pub-text').val('').css('height', 18);
@@ -328,11 +329,11 @@
 								$('#msg').html('').hide();
 								$('#pub-loading').hide();
 								setTimeout(function() {
-									iFrame.remove()
+									//iFrame.remove()
 								},
 								100);
 							});
-						} else if (contentUrl != '' && ! /^http/.test(contentUrl)) {
+						} else if (contentUrl != '' && ! /location\-header/.test(contentUrl)) {
 							$('#pub-form').attr('action', '#/upload');
 							pubMessage("A duplicate file was found. Sorry, we can't handle dups right now.");
 							$('#pub-loading').hide();
@@ -343,9 +344,7 @@
 					$('#pub-form input[name="contentId"]').val(utils.randBase32());
 					$('#pub-form input[name="comments"]').val(msg);
 					$('#pub-form input[name="simpleResponse"]').val(true);
-					// ugly hack required after Sammy 0.5.1 upgrade... needed to move the form
-					// into the iframe in order to avoid Sammy from handling the post route
-					$('#pub-form').attr('action', url).attr('target', strName).clone(true).appendTo(iFrame).submit();
+					$('#pub-form').attr('action', url).attr('target', strName).submit();
 				});
 			});
 
@@ -371,4 +370,5 @@
 /* 
  vim:ts=2:sw=2:expandtab
  */
+
 
