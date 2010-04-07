@@ -300,6 +300,7 @@
 				$('#msg').html('').hide();
 				var params = this.params;
 				var msg = params['body'];
+        msg = (msg == "Share something...") ? "" : msg;
 				var fileUpload = $('#pub-form input[name="fileUpload"]').val();
 				if (!fileUpload) {
 					pubMessage("Don't forget to attach a file");
