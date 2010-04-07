@@ -7,6 +7,12 @@ var webCenter = function(callback) {
 		'dynConverterUri': '/idc/idcplg?IdcService=GET_DYNAMIC_CONVERSION&RevisionSelectionMethod=LatestReleased&dDocName='
 	};
 
+  $.ajaxSetup({
+    'error' : function(x,s,e){
+      console.log(x,s,e);
+    }
+  });
+
 	function init(options, callback) {
 		webCenter.settings = settings;
 		webCenter.server = location.protocol + '//' + settings.hostname + ':' + settings.port + '/';
