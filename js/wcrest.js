@@ -17,21 +17,23 @@ var webCenter = function(callback) {
 			// assumes that the user is not logged in
 			if (!data) callback(false);
 
-			// setup current user
-			userProfile.getCurrentUser(function(d) {
-				webCenter.currentUser = d;
-				callback(true);
-			});
+      // setup current user
+      userProfile.getCurrentUser(function(d) {
+        $.jStorage.set('wc',webCenter);
+        webCenter.currentUser = d;
+        callback(true);
+      });
 		});
 	}
 
 	function getResourceIndex(callback) {
-		if (!webCenter.resourceIndex) {
-			$.getJSON(webCenter.resourceIndexURL, function(data) {
-				webCenter.resourceIndex = data;
-				if (callback) callback(data);
-				else return webCenter.resourceIndex;
-			});
+    try{$.extend(webCenter, {resourceIndex : $.jStorage.get('wc',webCenter).resourceIndex});}catch(e){};
+    if (!webCenter.resourceIndex) {
+      $.getJSON(webCenter.resourceIndexURL, function(data) {
+        webCenter.resourceIndex = data;
+        if (callback) callback(data);
+        else return webCenter.resourceIndex;
+      });
 		} else {
 			if (callback) callback(webCenter.resourceIndex);
 			else return webCenter.resourceIndex;
@@ -233,7 +235,6 @@ var webCenter = function(callback) {
 
 	// User Profile module
 	var userProfile = function() {
-		var currUserObj = null;
 		var avatarPath = 'webcenter/profilephoto/';
 
 		function avatar(guid, size) {
@@ -252,19 +253,21 @@ var webCenter = function(callback) {
 			props['getSpacesPaged'] = getSpacesPaged;
 			props['getConnections'] = getConnections;
 			props['getStatus'] = getStatus;
-			currUserObj = props;
-			return currUserObj;
+			webCenter.currentUser = props;
+			return webCenter.currentUser;
 		}
 
 		function getCurrentUser(callback) {
-			if (!currUserObj) {
+      try{webCenter.currentUser = $.jStorage.get('wc').currentUser;}catch(e){};
+			if (!webCenter.currentUser) {
 				$.getJSON(webCenter.getResourceURL(webCenter.resourceIndex.links, 'urn:oracle:webcenter:people', false), function(data) {
 					setCurrentUser(data);
-					if (callback) callback(currUserObj);
+					if (callback) callback(webCenter.currentUser);
 				});
 			} else {
-				if (callback) callback(currUserObj);
-				return currUserObj;
+        setCurrentUser(webCenter.currentUser);
+				if (callback) callback(webCenter.currentUser);
+				return webCenter.currentUser;
 			}
 		}
 

@@ -107,7 +107,7 @@
 				});
 
 				// Sets url for default stream
-				$('#grouppub option:first').attr('value', JSON.stringify({
+				$('#grouppub option:first').attr('value', $.toJSON({
 					'msgBoard': webCenter.getResourceURL(webCenter.resourceIndex.links, 'urn:oracle:webcenter:messageBoard', false),
 					'spaceName': null
 				}));
@@ -129,7 +129,7 @@
 					}
 					$.each(d, function(i, o) {
 						if (!o.isOffline) {
-							var urls = JSON.stringify({
+							var urls = $.toJSON({
 								'msgBoard': webCenter.getResourceURL(o.links, 'urn:oracle:webcenter:messageBoard', false),
 								'spaceName': o.name
 							});
@@ -282,11 +282,11 @@
 				var msg = this.params['body'];
 				if (msg == "" || msg == "Share something...") return false;
 				$.ajax({
-					url: JSON.parse(this.params['puburl']).msgBoard,
+					url: $.evalJSON(this.params['puburl']).msgBoard,
 					type: "post",
 					dataType: "json",
 					contentType: "application/json",
-					data: JSON.stringify({
+					data: $.toJSON({
 						'body': utils.resolveURLs(msg)
 					}),
 					success: function(d) {
@@ -309,7 +309,7 @@
 				$('#pub-loading').show();
 
 				// Resolve CMIS URL to post to
-				var cmisName = JSON.parse(params['puburl']).spaceName;
+				var cmisName = $.evalJSON(params['puburl']).spaceName;
 				var UCMPath = cmisName ? "/Spaces/" + cmisName: null;
 				webCenter.getCmisFolderUrl(UCMPath, function(url) {
 
