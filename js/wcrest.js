@@ -9,7 +9,10 @@ var webCenter = function(callback) {
 
   $.ajaxSetup({
     'error' : function(x,s,e){
-      console.log(x,s,e);
+      if(x.status == 403){
+        $.jStorage.flush();
+        location.reload();
+      }
     }
   });
 
