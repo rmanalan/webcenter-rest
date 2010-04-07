@@ -7,6 +7,8 @@ var webCenter = function(callback) {
 		'dynConverterUri': '/idc/idcplg?IdcService=GET_DYNAMIC_CONVERSION&RevisionSelectionMethod=LatestReleased&dDocName='
 	};
 
+  // Support for user switching... this will flush the resourceIndex and currentUser
+  // cache then reload the page
   $.ajaxSetup({
     'error' : function(x,s,e){
       if(x.status == 403){

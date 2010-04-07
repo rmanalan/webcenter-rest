@@ -5,7 +5,7 @@
 			'cache': false
 		});
 
-		$('#pub-loading, #msg').hide();
+		$('#pub-loading').hide();
 
 		$(document).ajaxStart(function() {
 			$('#loading-ind').show();
@@ -69,7 +69,7 @@
 		function initApp(callback) {
 			webCenter.init(function(success) {
 				if (!success) {
-					$('#msg').html('You are not loged in... please <a href="/webcenter/wcAuthentication/?login=true&success_url=/../owccustom/index.html">login</a> first').show();
+					$('#msg').html('You are not loged in... please <a href="/webcenter/wcAuthentication/?login=true&success_url=/../owccustom/index.html">login</a> first').slideDown();
 					return false;
 				}
 
