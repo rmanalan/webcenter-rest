@@ -320,7 +320,7 @@
           dump = { name :strName, frame : iFrame}
 					iFrame.load(function() {
 						var ifUploadBody = window.frames[strName].document;
-						var contentUrl = $(ifUploadBody).html();
+						var contentUrl = ifUploadBody.body.innerHTML;
             console.log(contentUrl)
 						if (/location\-header/.test(contentUrl)) {
 							$('#msg').html('');
