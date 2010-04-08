@@ -320,11 +320,9 @@
           dump = { name :strName, frame : iFrame}
 					iFrame.load(function() {
 						var ifUploadBody = window.frames[strName].document;
-						var contentUrl = $(ifUploadBody).text();
-            console.log(contentUrl);
+						var contentUrl = $(ifUploadBody).html();
 						if (/location\-header/.test(contentUrl)) {
 							$('#msg').html('');
-							var url = contentUrl;
 							$('#pub-text').val('').css('height', 18);
 							$('#pub1-upload-field a.cancel').trigger('click');
 							renderStream($('#stream').data('currentStreamUrl'), 0, true, function() {
