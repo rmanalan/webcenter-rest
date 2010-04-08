@@ -1,3 +1,4 @@
+var dump;
 (function($) { //seal it up
 	$(function() { //wait for load
 		// A shitty fucking hack to tell IE never to cache ajax responses
@@ -320,7 +321,8 @@
           dump = { name :strName, frame : iFrame}
 					iFrame.load(function() {
 						var ifUploadBody = window.frames[strName].document;
-						var contentUrl = ifUploadBody.body.innerHTML;
+            dump = ifUploadBody;
+						var contentUrl = $(ifUploadBody).get(0).innerHTML;
             console.log(contentUrl)
 						if (/location\-header/.test(contentUrl)) {
 							$('#msg').html('');
