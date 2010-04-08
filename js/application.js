@@ -1,3 +1,4 @@
+var dump;
 (function($) { //seal it up
 	$(function() { //wait for load
 		// A shitty fucking hack to tell IE never to cache ajax responses
@@ -320,6 +321,7 @@
 					iFrame.load(function() {
 						var ifUploadBody = window.frames[strName].document;
 						var contentUrl = ifUploadBody.getElementsByTagName('location-header');
+            dump = ifUploadBody;
 						if (contentUrl.length > 0) {
 							$('#msg').html('');
 							$('#pub-text').val('').css('height', 18);
