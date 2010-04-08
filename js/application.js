@@ -320,6 +320,7 @@ var dump;
 					var iFrame = $('<iframe name="' + strName + '" class="hide" />');
 					iFrame.load(function() {
 						var ifUploadBody = window.frames[strName].document;
+            // shitty way of detecting that a post to an iframe was successful
             if($.browser.msie || $.browser.webkit) var contentUrl = $(ifUploadBody).text();
             else var contentUrl = ifUploadBody.getElementsByTagName('location-header');
             dump = ifUploadBody;
