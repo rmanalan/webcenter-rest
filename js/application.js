@@ -320,7 +320,7 @@ var dump;
 					var iFrame = $('<iframe name="' + strName + '" class="hide" />');
 					iFrame.load(function() {
 						var ifUploadBody = window.frames[strName].document;
-            if($.browser.msie) var contentUrl = $(ifUploadBody).text();
+            if($.browser.msie || $.browser.webkit) var contentUrl = $(ifUploadBody).text();
             else var contentUrl = ifUploadBody.getElementsByTagName('location-header');
             dump = ifUploadBody;
 						if (contentUrl.length > 0) {
