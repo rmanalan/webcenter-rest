@@ -1,4 +1,3 @@
-var dump;
 (function($) { //seal it up
 	$(function() { //wait for load
 		// A shitty fucking hack to tell IE never to cache ajax responses
@@ -321,10 +320,9 @@ var dump;
           dump = { name :strName, frame : iFrame}
 					iFrame.load(function() {
 						var ifUploadBody = window.frames[strName].document;
-            dump = ifUploadBody;
-						var contentUrl = $(ifUploadBody).get(0).innerHTML;
+						var contentUrl = ifUploadBody.getElementByTagName('location-header');
             console.log(contentUrl)
-						if (/location\-header/.test(contentUrl)) {
+						if (contentUrl.length > 0) {
 							$('#msg').html('');
 							$('#pub-text').val('').css('height', 18);
 							$('#pub1-upload-field a.cancel').trigger('click');
@@ -336,7 +334,7 @@ var dump;
 								},
 								100);
 							});
-						} else if (contentUrl != '' && ! /location\-header/.test(contentUrl)) {
+						} else {
 							$('#pub-form').attr('action', '#/upload');
 							pubMessage("A duplicate file was found. Sorry, we can't handle dups right now.");
 							$('#pub-loading').hide();
