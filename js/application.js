@@ -321,6 +321,7 @@
 					iFrame.load(function() {
 						var ifUploadBody = window.frames[strName].document;
 						var contentUrl = $(ifUploadBody).text();
+            console.log(contentUrl);
 						if (/location\-header/.test(contentUrl)) {
 							$('#msg').html('');
 							var url = contentUrl;
@@ -330,7 +331,7 @@
 								$('#msg').html('').hide();
 								$('#pub-loading').hide();
 								setTimeout(function() {
-									//iFrame.remove()
+									iFrame.remove()
 								},
 								100);
 							});
