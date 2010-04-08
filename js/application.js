@@ -317,11 +317,9 @@
 					// Prepare uploader iframe
 					var strName = ("uploader" + (new Date()).getTime());
 					var iFrame = $('<iframe name="' + strName + '" class="hide" />');
-          dump = { name :strName, frame : iFrame}
 					iFrame.load(function() {
 						var ifUploadBody = window.frames[strName].document;
 						var contentUrl = ifUploadBody.getElementsByTagName('location-header');
-            console.log(contentUrl)
 						if (contentUrl.length > 0) {
 							$('#msg').html('');
 							$('#pub-text').val('').css('height', 18);
