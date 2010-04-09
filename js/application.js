@@ -1,6 +1,9 @@
 var dump;
 (function($) { //seal it up
 	$(function() { //wait for load
+
+    var infScrollActive = false;
+
 		// A shitty fucking hack to tell IE never to cache ajax responses
 		$.ajaxSetup({
 			'cache': false
@@ -89,7 +92,8 @@ var dump;
 
 				// Infinite scroll pager
 				$(window).scroll(function() {
-					if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+					if (($(window).scrollTop() > $(document).height() - $(window).height() - 200) && !infScrollActive) {
+            infScrollActive = true
 						renderStream($('#stream').data('currentStreamUrl'), webCenter.activityStream.currentActivityId() + 1, false);
 					}
 				});
@@ -232,6 +236,7 @@ var dump;
 					};
 					img.fadeIn();
 				});
+        infScrollActive = false;
 				if (callback) callback();
 			});
 		};
