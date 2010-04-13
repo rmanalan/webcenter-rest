@@ -1,4 +1,3 @@
-var dump;
 (function($) { //seal it up
 	$(function() { //wait for load
 
@@ -328,7 +327,6 @@ var dump;
             // shitty way of detecting that a post to an iframe was successful
             if($.browser.msie || $.browser.webkit) var contentUrl = $(ifUploadBody).text();
             else var contentUrl = ifUploadBody.getElementsByTagName('location-header');
-            dump = ifUploadBody;
 						if (contentUrl.length > 0) {
 							$('#msg').html('');
 							$('#pub-text').val('').css('height', 18);
