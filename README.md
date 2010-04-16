@@ -9,5 +9,5 @@ In order to run these, these samples need to run on the same hostname as you Web
 2. Package up the files in this project as a war and deploy it on your app server.
 3. Use the HTTP proxy servlet that's included in this project... make sure to update the host in WEB-INF/web.xml and the absolute javascript references in index.html
 
-These are provided strictly as sample code.  Do with it what you want.
+These are provided strictly as sample code.  Do with it what you want. 
 
