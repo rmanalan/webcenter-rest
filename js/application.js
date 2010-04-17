@@ -273,6 +273,9 @@
 			});
 
 			app.get('#/group/:name', function(c) {
+        // TODO this won't work for user's who don't belong to a space.
+        // Need to come up with a better way to access the spaces api
+        // for users who are not members of a space
 				var groupName = this.params['name'];
 				if (groupName == 'My connections') {
 					this.redirect('#/');

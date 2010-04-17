@@ -118,10 +118,12 @@ $(function() {
 	var cols = Math.floor(Math.sqrt(spacesMerged.length));
 	mainSwitcherContainer.css('width', (cols * 171) + 60);
 
+  var switcherEvent;
 	switcher.hover(function() {
-		mainSwitcherContainer.show();
+		switcherEvent = setTimeout(function(){ mainSwitcherContainer.show(); }, 500);
 	},
 	function() {
+    clearTimeout(switcherEvent);
 		mainSwitcherContainer.hide();
 	});
 });
