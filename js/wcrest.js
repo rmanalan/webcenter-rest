@@ -306,6 +306,7 @@ var webCenter = function(callback) {
 				'visibility': ''
 			};
 			$.getJSON(webCenter.getResourceURL(webCenter.resourceIndex.links, 'urn:oracle:webcenter:spaces', page, perPage, params), function(d) {
+				webCenter.currentUser.spaces = d.items;
 				if (callback) {
 					callback(d.items);
 				} else {

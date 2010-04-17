@@ -107,7 +107,10 @@
 				$('.lfopts:first').attr('value', webCenter.getResourceURL(webCenter.resourceIndex.links, 'urn:oracle:webcenter:activities:stream', true));
 
 				$('#groupfilter').bind('change', function(e) {
-					location.hash = '#/group/' + escape($('option:selected', this).text());
+          if(this.value) var spaceName = $.evalJSON(this.value).spaceName;
+          else var spaceName = escape($('option:selected', this).text());
+          
+					location.hash = '#/group/' + spaceName;
 				});
 
 				// Sets url for default stream
@@ -135,6 +138,7 @@
 						if (!o.isOffline) {
 							var urls = $.toJSON({
 								'msgBoard': webCenter.getResourceURL(o.links, 'urn:oracle:webcenter:messageBoard', false),
+                'asUrl': webCenter.getResourceURL(o.links, 'urn:oracle:webcenter:activities:stream', true),
 								'spaceName': o.name
 							});
 
@@ -144,8 +148,7 @@
 							$('#grouppub option:first').attr('selected', 'true');
 
 							// populate the view by drop down
-							var asUrl = webCenter.getResourceURL(o.links, 'urn:oracle:webcenter:activities:stream', true);
-							var viewByOption = $('#groupfilter option:first').clone().val(asUrl).text(o.displayName);
+							var viewByOption = $('#groupfilter option:first').clone().val(urls).text(o.displayName);
 							$('#groupfilter').append(viewByOption);
 							$('#groupfilter option:first').attr('selected','true');
 						}
@@ -253,7 +256,7 @@
 						appStarted = true;
 						// Bug: needed to render the stream... shouldn't have to do this since
 						// activityStreamApp.run('#/') already does it
-						app.runRoute('get', '#/')
+						app.runRoute('get', currLocation)
 					});
 					return false;
 				}
@@ -274,12 +277,25 @@
 				if (groupName == 'My connections') {
 					this.redirect('#/');
 				} else {
-					var url = $.grep($('#groupfilter option'), function(n) {
-						return $(n).text() == decodeURI(groupName)
-					})[0].value;
-					var activityTemplate = $('li.messages:first');
-					$('ol.results').empty().append(activityTemplate).hide();
-					renderStream(url, 0, true);
+          var checkIfSpacesLoaded = function(){
+            if(webCenter.currentUser.spaces){
+              var d = $.grep($('#groupfilter option'), function(n) {
+                try {
+                  return $.evalJSON($(n).val()).spaceName == decodeURI(groupName)
+                } catch(e) {}
+              })[0];
+              $('#pub1-share span').text("Share something with " + d.innerHTML);
+              $('#pub1-share select').hide();
+              var url = $.evalJSON(d.value).asUrl;
+              var activityTemplate = $('li.messages:first');
+              $('ol.results').empty().append(activityTemplate).hide();
+              renderStream(url, 0, true);
+              app.trigger('update-filters', app.getLocation());
+            } else {
+              setTimeout(checkIfSpacesLoaded,100);
+            };
+          };
+          checkIfSpacesLoaded();
 				}
 			});
 
@@ -359,12 +375,24 @@
 					var selectedVal = unescape(currLocation.split('#/group/')[1].split('/')[0]);
 					$('#groupfilter option').each(function(i, n) {
 						var opt = $(n);
-						if (opt.text() == selectedVal) {
+            var spaceName;
+            try{spaceName = $.evalJSON(opt.val()).spaceName}catch(e){};
+						if (spaceName == selectedVal) {
 							opt.attr('selected', '1');
 						} else {
 							opt.removeAttr('selected');
 						}
-					})
+					});
+          $('#grouppub option').each(function(i, n) {
+						var opt = $(n);
+            var spaceName;
+            try{spaceName = $.evalJSON(opt.val()).spaceName}catch(e){};
+						if (spaceName == selectedVal) {
+							opt.attr('selected', '1');
+						} else {
+							opt.removeAttr('selected');
+						}
+					});
 				};
 			});
 
