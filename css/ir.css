@@ -339,7 +339,8 @@ div[id='T:act_splitter_div'] {
 div[id='T:act_splitter_div::d']{
 	display:none;
 }
-a[id='T:managePagesLink'] { display:none }
+a[id='T:managePagesLink'],
+tr.p_AFHoverTarget[id='T:prefer:dynTF:j_id__ctru20pc12']{ display:none }
 /*
 vim:ts=2:sw=2
  */
