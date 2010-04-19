@@ -294,7 +294,7 @@ var webCenter = function(callback) {
 			if (projection) var projectParam = true;
 			else var projectParam = false;
 			$.ajax({
-				'url': webCenter.resourceIndex.links, 'urn:oracle:webcenter:spaces', false, null, null, projectParam),
+				'url': webCenter.getResourceURL(webCenter.resourceIndex.links, 'urn:oracle:webcenter:spaces', false, null, null, projectParam),
 				'method': 'get',
 				'dataType': 'json',
 			  'error' : function(x,s,e){
