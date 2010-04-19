@@ -20,6 +20,11 @@ $(function() {
 		return this.push.apply(this, rest);
 	};
 
+  // Profile label => About
+  if(/[Profile Gallery|Connections|Information|]$/.test($('title').text())) {
+    $("div.xwk a[id='T:secondaryTabSet:2:tab::disclosureAnchor']").text('About');
+  }
+
 	// hide panel splitter
 	$('div.irltregion').parent().next().hide();
 	$('div.irltregion').parent().next().next().css('left', '197px');
