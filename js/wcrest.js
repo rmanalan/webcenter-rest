@@ -293,11 +293,24 @@ var webCenter = function(callback) {
 		function getSpaces(callback, projection) {
 			if (projection) var projectParam = true;
 			else var projectParam = false;
-			$.getJSON(webCenter.getResourceURL(webCenter.resourceIndex.links, 'urn:oracle:webcenter:spaces', false, null, null, projectParam), function(d) {
-				webCenter.currentUser.spaces = d.items;
-				if (callback) callback(d.items);
-				else return d.items;
-			});
+			$.ajax({
+				'url': webCenter.resourceIndex.links, 'urn:oracle:webcenter:spaces', false, null, null, projectParam),
+				'method': 'get',
+				'dataType': 'json',
+			  'error' : function(x,s,e){
+			      if(x.status == 403){
+				      return $.evalJSON(x.responseText);
+			      }
+			    },
+				'success': function(d) {
+					webCenter.currentUser.spaces = d.items;
+					if (callback) {
+						callback(d.items);
+					} else {
+						return d.items;
+					}
+				}
+			});      
 		}
 
 		function getSpacesPaged(page, perPage, callback) {
@@ -305,14 +318,24 @@ var webCenter = function(callback) {
 				'projection': '',
 				'visibility': ''
 			};
-			$.getJSON(webCenter.getResourceURL(webCenter.resourceIndex.links, 'urn:oracle:webcenter:spaces', page, perPage, params), function(d) {
-				webCenter.currentUser.spaces = d.items;
-				if (callback) {
-					callback(d.items);
-				} else {
-					return d.items;
+			$.ajax({
+				'url': webCenter.getResourceURL(webCenter.resourceIndex.links, 'urn:oracle:webcenter:spaces', page, perPage, params),
+				'method': 'get',
+				'dataType': 'json',
+			  'error' : function(x,s,e){
+			      if(x.status == 403){
+				      return $.evalJSON(x.responseText);
+			      }
+			    },
+				'success': function(d) {
+					webCenter.currentUser.spaces = d.items;
+					if (callback) {
+						callback(d.items);
+					} else {
+						return d.items;
+					}
 				}
-			});
+			});      
 		}
 
 		function getConnections(callback) {

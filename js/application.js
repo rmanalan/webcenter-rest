@@ -130,6 +130,11 @@
 				});
 
 				webCenter.currentUser.getSpacesPaged(0, 1000, function(d) {
+          if (d.message) { //error occured
+            $('#msg').html(d.message).slideDown();
+            callback();
+            return;
+          }
 					if (webCenter.currentUser.spaces && webCenter.currentUser.spaces.length == 0) {
 						callback();
 						return;
@@ -166,7 +171,7 @@
 				// Store off current stream url for paging purposes
 				$('#stream').data('currentStreamUrl', url);
 
-				if (data.items.length == 0 && startIndex == 0) {
+				if (data.items && data.items.length == 0 && startIndex == 0) {
 					$('#no-activities').removeClass('hide');
 					$('table.results').hide();
 					moreActivities = false;
