@@ -266,11 +266,11 @@ div.irgroupswitcher {
 }
 li#managepages a {
 	border-top:2px groove #fff;
-	margin:5px 21px;
+	margin:0 21px;
 	padding:7px 0 4px 0;
 }
 a.irgroupsettings {
-	margin:5px 21px 5px 0;
+	margin:0 21px 0 0;
 	padding:4px 0;
 }
 a.irgroupsettings span {
