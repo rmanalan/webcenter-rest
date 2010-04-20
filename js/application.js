@@ -218,7 +218,7 @@
 										thumbsBorderOpacity: .7,
 										leftButtonInner: '&laquo;',
 										rightButtonInner: '&raquo;',
-										thumbsPercentReduction: 50
+										thumbsPercentReduction: 45
 									});
 								});
 							};
