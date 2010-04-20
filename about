@@ -25,3 +25,9 @@ java -jar lib/compiler.jar\
 java -jar lib/yuicompressor-2.4.2.jar\
 	  --type css -o css/base-ir.css\
 	  css/ir.css
+[master 7f4b13c] profile label =
+ 5 files changed, 37 insertions(+), 5 deletions(-)
+ create mode 100644 about
+ create mode 100644 images/group2.png
+ create mode 100644 images/group3.png
+ rewrite js/base-ir.js (94%)

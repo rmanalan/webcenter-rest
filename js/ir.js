@@ -50,6 +50,7 @@ $(function() {
 	});
 	$('<li id="managepages"></li>').appendTo('div.irmenu ul').append($('a[id*="managePagesLink"]'));
 	$('li#managepages a').show();
+  $($('a.irgroupsettings').parent()).insertAfter('li#managepages');
 
 	var allSpaces = $('div.irgroupspaces ul li a');
 	var recentSpaces = $('div.irrecentgroupspaces ul li a');

@@ -269,6 +269,10 @@ li#managepages a {
 	margin:5px 21px;
 	padding:7px 0;
 }
+a.irgroupsettings {
+	margin:5px 21px;
+	padding:4px 0;
+}
 a.irselectedspace img {
 	width:16px;
 	height:16px;
