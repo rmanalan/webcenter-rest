@@ -112,6 +112,15 @@ var webCenter = function(callback) {
 		}
 	}
 
+  function appendCtrlStateParam(url){
+    if(window.parent && window.parent.currentCtrlState){
+      if(/\?/.test(url)) return url + '&_adf.ctrl-state=' + window.parent.currentCtrlState;
+      else return url + '?_adf.ctrl-state=' + window.parent.currentCtrlState;
+    } else {
+      return url;
+    }
+  }
+
 	function resolveBindItems(d) {
 		var activityDescr = d.message.replace(/\{[^\}]*\}/g, function(key) {
 			var item = $.grep(d.templateParams.items, function(n) {
@@ -121,16 +130,15 @@ var webCenter = function(callback) {
 				var url = $.grep(item.links, function(l) {
 					return l.type == 'text/html';
 				})[0].href;
-				return ' <a href="' + url + '" target="_top" class="' + item.type + '" rel="' + item.id + '">' + item.displayName + '</a> ';
+				return ' <a href="' + appendCtrlStateParam(url) + '" target="_top" class="' + item.type + '" rel="' + item.id + '">' + item.displayName + '</a> ';
 			} catch(err) {
 				return ' ' + item.displayName;
 			}
 		});
 		if (d.groupSpace) {
-			activityDescr += ' in <a href="' + webCenter.getResourceURL(d.groupSpace.links, 'urn:oracle:webcenter:space', false) + '" target="_top">' + d.groupSpace.displayName + '</a>';
+			activityDescr += ' in <a href="' + appendCtrlStateParam(webCenter.getResourceURL(d.groupSpace.links, 'urn:oracle:webcenter:space', false)) + '" target="_top">' + d.groupSpace.displayName + '</a>';
 		};
 		return activityDescr;
-
 	}
 
 	function nsNode(nodeName) {
