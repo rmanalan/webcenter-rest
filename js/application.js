@@ -214,11 +214,11 @@
 										thumbsBorderWidth: 1,
 										thumbsTopMargin: 8,
 										thumbsBorderColor: '#ccc',
-										thumbs: 2,
+										thumbs: 4,
 										thumbsBorderOpacity: .7,
 										leftButtonInner: '&laquo;',
 										rightButtonInner: '&raquo;',
-										thumbsPercentReduction: 45
+										thumbsPercentReduction: 15
 									});
 								});
 							};
