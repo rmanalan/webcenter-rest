@@ -348,7 +348,9 @@ div[id='T:act_splitter_div::d']{
 	display:none;
 }
 a[id='T:managePagesLink'],
-tr[id='T:prefer:dynTF:j_id__ctru20pc12']{ display:none }
+tr[id='T:prefer:dynTF:j_id__ctru20pc12'],
+td.AFNoteWindowConeBorder,
+td.AFNoteWindow { display:none }
 /*
 vim:ts=2:sw=2
  */
