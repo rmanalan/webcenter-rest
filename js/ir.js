@@ -13,11 +13,11 @@
 	$(function() {
 
 		// http://ejohn.org/blog/javascript-array-remove
-		Array.prototype.remove = function(from, to) {
-			var rest = this.slice((to || from) + 1 || this.length);
-			this.length = from < 0 ? this.length + from: from;
-			return this.push.apply(this, rest);
-		};
+		function removeElemFromArray(arry, from, to) {
+			var rest = arry.slice((to || from) + 1 || arry.length);
+			arry.length = from < 0 ? arry.length + from: from;
+			return arry.push.apply(arry, rest);
+		}
 
 		// Profile label => About
 		if (/[Profile Gallery|Connections|Information|]$/.test($('title').text())) {
@@ -90,7 +90,7 @@
 			if (match.length > 0) {
 				$.each(allSpaces, function(i, e) {
 					if (this.name == match[0].name) {
-						allSpaces.remove(i);
+						removeElemFromArray(allSpaces, i);
 						allSpaces.unshift(match[0]);
 					}
 				});
