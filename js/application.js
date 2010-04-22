@@ -91,7 +91,7 @@
 
 				// Infinite scroll pager
 				$(window).scroll(function() {
-					if (($(window).scrollTop() > $(document).height() - $(window).height() - 200) && !infScrollActive) {
+					if (($(window).scrollTop() > $(document).height() - $(window).height() - 400) && !infScrollActive) {
             infScrollActive = true
 						renderStream($('#stream').data('currentStreamUrl'), webCenter.activityStream.currentActivityId() + 1, false);
 					}
