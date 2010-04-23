@@ -1,10 +1,11 @@
 // Main WebCenter module
 var webCenter = function(callback) {
+  var ucmPath = (location.hostname=="webcenter.us.oracle.com") ? "wir_idc" : "idc";
 	var settings = {
 		'hostname': location.hostname,
 		'port': location.port,
 		'perPage': 20,
-		'dynConverterUri': '/idc/idcplg?IdcService=GET_DYNAMIC_CONVERSION&RevisionSelectionMethod=LatestReleased&dDocName='
+		'dynConverterUri': '/'+ucmPath+'/idcplg?IdcService=GET_DYNAMIC_CONVERSION&RevisionSelectionMethod=LatestReleased&dDocName='
 	};
 
   // Support for user switching... this will flush the resourceIndex and currentUser
