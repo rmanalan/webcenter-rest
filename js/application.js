@@ -136,7 +136,7 @@
 
 				webCenter.currentUser.getSpacesPaged(0, 1000, function(d) {
           if (d.message) { //error occured
-            $('#msg').html(d.message).slideDown();
+            pubMessage(d.message);
             callback();
             return;
           }
@@ -331,7 +331,7 @@
 						'body': utils.resolveURLs(msg)
 					}),
           error: function(x, t, e) {
-            if(x.status==403) $('#msg').html('You do not have access to contribute to this group space. Please contact a group space moderator.').slideDown();
+            if(x.status==403) pubMessage('You do not have access to contribute to this group space. Please contact a group space moderator.');
           },
 					success: function(d) {
 						$('#pub-text').val('').css('height', 18);
@@ -380,7 +380,7 @@
 							});
 						} else {
 							$('#pub-form').attr('action', '#/upload');
-							pubMessage("A duplicate file was found. Sorry, we can't handle dups right now.");
+							pubMessage('Something went wrong with your upload, probably a duplicate file or no access to upload. Check those first. Then send a note to <a href="mailto:irdevadmin_ww@oracle.com?subject=[WebCenter] Error with posting file through publisher">irdevadmin_ww@oracle.com</a>.');
 							$('#pub-loading').hide();
 						}
 					});
