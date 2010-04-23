@@ -210,7 +210,7 @@
                   url: dynConvUrl, 
                   method:'get',
                   error: function(x,t,e){
-                    console.log(x);
+                    // ignoring 403s for now
                   },
                   success: function(d) {
                     var slideImages = $('img', $(d));
