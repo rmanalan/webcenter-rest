@@ -103,6 +103,10 @@ span.activity {
 .detail {
 	font-size:15px;
 }
+.detail a.left,
+.detail a.right {
+  display:block;
+}
 #header {
 	margin:10px 0 0 0;
 }
