@@ -324,7 +324,7 @@
 						'body': utils.resolveURLs(msg)
 					}),
           error: function(x, t, e) {
-            console.log(x, t, e);
+            if(x.status==403) $('#msg').html('You do not have access to contribute to this group space. Please contact a group space moderator.').slideDown();
           },
 					success: function(d) {
 						$('#pub-text').val('').css('height', 18);
