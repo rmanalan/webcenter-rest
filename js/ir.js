@@ -130,7 +130,7 @@
 			switcherEvent = setTimeout(function() {
 				mainSwitcherContainer.show();
 			},
-			500);
+			250);
 		},
 		function() {
 			clearTimeout(switcherEvent);
