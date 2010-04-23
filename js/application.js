@@ -206,26 +206,33 @@
 							if (ppt[0] && ! $.browser.msie) {
 								var ucmid = $(ppt[0]).attr('rel').split(':').splice( - 1);
 								var dynConvUrl = webCenter.settings.dynConverterUri + ucmid;
-								/*$.get(dynConvUrl, function(d) {
-									var slideImages = $('img', $(d));
-									var slides = "";
-									slideImages.each(function() {
-										slides += '<li><img class="slide" src="' + $(this).attr('src') + '" width="500" height="375" /></li>';
-									});
-									slides = '<div id="det-' + actId + '" class="swvp"><ul>' + slides + '</ul></div>';
-									$(slides).appendTo('#act-' + actId + ' div.detail').slideViewerPro({
-										galBorderWidth: 1,
-										galBorderColor: '#ccc',
-										thumbsBorderWidth: 1,
-										thumbsTopMargin: 8,
-										thumbsBorderColor: '#ccc',
-										thumbs: 4,
-										thumbsBorderOpacity: .7,
-										leftButtonInner: '&laquo;',
-										rightButtonInner: '&raquo;',
-										thumbsPercentReduction: 22
-									});
-								});*/
+								$.ajax({
+                  url: dynConvUrl, 
+                  method:'get',
+                  error: function(x,t,e){
+                    console.log(x);
+                  },
+                  success: function(d) {
+                    var slideImages = $('img', $(d));
+                    var slides = "";
+                    slideImages.each(function() {
+                      slides += '<li><img class="slide" src="' + $(this).attr('src') + '" width="500" height="375" /></li>';
+                    });
+                    slides = '<div id="det-' + actId + '" class="swvp"><ul>' + slides + '</ul></div>';
+                    $(slides).appendTo('#act-' + actId + ' div.detail').slideViewerPro({
+                      galBorderWidth: 1,
+                      galBorderColor: '#ccc',
+                      thumbsBorderWidth: 1,
+                      thumbsTopMargin: 8,
+                      thumbsBorderColor: '#ccc',
+                      thumbs: 4,
+                      thumbsBorderOpacity: .7,
+                      leftButtonInner: '&laquo;',
+                      rightButtonInner: '&raquo;',
+                      thumbsPercentReduction: 22
+                    });
+								  }
+                });
 							};
 						};
 					};
