@@ -82,7 +82,7 @@
 				}
 
 				// Listen for <enter> key inside the publisher textarea
-				$('#pub-text').bind('keyup', function(e) {
+				$('#pub-text').bind('keydown', function(e) {
 					if (e.keyCode == 13) {
 						$('#pub-form').submit();
 						return false;
