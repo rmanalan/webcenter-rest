@@ -323,6 +323,9 @@
 					data: $.toJSON({
 						'body': utils.resolveURLs(msg)
 					}),
+          error: function(x, t, e) {
+            console.log(x, t, e);
+          },
 					success: function(d) {
 						$('#pub-text').val('').css('height', 18);
 						renderStream($('#stream').data('currentStreamUrl'), 0, true);
