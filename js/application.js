@@ -71,7 +71,7 @@
 			setTimeout(function() {
 				$('#msg').fadeOut(1000);
 			},
-			2000);
+			5000);
 		}
 
 		function initApp(callback) {
