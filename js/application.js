@@ -206,7 +206,7 @@
 							if (ppt[0] && ! $.browser.msie) {
 								var ucmid = $(ppt[0]).attr('rel').split(':').splice( - 1);
 								var dynConvUrl = webCenter.settings.dynConverterUri + ucmid;
-								$.get(dynConvUrl, function(d) {
+								/*$.get(dynConvUrl, function(d) {
 									var slideImages = $('img', $(d));
 									var slides = "";
 									slideImages.each(function() {
@@ -225,7 +225,7 @@
 										rightButtonInner: '&raquo;',
 										thumbsPercentReduction: 22
 									});
-								});
+								});*/
 							};
 						};
 					};
