@@ -69,9 +69,8 @@
 		function pubMessage(m) {
 			$('#msg').html(m).slideDown();
 			setTimeout(function() {
-				$('#msg').fadeOut(1000);
-			},
-			10000);
+				$('#msg').slideUp();
+			}, 7000);
 		}
 
 		function initApp(callback) {
