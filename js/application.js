@@ -4,7 +4,7 @@
  * Rich Manalang (rich.manalang@oracle.com)
  **/
 (function($) { //seal it up
-	$(function() { //wait for load
+//	$(function() { //wait for load
 
     var infScrollActive = false;
 
@@ -411,7 +411,7 @@
 
 		});
 		activityStreamApp.run('#/');
-	});
+//	});
 })(jQuery);
 
 /* 
