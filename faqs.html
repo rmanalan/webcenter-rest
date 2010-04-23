@@ -1,0 +1,1231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html>
+
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<base target="_top">
+<link href="./css/screen.css" type="text/css" media="screen" rel="stylesheet"/>
+<style type="text/css">
+  
+
+/* default css */
+
+table {
+  font-size: 1em;
+  line-height: inherit;
+  border-collapse: collapse;
+}
+
+
+tr {
+  
+  text-align: left;
+  
+}
+
+
+div, address, ol, ul, li, option, select {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+p {
+  margin: 0px;
+}
+
+
+pre {
+  font-family: Courier New;
+  white-space: pre-wrap;
+  margin:0;
+}
+
+body {
+  margin: 6px;
+  padding: 0px;
+  font-family: Verdana, sans-serif;
+  font-size: 10pt;
+  background-color: #ffffff;
+  color: #000;
+}
+
+
+img {
+  -moz-force-broken-image-icon: 1;
+}
+
+@media screen {
+  html.pageview {
+    background-color: #f3f3f3 !important;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+
+  
+
+  body {
+    min-height: 1100px;
+    
+    counter-reset: __goog_page__;
+  }
+  
+  * html body {
+    height: 1100px;
+  }
+  /* Prevent repaint errors when scrolling in Safari. This "Star-7" css hack
+     targets Safari 3.1, but not WebKit nightlies and presumably Safari 4.
+     That's OK because this bug is fixed in WebKit nightlies/Safari 4 :-). */
+  html*#wys_frame::before {
+    content: '\A0';
+    position: fixed;
+    overflow: hidden;
+    width: 0;
+    height: 0;
+    top: 0;
+    left: 0;
+  }
+  
+  .pageview body {
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 2px solid #bbb;
+    border-bottom: 2px solid #bbb;
+    width: 648px !important;
+    margin: 15px auto 25px;
+    padding: 40px 50px;
+  }
+  /* IE6 */
+  * html {
+    overflow-y: scroll;
+  }
+  * html.pageview body {
+    overflow-x: auto;
+  }
+  
+
+  
+    
+    
+    .writely-callout-data {
+      display: inline-block;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      margin-left: -1px;
+    }
+    
+
+    .writely-footnote-marker {
+      background-image: url('MISSING');
+      background-color: transparent;
+      background-repeat: no-repeat;
+      width: 7px;
+      overflow: hidden;
+      height: 16px;
+      vertical-align: top;
+
+      
+      -moz-user-select: none;
+    }
+    .editor .writely-footnote-marker {
+      cursor: move;
+    }
+    .writely-footnote-marker-highlight {
+      background-position: -15px 0;
+      -moz-user-select: text;
+    }
+    .writely-footnote-hide-selection ::-moz-selection, .writely-footnote-hide-selection::-moz-selection {
+      background: transparent;
+    }
+    .writely-footnote-hide-selection ::selection, .writely-footnote-hide-selection::selection {
+      background: transparent;
+    }
+    .writely-footnote-hide-selection {
+      cursor: move;
+    }
+
+    /* Comments */
+    .writely-comment-yellow {
+      background-color: #ffffd7;
+    }
+    .writely-comment-orange {
+      background-color: #ffe3c0;
+    }
+    .writely-comment-pink {
+      background-color: #ffd7ff;
+    }
+    .writely-comment-green {
+      background-color: #d7ffd7;
+    }
+    .writely-comment-blue {
+      background-color: #d7ffff;
+    }
+    .writely-comment-purple {
+      background-color: #eed7ff;
+    }
+
+  
+
+
+  
+  .br_fix span+br:not(:-moz-last-node) {
+    
+    position:relative;
+    
+    left: -1ex
+    
+  }
+
+  
+  #cb-p-tgt {
+    font-size: 8pt;
+    padding: .4em;
+    background-color: #ddd;
+    color: #333;
+  }
+  #cb-p-tgt-can {
+    text-decoration: underline;
+    color: #36c;
+    font-weight: bold;
+    margin-left: 2em;
+  }
+  #cb-p-tgt .spin {
+    width: 16px;
+    height: 16px;
+    background: url(//ssl.gstatic.com/docs/clipboard/spin_16o.gif) no-repeat;
+  }
+}
+
+h6 { font-size: 8pt }
+h5 { font-size: 8pt }
+h4 { font-size: 10pt }
+h3 { font-size: 12pt }
+h2 { font-size: 14pt }
+h1 { font-size: 18pt }
+h1,h2,h3,h4,h5,h6 {margin-top:10px;font-weight:500;padding:2px 4px;background:#DEE4EA;border-bottom:1px solid #ccc}
+
+blockquote {padding: 10px; border: 1px #DDD dashed }
+
+.webkit-indent-blockquote { border: none; }
+
+a img {border: 0}
+
+.pb {
+  border-width: 0;
+  page-break-after: always;
+  /* We don't want this to be resizeable, so enforce a width and height
+     using !important */
+  height: 1px !important;
+  width: 100% !important;
+}
+
+.editor .pb {
+  border-top: 1px dashed #C0C0C0;
+  border-bottom: 1px dashed #C0C0C0;
+}
+
+div.google_header, div.google_footer {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+
+/* Table of contents */
+.editor div.writely-toc {
+  background-color: #f3f3f3;
+  border: 1px solid #ccc;
+}
+.writely-toc > ol {
+  padding-left: 3em;
+  font-weight: bold;
+}
+ol.writely-toc-subheading {
+  padding-left: 1em;
+  font-weight: normal;
+}
+/* IE6 only */
+* html writely-toc ol {
+  list-style-position: inside;
+}
+.writely-toc-none {
+  list-style-type: none;
+}
+.writely-toc-decimal {
+  list-style-type: decimal;
+}
+.writely-toc-upper-alpha {
+  list-style-type: upper-alpha;
+}
+.writely-toc-lower-alpha {
+  list-style-type: lower-alpha;
+}
+.writely-toc-upper-roman {
+  list-style-type: upper-roman;
+}
+.writely-toc-lower-roman {
+  list-style-type: lower-roman;
+}
+.writely-toc-disc {
+  list-style-type: disc;
+}
+
+/* Ordered lists converted to numbered lists can preserve ordered types, and
+   vice versa. This is confusing, so disallow it */
+ul[type="i"], ul[type="I"], ul[type="1"], ul[type="a"], ul[type="A"] {
+  list-style-type: disc;
+}
+
+ol[type="disc"], ol[type="circle"], ol[type="square"] {
+  list-style-type: decimal;
+}
+
+img {
+  padding:5px;
+  -webkit-border-radius:5px;
+  -webkit-box-shadow:rgba(0,0,0,.6) 3px 3px 10px;
+  -moz-border-radius:5px;
+  -moz-box-shadow:rgba(0,0,0,.6) 3px 3px 10px;
+}
+.logo {
+  padding:0;
+  -webkit-border-radius:0;
+  -webkit-box-shadow:none;
+  -moz-border-radius:0;
+  -moz-box-shadow:none;
+}
+
+/* end default css */
+
+
+  /* default print css */
+  @media print {
+    body {
+      padding: 0;
+      margin: 0;
+    }
+
+    div.google_header, div.google_footer {
+      display: block;
+      min-height: 0;
+      border: none;
+    }
+
+    div.google_header {
+      flow: static(header);
+    }
+
+    /* used to insert page numbers */
+    div.google_header::before, div.google_footer::before {
+      position: absolute;
+      top: 0;
+    }
+
+    div.google_footer {
+      flow: static(footer);
+    }
+
+    /* always consider this element at the start of the doc */
+    div#google_footer {
+      flow: static(footer, start);
+    }
+
+    span.google_pagenumber {
+      content: counter(page);
+    }
+
+    span.google_pagecount {
+      content: counter(pages);
+    }
+
+    .endnotes {
+      page: endnote;
+    }
+
+    /* MLA specifies that endnotes title should be 1" margin from the top of the page. */
+    @page endnote {
+      margin-top: 1in;
+    }
+
+    callout.google_footnote {
+      
+      display: prince-footnote;
+      footnote-style-position: inside;
+      /* These styles keep the footnote from taking on the style of the text
+         surrounding the footnote marker. They can be overridden in the
+         document CSS. */
+      color: #000;
+      font-family: Arial;
+      font-size: 10.0pt;
+      font-weight: normal;
+    }
+
+    /* Table of contents */
+    #WritelyTableOfContents a::after {
+      content: leader('.') target-counter(attr(href), page);
+    }
+
+    #WritelyTableOfContents a {
+      text-decoration: none;
+      color: black;
+    }
+
+    /* Comments */
+    .writely-comment-yellow {
+      background-color: #ffffd7;
+    }
+    .writely-comment-orange {
+      background-color: #ffe3c0;
+    }
+    .writely-comment-pink {
+      background-color: #ffd7ff;
+    }
+    .writely-comment-green {
+      background-color: #d7ffd7;
+    }
+    .writely-comment-blue {
+      background-color: #d7ffff;
+    }
+    .writely-comment-purple {
+      background-color: #eed7ff;
+    }
+  }
+
+  @page {
+    @top {
+      content: flow(header);
+    }
+    @bottom {
+      content: flow(footer);
+    }
+    @footnotes {
+      border-top: solid black thin;
+      padding-top: 8pt;
+    }
+  }
+  /* end default print css */
+
+
+/* custom css */
+
+
+/* end custom css */
+
+/* ui edited css */
+
+body {
+  font-family: Arial;
+  
+  font-size: 10.0pt;
+  line-height: normal;
+  background-color: #ffffff;
+}
+/* end ui edited css */
+
+
+/* editor CSS */
+.editor a:visited {color: #551A8B}
+.editor table.zeroBorder {border: 1px dotted gray}
+.editor table.zeroBorder td {border: 1px dotted gray}
+.editor table.zeroBorder th {border: 1px dotted gray}
+
+
+.editor div.google_header, .editor div.google_footer {
+  border: 2px #DDDDDD dashed;
+  position: static;
+  width: 100%;
+  min-height: 2em;
+}
+
+.editor .misspell {background-color: yellow}
+
+.editor .writely-comment {
+  font-size: 9pt;
+  line-height: 1.4;
+  padding: 1px;
+  border: 1px dashed #C0C0C0
+}
+
+
+/* end editor CSS */
+
+</style>
+
+  
+  <title>IR FAQ</title>
+
+</head>
+
+<body>
+<div class="container">
+<img src="images/wclogo.png" class="logo" width="207" height="23"/>
+    
+<h1>
+  <a id=Frequently_Asked_Questions name=Frequently_Asked_Questions></a>Frequently Asked Questions
+</h1>
+<p>
+  Welcome to the new <a href=http://webcenter.us.oracle.com id=t.yl title=webcenter.us.oracle.com>webcenter.us.oracle.com</a>. Here is a list of questions that might help you. If you can't find an answer to your question, or you think we should add questions to this list, drop a note to <a href=mailto:irdevadmin_ww@oracle.com id=ls_5 title=irdevadmin_ww@oracle.com>irdevadmin_ww@oracle.com</a>.
+</p>
+<p>
+  <br>
+</p>
+<p>
+  Here's a snapshot of the new interface, in case you haven't seen it yet.
+</p>
+<p>
+  <br>
+</p>
+<p>
+</p>
+<div id=d0vu style=TEXT-ALIGN:left>
+  <img src="images/d37f56t_81hb9bschm_b.png" style=HEIGHT:456.787px;WIDTH:648px>
+</div>
+<p>
+</p>
+<h2>
+  General redesign questions
+</h2>
+<ul>
+  <li>
+    <a href=#What_were_the_goals_of_this_redesign? id=q1b5 target=_self title="What were the goals of this redesign?">What were the goals of this redesign?</a>
+  </li>
+  <li>
+    <a href=#How_can_I_provide_feedback? id=d1jm target=_self title="How can I provide feedback?">How can I provide feedback?</a>
+  </li>
+  <li>
+    <a href=#What_browsers_do_you_support?_What_if_I%27m_using_an_unsupported_one? id=zqjz target=_self title="What browsers do you support? What if I'm using an unsupported one?">What browsers do you support? What if I'm using an unsupported one?</a>
+  </li>
+  <li>
+    <a href=#Why_am_I_not_seeing_the_UI_shown_in_the_pictures? id=f19o target=_self title="Why am I not seeing the UI shown in the pictures?">Why am I not seeing the UI shown in the pictures?</a>
+  </li>
+  <li>
+    <a href=#Is_this_going_into_product?_Will_customers_see_this_interface? id=nzju target=_self title="Is this going into product? Will customers see this interface?">Is this going into product? Will customers see this interface?</a>
+  </li>
+  <li>
+    <a href=#Why_did_you_replace_the_WebCenter_landing_page_with_Activities? id=yr:s target=_self title="Why did you replace the WebCenter landing page with Activities?">Why did you replace the WebCenter landing page with Activities?</a>
+  </li>
+  <li>
+    <a href=#Who%27s_responsible_for_these_changes? id=nfkr target=_self title="Who's responsible for these changes?">Who's responsible for these changes?</a><br>
+  </li>
+</ul>
+<h2>
+  Feature-related questions
+</h2>
+<ul>
+  <li>
+    <a href=#What%27s_new? id=svbp target=_self title="What's new?">What's new?</a><br>
+  </li>
+  <li>
+    <a href=#What_is_shown_in_the_Home_page? id=if:v target=_self title="What is shown on the Home page?">What is shown on the Home page?</a>
+  </li>
+  <li>
+    <a href=#Why_don%27t_I_see_any_activity? id=ykrx target=_self title="Why don't I see any activity?">Why don't I see any activity?</a><br>
+  </li>
+  <li>
+    <a href=#How_do_I_comment_on_a_post? id=u-yz target=_self title="How do I comment on a post?">How do I comment on a post?</a><br>
+  </li>
+  <li>
+    <a href=#Who_can_see_my_activity? id=ghph target=_self title="Who can see my activity?">Who can see my activity?</a>
+  </li>
+  <li>
+    <a href=#How_can_I_reply_to_a_post_I_see_in_my_activity? id=ghpz target=_self title="How can I reply to a post I see in my activity?">How can I reply to a post I see in my activity?</a>
+  </li>
+  <li>
+    <a href=#What_video_sites_do_you_support_for_inline_viewing? id=o0mp target=_self title="What video sites do you support for inline viewing?">What video sites do you support for inline viewing?</a>
+  </li>
+  <li>
+    <a href=#What_image_types_do_you_support_for_inline_viewing? id=om6y target=_self title="What image types do you support for inline viewing?">What image types do you support for inline viewing?</a>
+  </li>
+  <li>
+    <a href=#How_do_captions_work_for_inline_content? id=lhd6 target=_self title="How do captions work for inline content?">How do captions work for inline content?</a><br>
+  </li>
+  <li>
+    <a href=#Are_there_viewers_for_any_other_file_types? id=ifrk target=_self title="Are there viewers for any other file types?">Are there viewers for any other file types?</a><br>
+  </li>
+</ul>
+<h2>
+  How-to questions
+</h2>
+<ul>
+  <li>
+    <a href=#How_do_I_invite_someone_to_join_my_network? id=t7-u target=_self title="How do I invite someone to join my network?">How do I invite someone to join my network?</a>
+  </li>
+  <li>
+    <a href=#How_do_I_accept_an_invitation_to_network? id=ld70 target=_self title="How do I accept an invitation to network?">How do I accept an invitation to network?</a>
+  </li>
+  <li>
+    <a href=#How_can_I_upload_and_manage_my_documents? id=vi.q target=_self title="How can I upload and manage my documents?">How can I upload and manage my documents?</a>
+  </li>
+  <li>
+    <a href=#How_do_I_setup_WebDAV_to_manage_my_documents? id=qhxj target=_self title="How do I setup WebDAV to manage my documents?">How do I setup WebDAV to manage my documents?</a><br>
+  </li>
+  <li>
+    <a href=#How_do_I_find_my_Group_Spaces? id=r-:4 target=_self title="How do I find my Group Spaces?">How do I find my Group Spaces?</a><br>
+  </li>
+  <li>
+    <a href=#What_Group_Spaces_are_displayed_in_the_list? id=zq.x target=_self title="What Groups Spaces are displayed in the list?">What Groups Spaces are displayed in the list?</a><br>
+  </li>
+  <li>
+    <a href=#How_do_I_create_a_page? id=qp62 target=_self title="How do I create a page?">How do I create a page?</a><br>
+  </li>
+  <li>
+    <a href=#How_do_I_edit_a_page? id=tize target=_self title="How do I edit a page?">How do I edit a page?</a>
+  </li>
+  <li>
+    <a href=#Why_do_some_group_spaces_look_so_different? id=jdvl target=_self title="Why do some group spaces look so different?">Why do some group spaces look so different?</a>
+  </li>
+  <li>
+    <a href=#How_can_I_find_my_Saved_Searches? id=cf2o target=_self title="How can I find my Saved Searches?">How can I find my Saved Searches?</a>
+  </li>
+  <li>
+    <a href=#How_do_I_find_my_invitations_to_join_a_group_space? id=w9.4 target=_self title="How do I find my invitations to join a group space?">How do I find my invitations to join a group space?</a><br>
+  </li>
+  <li>
+    <a href=#How_do_I_access_my_Tags? id=nnp1 target=_self title="How do I access my Tags?">How do I access my Tags?</a>
+  </li>
+  <li>
+    <a href=#How_do_I_access_my_Notes? id=bgge target=_self title="How do I access my Notes?">How do I access my Notes?</a><br>
+  </li>
+  <li>
+    <a href=#How_do_I_access_my_Worklist? id=na4k target=_self title="How do I access my Worklist?">How do I access my Worklist?</a><br>
+  </li>
+  <li>
+    <a href=#How_do_I_access_my_Recent_Documents? id=l6n0 target=_self title="How do I access my Recent Documents?">How do I access my Recent Documents?</a><br>
+  </li>
+  <li>
+    <a href=#How_can_I_collapse_the_left_hand_navigation_bar? id=mz_m target=_self title="How can I collapse the left hand navigation bar?">How can I collapse the left hand navigation bar?</a>
+  </li>
+  <li>
+    <a href=#How_can_I_collapse_the_left_hand_navigation_bar? id=m87n target=_self title="Can I change the skin? Why don't I see the skin I was using previously?">Can I change the skin? Why don't I see the skin I was using previously?</a><br>
+  </li>
+  <li>
+    <a href=#How_do_I_create_a_new_Group_Space? id=p-tt target=_self title="How do I create a new Group Space?">How do I create a new Group Space?</a>
+  </li>
+  <li>
+    <a href=#What_is_the_URL_to_my_Group_Space? id=s:bs target=_self title="What is the URL to my Group Space?">What is the URL to my Group Space?</a>
+  </li>
+  <li>
+    <a href=#How_do_I_add_members_to_my_Group_Space? id=yh90 target=_self title="How do I add members to my Group Space?">How do I add members to my Group Space?</a>
+  </li>
+  <li>
+    <a href=#How_do_I_delete_an_item_from_my_activity_stream? id=wai7 target=_self title="How do I delete an item from my activity stream?">How do I delete an item from my activity stream?</a>
+  </li>
+  <li>
+    <a href=#How_do_I_report_an_urgent_problem? id=k3ct target=_self title="How do I report an urgent problem?">How do I report an urgent problem?</a><br>
+  </li>
+  <li>
+    <a href=#How_do_I_get_to_the_WC_Helpdesk_Forums_page? id=rdqy target=_self title="How do I get to the WC Helpdesk Forums page?">How do I get to the WC Helpdesk Forums page?</a>
+  </li>
+  <li>
+    <a href=#Where_do_I_sign-up_to_get_updates_about_webcenter.us.oracle.com? id=ky0t target=_self title="Where do I sign-up to get updates about webcenter.us.oracle.com?">Where do I sign-up to get updates about webcenter.us.oracle.com?</a><br>
+  </li>
+  <li>
+    <a href=#How_can_I_change_my_password_for_webcenter.us.oracle.com? id=w7.3 target=_self title="How can I change my password for webcenter.us.oracle.com?">How can I change my password for webcenter.us.oracle.com?</a>
+  </li>
+</ul>
+<h2>
+  General redesign questions
+</h2>
+<h3>
+  <a id=What_were_the_goals_of_this_redesign? name=What_were_the_goals_of_this_redesign?></a>What were the goals of this redesign?
+</h3>
+The redesign project had several goals.<br>
+<br>
+First, we wanted to create a frictionless interface for sharing information with other users, similar to what you find on the consumer web at sites like Facebook and Twitter and inside the Oracle firewall at sites like Connect (<a href=http://connect.oraclecorp.com id=fi2l title=connect.oraclecorp.com>connect.oraclecorp.com</a>) and OraTweet (<a href=http://oratweet.oraclecorp.com id=de44 title=oratweet.oraclecorp.com>oratweet.oraclecorp.com</a>).<br>
+<br>
+Second, we operated as a WebCenter customer would, extending the product, using its APIs, and pushing the limits of what the product can do. This provided valuable insight that has been rolled into the product, improving WebCenter for customers.<br>
+<br>
+Finally, WebCenter has its roots in portal. We applied the activity stream concept that is becoming common in consumer and enterprise web apps (e.g. <a href=http://www.salesforce.com/chatter/ id=u:na title="Salesforce.com's Chatter">Salesforce.com's Chatter</a>) as a proof point that WebCenter can handle the changing landscape of how information is shared.<br>
+<br>
+<a href=#Frequently_Asked_Questions id=f:l1 target=_self title="back to top">back to top</a><br>
+<h3>
+  <a id=How_can_I_provide_feedback? name=How_can_I_provide_feedback?></a>How can I provide feedback?
+</h3>
+We love feedback, positive or negative because feedback is how a product improves. To reach us, you can use the Send Feedback link in the footer, or send us a note directly at <a href=mailto:irdevadmin_ww@oracle.com id=u5ex title=irdevadmin_ww@oracle.com>irdevadmin_ww@oracle.com</a> or <a href=mailto:oracleappslab_ww@oracle.com id=r3rh title=oracleappslab_ww@oracle.com>oracleappslab_ww@oracle.com</a>.<br>
+<br>
+We will be continuing to improve and tweak the <a href=http://webcenter.us.oracle.com/ id=g6sn title=webcenter.us.oracle.com>webcenter.us.oracle.com</a> experience, and your feedback will help shape what we do.<br>
+<br>
+<a href=#Frequently_Asked_Questions id=clh3 target=_self title="back to top">back to top</a><br>
+<h3>
+  <a id="What_browsers_do_you_support?_What_if_I'm_using_an_unsupported_one?" name="What_browsers_do_you_support?_What_if_I'm_using_an_unsupported_one?"></a>What browsers do you support? What if I'm using an unsupported one?
+</h3>
+WebCenter supports Internet Explorer versions 7 and 8, Firefox 3.0.x and <a href=http://www.apple.com/safari/download/ id=x-im title="Safari 4">Safari 4</a>. These browsers have all been tested.<br>
+<br>
+If you are using a newer browser, e.g. <a href=http://www.google.com/chrome id=idnh title="Google Chrome">Google Chrome</a> or <a href=http://www.mozilla.com/en-US/firefox/personal.html id=snpa title="Firefox 3.6">Firefox 3.6</a>, your experience should be fine. We have tested these browsers as well. If you're using a less common browser like Opera, your results will vary.<br>
+<br>
+If you are using an older browser, your results will also vary. Firefox 2 is supported, but has not been tested. IE 6 displays a warning message and will not work as designed. We suggest upgrading to a newer browser if you are using Firefox 2, Safari 3 or IE 6.<br>
+<br>
+<a href=#Frequently_Asked_Questions id=slnk target=_self title="back to top">back to top</a><br>
+<h3>
+  <a id=Why_am_I_not_seeing_the_UI_shown_in_the_pictures? name=Why_am_I_not_seeing_the_UI_shown_in_the_pictures?></a>Why am I not seeing the UI shown in the pictures?
+</h3>
+If you're not seeing an interface that looks like the one in the screenshots, you'll need to make a quick preference change.<br>
+<br>
+Click the Preferences link in the upper right-hand corner. Then, in the resulting window, set Application Skin to No Preference. Click Apply, and you'll see the changes.<br>
+<br>
+<div id=m:93 style=TEXT-ALIGN:left>
+  <img src="images/d37f56t_82dcbvb4fg_b.png" style=HEIGHT:352.698px;WIDTH:648px>
+</div>
+<br>
+<a href=#Frequently_Asked_Questions id=wg:l target=_self title="back to top">back to top</a><br>
+<h3>
+  <a id=Is_this_going_into_product?_Will_customers_see_this_interface? name=Is_this_going_into_product?_Will_customers_see_this_interface?></a>Is this going into product? Will customers see this interface?
+</h3>
+Some of what you see will filter into subsequent releases of WebCenter. However, this exact interface probably will not, although it will influence future versions of WebCenter.<br>
+<br>
+<a href=#Frequently_Asked_Questions id=mc9x target=_self title="back to top">back to top</a><br>
+<h3>
+  <a id=Why_did_you_replace_the_WebCenter_landing_page_with_Activities? name=Why_did_you_replace_the_WebCenter_landing_page_with_Activities?></a>Why did you replace the WebCenter landing page with Activities?
+</h3>
+We replaced the existing landing page because it created a rather lonely experience, i.e. there were no cues as to what was happening, who was using it and for what. The Activities page aims to show you immediately that IR is a live community and give you a glimpse of what your colleagues are doing.<br>
+<br>
+<a href=#Frequently_Asked_Questions id=vw1b target=_self title="back to top">back to top</a><br>
+<h3>
+  <a id="Who's_responsible_for_these_changes?" name="Who's_responsible_for_these_changes?"></a>Who's responsible for these changes?
+</h3>
+The interface changes to <a href=http://webcenter.us.oracle.com/ id=p-5r title=webcenter.us.oracle.com>webcenter.us.oracle.com</a> are a collaborative effort between the Oracle <a href=http://theappslab.com id=pidz title=AppsLab>AppsLab</a> and WebCenter development.<br>
+<br>
+<a href=#Frequently_Asked_Questions id=bt4l target=_self title="back to top">back to top</a><br>
+<h2>
+  Feature-related questions
+</h2>
+<h3>
+  <a id="What's_new?" name="What's_new?"></a>What's new?
+</h3>
+We've dramatically changed the WebCenter experience. Here are the biggest changes.<br>
+<br>
+1. We added a publisher.<br>
+<br>
+<div id=lmk8 style=TEXT-ALIGN:left>
+  <img src="images/d37f56t_83fxn36xg3_b.png" style=HEIGHT:74.4324px;WIDTH:648px>
+</div>
+<br>
+If you've used consumer sites like Facebook and Twitter or internal sites like Connect (<a href=http://connect.oraclecorp.com/ id=ms9l title=connect.oraclecorp.com>connect.oraclecorp.com</a>) and OraTweet (<a href=http://oratweet.oraclecorp.com/ id=t3o1 title=oratweet.oraclecorp.com>oratweet.oraclecorp.com</a>), you'll recognize the new publisher. The publisher provides a fast way to share information with your network of connections or any of your group spaces. When you share something, a message board item is created and displayed.<br>
+<br>
+The publisher also supports document upload. Documents are uploaded to UCM into your public folder or into the folder of your group space.<br>
+<br>
+You can use the "Share something with" dropdown to share with your connections or any of your group spaces.<br>
+<br>
+2. We changed the navigation.<br>
+<br>
+<div id=q2.4 style=TEXT-ALIGN:left>
+  <img src="images/d37f56t_84gt7fbxdd_b.png" style=HEIGHT:270px;WIDTH:198px>
+</div>
+<br>
+We moved most of the navigational elements from tabs into a left-hand navigation model. Plus, we made several pages persistent for everyone's personal space. The pages everyone sees are: Activities, My Files, My Wiki, My Profile and Connections. Under those five, we display any personal pages or group space pages that you've added to your personal space.<br>
+<br>
+<div id=vx4q style=TEXT-ALIGN:left>
+  <img src="images/d37f56t_85d4cm88gn_b.png" style=HEIGHT:323px;WIDTH:608px>
+</div>
+<br>
+We also added a nifty way to navigate to your group spaces. Simply hover over the Home item, and you'll see a list of your most recently accessed group spaces. When you navigate to a group space, the left-hand navigation list will change to reflect that space.<br>
+<br>
+<br>
+3. We put focus on activity.<br>
+<br>
+<div id=r5uu style=TEXT-ALIGN:left>
+  <img src="images/d37f56t_86ffcrh8cf_b.png" style=HEIGHT:333.84px;WIDTH:648px>
+</div>
+<br>
+Finally, we made the activity stream the centerpiece for the experience to allow a quick view into what your connections and group spaces are doing. The activity stream shows all that happens within WebCenter, including the messages you share (whether with connections or with group spaces), your document activity, network connection information, personal status updates, activity in your group spaces and more.<br>
+<br>
+<a href=#Frequently_Asked_Questions id=na9h target=_self title="back to top">back to top</a><br>
+<h3>
+  <a id=What_is_shown_in_the_Home_page? name=What_is_shown_in_the_Home_page?></a>What is shown in the Home page?
+</h3>
+By default, we show your activity, both with your connections and within group spaces, and the activity of your connections.<br>
+<br>
+<a href=#Frequently_Asked_Questions id=it9- target=_self title="back to top">back to top</a><br>
+<h3>
+  <a id="Why_don't_I_see_any_activity?" name="Why_don't_I_see_any_activity?"></a>Why don't I see any activity?
+</h3>
+If you don't see any activity, don't fret. As soon as you start sharing, you'll see your own activity, but what's the fun in that? To get the most out of WebCenter, search for people you know and ask them to connect with you. Once they accept your invitation, you'll begin to see their activity too.<br>
+<br>
+<a href=#Frequently_Asked_Questions id=wc7w target=_self title="back to top">back to top</a><br>
+<h3>
+  <a id=How_do_I_comment_on_a_post? name=How_do_I_comment_on_a_post?></a>How do I comment on a post?
+</h3>
+In this version, we don't have the ability to comment on the items you see in the activity stream. However, we realize this is a limitation, and we're working to add comments very soon. Stay tuned.<br>
+<br>
+<a href=#Frequently_Asked_Questions id=p97n target=_self title="back to top">back to top</a><br>
+<h3>
+  <a id=Who_can_see_my_activity? name=Who_can_see_my_activity?></a>Who can see my activity?
+</h3>
+Well, obviously you can, but aside from you, anyone with whom you've connected will see your activity, if it's posted to your personal space, i.e. shared with "My Connections". Additionally, people who belong to a group space will see the activity that happens within that group space.<br>
+<br>
+<a href=#Frequently_Asked_Questions id=jpd8 target=_self title="back to top">back to top</a><br>
+<h3>
+  <a id=How_can_I_reply_to_a_post_I_see_in_my_activity? name=How_can_I_reply_to_a_post_I_see_in_my_activity?></a>How can I reply to a post I see in my activity?
+</h3>
+Since we don't have comments yet, you can follow the Twitter convention, i.e. @ plus the person's name. So, if you see a post by Rich Manalang that you'd like to discuss, you could share your comment with @Rich to let him know. We'll be adding comments soon.<br>
+<br>
+<a href=#Frequently_Asked_Questions id=eppc target=_self title="back to top">back to top</a><br>
+<h3>
+  <a id=What_video_sites_do_you_support_for_inline_viewing? name=What_video_sites_do_you_support_for_inline_viewing?></a>What video sites do you support for inline viewing?
+</h3>
+<div id=yvqw style=TEXT-ALIGN:left>
+  We currently support YouTube and Vimeo for inline viewing. If you share a link to a video hosted on <a href=http://youtube.com id=ir1_ title=youtube.com>youtube.com</a> or <a href=http://vimeo.com id=ho7q title=vimeo.com>vimeo.com</a>, we embed a viewer so the video can be watched directly within the activity stream.<br>
+  <br>
+  Here's how each site renders:<br>
+  <br>
+  YouTube<br>
+  <br>
+  <div id=k1uj style=TEXT-ALIGN:left>
+    <img src="images/d37f56t_87c7qnrnfg_b.png" style=HEIGHT:358px;WIDTH:581px>
+  </div>
+  <br>
+  <br>
+  Vimeo<br>
+  <br>
+  <div id=jg9e style=TEXT-ALIGN:left>
+    <img src="images/d37f56t_88hdgmfpg3_b.png" style=HEIGHT:353px;WIDTH:582px>
+  </div>
+  <br>
+</div>
+<br>
+<a href=#Frequently_Asked_Questions id=k:g5 target=_self title="back to top">back to top</a><br>
+<h3>
+  <a id=What_image_types_do_you_support_for_inline_viewing? name=What_image_types_do_you_support_for_inline_viewing?></a>What image types do you support for inline viewing?
+</h3>
+When you share a link to an image or upload an image file, we resize (if necessary) and embed the image in the activity stream for easy viewing. We do this for the file types .jpg, .jpeg, .png and .gif. Windows users, please note we do not support .bmp for inling viewing. Sorry.<br>
+<br>
+Here's an example of how a link to an image renders:<br>
+<br>
+<div id=t9i8 style=TEXT-ALIGN:left>
+  <img src="images/d37f56t_89mp2m27cn_b.png" style=HEIGHT:534px;WIDTH:462px>
+</div>
+<br>
+Here's an example of how an uploaded image file renders:<br>
+<br>
+<div id=gx-1 style=TEXT-ALIGN:left>
+  <div id=r6gl style=TEXT-ALIGN:left>
+    <img src="images/d37f56t_90g992w5hr_b.png" style=HEIGHT:493px;WIDTH:518px>
+  </div>
+</div>
+<br>
+<a href=#Frequently_Asked_Questions id=g_rc target=_self title="back to top">back to top</a><br>
+<h3>
+  <a id=How_do_captions_work_for_inline_content? name=How_do_captions_work_for_inline_content?></a>How do captions work for inline content?
+</h3>
+Say you'd like to add a caption an image you're uploading. Here's an example:<br>
+<br>
+<div id=lwbj style=TEXT-ALIGN:left>
+  <img src="images/d37f56t_93hqv6s4fs_b.png" style=HEIGHT:86.61px;WIDTH:648px>
+</div>
+<br>
+Here's the result:<br>
+<br>
+<div id=ckan style=TEXT-ALIGN:left>
+  <img src="images/d37f56t_95kfh5bndr_b.png" style=HEIGHT:361px;WIDTH:581px>
+</div>
+<br>
+Plus, your caption becomes the file's description in UCM.<br>
+<br>
+<div id=uqu3 style=TEXT-ALIGN:left>
+  <img src="images/d37f56t_96fb3n3kc5_b.png" style=HEIGHT:85px;WIDTH:594px>
+</div>
+<br>
+Say you're sharing a link to an image and want to add a caption. Here's an example:<br>
+<br>
+<div id=atkr style=TEXT-ALIGN:left>
+  <div id=uz:x style=TEXT-ALIGN:left>
+    <img src="images/d37f56t_94gj6d55gh_b.png" style=HEIGHT:93.1304px;WIDTH:648px>
+  </div>
+  <br>
+  Here's the result:<br>
+  <br>
+</div>
+<div id=c-er style=TEXT-ALIGN:left>
+  <img src="images/d37f56t_92dx3h3pd4_b.png" style=HEIGHT:456px;WIDTH:586px>
+</div>
+<br>
+<div>
+  <a href=#Frequently_Asked_Questions id=pf5m target=_self title="back to top">back to top</a><br>
+  <h3>
+    <a id=Are_there_viewers_for_any_other_file_types? name=Are_there_viewers_for_any_other_file_types?></a>Are there viewers for any other file types?
+  </h3>
+  Glad you asked. We also provide a viewer for uploaded Powerpoint presentations. When a file with a .ppt extension is uploaded, we render a slide viewer in the activity stream for quick browsing through the slides.<br>
+  <br>
+  Here's an example:<br>
+  <br>
+  <div id=b6jf style=TEXT-ALIGN:left>
+    <img src="images/d37f56t_108989fb7fh_b.png" style=HEIGHT:551px;WIDTH:614px>
+  </div>
+  <br>
+  Captions work the same way they do with <a href=#How_do_captions_work_for_inline_content? id=r:t0 target=_self title="image file captions">image file captions</a>.<br>
+  <br>
+  For now, Powerpoint files and several <a href=#What_image_types_do_you_support_for_inline_viewing? id=g7:s target=_self title="image file formats">image file formats</a> are what we support for inline viewing. In future iterations, we will support other common file types.<br>
+  <br>
+  Please note, this viewer currently does not work in any version of Internet Explorer. Future iterations will support IE as well.<br>
+  <br>
+  Also, if you are uploading a .ppt file, it will take some time to post-process the slides and create the viewer content. The more slides, the longer it will take. So, be patient; we'll get there when we get there.<br>
+  <br>
+  <a href=#Frequently_Asked_Questions id=cyox target=_self title="back to top">back to top</a><br>
+  <h2>
+    How-to questions
+  </h2>
+  <h3>
+    <a id=How_do_I_invite_someone_to_join_my_network? name=How_do_I_invite_someone_to_join_my_network?></a>How do I invite someone to join my network?
+  </h3>
+  To build a network of people you know at Oracle, use People Connections, which was introduced in WebCenter 11g Patchset 1.<br>
+  <br>
+  The easiest way to find and invite people is by clicking Connections in the left-hand navigation column. On your Connections page, click the Find and Invite People link and enter the name of the person you'd like to invite. Click the Invite link and add a personal note to the invitation.<br>
+  <br>
+  <div id=f03m style=TEXT-ALIGN:left>
+    <img src="images/d37f56t_112d7ktdwps_b.png" style=HEIGHT:189.384px;WIDTH:648px><br>
+    <br>
+    Clicking the Sent link on this page will show you all the invitations you have outstanding. Once a person accepts your invitation to connect, you will see her/his activity on your Home page.<br>
+    <br>
+    There are other ways to invite a person to join your network. You can view other people's connections on their profile galleries. Clicking these connections will allow you to invite them to join your network. Also, you can navigate directly to a person's profile gallery and get connected.<br>
+  </div>
+  <br>
+  <a href=#Frequently_Asked_Questions id=reuo target=_self title="back to top">back to top</a><br>
+  <h3>
+    <a id=How_do_I_accept_an_invitation_to_network? name=How_do_I_accept_an_invitation_to_network?></a>How do I accept an invitation to network?
+  </h3>
+  When you've been invited to join someone's network of connections on webcenter.us.oracle.com, you will receive an email. After logging in, you can accept the invitation by going to Connections in the left-hand navigation column and clicking the Received link.<br>
+  <br>
+  <div id=v-p6 style=TEXT-ALIGN:left>
+    <img src="images/d37f56t_113d3tj3kct_b.png" style=HEIGHT:173.38px;WIDTH:648px>
+  </div>
+  <br>
+  You can accept, decline or delete (i.e. ignore) invitations here. Once you accept a person's invitation to connect, you will see her/his activity on your Home page.<br>
+  <br>
+  <a href=#Frequently_Asked_Questions id=qf5u target=_self title="back to top">back to top</a><br>
+  <h3>
+    <a id=How_can_I_upload_and_manage_my_documents? name=How_can_I_upload_and_manage_my_documents?></a>How can I upload and manage my documents?
+  </h3>
+  There are two ways to upload documents to your personal document library. For quick sharing, you can use the publisher to add files to your public folder.<br>
+  <br>
+  <div id=ln2e style=TEXT-ALIGN:left>
+    <img src="images/d37f56t_114hk7q89fh_b.png" style=HEIGHT:88.7564px;WIDTH:648px>
+  </div>
+  <br>
+  Click Attach file and browse to the file on your local drives, add a description and Share. The file will be uploaded to your public folder.<br>
+  <br>
+  You can also upload and manage your files by clicking My Files in the left-hand navigation column. This opens the document library manager.<br>
+  <br>
+  <div id=u4uz style=TEXT-ALIGN:left>
+    <img src="images/d37f56t_115hnn7mwd9_b.png" style=HEIGHT:367.217px;WIDTH:648px>
+  </div>
+  <br>
+  <a href=#Frequently_Asked_Questions id=goda target=_self title="back to top">back to top</a><br>
+  <h3>
+    <a id=How_do_I_setup_WebDAV_to_manage_my_documents? name=How_do_I_setup_WebDAV_to_manage_my_documents?></a>How do I setup WebDAV to manage my documents?
+  </h3>
+  For detailed instructions on setting up WebDAV, click <a href=http://webcenter.us.oracle.com/owc_wiki/page/show.jz?page=WebCenter_Helpdesk:IR11ExtAppsnotes target=_blank>here</a>.<br>
+  <br>
+  <a href=#Frequently_Asked_Questions id=jnes target=_self title="back to top">back to top</a><br>
+  <h3>
+    <a id=How_do_I_find_my_Group_Spaces? name=How_do_I_find_my_Group_Spaces?></a>How do I find my Group Spaces?
+  </h3>
+  To access your group spaces, simply move your cursor over Home in the left-hand navigation column. A listing of the spaces you have most recently accessed and spaces to which you belong is displayed.<br>
+  <br>
+  <div id=ere2 style=TEXT-ALIGN:left>
+    <img src="images/d37f56t_1097gqbkghn_b.png" style=HEIGHT:283.243px;WIDTH:648px>
+  </div>
+  <br>
+  You may navigate to any space listed by clicking its name, or to dismiss the dialog, simply move your cursor somewhere else on the page. The dialog is available from any page with WebCenter, including within group spaces. To open it, simply move your cursor over the group space name in the left-hand navigation column.<br>
+  <br>
+  <a href=#Frequently_Asked_Questions id=nxw_ target=_self title="back to top">back to top</a><br>
+  <h3>
+    <a id=What_Group_Spaces_are_displayed_in_the_list? name=What_Group_Spaces_are_displayed_in_the_list?></a>What Group Spaces are displayed in the list?
+  </h3>
+  The list of spaces displayed in the new group space dialog includes, from left to right, top to bottom:<br>
+  <ul>
+    <li>
+      The last ten spaces you've accessed from most to least recent.
+    </li>
+    <li>
+      Spaces to which you belong, ordered alphabetically, omitting any spaces that appear in the last ten accessed.<br>
+    </li>
+  </ul>
+  <br>
+  <font size=-1><font face="Helvetica, Arial, sans-serif"> There is no limit to the number of spaces displayed.</font></font><br>
+  <br>
+  <a href=#Frequently_Asked_Questions id=x101 target=_self title="back to top">back to top</a><br>
+  <br>
+  <h3>
+    <a id=How_do_I_create_a_page? name=How_do_I_create_a_page?></a>How do I create a page?
+  </h3>
+  To create a page in either your personal space or in a group space, click the Manage Pages link.<br>
+  <br>
+  <div id=xo_l style=TEXT-ALIGN:left>
+    <img src="images/d37f56t_118f74dz6dp_b.png" style=HEIGHT:256.911px;WIDTH:648px>
+  </div>
+  <br>
+  Next click the Create Page button, which opens the create page dialog.<br>
+  <br>
+  <div id=ztrk style=TEXT-ALIGN:left>
+    <img src="images/d37f56t_119cb32zjgf_b.png" style=HEIGHT:399.631px;WIDTH:648px>
+  </div>
+  <br>
+  Within a group space, If you do not see Manage Pages link, you have not been granted privileges to add pages.<br>
+  <a href=#Frequently_Asked_Questions id=nroj target=_self title="back to top">back to top</a><br>
+  <h3>
+    How do I edit a page?
+  </h3>
+  To edit a page, first click the Manage Pages link, which appears in the left-hand navigation panel.<br>
+  <br>
+  In the resulting pop-up dialog, identify the page you want to edit and click the gear icon to the right. If you have permission to edit the page, you'll see an edit option in the menu.<br>
+  <br>
+  <div id=s2yh style=TEXT-ALIGN:left>
+    <img src="images/d37f56t_98g4h5srdk_b.png" style=HEIGHT:269.85px;WIDTH:648px>
+  </div>
+  <br>
+  <a href=#Frequently_Asked_Questions id=cwaz target=_self title="back to top">back to top</a><br>
+  <h3>
+    <a id=Why_do_some_group_spaces_look_so_different? name=Why_do_some_group_spaces_look_so_different?></a>Why do some group spaces look so different?
+  </h3>
+  Our changes only affect personal spaces, newly created group spaces and existing group spaces that did not customize the site template and skin.<br>
+  <br>
+  Any group space that was initially created with a site template and/or used a different skin will look just as it did prior to our redesign. All new group spaces will have our new look and feel.<br>
+  <br>
+  <a href=#Frequently_Asked_Questions id=lg9o target=_self title="back to top">back to top</a><br>
+  <h3>
+    <a id=How_can_I_find_my_Saved_Searches? name=How_can_I_find_my_Saved_Searches?></a>How can I find my Saved Searches?
+  </h3>
+  If you have saved searches, they can be found from any search results page. Search for any term, click the More button:<br>
+  <br>
+  <div id=ewlx style=TEXT-ALIGN:left>
+    <img src="images/d37f56t_100gz2xgrdt_b.png" style=HEIGHT:211px;WIDTH:372px><br>
+    <br>
+    You'll see your previously saved searches on the results page.<br>
+  </div>
+  <br>
+  <div id=hj78 style=TEXT-ALIGN:left>
+    <img src="images/d37f56t_101hmbrbhd6_b.png" style=HEIGHT:147px;WIDTH:477px><br>
+    <br>
+    For quicker access to a saved search in the future, we recommend you add the search to your Favorites.<br>
+  </div>
+  <br>
+  <a href=#Frequently_Asked_Questions id=lfko target=_self title="back to top">back to top</a><br>
+  <h3>
+    <a id=How_do_I_find_my_invitations_to_join_a_group_space? name=How_do_I_find_my_invitations_to_join_a_group_space?></a>How do I find my invitations to join a group space?
+  </h3>
+  You may have noticed our changes have removed the left-hand menu. In order to view your Worklist, which contains your group space invitations, you'll need to create a page in your personal space and add the Worklist taskflow to it. You should be receiving emails when you are invited to join a group space, which will also help you keep track of your invitations.<br>
+  <br>
+  To create a page in your personal space, click Manage Pages, and then Create Page:<br>
+  <br>
+  <div id=xags style=TEXT-ALIGN:left>
+    <img src="images/d37f56t_103g7kcvtc8_b.png" style=HEIGHT:235.805px;WIDTH:648px>
+  </div>
+  <br>
+  Choose a name for your page and select Blank scheme:<br>
+  <br>
+  <div id=l4b0 style=TEXT-ALIGN:left>
+    <img src="images/d37f56t_104f2b5pxc6_b.png" style=HEIGHT:403.718px;WIDTH:648px>
+  </div>
+  <br>
+  In the Composer, click Add Content and find the Worklist taskflow, which resides at the top level of the catalog.<br>
+  <br>
+  <div id=zfpz style=TEXT-ALIGN:left>
+    <div id=ih7y style=TEXT-ALIGN:left>
+      <img src="images/d37f56t_106ds587cc8_b.png" style=HEIGHT:587.403px;WIDTH:648px>
+    </div>
+  </div>
+  <br>
+  Click Add to add the Worklist taskflow, close the catalog and save and close the page to view your worklist. This page will always be accessible in your left-hand navigation menu.<br>
+  <br>
+  <a href=#Frequently_Asked_Questions id=bncz target=_self title="back to top">back to top</a><br>
+  <h3>
+    <a id=How_do_I_access_my_Tags? name=How_do_I_access_my_Tags?></a>How do I access my Tags?
+  </h3>
+  If you've used tags in the past, you can access the Tag Center from the search box or from the search results page. Begin by searching for the tag and either click the tag itself to go to the Tag Center or click the More button to see the full set of results.<br>
+  <br>
+  <div id=kq-6 style=TEXT-ALIGN:left>
+    <img src="images/d37f56t_102fdqhbk8w_b.png" style=HEIGHT:701px;WIDTH:369px>
+  </div>
+  <br>
+  For quicker access to a tags in the future, we recommend you add the Tag Center and any tags you use frequently to your Favorites.<br>
+  <br>
+  <a href=#Frequently_Asked_Questions id=p3ro target=_self title="back to top">back to top</a><br>
+  <h3>
+    <a id=How_do_I_access_my_Notes? name=How_do_I_access_my_Notes?></a>How do I access my Notes?
+  </h3>
+  You may have noticed our changes have removed the left-hand menu. In order to view your Notes, you'll need to create a page in your personal space and add the Worklist taskflow to it.<br>
+  <br>
+  To create a page in your personal space, click Manage Pages, and then Create Page:<br>
+  <br>
+  <div id=bqph style=TEXT-ALIGN:left>
+    <img src="images/d37f56t_103g7kcvtc8_b.png" style=HEIGHT:235.805px;WIDTH:648px>
+  </div>
+  <br>
+  Choose a name for your page and select Blank scheme:<br>
+  <br>
+  <div id=pw.2 style=TEXT-ALIGN:left>
+    <img src="images/d37f56t_104f2b5pxc6_b.png" style=HEIGHT:403.718px;WIDTH:648px>
+  </div>
+  <br>
+  In the Composer, click Add Content and find the Notes taskflow, which resides at the top level of the catalog.<br>
+  <br>
+  <div id=yuq9 style=TEXT-ALIGN:left>
+    <img src="images/d37f56t_105gnjpchf4_b.png" style=HEIGHT:589.808px;WIDTH:648px>
+  </div>
+  <br>
+  Click Add to add the Notes taskflow, close the catalog and save and close the page to view your notes. This page will always be accessible in your left-hand navigation menu.<br>
+  <br>
+  <a href=#Frequently_Asked_Questions id=bpc- target=_self title="back to top">back to top</a><br>
+  <h3>
+    <a id=How_do_I_access_my_Worklist? name=How_do_I_access_my_Worklist?></a>How do I access my Worklist?
+  </h3>
+  You may have noticed our changes have removed the left-hand menu. In order to view your Worklist, you'll need to create a page in your personal space and add the Worklist taskflow to it.<br>
+  <br>
+  To create a page in your personal space, click Manage Pages, and then Create Page:<br>
+  <br>
+  <div id=tgg0 style=TEXT-ALIGN:left>
+    <img src="images/d37f56t_103g7kcvtc8_b.png" style=HEIGHT:235.805px;WIDTH:648px>
+  </div>
+  <br>
+  Choose a name for your page and select Blank scheme:<br>
+  <br>
+  <div id=j3-f style=TEXT-ALIGN:left>
+    <img src="images/d37f56t_104f2b5pxc6_b.png" style=HEIGHT:403.718px;WIDTH:648px>
+  </div>
+  <br>
+  In the Composer, click Add Content and find the Worklist taskflow, which resides at the top level of the catalog.<br>
+  <br>
+  <div id=s7fs style=TEXT-ALIGN:left>
+    <div id=vdhg style=TEXT-ALIGN:left>
+      <img src="images/d37f56t_106ds587cc8_b.png" style=HEIGHT:587.403px;WIDTH:648px>
+    </div>
+  </div>
+  <br>
+  Click Add to add the Worklist taskflow, close the catalog and save and close the page to view your worklist. This page will always be accessible in your left-hand navigation menu.<br>
+  <br>
+  <a href=#Frequently_Asked_Questions id=xwpj target=_self title="back to top">back to top</a><br>
+  <h3>
+    <a id=How_do_I_access_my_Recent_Documents? name=How_do_I_access_my_Recent_Documents?></a>How do I access my Recent Documents?
+  </h3>
+  You may have noticed our changes have removed the left-hand menu. In order to view your Recent Documents, you'll need to create a page in your personal space and add the Recent Documents taskflow to it.<br>
+  <br>
+  To create a page in your personal space, click Manage Pages, and then Create Page:<br>
+  <br>
+  <div id=hfgx style=TEXT-ALIGN:left>
+    <img src="images/d37f56t_103g7kcvtc8_b.png" style=HEIGHT:235.805px;WIDTH:648px>
+  </div>
+  <br>
+  Choose a name for your page and select Blank scheme:<br>
+  <br>
+  <div id=lzyc style=TEXT-ALIGN:left>
+    <img src="images/d37f56t_104f2b5pxc6_b.png" style=HEIGHT:403.718px;WIDTH:648px>
+  </div>
+  <br>
+  In the Composer, click Add Content and find the Recent Documents taskflow, either by searching for it or by navigating to the Documents folder:<br>
+  <br>
+  <div id=kb5e style=TEXT-ALIGN:left>
+    <div id=buam style=TEXT-ALIGN:left>
+      <div id=zy_s style=TEXT-ALIGN:left>
+        <img src="images/d37f56t_107fw9j5kg3_b.png" style=HEIGHT:588.55px;WIDTH:648px>
+      </div>
+    </div>
+  </div>
+  <br>
+  Click Add to add the Recent Documents taskflow, close the catalog and save and close the page to view your worklist. This page will always be accessible in your left-hand navigation menu.<br>
+  <br>
+  <a href=#Frequently_Asked_Questions id=mofw target=_self title="back to top">back to top</a><br>
+  <h3>
+    <a id=How_can_I_collapse_the_left_hand_navigation_bar? name=How_can_I_collapse_the_left_hand_navigation_bar?></a>How can I collapse the left hand navigation bar?
+  </h3>
+  Currently, we do not offer the ability to collapse the left-hand navigation area. The left-hand column previously contained shortcuts to specific task flows, but it has been repurposed to contain navigational items that are relevant to whichever space is being used.<br>
+  <br>
+  Because navigation is critical to the overall experience and to avoid any accidental hiding of the navigational functions, we decided to remove the ability to collapse the left-hand column.<br>
+  <br>
+  <a href=#Frequently_Asked_Questions id=q0_l target=_self title="back to top">back to top</a><br>
+  <h3>
+    Can I change the skin? Why don't I see the skin I was using previously?
+  </h3>
+  To ensure that every user receives the same user experience and see the same interface, we have removed the ability to change the application skin. If you had previously changed your skin, we have changed your setting to match the skin we use.<br>
+  <br>
+  Consistency of experience is a good thing. As an example, think about the differences between the user experiences of MySpace and Facebook.<br>
+  <br>
+  <a href=#Frequently_Asked_Questions id=qajo target=_self title="back to top">back to top</a><br>
+  <h3>
+    <a id=How_do_I_create_a_new_Group_Space? name=How_do_I_create_a_new_Group_Space?></a>How do I create a new Group Space?
+  </h3>
+  To create a new space, activate the group spaces dialog by moving your cursor over the Home (or group space name) item in the left-hand navigation column, and select Browse Group Spaces.<br>
+  <br>
+  <div id=s.fd style=TEXT-ALIGN:left>
+    <img src="images/d37f56t_110g4wwrzhd_b.png" style=HEIGHT:283.243px;WIDTH:648px>
+  </div>
+  <br>
+  On the resulting page, select Create.<br>
+  <br>
+  <div id=b6:z style=TEXT-ALIGN:left>
+    <img src="images/d37f56t_111gvszjkf3_b.png" style=HEIGHT:134.518px;WIDTH:648px>
+  </div>
+  <br>
+  <a href=#Frequently_Asked_Questions id=tgr9 target=_self title="back to top">back to top</a><br>
+</div>
+<h3>
+  <a id=What_is_the_URL_to_my_Group_Space? name=What_is_the_URL_to_my_Group_Space?></a>What is the URL to my Group Space?
+</h3>
+If you are the moderator of a group space, you can find the URL to your space by navigating to the Settings page in the left-hand navigation and choosing the General tab.<br>
+<br>
+&nbsp;
+<div id=jz.w style=TEXT-ALIGN:left>
+  <img src="images/d37f56t_116n2sxkqfr_b.png" style=HEIGHT:205.423px;WIDTH:648px>
+</div>
+<br>
+<a href=#Frequently_Asked_Questions id=ge0w target=_self title="back to top">back to top</a><br>
+<h3>
+  <a id=How_do_I_add_members_to_my_Group_Space? name=How_do_I_add_members_to_my_Group_Space?></a>How do I add members to my Group Space?
+</h3>
+If you are the moderator of a group space, you can add or invite members to your space by navigating to the Settings page in the left-hand navigation and choosing the Members tab.<br>
+<br>
+<div id=xe7n style=TEXT-ALIGN:left>
+  <img src="images/d37f56t_117hb48w4d4_b.png" style=HEIGHT:234.709px;WIDTH:648px>
+</div>
+<br>
+Search for the user you'd like to add or invite, then choose a role to assign the user and add or invite the person. Roles are defined under the Roles tab.<br>
+<br>
+<a href=#Frequently_Asked_Questions id=bc-0 target=_self title="back to top">back to top</a><br>
+<h3>
+  How do I delete an item from my activity stream?
+</h3>
+<div>
+  When you share an item via the publisher, a message board entry is created. Although you can delete a message board item from the message board taskflow, you cannot remove items directly from the main Activities page.<br>
+  <br>
+  The Activities page uses the REST APIs to display data, not the taskflows. This is why the behaviors are slightly different. These differences will be resolved in future releases of WebCenter, and we will implement and uptake those changes when they are available.<br>
+  <br>
+  On a related note, if you remove an item from the message board taskflow, you will see a deletion item in your activities. This only appears to you, not to your connections.<br>
+  <br>
+  <a href=#Frequently_Asked_Questions id=kk9e target=_self title="back to top">back to top</a><br>
+  <br>
+  <h3>
+    <a id=How_do_I_report_an_urgent_problem? name=How_do_I_report_an_urgent_problem?></a>How do I report an urgent problem?
+  </h3>
+  For any priority issues that need prompt attention, send an email to <a href=mailto:owcadmin_ww@oracle.com id=wgsh title=owcadmin_ww@oracle.com>owcadmin_ww@oracle.com</a>.<br>
+  <br>
+  <a href=#Frequently_Asked_Questions id=qwhm target=_self title="back to top">back to top</a><br>
+</div>
+<h3>
+  <a id=How_do_I_get_to_the_WC_Helpdesk_Forums_page? name=How_do_I_get_to_the_WC_Helpdesk_Forums_page?></a>How do I get to the WC Helpdesk Forums page?
+</h3>
+If you previously used the personal page page called "WC Helpdesk Forums" to report or monitor non-urgent issues and questions, you'll notice it's not showing the correct forum anymore. This is a bug that we're working to fix.<br>
+<br>
+If you need to access that discussion forum, search for WC Helpdesk and go to the Discussion page. We recommend you add this to your Favorites if you need to access it frequently.<br>
+<br>
+<a href=#Frequently_Asked_Questions id=grdf target=_self title="back to top">back to top</a><br>
+<h3>
+  <a id=Where_do_I_sign-up_to_get_updates_about_webcenter.us.oracle.com? name=Where_do_I_sign-up_to_get_updates_about_webcenter.us.oracle.com?></a>Where do I sign-up to get updates about webcenter.us.oracle.com?
+</h3>
+To get updates about webcenter.us.oracle.com, you can subscribe to the <a href=mailto:owcusers_ww@oracle.com id=x1y8 title=owcusers_ww@oracle.com>owcusers_ww@oracle.com</a> mailing list using <a href=http://aps.oraclecorp.com id=tk.5 title=APS>APS</a>.<br>
+<br>
+<a href=#Frequently_Asked_Questions id=pgva target=_self title="back to top">back to top</a><br>
+<br>
+<h3>
+  <a id=How_can_I_change_my_password_for_webcenter.us.oracle.com? name=How_can_I_change_my_password_for_webcenter.us.oracle.com?></a>How can I change my password for webcenter.us.oracle.com?
+</h3>
+Webcenter.us.oracle.com uses corporate SSO, which is a requirement for all production web applications inside the corporate firewall. To change your SSO password, use <a href=http://aps.oraclecorp.com id=wyim title=APS>APS</a>.<br>
+<br>
+<a href=#Frequently_Asked_Questions id=vz6j target=_self title="back to top">back to top</a><br>
+<br>
+<br>
+<br>
+<br>
+</div></body>
+</html>
