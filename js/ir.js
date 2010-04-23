@@ -6,10 +6,10 @@
 	//lnk.href='/owccustom/css/base-ir.css';
 	//document.getElementsByTagName('head')[0].appendChild(lnk);
 	// Mint http://mint.us.oracle.com/wcmint
-	//var mint = document.createElement('script');
-	//mint.type='text/javascript';
-	//mint.src='http://appslab-7.us.oracle.com/wcmint/?js';
-	//document.getElementsByTagName('head')[0].appendChild(mint);
+	var mint = document.createElement('script');
+	mint.type='text/javascript';
+	mint.src='http://appslab-7.us.oracle.com/wcmint/?js';
+	document.getElementsByTagName('head')[0].appendChild(mint);
 	$(function() {
 
 		// http://ejohn.org/blog/javascript-array-remove
