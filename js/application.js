@@ -379,8 +379,8 @@
 							});
 						} else {
 							$('#pub-form').attr('action', '#/upload');
-							pubMessage('Something went wrong with your upload, probably a duplicate file or no access to upload. Check those first. Then send a note to <a href="mailto:irdevadmin_ww@oracle.com?subject=[WebCenter] Error with posting file through publisher">irdevadmin_ww@oracle.com</a>.');
 							$('#pub-loading').hide();
+							pubMessage('Something went wrong with your upload, probably a duplicate file or no access to upload. Check those first. Then send a note to <a href="mailto:irdevadmin_ww@oracle.com?subject=[WebCenter] Error with posting file through publisher">irdevadmin_ww@oracle.com</a>.');
 						}
 					});
 					$('body:last').append(iFrame);
