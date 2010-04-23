@@ -1,3 +1,8 @@
+/**
+ * WebCenter Activity Stream main for IR
+ * Released April 2010
+ * Rich Manalang (rich.manalang@oracle.com)
+ **/
 (function($) { //seal it up
 	$(function() { //wait for load
 
@@ -308,7 +313,7 @@
 			});
 
 			app.post('#/message', function(c) {
-				var msg = this.params['body'];
+				var msg = this.params['body'].replace(/^\s+|\s+$/g,'');
 				if (msg == "" || msg == "Share something...") return false;
 				$.ajax({
 					url: $.evalJSON(this.params['puburl']).msgBoard,
