@@ -61,11 +61,25 @@ var utils = function() {
 		});
 	}
 
+  function formatXhrMsg(d,overideMsg) {
+    if(overideMsg) {
+      return overideMsg + " (" + d.xhr.status + " " + d.xhr.statusText + ")";
+    } else {
+      try {
+        var sysMsg = $.evalJSON(d.xhr.responseText).message + " (" + d.xhr.status + " " + d.xhr.statusText + ")";
+      } catch(e) {
+        var sysMsg = d.xhr.status + " " + d.xhr.statusText;
+      }
+      return sysMsg;
+    }
+  }
+
 	return {
 		'linkTo': linkTo,
 		'resolveURLs': resolveURLs,
 		'timeAgoInWords': timeAgoInWords,
-		'randBase32': randBase32
+		'randBase32': randBase32,
+    'formatXhrMsg': formatXhrMsg
 	};
 } ();
 

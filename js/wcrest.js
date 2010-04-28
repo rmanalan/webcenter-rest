@@ -1,23 +1,23 @@
 // Main WebCenter module
 var webCenter = function(callback) {
-  var ucmPath = (location.hostname=="webcenter.us.oracle.com") ? "wir_idc" : "idc";
+	var ucmPath = (location.hostname == "webcenter.us.oracle.com") ? "wir_idc": "idc";
 	var settings = {
 		'hostname': location.hostname,
 		'port': location.port,
 		'perPage': 20,
-		'dynConverterUri': '/'+ucmPath+'/idcplg?IdcService=GET_DYNAMIC_CONVERSION&RevisionSelectionMethod=LatestReleased&dDocName='
+		'dynConverterUri': '/' + ucmPath + '/idcplg?IdcService=GET_DYNAMIC_CONVERSION&RevisionSelectionMethod=LatestReleased&dDocName='
 	};
 
-  // Support for user switching... this will flush the resourceIndex and currentUser
-  // cache then reload the page
-  $.ajaxSetup({
-    'error' : function(x,s,e){
-      if(x.status == 403){
-        $.jStorage.flush();
-        location.reload();
-      }
-    }
-  });
+	// Support for user switching... this will flush the resourceIndex and currentUser
+	// cache then reload the page
+	$.ajaxSetup({
+		'error': function(x, s, e) {
+			if (x.status == 403) {
+				$.jStorage.flush();
+				location.reload();
+			}
+		}
+	});
 
 	function init(options, callback) {
 		webCenter.settings = settings;
@@ -25,26 +25,41 @@ var webCenter = function(callback) {
 		webCenter.resourceIndexURL = webCenter.server + 'rest/api/resourceIndex';
 		if (typeof options == "object") $.extend(settings, options);
 		else callback = options;
-		getResourceIndex(function(data) {
+		getResourceIndex(function(d) {
 			// assumes that the user is not logged in
-			if (!data) callback(false);
+			if (d.error) callback(d);
 
-      // setup current user
-      userProfile.getCurrentUser(function(d) {
-        $.jStorage.set('wc',webCenter);
-        webCenter.currentUser = d;
-        callback(true);
-      });
+			// setup current user
+			userProfile.getCurrentUser(function(d) {
+				if (d.error) {
+          callback(false);
+					return;
+				}       
+				$.jStorage.set('wc', webCenter);
+				webCenter.currentUser = d;
+				callback(d);
+			});
 		});
 	}
 
 	function getResourceIndex(callback) {
-    try{$.extend(webCenter, {resourceIndex : $.jStorage.get('wc',webCenter).resourceIndex});}catch(e){};
-    if (!webCenter.resourceIndex) {
-      $.getJSON(webCenter.resourceIndexURL, function(data) {
-        webCenter.resourceIndex = data;
-        if (callback) callback(data);
-        else return webCenter.resourceIndex;
+		try {
+			$.extend(webCenter, {
+				resourceIndex: $.jStorage.get('wc', webCenter).resourceIndex
+			});
+		} catch(e) {};
+		if (!webCenter.resourceIndex) {
+      $.ajax({
+        url: webCenter.resourceIndexURL,
+        dataType: 'json',
+        error: function(x){
+          if(callback) callback({"error":true,"xhr":x});
+        },
+        success: function(d){
+          webCenter.resourceIndex = d;
+          if (callback) callback(d);
+          else return webCenter.resourceIndex;
+        }
       });
 		} else {
 			if (callback) callback(webCenter.resourceIndex);
@@ -113,14 +128,14 @@ var webCenter = function(callback) {
 		}
 	}
 
-  function appendCtrlStateParam(url){
-    if(window.parent && window.parent.currentCtrlState){
-      if(/\?/.test(url)) return url + '&_adf.ctrl-state=' + window.parent.currentCtrlState;
-      else return url + '?_adf.ctrl-state=' + window.parent.currentCtrlState;
-    } else {
-      return url;
-    }
-  }
+	function appendCtrlStateParam(url) {
+		if (window.parent && window.parent.currentCtrlState) {
+			if (/\?/.test(url)) return url + '&_adf.ctrl-state=' + window.parent.currentCtrlState;
+			else return url + '?_adf.ctrl-state=' + window.parent.currentCtrlState;
+		} else {
+			return url;
+		}
+	}
 
 	function resolveBindItems(d) {
 		var activityDescr = d.message.replace(/\{[^\}]*\}/g, function(key) {
@@ -176,7 +191,7 @@ var webCenter = function(callback) {
 
 	function getCmisObjectByPathUrl(path, callback) {
 		if (!webCenter.cmisObjectByPathUri) {
-			getCmisResource(webCenter.getResourceURL(webCenter.resourceIndex.links, 'urn:oracle:webcenter:cmis', false, null, null),function(d) {
+			getCmisResource(webCenter.getResourceURL(webCenter.resourceIndex.links, 'urn:oracle:webcenter:cmis', false, null, null), function(d) {
 				var tmpltNode = $.grep($(d).find(nsNode('cmisra:uritemplate')), function(e) {
 					return $(e).find(nsNode('cmisra:type')).text() == 'objectbypath';
 				});
@@ -237,7 +252,17 @@ var webCenter = function(callback) {
 			} else {
 				var url = links.replace("{startIndex}", startIndex).replace("{itemsPerPage}", webCenter.settings.perPage);
 			}
-			$.getJSON(url, callback);
+			$.ajax({
+				url: url,
+				dataType: 'json',
+				error: function(x) {
+					callback({
+						"error": true,
+						"xhr": x
+					})
+				},
+				success: callback
+			})
 		}
 		function nextActivityId() {
 			return activityId += 1;
@@ -253,16 +278,47 @@ var webCenter = function(callback) {
 		}
 	} ();
 
+	// Message Board module
+	var messageBoard = function() {
+		function postMessage(url, msg, callback) {
+			$.ajax({
+				url: url,
+				type: "post",
+				dataType: "json",
+				contentType: "application/json",
+				data: $.toJSON({
+					'body': utils.resolveURLs(msg)
+				}),
+				error: function(x) {
+          callback({"error":true, "xhr":x});
+				},
+				success: callback
+			});
+		}
+
+		return {
+			'postMessage': postMessage
+		}
+	} ();
+
 	// User Profile module
 	var userProfile = function() {
 		var avatarPath = 'webcenter/profilephoto/';
+
+    function callbackOrReturn(callback,d){
+      if (callback) {
+        callback(d);
+      } else {
+        return d;
+      }
+    }
 
 		function avatar(guid, size) {
 			return webCenter.server + 'webcenter/profilephoto/' + guid + '/' + size.toUpperCase();
 		}
 
 		function setCurrentUser(props) {
-      props['publicFolderPath'] = '/PersonalSpaces/' + props.emails.value + '/Public';
+			props['publicFolderPath'] = '/PersonalSpaces/' + props.emails.value + '/Public';
 			props['updateStatus'] = updateStatus;
 			props['avatar'] = function(size) {
 				size = size ? size: '';
@@ -278,24 +334,34 @@ var webCenter = function(callback) {
 		}
 
 		function getCurrentUser(callback) {
-      try{webCenter.currentUser = $.jStorage.get('wc').currentUser;}catch(e){};
+			try {
+				webCenter.currentUser = $.jStorage.get('wc').currentUser;
+			} catch(e) {};
 			if (!webCenter.currentUser) {
-				$.getJSON(webCenter.getResourceURL(webCenter.resourceIndex.links, 'urn:oracle:webcenter:people', false), function(data) {
-					setCurrentUser(data);
-					if (callback) callback(webCenter.currentUser);
-				});
+        $.ajax({
+          url: webCenter.getResourceURL(webCenter.resourceIndex.links, 'urn:oracle:webcenter:people', false),
+          dataType: 'json',
+          error:function(x){ if (callback) callback({"error": true, "xhr": x}) },
+          success: function(data) {
+					  setCurrentUser(data);
+					  if (callback) callback(webCenter.currentUser);
+				  }
+        });
 			} else {
-        setCurrentUser(webCenter.currentUser);
-				if (callback) callback(webCenter.currentUser);
-				return webCenter.currentUser;
+				setCurrentUser(webCenter.currentUser);
+        callbackOrReturn(callback, webCenter.currentUser);
 			}
 		}
 
 		function getListNames(callback) {
-			$.getJSON(webCenter.getResourceURL(webCenter.currentUser.links, 'urn:oracle:webcenter:people:person:listNames', false), function(d) {
-				webCenter.currentUser.listNames = d.items;
-				if (callback) callback(webCenter.currentUser.listNames);
-				else return webCenter.currentUser.listNames;
+			$.ajax({
+				'url': webCenter.getResourceURL(webCenter.currentUser.links, 'urn:oracle:webcenter:people:person:listNames', false),
+				'dataType': 'json',
+        'error': function(x){ if (callback) callback({"error": true, "xhr": x}) },
+				'success': function(d) {
+          webCenter.currentUser.listNames = d.items;
+          callbackOrReturn(callback, d.items);
+				}
 			});
 		}
 
@@ -304,22 +370,13 @@ var webCenter = function(callback) {
 			else var projectParam = false;
 			$.ajax({
 				'url': webCenter.getResourceURL(webCenter.resourceIndex.links, 'urn:oracle:webcenter:spaces', false, null, null, projectParam),
-				'method': 'get',
 				'dataType': 'json',
-			  'error' : function(x,s,e){
-			      if(x.status == 403){
-				      return $.evalJSON(x.responseText);
-			      }
-			    },
+        'error': function(x){ if (callback) callback({"error": true, "xhr": x}) },
 				'success': function(d) {
 					webCenter.currentUser.spaces = d.items;
-					if (callback) {
-						callback(d.items);
-					} else {
-						return d.items;
-					}
+          callbackOrReturn(callback, d.items);
 				}
-			});      
+			});
 		}
 
 		function getSpacesPaged(page, perPage, callback) {
@@ -329,29 +386,24 @@ var webCenter = function(callback) {
 			};
 			$.ajax({
 				'url': webCenter.getResourceURL(webCenter.resourceIndex.links, 'urn:oracle:webcenter:spaces', page, perPage, params),
-				'method': 'get',
 				'dataType': 'json',
-			  'error' : function(x,s,e){
-			      if(x.status == 403){
-				      return $.evalJSON(x.responseText);
-			      }
-			    },
+        'error': function(x){ if (callback) callback({"error": true, "xhr": x}) },
 				'success': function(d) {
 					webCenter.currentUser.spaces = d.items;
-					if (callback) {
-						callback(d.items);
-					} else {
-						return d.items;
-					}
+          callbackOrReturn(callback, d.items);
 				}
-			});      
+			});
 		}
 
 		function getConnections(callback) {
-			$.getJSON(webCenter.getResourceURL(webCenter.currentUser.links, 'urn:oracle:webcenter:people:person:list', false), function(d) {
-				callback($.extend(webCenter.currentUser, {
-					"connections": d.items
-				}));
+			$.ajax({
+				'url': webCenter.getResourceURL(webCenter.currentUser.links, 'urn:oracle:webcenter:people:person:list', false),
+				'dataType': 'json',
+        'error': function(x){ if (callback) callback({"error": true, "xhr": x}) },
+				'success': function(d) {
+					webCenter.currentUser.connections = d.items;
+          callbackOrReturn(callback, d.items);
+				}
 			});
 		}
 
@@ -361,18 +413,28 @@ var webCenter = function(callback) {
 					"status": d.note
 				}));
 			});
+			$.ajax({
+				'url': webCenter.getResourceURL(webCenter.currentUser.links, 'urn:oracle:webcenter:people:person:status', false),
+				'dataType': 'json',
+        'error': function(x){ if (callback) callback({"error": true, "xhr": x}) },
+				'success': function(d) {
+					webCenter.currentUser.status = d.items;
+          callbackOrReturn(callback, d.items);
+				}
+			});
 		}
 
 		function updateStatus(status) {
 			$.ajax({
-				url: webCenter.getResourceURL(webCenter.currentUser.links, 'urn:oracle:webcenter:people:person:status', false),
-				type: "put",
-				dataType: "json",
-				contentType: "application/json",
-				data: JSON.stringify({
+				'url': webCenter.getResourceURL(webCenter.currentUser.links, 'urn:oracle:webcenter:people:person:status', false),
+				'type': "put",
+				'dataType': "json",
+				'contentType': "application/json",
+				'data': JSON.stringify({
 					'note': utils.resolveURLs(status)
 				}),
-				success: function(d) {
+        'error': function(x){ if (callback) callback({"error": true, "xhr": x}) },
+				'success': function(d) {
 					return d;
 				}
 			});
@@ -395,6 +457,7 @@ var webCenter = function(callback) {
 	return {
 		'init': init,
 		'activityStream': activityStream,
+    'messageBoard': messageBoard,
 		'userProfile': userProfile,
 		'getResourceURL': getResourceURL,
 		'getTemplateItem': getTemplateItem,
@@ -403,7 +466,7 @@ var webCenter = function(callback) {
 		'getCmisObjectByPathUrl': getCmisObjectByPathUrl,
 		'getCmisResource': getCmisResource
 	}
-}();
+} ();
 
 /* 
 vim:ts=2:sw=2:expandtab
