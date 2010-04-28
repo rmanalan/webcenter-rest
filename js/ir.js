@@ -30,6 +30,9 @@
 		$('div.irltregion').parent().next().hide();
 		$('div.irltregion').parent().next().next().css('left', '197px');
 
+    // hide skin personalization
+    $('div[id=T:prefer:preferencesDialog] label:contains("Application Skin")').parent().parent().hide();
+
 		// logo area size
 		$('div[id*="pt_ps2::f"]').css('width', '211px');
 
