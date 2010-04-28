@@ -142,6 +142,10 @@
 
 			webCenter.currentUser.getSpacesPaged(0, 1000, function(d) {
 				if (d.error) {
+         if (d.xhr.status == 403) {
+            $.jStorage.flush();
+            location.reload();
+          }
 					pubMessage(utils.formatXhrMsg(d));
           callback();
 					return;
@@ -179,7 +183,11 @@
 
 	function renderStream(url, startIndex, clearActivities, callback) {
 		webCenter.activityStream.getActivities(url, startIndex, function(data) {
-			if (data.error) {
+			if (data.error) {  
+       if (data.xhr.status == 403) {
+          $.jStorage.flush();
+          location.reload();
+        }
 				pubMessage(utils.formatXhrMsg(data));
 				return;
 			}
