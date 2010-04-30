@@ -142,10 +142,6 @@
 
 			webCenter.currentUser.getSpacesPaged(0, 1000, function(d) {
 				if (d.error) {
-         if (d.xhr.status == 403) {
-            $.jStorage.flush();
-            location.reload();
-          }
 					pubMessage(utils.formatXhrMsg(d));
           callback();
 					return;
