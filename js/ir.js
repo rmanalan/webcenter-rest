@@ -47,10 +47,15 @@
 		}
 
     // Add scrollbar to nav menu if necessary
-    var menu = $('div[id=T:irmenu]');
-    var nav = menu.parent().parent();
-    var e = menu.position().top, d = menu.height(), c = nav.height(), b = d + e - c, a = d - b;
-    menu.height(a);
+    function resizeMenuNav(){
+      var menu = $('div[id=T:irmenu]');
+      var nav = menu.parent().parent();
+      var e = menu.position().top, d = menu.height(), c = nav.height(), b = d + e - c, a = d - b;
+      menu.height(a);
+    }
+    resizeMenuNav();
+
+    $(window).bind('resize',resizeMenuNav);
 
 		var switcher = $('div.irgroupswitcher');
 		var switcherPosn = switcher.offset();
