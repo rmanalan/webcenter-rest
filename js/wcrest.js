@@ -5,29 +5,22 @@ var webCenter = function(callback) {
 		'hostname': location.hostname,
 		'port': location.port,
 		'perPage': 20,
+    'resourceIndexPath': '/rest/api/resourceIndex',
 		'dynConverterUri': '/' + ucmPath + '/idcplg?IdcService=GET_DYNAMIC_CONVERSION&RevisionSelectionMethod=LatestReleased&dDocName='
 	};
 
-	// Support for user switching... this will flush the resourceIndex and currentUser
-	// cache then reload the page
-	$.ajaxSetup({
-		'error': function(x, s, e) {
-			if (x.status == 403) {
-				$.jStorage.flush();
-				location.reload();
-			}
-		}
-	});
-
 	function init(options, callback) {
 		webCenter.settings = settings;
-		webCenter.server = location.protocol + '//' + settings.hostname + ':' + settings.port + '/';
-		webCenter.resourceIndexURL = webCenter.server + 'rest/api/resourceIndex';
+		webCenter.server = location.protocol + '//' + settings.hostname + ':' + settings.port;
 		if (typeof options == "object") $.extend(settings, options);
 		else callback = options;
+		webCenter.resourceIndexURL = webCenter.server + settings.resourceIndexPath;
 		getResourceIndex(function(d) {
 			// assumes that the user is not logged in
-			if (d.error) callback(d);
+			if (d.error){
+        callback(d);
+        return;
+      }
 
 			// setup current user
 			userProfile.getCurrentUser(function(d) {
@@ -314,7 +307,7 @@ var webCenter = function(callback) {
     }
 
 		function avatar(guid, size) {
-			return webCenter.server + 'webcenter/profilephoto/' + guid + '/' + size.toUpperCase();
+			return webCenter.server + '/webcenter/profilephoto/' + guid + '/' + size.toUpperCase();
 		}
 
 		function setCurrentUser(props) {

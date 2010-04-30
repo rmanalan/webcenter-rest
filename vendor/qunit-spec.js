@@ -61,7 +61,7 @@
 
     // asserts that the method is defined (like respond_to?)
     defined: function(object, method) {
-      return QUnit.ok(QUnit.is('Function', object[method]), method + ' is not defined on ' + object);
+      return QUnit.ok(QUnit.is('Function', object[method]), method + ' is defined on ' + object);
     },
 
     // asserts that the object is of a certain type
@@ -71,7 +71,7 @@
     
     // assert a string matches a regex
     matches: function(matcher, string, message) {
-      return QUnit.ok(!!matcher.test(string), "expected: " + string + "match(" + matcher.toString() + ")");
+      return QUnit.ok(!!matcher.test(string), "expected: " + string + " match(" + matcher.toString() + ")");
     },
     
     // assert that a matching error is raised
@@ -120,7 +120,10 @@
       QUnit.ok(false, 'FLUNK');
     }
 
-  });
+  })
 
-
+  // Expose the API as global variables
+  $.extend(window, QUnit.Spec.prototype);
+  $.extend(window, QUnit);
+  
 })(jQuery);
