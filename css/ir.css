@@ -141,6 +141,7 @@ div.irmenu {
 	position:absolute;
 	top:36px;
 	width:182px;
+  overflow-y:auto;
 }
 div.irmenu ul {
   margin:0 3px 0 -8px !important;
