@@ -179,6 +179,7 @@
 
 	function renderStream(url, startIndex, clearActivities, callback) {
 		webCenter.activityStream.getActivities(url, startIndex, function(data) {
+      webCenter.activityStreamResults = data;
 			if (data.error) {  
        if (data.xhr.status == 403) {
           $.jStorage.flush();
@@ -252,7 +253,7 @@
 					};
 				};
 
-				as += '<tr id="act-' + actId + '" class="messages">' + '<td class="avatar">' + '<img class="avatar" width="50" height="50" src="' + webCenter.userProfile.avatarSmall(webCenter.getTemplateItem(d.templateParams.items, 'user').guid) + '"/>' + '</td>' + '<td class="activity">' + '<span class="activity">' + activitySummary + '</span> ' + '<span class="reltime">' + utils.timeAgoInWords(d.createdDate) + '</span>' + '<div class="detail">' + detail + '</div>' + '</td>' + '</tr>';
+				as += '<tr id="act-' + actId + '" class="messages">' + '<td class="avatar">' + '<img class="avatar" width="50" height="50" src="' + webCenter.userProfile.getAvatarUrl(d) + '"/>' + '</td>' + '<td class="activity">' + '<span class="activity">' + activitySummary + '</span> ' + '<span class="reltime">' + utils.timeAgoInWords(d.createdDate) + '</span>' + '<div class="detail">' + detail + '</div>' + '</td>' + '</tr>';
 			});
 			if (clearActivities) {
 				$('table.results').empty().append($(as));

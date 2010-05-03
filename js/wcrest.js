@@ -5,7 +5,7 @@ var webCenter = function(callback) {
 		'hostname': location.hostname,
 		'port': location.port,
 		'perPage': 20,
-    'resourceIndexPath': '/rest/api/resourceIndex',
+		'resourceIndexPath': '/rest/api/resourceIndex',
 		'dynConverterUri': '/' + ucmPath + '/idcplg?IdcService=GET_DYNAMIC_CONVERSION&RevisionSelectionMethod=LatestReleased&dDocName='
 	};
 
@@ -17,17 +17,17 @@ var webCenter = function(callback) {
 		webCenter.resourceIndexURL = webCenter.server + settings.resourceIndexPath;
 		getResourceIndex(function(d) {
 			// assumes that the user is not logged in
-			if (d.error){
-        callback(d);
-        return;
-      }
+			if (d.error) {
+				callback(d);
+				return;
+			}
 
 			// setup current user
 			userProfile.getCurrentUser(function(d) {
 				if (d.error) {
-          callback(false);
+					callback(false);
 					return;
-				}       
+				}
 				$.jStorage.set('wc', webCenter);
 				webCenter.currentUser = d;
 				callback(d);
@@ -42,18 +42,21 @@ var webCenter = function(callback) {
 			});
 		} catch(e) {};
 		if (!webCenter.resourceIndex) {
-      $.ajax({
-        url: webCenter.resourceIndexURL,
-        dataType: 'json',
-        error: function(x){
-          if(callback) callback({"error":true,"xhr":x});
-        },
-        success: function(d){
-          webCenter.resourceIndex = d;
-          if (callback) callback(d);
-          else return webCenter.resourceIndex;
-        }
-      });
+			$.ajax({
+				url: webCenter.resourceIndexURL,
+				dataType: 'json',
+				error: function(x) {
+					if (callback) callback({
+						"error": true,
+						"xhr": x
+					});
+				},
+				success: function(d) {
+					webCenter.resourceIndex = d;
+					if (callback) callback(d);
+					else return webCenter.resourceIndex;
+				}
+			});
 		} else {
 			if (callback) callback(webCenter.resourceIndex);
 			else return webCenter.resourceIndex;
@@ -283,7 +286,10 @@ var webCenter = function(callback) {
 					'body': utils.resolveURLs(msg)
 				}),
 				error: function(x) {
-          callback({"error":true, "xhr":x});
+					callback({
+						"error": true,
+						"xhr": x
+					});
 				},
 				success: callback
 			});
@@ -298,13 +304,13 @@ var webCenter = function(callback) {
 	var userProfile = function() {
 		var avatarPath = 'webcenter/profilephoto/';
 
-    function callbackOrReturn(callback,d){
-      if (callback) {
-        callback(d);
-      } else {
-        return d;
-      }
-    }
+		function callbackOrReturn(callback, d) {
+			if (callback) {
+				callback(d);
+			} else {
+				return d;
+			}
+		}
 
 		function avatar(guid, size) {
 			return webCenter.server + '/webcenter/profilephoto/' + guid + '/' + size.toUpperCase();
@@ -326,23 +332,39 @@ var webCenter = function(callback) {
 			return webCenter.currentUser;
 		}
 
+		function getAvatarUrl(d) {
+			var user = $.grep(d.templateParams.items, function(n) {
+				return n.key == '{actor[0]}';
+			})[0];
+			var link = $.grep(user.links, function(l) {
+				return l.rel == 'urn:oracle:webcenter:people:icon' && l.resourceType == 'urn:oracle:webcenter:people:person';
+			})[0];
+      console.log(link)
+			return link.href;
+		}
+
 		function getCurrentUser(callback) {
 			try {
 				webCenter.currentUser = $.jStorage.get('wc').currentUser;
 			} catch(e) {};
 			if (!webCenter.currentUser) {
-        $.ajax({
-          url: webCenter.getResourceURL(webCenter.resourceIndex.links, 'urn:oracle:webcenter:people', false),
-          dataType: 'json',
-          error:function(x){ if (callback) callback({"error": true, "xhr": x}) },
-          success: function(data) {
-					  setCurrentUser(data);
-					  if (callback) callback(webCenter.currentUser);
-				  }
-        });
+				$.ajax({
+					url: webCenter.getResourceURL(webCenter.resourceIndex.links, 'urn:oracle:webcenter:people', false),
+					dataType: 'json',
+					error: function(x) {
+						if (callback) callback({
+							"error": true,
+							"xhr": x
+						})
+					},
+					success: function(data) {
+						setCurrentUser(data);
+						if (callback) callback(webCenter.currentUser);
+					}
+				});
 			} else {
 				setCurrentUser(webCenter.currentUser);
-        callbackOrReturn(callback, webCenter.currentUser);
+				callbackOrReturn(callback, webCenter.currentUser);
 			}
 		}
 
@@ -350,10 +372,15 @@ var webCenter = function(callback) {
 			$.ajax({
 				'url': webCenter.getResourceURL(webCenter.currentUser.links, 'urn:oracle:webcenter:people:person:listNames', false),
 				'dataType': 'json',
-        'error': function(x){ if (callback) callback({"error": true, "xhr": x}) },
+				'error': function(x) {
+					if (callback) callback({
+						"error": true,
+						"xhr": x
+					})
+				},
 				'success': function(d) {
-          webCenter.currentUser.listNames = d.items;
-          callbackOrReturn(callback, d.items);
+					webCenter.currentUser.listNames = d.items;
+					callbackOrReturn(callback, d.items);
 				}
 			});
 		}
@@ -364,10 +391,15 @@ var webCenter = function(callback) {
 			$.ajax({
 				'url': webCenter.getResourceURL(webCenter.resourceIndex.links, 'urn:oracle:webcenter:spaces', false, null, null, projectParam),
 				'dataType': 'json',
-        'error': function(x){ if (callback) callback({"error": true, "xhr": x}) },
+				'error': function(x) {
+					if (callback) callback({
+						"error": true,
+						"xhr": x
+					})
+				},
 				'success': function(d) {
 					webCenter.currentUser.spaces = d.items;
-          callbackOrReturn(callback, d.items);
+					callbackOrReturn(callback, d.items);
 				}
 			});
 		}
@@ -380,10 +412,15 @@ var webCenter = function(callback) {
 			$.ajax({
 				'url': webCenter.getResourceURL(webCenter.resourceIndex.links, 'urn:oracle:webcenter:spaces', page, perPage, params),
 				'dataType': 'json',
-        'error': function(x){ if (callback) callback({"error": true, "xhr": x}) },
+				'error': function(x) {
+					if (callback) callback({
+						"error": true,
+						"xhr": x
+					})
+				},
 				'success': function(d) {
 					webCenter.currentUser.spaces = d.items;
-          callbackOrReturn(callback, d.items);
+					callbackOrReturn(callback, d.items);
 				}
 			});
 		}
@@ -392,10 +429,15 @@ var webCenter = function(callback) {
 			$.ajax({
 				'url': webCenter.getResourceURL(webCenter.currentUser.links, 'urn:oracle:webcenter:people:person:list', false),
 				'dataType': 'json',
-        'error': function(x){ if (callback) callback({"error": true, "xhr": x}) },
+				'error': function(x) {
+					if (callback) callback({
+						"error": true,
+						"xhr": x
+					})
+				},
 				'success': function(d) {
 					webCenter.currentUser.connections = d.items;
-          callbackOrReturn(callback, d.items);
+					callbackOrReturn(callback, d.items);
 				}
 			});
 		}
@@ -409,10 +451,15 @@ var webCenter = function(callback) {
 			$.ajax({
 				'url': webCenter.getResourceURL(webCenter.currentUser.links, 'urn:oracle:webcenter:people:person:status', false),
 				'dataType': 'json',
-        'error': function(x){ if (callback) callback({"error": true, "xhr": x}) },
+				'error': function(x) {
+					if (callback) callback({
+						"error": true,
+						"xhr": x
+					})
+				},
 				'success': function(d) {
 					webCenter.currentUser.status = d.items;
-          callbackOrReturn(callback, d.items);
+					callbackOrReturn(callback, d.items);
 				}
 			});
 		}
@@ -426,7 +473,12 @@ var webCenter = function(callback) {
 				'data': JSON.stringify({
 					'note': utils.resolveURLs(status)
 				}),
-        'error': function(x){ if (callback) callback({"error": true, "xhr": x}) },
+				'error': function(x) {
+					if (callback) callback({
+						"error": true,
+						"xhr": x
+					})
+				},
 				'success': function(d) {
 					return d;
 				}
@@ -443,6 +495,7 @@ var webCenter = function(callback) {
 			'avatarOriginal': function(guid) {
 				return avatar(guid, '')
 			},
+      'getAvatarUrl': getAvatarUrl,
 			'getCurrentUser': getCurrentUser
 		}
 	} ();
@@ -450,7 +503,7 @@ var webCenter = function(callback) {
 	return {
 		'init': init,
 		'activityStream': activityStream,
-    'messageBoard': messageBoard,
+		'messageBoard': messageBoard,
 		'userProfile': userProfile,
 		'getResourceURL': getResourceURL,
 		'getTemplateItem': getTemplateItem,
