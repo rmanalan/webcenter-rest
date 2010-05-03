@@ -339,7 +339,6 @@ var webCenter = function(callback) {
 			var link = $.grep(user.links, function(l) {
 				return l.rel == 'urn:oracle:webcenter:people:icon' && l.resourceType == 'urn:oracle:webcenter:people:person';
 			})[0];
-      console.log(link)
 			return link.href;
 		}
 
