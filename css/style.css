@@ -117,6 +117,7 @@ span.activity {
 	position:fixed;
   top:0;
   left:0;
+  width:100%;
 }
 #publisher {
 	border: 1px solid red; 
@@ -134,7 +135,6 @@ span.activity {
 	margin:10px;
 	background: url(../images/pubbg.png) repeat-x;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(255, 255, 255)), color-stop(1, rgb(230, 230, 230)));
-  width:100%;
 }
 #stream {
   margin-top:120px;
