@@ -42,8 +42,10 @@ a.no-underline, a.no-underline:active, a.no-underline:visited, a.no-underline:li
 	float:left;
 	margin-bottom:10px;
 }
-span.refresh {
-	float:right;
+div.refresh {
+  float:right;
+  margin-right:10px;
+  text-align:right;
 }
 #refresh span{display:none}
 #refresh, #refresh:hover, #refresh:focus {
@@ -110,8 +112,13 @@ span.activity {
 #header {
 	margin:10px 0 0 0;
 }
+#publisher-container {
+	background:url(../images/fadertop.png) repeat-x;
+	position:fixed;
+  top:0;
+  left:0;
+}
 #publisher {
-	position:relative;
 	border: 1px solid red; 
 	border:1px solid #ccc;
 	-moz-border-radius:7px;
@@ -124,9 +131,12 @@ span.activity {
 	-ms-filter: "progid:DXImageTransform.Microsoft.dropshadow(OffX=2px, OffY=2px, Color='#666666')"; /* IE8 */	
 	border:1px solid #ccc;
 	padding:5px 10px;
-	margin:10px 0;
+	margin:10px;
 	background: url(../images/pubbg.png) repeat-x;
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgb(255, 255, 255)), color-stop(1, rgb(230, 230, 230)));
+}
+#stream {
+  margin-top:120px;
 }
 #pub1-share {
 	text-shadow:#fff 1px 1px 0;
