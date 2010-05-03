@@ -113,7 +113,7 @@ span.activity {
 	margin:10px 0 0 0;
 }
 #publisher-container {
-	background:url(../images/fadertop.png) repeat-x;
+	background:url(../images/fadertop.png) bottom left repeat-x;
 	position:fixed;
   top:0;
   left:0;
