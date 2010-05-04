@@ -6,20 +6,20 @@
 (function($) { //seal it up
 	//	$(function() { //wait for load
 	var settings = {
-		applyActivityTypeBlackList: false,
+    applyActivityTypeBlackList: false,
 		activityTypeBlacklist: {
-			'delete-document': true,
-			'deleteGroupSpace': true,
-			'editPage': true,
-			'deletePage': true,
-			'update-document': true,
-			'editListRow': true,
-			'addListRow': true,
-			'updatePhoto': true,
-			'inviteForConnection': true,
-			'changeGroupSpaceRole': true,
-			'updateAnnouncement': true
-		}
+      'delete-document': true,
+      'deleteGroupSpace': true,
+      'editPage': true,
+      'deletePage': true,
+      'update-document': true,
+      'editListRow': true,
+      'addListRow': true,
+      'updatePhoto': true,
+      'inviteForConnection': true,
+      'changeGroupSpaceRole': true,
+      'updateAnnouncement': true
+    }
 	};
 
 	var infScrollActive = false;
@@ -169,23 +169,23 @@
 				}
 				for (var i = 0; i < d.length; i++) {
 					var o = d[i];
-					if (window.parent.canPublish && window.parent.canPublish[o.name] == false) continue;
+          if(window.parent.canPublish && window.parent.canPublish[o.name] == false) continue;
 					if (o.isOffline) continue;
-					var urls = $.toJSON({
-						'msgBoard': webCenter.getResourceURL(o.links, 'urn:oracle:webcenter:messageBoard', false),
-						'asUrl': webCenter.getResourceURL(o.links, 'urn:oracle:webcenter:activities:stream', true),
-						'spaceName': o.name
-					});
+          var urls = $.toJSON({
+            'msgBoard': webCenter.getResourceURL(o.links, 'urn:oracle:webcenter:messageBoard', false),
+            'asUrl': webCenter.getResourceURL(o.links, 'urn:oracle:webcenter:activities:stream', true),
+            'spaceName': o.name
+            });
 
-					// populate the publish to drop down
-					var pubOption = $('#grouppub option:first').clone().val(urls).text(o.displayName);
-					$('#grouppub').append(pubOption);
-					$('#grouppub option:first').attr('selected', 'true');
+          // populate the publish to drop down
+          var pubOption = $('#grouppub option:first').clone().val(urls).text(o.displayName);
+          $('#grouppub').append(pubOption);
+          $('#grouppub option:first').attr('selected', 'true');
 
-					// populate the view by drop down
-					var viewByOption = $('#groupfilter option:first').clone().val(urls).text(o.displayName);
-					$('#groupfilter').append(viewByOption);
-					$('#groupfilter option:first').attr('selected', 'true');
+          // populate the view by drop down
+          var viewByOption = $('#groupfilter option:first').clone().val(urls).text(o.displayName);
+          $('#groupfilter').append(viewByOption);
+          $('#groupfilter option:first').attr('selected', 'true');
 				};
 
 				// not sure we need to wait for the spaces api to return before we can render the stream
@@ -220,12 +220,12 @@
 				$('table.results').show();
 			}
 
-			var as = "";
+			var as="";
 			for (var i = 0; i < data.items.length; i++) {
 				var d = data.items[i];
-				var actId = webCenter.activityStream.nextActivityId();
-
-				// filter out unwanted activity types
+ 				var actId = webCenter.activityStream.nextActivityId();
+       
+        // filter out unwanted activity types
 				if (settings.applyActivityTypeBlackList && settings.activityTypeBlacklist[d.activityType]) continue;
 
 				var activitySummary = webCenter.resolveBindItems(d);
@@ -236,7 +236,9 @@
 						return /\.(jpg|jpeg|gif|png)$/i.test($(e).text())
 					});
 					if (image[0]) {
-						detail = [detail, '<p>', '<a class="inline" href="', $(image[0]).attr('href'), '" target="_blank"><img class="inline hide" src="', $(image[0]).attr('href'), '" /></a></p>'].join('');
+						detail = [detail,'<p>', '<a class="inline" href="', 
+              $(image[0]).attr('href'), '" target="_blank"><img class="inline hide" src="',
+              $(image[0]).attr('href'), '" /></a></p>'].join('');
 					} else {
 						// inline ppts
 						var ppt = $.grep($(activitySummary).filter('a'), function(e) {
@@ -255,10 +257,11 @@
 									var slideImages = $('img', $(d));
 									var slides = "";
 									for (var i = 0; i < slideImages.length; i++) {
-										slides = [slides, '<li><img class="slide" src="', $(slideImages[i]).attr('src'), '" width="500" height="375" /></li>'].join('');
+										slides = [slides,'<li><img class="slide" src="', $(slideImages[i]).attr('src'),
+                      '" width="500" height="375" /></li>'].join('');
 									};
 									slides = ['<div id="det-', actId, '" class="swvp"><ul>', slides, '</ul></div>'].join();
-									$(slides).appendTo(['#act-', actId, ' div.detail'].join('')).slideViewerPro({
+									$(slides).appendTo(['#act-',actId,' div.detail'].join('')).slideViewerPro({
 										galBorderWidth: 1,
 										galBorderColor: '#ccc',
 										thumbsBorderWidth: 1,
@@ -276,7 +279,11 @@
 					};
 				};
 
-				as = [as, '<tr id="act-', actId, '" class="messages"><td class="avatar"><img class="avatar" width="50" height="50" src="', webCenter.userProfile.getAvatarUrl(d), '"/></td><td class="activity"><span class="activity">', activitySummary, '</span> <span class="reltime">', utils.timeAgoInWords(d.createdDate), '</span><div class="detail">', detail, '</div></td></tr>'].join('');
+				as = [as,'<tr id="act-', actId, 
+          '" class="messages"><td class="avatar"><img class="avatar" width="50" height="50" src="',
+          webCenter.userProfile.getAvatarUrl(d),'"/></td><td class="activity"><span class="activity">',
+          activitySummary,'</span> <span class="reltime">', utils.timeAgoInWords(d.createdDate),
+          '</span><div class="detail">', detail, '</div></td></tr>'].join('');
 			};
 			if (clearActivities) {
 				$('table.results').empty().append($(as));
@@ -333,25 +340,26 @@
 			// Need to come up with a better way to access the spaces api
 			// for users who are not members of a space
 			var groupName = this.params['name'];
+      if(window.parent.canPublish && window.parent.canPublish[groupName]) {
+        $('#publisher').addClass('hide');
+      }
 			if (groupName == 'My connections') {
 				this.redirect('#/');
 			} else {
 				var checkIfSpacesLoaded = function() {
 					if (webCenter.currentUser.spaces) {
-						try {
-							var d = $.grep($('#groupfilter option'), function(n) {
+						var d = $.grep($('#groupfilter option'), function(n) {
+							try {
 								return $.evalJSON($(n).val()).spaceName == decodeURI(groupName)
-							})[0];
-							$('#pub1-share span').text(["Share something with ", d.innerHTML].join(''));
-							$('#pub1-share select').hide();
-							var url = $.evalJSON(d.value).asUrl;
-							var activityTemplate = $('li.messages:first');
-							$('ol.results').empty().append(activityTemplate).hide();
-							renderStream(url, 0, true);
-							app.trigger('update-filters', app.getLocation());
-						} catch(e) {
-							$('#publisher').addClass('hide');
-						}
+							} catch(e) {}
+						})[0];
+						$('#pub1-share span').text(["Share something with ", d.innerHTML].join(''));
+						$('#pub1-share select').hide();
+						var url = $.evalJSON(d.value).asUrl;
+						var activityTemplate = $('li.messages:first');
+						$('ol.results').empty().append(activityTemplate).hide();
+						renderStream(url, 0, true);
+						app.trigger('update-filters', app.getLocation());
 					} else {
 						setTimeout(checkIfSpacesLoaded, 100);
 					};
@@ -389,7 +397,7 @@
 
 			// Resolve CMIS URL to post to
 			var cmisName = $.evalJSON(params['puburl']).spaceName;
-			var UCMPath = cmisName ? ["/Spaces/", cmisName].join('') : null;
+			var UCMPath = cmisName ? ["/Spaces/", cmisName].join(''): null;
 			webCenter.getCmisFolderUrl(UCMPath, function(url) {
 
 				// Prepare uploader iframe
