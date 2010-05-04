@@ -8,13 +8,13 @@
     <![endif]-->
     <!--link href="./css/screen.css" type="text/css" media="screen" rel="stylesheet"/>
     <link href="./css/style.css" type="text/css" media="screen" rel="stylesheet"/-->
-    <link href="./css/base-as.css" type="text/css" media="screen" rel="stylesheet"/>
+    <link href="./css/base-as.css?20100503" type="text/css" media="screen" rel="stylesheet"/>
     <script src="./js/jquery.js"></script>
     <title>WebCenter Activities</title>
   </head>
   <body>
     <div id="msg" class="hide"></div>
-    
+
     <div id="loading-ind" class="hide"></div>
     <div class="main">
       <ul class="headnav">
@@ -23,83 +23,87 @@
       <div id="main-content">
         <div id="publisher-container">
           <div id="publisher">
-            <form id="pub-form" action="#/message" method="post" enctype="multipart/form-data">
-              <div id="pub1-share" class="loud">
-                <span>Share something with</span>
-                <select id="grouppub" name="puburl">
-                  <option value="">My Connections</option>
-                </select>
-                <script type="text/javascript" charset="utf-8">
-                  if(/^#\/group\//.test(location.hash)) $('#pub1-share select').hide();
-                </script>
-              </div>
-              <div id="pub1-text">
-                <table id="pub-table" cellpadding="0" cellspacing="0" border="0">
-                  <tbody>
-                    <tr>
-                      <td class="pub-share-textarea">
-                        <textarea id="pub-text" name="body" class="autoresize" placeholder="Share something..."></textarea>
-                      </td>
-                      <td class="pub-share-button">
-                        <input id="share" type="image" src="images/sharebutton.png" width="54" height="28" border="0" alt="Share"/>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-              <div id="pub1-upload">
-                <a href="#" id="pub1-attachment" class="no-underline">Attach file</a>
-                <span id="pub1-attachment-descr" class="quiet">(image, ppt, xls, doc, etc.)</span>
-                <div id="pub1-upload-field" class="hide">
-                  <input type="file" name="fileUpload" />
-                  <input type="hidden" name="contentId" />
-                  <input type="hidden" name="comments" />
-                  <input type="hidden" name="simpleResponse" value="true" />
-                  <a href="" class="cancel">Cancel</a>
+            <div class="irboxtop"><span></span></div> 
+            <div class="irboxcenter"> 
+              <form id="pub-form" action="#/message" method="post" enctype="multipart/form-data">
+                <div id="pub1-share" class="loud">
+                  <span>Share something with</span>
+                  <select id="grouppub" name="puburl">
+                    <option value="">My Connections</option>
+                  </select>
+                  <script type="text/javascript" charset="utf-8">
+                    if(/^#\/group\//.test(location.hash)) $('#pub1-share select').hide();
+                    </script>
+                  </div>
+                  <div id="pub1-text">
+                    <table id="pub-table" cellpadding="0" cellspacing="0" border="0">
+                      <tbody>
+                        <tr>
+                          <td class="pub-share-textarea">
+                            <textarea id="pub-text" name="body" class="autoresize" placeholder="Share something..."></textarea>
+                          </td>
+                          <td class="pub-share-button">
+                            <input id="share" type="image" src="images/sharebutton.png" width="54" height="28" border="0" alt="Share"/>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div id="pub1-upload">
+                    <a href="#" id="pub1-attachment" class="no-underline">Attach file</a>
+                    <span id="pub1-attachment-descr" class="quiet">(image, ppt, xls, doc, etc.)</span>
+                    <div id="pub1-upload-field" class="hide">
+                      <input type="file" name="fileUpload" />
+                      <input type="hidden" name="contentId" />
+                      <input type="hidden" name="comments" />
+                      <input type="hidden" name="simpleResponse" value="true" />
+                      <a href="" class="cancel">Cancel</a>
+                    </div>
+                  </div>
+                </form>
+                <div id="pub-notifications">
+                  <img id="pub-loading" src="images/ajax-loader.gif" width="16px" height="16px" alt="loading..."/>
                 </div>
-              </div>
-            </form>
-            <div id="pub-notifications">
-              <img id="pub-loading" src="images/ajax-loader.gif" width="16px" height="16px" alt="loading..."/>
+              </div> 
+              <div class="irboxbottom"><span></span></div> 
+
+            </div><!-- #publisher -->
+            <div class="filter refresh">
+              <a href="" id="refresh" title="Refresh"><span>Refresh</span></a>
             </div>
-          </div><!-- #publisher -->
-          <div class="filter refresh">
-            <a href="" id="refresh" title="Refresh"><span>Refresh</span></a>
           </div>
-        </div>
 
-        <div id="stream">
-          <div id="filters">
-            <span class="filter hide" id="groupfiltercontainer">
-              <label for="groupfilter">View:</label>
-              <select name="groupfilter" id="groupfilter">
-                <option>My connections</option>
-              </select>&nbsp;
-            </span>
-          </div>
-          <br clear="both"/>
-          <div id="no-activities" class="hide">No activities found.</div>
-          <table class="results hide" cellspacing="0" cellpadding="0" border="0">
-          </table>
-        </div><!-- #stream -->
-      </div><!-- #main-content -->
-    </div><!-- #main -->
-    <div id="fader"></div>
-    <!--script src="./js/curvy.js"></script>
-    <script src="./js/timeago.js"></script>
-    <script src="./js/jquery.json-2.2.js"></script>
-    <script src="./js/jstorage.js"></script>
-    <script src="./js/sammy-latest.min.js"></script>
-    <script src="./js/autoresize.js"></script>
-    <script src="./js/slideviewpro.js"></script>
-    <script src="./js/html-sanitizer-minified.js"></script>
-    <script src="./js/wcutils.js"></script>
-    <script src="./js/wcrest.js"></script>
-    <script src="./js/application.js"></script-->
-    <script src="./js/base-as.js?20100428"></script>
-  </body>
-</html>
+          <div id="stream">
+            <div id="filters">
+              <span class="filter hide" id="groupfiltercontainer">
+                <label for="groupfilter">View:</label>
+                <select name="groupfilter" id="groupfilter">
+                  <option>My connections</option>
+                </select>&nbsp;
+              </span>
+            </div>
+            <br clear="both"/>
+            <div id="no-activities" class="hide">No activities found.</div>
+            <table class="results hide" cellspacing="0" cellpadding="0" border="0">
+            </table>
+          </div><!-- #stream -->
+        </div><!-- #main-content -->
+      </div><!-- #main -->
+      <div id="fader"></div>
+      <!--script src="./js/timeago.js"></script>
+      <script src="./js/jquery.json-2.2.js"></script>
+      <script src="./js/jstorage.js"></script>
+      <script src="./js/sammy-latest.min.js"></script>
+      <script src="./js/autoresize.js"></script>
+      <script src="./js/slideviewpro.js"></script>
+      <script src="./js/html-sanitizer-minified.js"></script>
+      <script src="./js/wcutils.js"></script>
+      <script src="./js/wcrest.js"></script>
+      <script src="./js/application.js"></script-->
+      <script src="./js/base-as.js?20100503"></script>
+    </body>
+  </html>
 
-<!-- 
-vim:ts=2:sw=2:expandtab 
--->
+  <!-- 
+  vim:ts=2:sw=2:expandtab 
+  -->

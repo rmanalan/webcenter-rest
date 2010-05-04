@@ -14,7 +14,6 @@ clean-css:
 
 compile-as-js:
 	java -jar lib/compiler.jar\
-	  --js=js/curvy.js\
 	  --js=js/timeago.js\
 	  --js=js/jquery.json-2.2.js\
 	  --js=js/jstorage.js\
