@@ -169,23 +169,23 @@
 				}
 				for (var i = 0; i < d.length; i++) {
 					var o = d[i];
-					if (!o.isOffline) {
-						var urls = $.toJSON({
-							'msgBoard': webCenter.getResourceURL(o.links, 'urn:oracle:webcenter:messageBoard', false),
-							'asUrl': webCenter.getResourceURL(o.links, 'urn:oracle:webcenter:activities:stream', true),
-							'spaceName': o.name
-						});
+          if(window.parent.canPublish && window.parent.canPublish[o.name] == false) continue;
+					if (o.isOffline) continue;
+          var urls = $.toJSON({
+            'msgBoard': webCenter.getResourceURL(o.links, 'urn:oracle:webcenter:messageBoard', false),
+            'asUrl': webCenter.getResourceURL(o.links, 'urn:oracle:webcenter:activities:stream', true),
+            'spaceName': o.name
+            });
 
-						// populate the publish to drop down
-						var pubOption = $('#grouppub option:first').clone().val(urls).text(o.displayName);
-						$('#grouppub').append(pubOption);
-						$('#grouppub option:first').attr('selected', 'true');
+          // populate the publish to drop down
+          var pubOption = $('#grouppub option:first').clone().val(urls).text(o.displayName);
+          $('#grouppub').append(pubOption);
+          $('#grouppub option:first').attr('selected', 'true');
 
-						// populate the view by drop down
-						var viewByOption = $('#groupfilter option:first').clone().val(urls).text(o.displayName);
-						$('#groupfilter').append(viewByOption);
-						$('#groupfilter option:first').attr('selected', 'true');
-					}
+          // populate the view by drop down
+          var viewByOption = $('#groupfilter option:first').clone().val(urls).text(o.displayName);
+          $('#groupfilter').append(viewByOption);
+          $('#groupfilter option:first').attr('selected', 'true');
 				};
 
 				// not sure we need to wait for the spaces api to return before we can render the stream
