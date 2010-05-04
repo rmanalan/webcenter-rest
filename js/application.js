@@ -18,9 +18,9 @@
       'updatePhoto': true,
       'inviteForConnection': true,
       'changeGroupSpaceRole': true,
-      'updateAnnouncement': true,
+      'updateAnnouncement': true
     }
-	}
+	};
 
 	var infScrollActive = false;
 
