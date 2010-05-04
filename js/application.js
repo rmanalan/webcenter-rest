@@ -337,8 +337,8 @@
 				this.redirect('#/');
 			} else {
 				var checkIfSpacesLoaded = function() {
-					try {
-						if (webCenter.currentUser.spaces) {
+					if (webCenter.currentUser.spaces) {
+						try {
 							var d = $.grep($('#groupfilter option'), function(n) {
 								return $.evalJSON($(n).val()).spaceName == decodeURI(groupName)
 							})[0];
@@ -350,8 +350,8 @@
 							renderStream(url, 0, true);
 							app.trigger('update-filters', app.getLocation());
 						} catch(e) {
-              $('#publisher').addClass('hide');
-            }
+							$('#publisher').addClass('hide');
+						}
 					} else {
 						setTimeout(checkIfSpacesLoaded, 100);
 					};
