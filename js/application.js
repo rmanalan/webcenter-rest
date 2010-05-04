@@ -353,6 +353,7 @@
 								return $.evalJSON($(n).val()).spaceName == decodeURI(groupName)
 							} catch(e) {}
 						})[0];
+            console.log(d);
 						$('#pub1-share span').text(["Share something with ", d.innerHTML].join(''));
 						$('#pub1-share select').hide();
 						var url = $.evalJSON(d.value).asUrl;
