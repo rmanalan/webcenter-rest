@@ -2,7 +2,7 @@
 var utils = function() {
 	function linkTo(url, text, newwin) {
 		newwin = newwin ? ' target="_blank"': "";
-		return '<a href="' + url + '"' + newwin + '>' + text + '</a>'
+		return ['<a href="', url, '"', newwin, '>', text, '</a>'].join('');
 	}
 
 	function timeAgoInWords(dttm) {
@@ -40,19 +40,19 @@ var utils = function() {
 			}
 		});
 	}
-	function resolveGists(str) {
-		return str.replace(/http:\/\/gist\.github\.com\/([0-9]*)[&\w;=\+_\-]*/, function(url, id) {
-			return '<script src="http://gist.github.com/' + id + '.js"></script>';
-		});
-	}
 	function resolveImages(str) {
 		return str.replace(/(^|[\n ])http(|s):\/\/.+(jpg|jpeg|gif|png|bmp)/i, function(token) {
-			return '<p><a class="inline" href="' + token + '" target="_blank"><img class="inline" src="' + token + '" alt=""/></a></p>';
+			return ['<p><a class="inline" href="', token, 
+        '" target="_blank"><img class="inline" src="', token, '" alt=""/></a></p>'].join('');
 		});
 	}
 	function resolveYouTubeURLs(str) {
 		return str.replace(/http:\/\/(www.)?youtube\.com\/watch\?v=([A-Za-z0-9._%-]*)[&\w;=\+_\-]*/, function(url, token1, id) {
-			return linkTo(url, url, true) + '<p><object id="vid' + id + '" width="500" height="300">' + '<param name="movie" value="http://www.youtube.com/v/' + id + '?autoplay=1"></param>' + '<param name="wmode" value="transparent"></param>' + '<embed src="http://www.youtube.com/v/' + id + '?autoplay=0" type="application/x-shockwave-flash" wmode="transparent" ' + 'width="500" height="300"></embed></object></p>';
+			return [linkTo(url, url, true), '<p><object id="vid', id,
+        '" width="500" height="300"><param name="movie" value="http://www.youtube.com/v/',
+        id, '?autoplay=1"></param>' + '<param name="wmode" value="transparent"></param>',
+        '<embed src="http://www.youtube.com/v/', id, 
+        '?autoplay=0" type="application/x-shockwave-flash" wmode="transparent" width="500" height="300"></embed></object></p>'].join('');
 		});
 	}
 	function resolveVimeoURLs(str) {

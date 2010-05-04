@@ -6,15 +6,15 @@ var webCenter = function(callback) {
 		'port': location.port,
 		'perPage': 20,
 		'resourceIndexPath': '/rest/api/resourceIndex',
-		'dynConverterUri': '/' + ucmPath + '/idcplg?IdcService=GET_DYNAMIC_CONVERSION&RevisionSelectionMethod=LatestReleased&dDocName='
+		'dynConverterUri': ['/', ucmPath, '/idcplg?IdcService=GET_DYNAMIC_CONVERSION&RevisionSelectionMethod=LatestReleased&dDocName='].join('')
 	};
 
 	function init(options, callback) {
 		webCenter.settings = settings;
-		webCenter.server = location.protocol + '//' + settings.hostname + ':' + settings.port;
+		webCenter.server = [location.protocol, '//', settings.hostname, ':', settings.port].join('');
 		if (typeof options == "object") $.extend(settings, options);
 		else callback = options;
-		webCenter.resourceIndexURL = webCenter.server + settings.resourceIndexPath;
+		webCenter.resourceIndexURL = [webCenter.server, settings.resourceIndexPath].join('');
 		getResourceIndex(function(d) {
 			// assumes that the user is not logged in
 			if (d.error) {
@@ -66,7 +66,7 @@ var webCenter = function(callback) {
 	function getResourceURL(links, urn, startIndex, perPage, params, projection) {
 		if (!perPage) perPage = settings.perPage;
 		if (projection) {
-			var projectParam = "&projection=" + projection;
+			var projectParam = ["&projection=", projection].join('');
 		} else {
 			var projectParam = "";
 		}
@@ -86,25 +86,25 @@ var webCenter = function(callback) {
 					var results = $.grep(links, function(n) {
 						return n.rel == 'alternate';
 					});
-					if (results.length == 1) return results[0].href + projectParam;
+					if (results.length == 1) return [results[0].href, projectParam].join('');
 					else return null;
 				} else {
-					return results[0].href + projectParam;
+					return [results[0].href, projectParam].join('');
 				}
 			}
 			if (results[0].template) {
 				// return template url if startIndex is true
-				if (startIndex == true && typeof(startIndex) == 'boolean') return results[0].template + projectParam;
+				if (startIndex == true && typeof(startIndex) == 'boolean') return [results[0].template, projectParam].join('');
 				// return paged url if startIndex is a number
 				var url = results[0].template.replace("{itemsPerPage}", perPage);
 				if (!startIndex) startIndex = "0";
 				url = url.replace("{startIndex}", startIndex)
 				if (params) {
 					for (param in params) {
-						url = url.replace('{' + param + '}', params[param]);
+						url = url.replace(['{', param, '}'].join(''), params[param]);
 					}
 				}
-				return url + projectParam;
+				return [url, projectParam].join('');
 			} else {
 				return results[0].href;
 			}
@@ -126,8 +126,8 @@ var webCenter = function(callback) {
 
 	function appendCtrlStateParam(url) {
 		if (window.parent && window.parent.currentCtrlState) {
-			if (/\?/.test(url)) return url + '&_adf.ctrl-state=' + window.parent.currentCtrlState;
-			else return url + '?_adf.ctrl-state=' + window.parent.currentCtrlState;
+			if (/\?/.test(url)) return [url, '&_adf.ctrl-state=', window.parent.currentCtrlState].join('');
+			else return [url, '?_adf.ctrl-state=', window.parent.currentCtrlState].join('');
 		} else {
 			return url;
 		}
@@ -142,19 +142,22 @@ var webCenter = function(callback) {
 				var url = $.grep(item.links, function(l) {
 					return l.type == 'text/html';
 				})[0].href;
-				return ' <a href="' + appendCtrlStateParam(url) + '" target="_top" class="' + item.type + '" rel="' + item.id + '">' + item.displayName + '</a> ';
+				return [' <a href="', appendCtrlStateParam(url), '" target="_top" class="',
+          item.type, '" rel="', item.id, '">', item.displayName, '</a> '].join('');
 			} catch(err) {
-				return ' ' + item.displayName;
+				return [' ', item.displayName].join('');
 			}
 		});
 		if (d.groupSpace) {
-			activityDescr += ' in <a href="' + appendCtrlStateParam(webCenter.getResourceURL(d.groupSpace.links, 'urn:oracle:webcenter:space', false)) + '" target="_top">' + d.groupSpace.displayName + '</a>';
+			activityDescr = [activityDescr,' in <a href="', 
+        appendCtrlStateParam(webCenter.getResourceURL(d.groupSpace.links, 'urn:oracle:webcenter:space', false)),
+        '" target="_top">', d.groupSpace.displayName, '</a>'].join('');
 		};
 		return activityDescr;
 	}
 
 	function nsNode(nodeName) {
-		if ($.browser.webkit) return "[nodeName=" + nodeName + "]";
+		if ($.browser.webkit) return ["[nodeName=", nodeName, "]"].join('');
 		else return nodeName.split(':').join('\\:');
 	}
 
@@ -194,10 +197,10 @@ var webCenter = function(callback) {
 				var tmplt = $(tmpltNode).find(nsNode('cmisra:template')).text();
 				tmplt = tmplt.split('&')[0].replace(/\{[^\}]*\}/g, '');
 				webCenter.cmisObjectByPathUri = tmplt;
-				callback(tmplt + path);
+				callback([tmplt, path].join(''));
 			});
 		} else {
-			callback(webCenter.cmisObjectByPathUri + path);
+			callback([webCenter.cmisObjectByPathUri, path].join(''));
 		}
 	}
 
@@ -313,11 +316,11 @@ var webCenter = function(callback) {
 		}
 
 		function avatar(guid, size) {
-			return webCenter.server + '/webcenter/profilephoto/' + guid + '/' + size.toUpperCase();
+			return [webCenter.server, '/webcenter/profilephoto/', guid, '/', size.toUpperCase()].join('');
 		}
 
 		function setCurrentUser(props) {
-			props['publicFolderPath'] = '/PersonalSpaces/' + props.emails.value + '/Public';
+			props['publicFolderPath'] = ['/PersonalSpaces/', props.emails.value, '/Public'].join('');
 			props['updateStatus'] = updateStatus;
 			props['avatar'] = function(size) {
 				size = size ? size: '';
@@ -342,7 +345,11 @@ var webCenter = function(callback) {
         })[0];
         return link.href;
       } catch (e) {
-        return "";
+        //TODO / FIXME need to use my old avatar method in case an activity doesn't have an avatar link
+        var user = $.grep(d.templateParams.items, function(n) {
+          return n.key == '{actor[0]}';
+        })[0];
+        return userProfile.avatarSmall(user.guid);
       }
 		}
 

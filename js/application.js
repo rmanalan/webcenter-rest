@@ -5,6 +5,23 @@
  **/
 (function($) { //seal it up
 	//	$(function() { //wait for load
+	var settings = {
+    applyActivityTypeBlackList: true,
+		activityTypeBlacklist: {
+      'delete-document': true,
+      'deleteGroupSpace': true,
+      'editPage': true,
+      'deletePage': true,
+      'update-document': true,
+      'editListRow': true,
+      'addListRow': true,
+      'updatePhoto': true,
+      'inviteForConnection': true,
+      'changeGroupSpaceRole': true,
+      'updateAnnouncement': true,
+    }
+	}
+
 	var infScrollActive = false;
 
 	// A shitty fucking hack to tell IE never to cache ajax responses
@@ -78,12 +95,12 @@
 	function initApp(callback) {
 		webCenter.init(function(resp) {
 			if (resp.error) {
-        if (resp.xhr.status == 403) {
-          $.jStorage.flush();
-          location.reload();
-        } else if(resp.xhr.status == 401) {
-          $('#msg').html('You are not loged in... please <a href="/webcenter/wcAuthentication/?login=true&success_url=/../owccustom/index.html">login</a> first').slideDown();
-        }
+				if (resp.xhr.status == 403) {
+					$.jStorage.flush();
+					location.reload();
+				} else if (resp.xhr.status == 401) {
+					$('#msg').html('You are not loged in... please <a href="/webcenter/wcAuthentication/?login=true&success_url=/../owccustom/index.html">login</a> first').slideDown();
+				}
 				return false;
 			}
 
@@ -121,7 +138,7 @@
 				if (this.value) var spaceName = $.evalJSON(this.value).spaceName;
 				else var spaceName = escape($('option:selected', this).text());
 
-				location.hash = '#/group/' + spaceName;
+				location.hash = ['#/group/', spaceName].join('');
 			});
 
 			// Sets url for default stream
@@ -137,20 +154,21 @@
 			$('img.slide').live('click', function() {
 				var src = $(this).parent().next().find('img').attr('src');
 				var slides = $(this).parents('div.swvp');
-				slides.next().find('img[src*="' + src.split('/').slice( - 1)[0] + '"]').parent().trigger('click');
+				slides.next().find(['img[src*="', src.split('/').slice( - 1)[0], '"]'].join('')).parent().trigger('click');
 			});
 
 			webCenter.currentUser.getSpacesPaged(0, 1000, function(d) {
 				if (d.error) {
 					pubMessage(utils.formatXhrMsg(d));
-          callback();
+					callback();
 					return;
 				}
 				if (webCenter.currentUser.spaces && webCenter.currentUser.spaces.length == 0) {
 					callback();
 					return;
 				}
-				$.each(d, function(i, o) {
+				for (var i = 0; i < d.length; i++) {
+					var o = d[i];
 					if (!o.isOffline) {
 						var urls = $.toJSON({
 							'msgBoard': webCenter.getResourceURL(o.links, 'urn:oracle:webcenter:messageBoard', false),
@@ -168,7 +186,7 @@
 						$('#groupfilter').append(viewByOption);
 						$('#groupfilter option:first').attr('selected', 'true');
 					}
-				});
+				};
 
 				// not sure we need to wait for the spaces api to return before we can render the stream
 				//callback();
@@ -179,12 +197,12 @@
 
 	function renderStream(url, startIndex, clearActivities, callback) {
 		webCenter.activityStream.getActivities(url, startIndex, function(data) {
-      webCenter.activityStreamResults = data;
-			if (data.error) {  
-       if (data.xhr.status == 403) {
-          $.jStorage.flush();
-          location.reload();
-        }
+			webCenter.activityStreamResults = data;
+			if (data.error) {
+				if (data.xhr.status == 403) {
+					$.jStorage.flush();
+					location.reload();
+				}
 				pubMessage(utils.formatXhrMsg(data));
 				return;
 			}
@@ -202,18 +220,25 @@
 				$('table.results').show();
 			}
 
-			var as;
-			$.each(data.items, function(i, d) {
+			var as="";
+			for (var i = 0; i < data.items.length; i++) {
+				var d = data.items[i];
+ 				var actId = webCenter.activityStream.nextActivityId();
+       
+        // filter out unwanted activity types
+				if (settings.applyActivityTypeBlackList && settings.activityTypeBlacklist[d.activityType]) continue;
+
 				var activitySummary = webCenter.resolveBindItems(d);
 				var detail = d.detail ? d.detail: "";
-				var actId = webCenter.activityStream.nextActivityId();
 				if (d.activityType == 'create-document') {
 					// inline images
 					var image = $.grep($(activitySummary).filter('a'), function(e) {
 						return /\.(jpg|jpeg|gif|png)$/i.test($(e).text())
 					});
 					if (image[0]) {
-						detail += '<p>' + '<a class="inline" href="' + $(image[0]).attr('href') + '" target="_blank">' + '<img class="inline hide" src="' + $(image[0]).attr('href') + '" />' + '</a>' + '</p>';
+						detail = [detail,'<p>', '<a class="inline" href="', 
+              $(image[0]).attr('href'), '" target="_blank"><img class="inline hide" src="',
+              $(image[0]).attr('href'), '" /></a></p>'].join('');
 					} else {
 						// inline ppts
 						var ppt = $.grep($(activitySummary).filter('a'), function(e) {
@@ -221,7 +246,7 @@
 						});
 						if (ppt[0] && ! $.browser.msie) {
 							var ucmid = $(ppt[0]).attr('rel').split(':').splice( - 1);
-							var dynConvUrl = webCenter.settings.dynConverterUri + ucmid;
+							var dynConvUrl = [webCenter.settings.dynConverterUri, ucmid].join('');
 							$.ajax({
 								url: dynConvUrl,
 								method: 'get',
@@ -231,11 +256,12 @@
 								success: function(d) {
 									var slideImages = $('img', $(d));
 									var slides = "";
-									slideImages.each(function() {
-										slides += '<li><img class="slide" src="' + $(this).attr('src') + '" width="500" height="375" /></li>';
-									});
-									slides = '<div id="det-' + actId + '" class="swvp"><ul>' + slides + '</ul></div>';
-									$(slides).appendTo('#act-' + actId + ' div.detail').slideViewerPro({
+									for (var i = 0; i < slideImages.length; i++) {
+										slides = [slides,'<li><img class="slide" src="', $(slideImages[i]).attr('src'),
+                      '" width="500" height="375" /></li>'].join('');
+									};
+									slides = ['<div id="det-', actId, '" class="swvp"><ul>', slides, '</ul></div>'].join();
+									$(slides).appendTo(['#act-',actId,' div.detail'].join('')).slideViewerPro({
 										galBorderWidth: 1,
 										galBorderColor: '#ccc',
 										thumbsBorderWidth: 1,
@@ -253,8 +279,12 @@
 					};
 				};
 
-				as += '<tr id="act-' + actId + '" class="messages">' + '<td class="avatar">' + '<img class="avatar" width="50" height="50" src="' + webCenter.userProfile.getAvatarUrl(d) + '"/>' + '</td>' + '<td class="activity">' + '<span class="activity">' + activitySummary + '</span> ' + '<span class="reltime">' + utils.timeAgoInWords(d.createdDate) + '</span>' + '<div class="detail">' + detail + '</div>' + '</td>' + '</tr>';
-			});
+				as = [as,'<tr id="act-', actId, 
+          '" class="messages"><td class="avatar"><img class="avatar" width="50" height="50" src="',
+          webCenter.userProfile.getAvatarUrl(d),'"/></td><td class="activity"><span class="activity">',
+          activitySummary,'</span> <span class="reltime">', utils.timeAgoInWords(d.createdDate),
+          '</span><div class="detail">', detail, '</div></td></tr>'].join('');
+			};
 			if (clearActivities) {
 				$('table.results').empty().append($(as));
 				$('table.results *').show();
@@ -320,7 +350,7 @@
 								return $.evalJSON($(n).val()).spaceName == decodeURI(groupName)
 							} catch(e) {}
 						})[0];
-						$('#pub1-share span').text("Share something with " + d.innerHTML);
+						$('#pub1-share span').text(["Share something with ", d.innerHTML].join(''));
 						$('#pub1-share select').hide();
 						var url = $.evalJSON(d.value).asUrl;
 						var activityTemplate = $('li.messages:first');
@@ -338,17 +368,15 @@
 		app.post('#/message', function(c) {
 			var msg = this.params['body'].replace(/^\s+|\s+$/g, '');
 			if (msg == "" || msg == "Share something...") return false;
-      webCenter.messageBoard.postMessage($.evalJSON(this.params['puburl']).msgBoard, msg, function(d){
-        if (d.error) {
-          if (d.xhr.status == 403) 
-            pubMessage(utils.formatXhrMsg(d,'You do not have access to contribute to this group space. Please contact a group space moderator.'));
-          else
-            pubMessage();
-          return;
-        }
-        $('#pub-text').val('').css('height', 18);
-        renderStream($('#stream').data('currentStreamUrl'), 0, true);
-      });
+			webCenter.messageBoard.postMessage($.evalJSON(this.params['puburl']).msgBoard, msg, function(d) {
+				if (d.error) {
+					if (d.xhr.status == 403) pubMessage(utils.formatXhrMsg(d, 'You do not have access to contribute to this group space. Please contact a group space moderator.'));
+					else pubMessage();
+					return;
+				}
+				$('#pub-text').val('').css('height', 18);
+				renderStream($('#stream').data('currentStreamUrl'), 0, true);
+			});
 		});
 
 		app.post('#/upload', function(c) {
@@ -366,12 +394,12 @@
 
 			// Resolve CMIS URL to post to
 			var cmisName = $.evalJSON(params['puburl']).spaceName;
-			var UCMPath = cmisName ? "/Spaces/" + cmisName: null;
+			var UCMPath = cmisName ? ["/Spaces/", cmisName].join(''): null;
 			webCenter.getCmisFolderUrl(UCMPath, function(url) {
 
 				// Prepare uploader iframe
-				var strName = ("uploader" + (new Date()).getTime());
-				var iFrame = $('<iframe name="' + strName + '" class="hide" />');
+				var strName = ["uploader", (new Date()).getTime()].join('');
+				var iFrame = $(['<iframe name="', strName, '" class="hide" />'].join(''));
 				iFrame.load(function() {
 					var ifUploadBody = window.frames[strName].document;
 					// shitty way of detecting that a post to an iframe was successful
@@ -407,7 +435,9 @@
 		app.bind('update-filters', function(e, currLocation) {
 			if (/\#\/group\//.test(currLocation)) {
 				var selectedVal = unescape(currLocation.split('#/group/')[1].split('/')[0]);
-				$('#groupfilter option').each(function(i, n) {
+				var filterOpts = $('#groupfilter option');
+				for (var i = 0; i < filterOpts.length; i++) {
+					var n = filterOpts[i];
 					var opt = $(n);
 					var spaceName;
 					try {
@@ -418,8 +448,10 @@
 					} else {
 						opt.removeAttr('selected');
 					}
-				});
-				$('#grouppub option').each(function(i, n) {
+				};
+				var groupOpts = $('#grouppub option');
+				for (var i = 0; i < groupOpts.length; i++) {
+					var n = groupOpts[i];
 					var opt = $(n);
 					var spaceName;
 					try {
@@ -430,7 +462,7 @@
 					} else {
 						opt.removeAttr('selected');
 					}
-				});
+				};
 			};
 		});
 
