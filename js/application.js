@@ -6,7 +6,7 @@
 (function($) { //seal it up
 	//	$(function() { //wait for load
 	var settings = {
-    applyActivityTypeBlackList: true,
+    applyActivityTypeBlackList: false,
 		activityTypeBlacklist: {
       'delete-document': true,
       'deleteGroupSpace': true,
