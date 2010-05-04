@@ -340,7 +340,7 @@
 			// Need to come up with a better way to access the spaces api
 			// for users who are not members of a space
 			var groupName = this.params['name'];
-      if(window.parent.canPublish && window.parent.canPublish[groupName]) {
+      if(window.parent.canPublish && !window.parent.canPublish[groupName]) {
         $('#publisher').addClass('hide');
       }
 			if (groupName == 'My connections') {
