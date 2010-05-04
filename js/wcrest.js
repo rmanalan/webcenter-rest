@@ -333,13 +333,17 @@ var webCenter = function(callback) {
 		}
 
 		function getAvatarUrl(d) {
-			var user = $.grep(d.templateParams.items, function(n) {
-				return n.key == '{actor[0]}';
-			})[0];
-			var link = $.grep(user.links, function(l) {
-				return l.rel == 'urn:oracle:webcenter:people:icon' && l.resourceType == 'urn:oracle:webcenter:people:person';
-			})[0];
-			return link.href;
+      try {
+        var user = $.grep(d.templateParams.items, function(n) {
+          return n.key == '{actor[0]}';
+        })[0];
+        var link = $.grep(user.links, function(l) {
+          return l.rel == 'urn:oracle:webcenter:people:icon' && l.resourceType == 'urn:oracle:webcenter:people:person';
+        })[0];
+        return link.href;
+      } catch (e) {
+        return "";
+      }
 		}
 
 		function getCurrentUser(callback) {
