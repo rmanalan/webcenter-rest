@@ -114,17 +114,19 @@ span.activity {
 #header {
 	margin:10px 0 0 0;
 }
-#publisher-container {
+#pub-margin {
 	background:url(../images/fadertop.png) bottom left repeat-x;
 	position:fixed;
   top:0;
   left:0;
   width:100%;
-  margin:0;
+}
+#publisher-container {
+  padding:5px 10px;
 }
 #publisher {
   width:100%;
-  background:#fff url(../images/irboxleft.png) repeat-y left top;
+  background: url(../images/irboxleft.png) repeat-y left top;
 }
 .irboxtop {
   width:100%;
@@ -136,24 +138,28 @@ span.activity {
   position:relative;
   height:12px;
   background:url(../images/irboxtopright.png) no-repeat right top;
+  z-index:1;
 }
 .irboxcenter {
   position:relative;
   background:url(../images/irboxright.png) repeat-y right top;
-  padding:0 18px 0 15px;
-  margin:-1px 0 -74px 0;
-  z-index:100;
+  padding:0 16px 0 13px;
+  margin:-6px 0 -3px 0;
 }
 .irboxbottom {
   width:100%;
-  height:88px;
+  height:17px;
   background:url(../images/irboxbottom.png) no-repeat left bottom;
 }
 .irboxbottom span {
   display:block;
   position:relative;
-  height:88px;
+  height:17px;
   background:url(../images/irboxbottomright.png) no-repeat right top;
+}
+#pub-form {
+  background:#ededed;
+  z-index:100;
 }
 #stream {
   margin-top:112px;
