@@ -3,6 +3,7 @@
  * Released April 2010
  * Rich Manalang (rich.manalang@oracle.com)
  **/
+window.parent.canPublish = {};
 (function($) { //seal it up
 	//	$(function() { //wait for load
 	var settings = {
@@ -169,7 +170,7 @@
 				}
 				for (var i = 0; i < d.length; i++) {
 					var o = d[i];
-          if(window.parent.canPublish && window.parent.canPublish[o.name] == false) continue;
+          if(window.parent.canPublish && window.parent.canPublish[o.name] == false && !/^#\/group\//.test(location.hash)) continue;
 					if (o.isOffline) continue;
           var urls = $.toJSON({
             'msgBoard': webCenter.getResourceURL(o.links, 'urn:oracle:webcenter:messageBoard', false),
@@ -342,6 +343,7 @@
 			var groupName = this.params['name'];
       if(window.parent.canPublish && !window.parent.canPublish[groupName]) {
         $('#publisher').addClass('hide');
+        $('#stream').css('margin-top',10);
       }
 			if (groupName == 'My connections') {
 				this.redirect('#/');
@@ -353,7 +355,6 @@
 								return $.evalJSON($(n).val()).spaceName == decodeURI(groupName)
 							} catch(e) {}
 						})[0];
-            console.log(d);
 						$('#pub1-share span').text(["Share something with ", d.innerHTML].join(''));
 						$('#pub1-share select').hide();
 						var url = $.evalJSON(d.value).asUrl;
@@ -478,4 +479,5 @@
 /* 
  vim:ts=2:sw=2:expandtab
  */
+
 
