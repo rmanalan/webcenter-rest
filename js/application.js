@@ -65,26 +65,6 @@ window.parent.canPublish = {};
 		return false;
 	});
 
-	// IE specific UI tweaks
-	if ($.browser.msie) {
-		$('#publisher').corner({
-			tl: {
-				radius: 5
-			},
-			tr: {
-				radius: 5
-			},
-			bl: {
-				radius: 5
-			},
-			br: {
-				radius: 5
-			},
-			antiAlias: true,
-			autoPad: false
-		});
-	};
-
 	function pubMessage(m) {
 		$('#msg').html(m).slideDown();
 		setTimeout(function() {
