@@ -21,6 +21,7 @@ compile-as-js:
 	  --js=js/autoresize.js\
 	  --js=js/slideviewpro.js\
 	  --js=js/html-sanitizer-minified.js\
+	  --js=js/jquery.jfeed.js\
 	  --js=js/wcutils.js\
 	  --js=js/wcrest.js\
 	  --js=js/application.js\
