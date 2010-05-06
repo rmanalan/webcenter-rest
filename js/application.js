@@ -313,6 +313,8 @@ window.parent.canPublish = {};
 		});
 
 		app.get('#/', function(c) {
+      $('#pub-margin').removeClass('hide');
+      $('#stream').css('margin-top',112);
 			renderStream(webCenter.currentUser.links, 0, true);
 		});
 
@@ -321,9 +323,9 @@ window.parent.canPublish = {};
 			// Need to come up with a better way to access the spaces api
 			// for users who are not members of a space
 			var groupName = this.params['name'];
-      if(window.parent.canPublish && !window.parent.canPublish[groupName]) {
-        $('#publisher').addClass('hide');
-        $('#stream').css('margin-top',10);
+      if((window.parent.canPublish && window.parent.canPublish[groupName]) || !window.parent.canPublish) {
+        $('#publisher').removeClass('hide');
+        $('#stream').css('margin-top',112);
       }
 			if (groupName == 'My connections') {
 				this.redirect('#/');
