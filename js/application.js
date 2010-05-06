@@ -323,7 +323,7 @@
 			// for users who are not members of a space
 			var groupName = this.params['name'];
       if((window.parent.canPublish && window.parent.canPublish[groupName]) || !window.parent.canPublish) {
-        $('#publisher').removeClass('hide');
+        $('#pub-container').removeClass('hide');
         $('#stream').css('margin-top',112);
       }
 			if (groupName == 'My connections') {
