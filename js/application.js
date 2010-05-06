@@ -3,7 +3,6 @@
  * Released April 2010
  * Rich Manalang (rich.manalang@oracle.com)
  **/
-window.parent.canPublish = {};
 (function($) { //seal it up
 	//	$(function() { //wait for load
 	var settings = {
