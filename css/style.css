@@ -383,7 +383,7 @@ a.sbconnection:hover {
 	padding:5px 10px;
 	background:#ffffcc;
 	border-bottom:1px solid #FFEE99;
-	z-index:100;
+	z-index:1000;
 	opacity:.9;
 	width:100%;
 }

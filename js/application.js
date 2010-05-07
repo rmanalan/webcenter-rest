@@ -64,12 +64,9 @@
 		return false;
 	});
 
-	function pubMessage(m) {
-		$('#msg').html(m).slideDown();
-		setTimeout(function() {
-			$('#msg').slideUp();
-		},
-		7000);
+	function pubMessage(m,delayTime) {
+    if(!delayTime) delayTime = 7000;
+		$('#msg').html(m).slideDown().delay(delayTime).slideUp();
 	}
 
 	function initApp(callback) {
@@ -267,6 +264,7 @@
 			};
 			if (clearActivities) {
 				$('table.results').empty().append($(as));
+        showAnnouncements();
 				$('table.results *').show();
 			} else {
 				$('table.results').append($(as));
@@ -285,6 +283,25 @@
 			if (callback) callback();
 		});
 	};
+
+  function showAnnouncements(){
+    $.getFeed({
+      'url': '/owc_discussions/rss/rssannounce.jspa',
+      'success': function(f) {
+        console.log(f);
+        var sticky = "";
+        for (var i=0;i<f.items.length;i++){
+          var item = f.items[i];
+          sticky = [sticky,
+            '<tr class="sticky messages"><td class="avatar"><img class="avatar" width="50" height="50" src="images/w20_bigger.png"/>',
+            '</td><td class="activity"><span class="activity"><strong>Announcement:</strong> ', utils.linkTo(item.link, item.title, true),
+            '</span> <span class="reltime">',utils.timeAgoInWords(item.updated),
+            '</span><div class="detail">', utils.resolveURLs(item.description), '</div></td></tr>'].join('');
+        }
+        $('table.results').prepend($(sticky));
+      }
+    });
+  }
 
 	// App Controller
 	var activityStreamApp = $.sammy(function(app) {
@@ -312,8 +329,8 @@
 		});
 
 		app.get('#/', function(c) {
-      $('#pub-margin').removeClass('hide');
-      $('#stream').css('margin-top',112);
+      $('#publisher-container').removeClass('hide');
+      $('#stream').css('margin-top',118);
 			renderStream(webCenter.currentUser.links, 0, true);
 		});
 
@@ -323,8 +340,8 @@
 			// for users who are not members of a space
 			var groupName = this.params['name'];
       if((window.parent.canPublish && window.parent.canPublish[groupName]) || !window.parent.canPublish) {
-        $('#pub-margin').removeClass('hide');
-        $('#stream').css('margin-top',112);
+        $('#publisher-container').removeClass('hide');
+        $('#stream').css('margin-top',118);
       }
 			if (groupName == 'My connections') {
 				this.redirect('#/');
