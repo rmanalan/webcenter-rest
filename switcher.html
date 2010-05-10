@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+  <head> 
+    <meta charset="utf-8" />
+    <!--meta http-equiv="X-UA-Compatible" content="chrome=1"/-->
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script> 
+    <![endif]-->
+    <!--link href="./css/screen.css" type="text/css" media="screen" rel="stylesheet"/>
+    <link href="./css/style.css" type="text/css" media="screen" rel="stylesheet"/-->
+    <title>Switcher Prototype</title>
+    <script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css" media="screen">
+      body {
+        margin:10px;
+        font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;
+        font-size:12px;
+      }
+      .hide {
+        display:none;
+      }
+
+      .irsw {
+        position:relative;
+      }
+      .switcher-button {
+        position:absolute !important;
+        top:0;
+        left:0;
+      }
+      .irswitcher {
+        position:absolute !important;
+        top:0;
+        left:0;
+      }
+
+      /*** button ***/
+      .switcher-button.irswcollapsed {
+        background:url(images/irswitcher-button.png) no-repeat;
+        vertical-align:middle;
+        width:182px;
+        height:51px;
+        position:relative;
+      }
+      .switcher-button.irswcollapsed:hover {
+        background:url(images/irswitcher-button-hover.png) no-repeat;
+      }
+      .switcher-button img,
+      .irswbd img {
+        border:0;
+        vertical-align:text-bottom;
+        margin-right:5px;
+      }
+      .switcher-button a.nav-button {
+        position:absolute;
+        top:15px;
+        left:18px;
+        display:block;
+        width:130px;
+        font-size:12px;
+        font-weight:bold;
+        color:#333;
+        text-decoration:none;
+      }
+      .switcher-button a.nav-button:hover span {
+        text-decoration:underline;
+      }
+      a.switcher-control {
+        position:absolute;
+        top:19px;
+        right:18px;
+        width:15px;
+        height:10px;
+      }
+      a.switcher-control span {
+        display:none;
+      }
+      .irswcollapsed.switcher-control {
+        background:url(images/irswitcher-arrows.png) no-repeat;
+      }
+
+      /*** pane ***/
+      .irswitcher {
+        position:relative;
+        margin:0 auto;
+        min-width:8em;
+        max-width:386px; /* based on image dimensions - not quite consistent with drip styles yet */
+        color:#333;
+        z-index:1;
+        margin-left:12px; /* default, width of left corner */
+        margin-bottom:0.5em; /* spacing under irswitcher */
+      }
+
+      .irswitcher .irswcontent,
+      .irswitcher .irswt,
+      .irswitcher .irswb,
+      .irswitcher .irswb div {
+        background:url(images/dialog2-dark-800x1200-alpha-drip.png) no-repeat top right;
+        background:url(images/irswitcher.png) no-repeat top right;
+        _background-image:url(images/dialog2-dark-alpha-drip.gif);
+      }
+
+      .irswitcher .irswcontent {
+        position:relative;
+        zoom:1;
+        _overflow-y:hidden;
+        padding:0px 12px 0px 0px;
+      }
+
+      .irswitcher .irswt {
+        /* top+left vertical slice */
+        position:absolute;
+        left:0px;
+        top:0px;
+        width:12px; /* top slice width */
+        margin-left:-12px;
+        height:100%;
+        _height:1600px; /* arbitrary long height, IE 6 */
+        background-position:top left;
+      }
+
+      .irswitcher .irswb {
+        /* bottom */
+        position:relative;
+        width:100%;
+      }
+
+      .irswitcher .irswb,
+      .irswitcher .irswb div {
+        height:30px; /* height of bottom cap/shade */
+        font-size:1px;
+      }
+
+      .irswitcher .irswb {
+        background-position:bottom right;
+        height:17px;
+      }
+
+      .irswitcher .irswb div {
+        position:relative;
+        width:12px; /* bottom corner width */
+        margin-left:-12px;
+        background-position:bottom left;
+        height:17px;
+      }
+
+      .irswitcher .irswbd {
+        position:relative;
+      }
+
+      .irswitcher .irswhd {
+        position: absolute;
+      }
+      .irswitcher .irswhd a.switcher-control {
+        left:149px;
+        background:url(images/irswitcher-arrows.png) no-repeat 0 -13px;
+      }
+
+      .irswitcher .irswwrapper {
+        /* extra content protector - preventing vertical overflow (past background) */
+        position:static;
+        max-height:1000px;
+        overflow:auto; /* note that overflow:auto causes a rather annoying redraw "lag" in Firefox 2, and may degrade performance. Might be worth trying without if you aren't worried about height/overflow issues. */
+      }
+
+      .irswitcher .irswt,
+      .irswitcher .irswb div,
+      .irswitcher .irswbd,
+      .irswitcher .irswwrapper {
+        margin-left:-176px;
+        width:176px;
+      }
+
+      .irswitcher {
+        margin-left:176px;
+      }
+
+      .irswitcher .irswwrapper {
+        width:auto;
+      }
+
+      .irswitcher .irswwrapper .irswbd {
+        margin-left:0px;
+      }
+
+      .irswitcher .irswbd {
+        zoom:1;
+        width:auto;
+        padding:0px 5px 0px 20px;
+        margin-top:39px;
+      }
+      .irswitcher .switcher-button a.nav-button {
+        opacity:.5;
+      }
+
+      /* switcher body */
+      .irswbd a {
+        color:#333;
+        text-decoration:none;
+        text-shadow:#fff 1px 1px 0;
+      }
+      .irswbd a:hover {
+        text-decoration:underline;
+      }
+      .irswbd h5 {
+        font-size:12px;
+        margin:0 0 5px 0;
+        color:#000;
+      }
+      .irswitcher ul {
+        padding:0;
+        margin:0;
+      }
+      .irswitcher ul li {
+        list-style-type:none;
+        margin:0 5px 9px 20px;
+        line-height:100%;
+      }
+      ul.irswmain {
+        margin-top:12px;
+        padding-top:10px;
+        border-top:1px solid #ccc;
+      }
+      ul.irswmain li {
+        margin-left:0;
+        padding-left:0;
+      }
+      .irswmain a:hover {
+        text-decoration:none;
+      }
+      .irswmain a:hover span {
+        text-decoration:underline;
+      }
+      .irswcol {
+        float:left;
+        width:165px;
+        min-height:231px;
+        padding:0 10px
+      }
+      .irswcol1 {
+        padding-left:0;
+      }
+      .irswmyspaces {
+        padding:0 5px;
+      }
+      .irswcol3 {
+        padding-top:20px;
+      }
+      .irswmore {
+        float:right;
+      }
+
+    </style>
+    <script type="text/javascript" charset="utf-8">
+      $(function(){
+        $('a.irswcollapsed').bind('click',function(){
+          $('.irswcollapsed.switcher-button').hide();
+          $('.irswitcher').show();
+        });
+        $('a.irswexpanded').bind('click',function(){
+          $('.irswitcher').hide();
+          $('.irswcollapsed.switcher-button').show();
+        });
+      });
+</script>
+  </head>
+  <body>
+    <div class="irsw">
+      <div class="irswcollapsed switcher-button">
+        <a class="nav-button" href="#"><img src="images/Home.png"/><span>Home</span></a>
+        <a class="switcher-control irswcollapsed" href="#"><span>&#x25BC;</span></a>
+      </div>
+
+      <div class="irswitcher hide">
+        <div class="irswcontent">
+          <div class="irswwrapper">
+            <div class="irswt"></div>
+            <div class="irswhd">
+              <div class="irswexpanded switcher-button">
+                <a class="nav-button" href="#"><img src="images/Home.png"/><span>Home</span></a>
+                <a class="switcher-control irswexpanded" href="#"><span>&#x25B2;</span></a>
+              </div>
+            </div>
+            <div class="irswbd">
+              <div class="irswcol irswcol1">
+                <div id="irswrecent">
+                  <h5>Recent</h5>
+                  <ul>
+                    <li><a href="#">Group Space 1</a></li>
+                    <li><a href="#">Group Space 2</a></li>
+                    <li><a href="#">Group Space 3</a></li>
+                    <li><a href="#">Group Space 4 with a really, really, really, long name</a></li>
+                    <li><a href="#">Group Space 5</a></li>
+                  </ul>
+                </div>
+                <ul class="irswmain">
+                  <li><a href="#"><img src="images/Home.png"/><span>Home</span></a></li>
+                  <li><a href="#"><img src="images/Browse Group Space.png"/><span>Manage Spaces</span></a></li>
+                </ul>
+
+              </div>
+              <div class="irswcol irswmyspaces irswcol2">
+                <h5>My Spaces</h5>
+                <ul>
+                  <li><a href="#">Group Space 1</a></li>
+                  <li><a href="#">Group Space 2</a></li>
+                  <li><a href="#">Group Space 3</a></li>
+                  <li><a href="#">Group Space 4</a></li>
+                  <li><a href="#">Group Space 5</a></li>
+                  <li><a href="#">Group Space 6</a></li>
+                  <li><a href="#">Group Space 7</a></li>
+                  <li><a href="#">Group Space 8</a></li>
+                  <li><a href="#">Group Space 9</a></li>
+                  <li><a href="#">Group Space 10</a></li>
+                </ul>
+              </div>
+              <div class="irswcol irswmyspaces irswcol3">
+                <ul>
+                  <li><a href="#">Group Space 11</a></li>
+                  <li><a href="#">Group Space 12</a></li>
+                  <li><a href="#">Group Space 13</a></li>
+                  <li><a href="#">Group Space 14</a></li>
+                  <li><a href="#">Group Space 15</a></li>
+                  <li><a href="#">Group Space 16</a></li>
+                  <li><a href="#">Group Space 17</a></li>
+                  <li><a href="#">Group Space 18</a></li>
+                  <li><a href="#">Group Space 19</a></li>
+                  <li><a href="#">Group Space 20</a></li>
+                  <li><a class="irswmore" href="#">more spaces &raquo;</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="irswb"><div></div></div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!-- 
+vim:ts=2:sw=2:expandtab 
+-->
+

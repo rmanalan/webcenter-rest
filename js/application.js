@@ -284,6 +284,7 @@
 		});
 	};
 
+  // Retrieve announcements through the announcements rss feed then show them on the top of the stream
   function showAnnouncements(){
     $.getFeed({
       'url': '/owc_discussions/rss/rssannounce.jspa',
