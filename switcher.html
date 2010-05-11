@@ -194,17 +194,21 @@
         zoom:1;
         width:auto;
         padding:0px 5px 0px 20px;
-        margin-top:39px;
+      }
+      .irswexpanded.switcher-button {
+        position:relative !important;
       }
       .irswexpanded.switcher-button a.nav-button {
         height:auto;
         opacity:.5;
         overflow:visible;
         width:auto;
+        position:static;
+        background-position:18px 15px;
+        padding:15px 37px 9px 38px;
       }
       .irswexpanded.switcher-button a.nav-button span {
         position:relative;
-        margin-right:20px;
       }
 
 
@@ -269,8 +273,8 @@
     </style>
     <script type="text/javascript" charset="utf-8">
       (function($) {
-        if($.browser.webkit) return false;
         $.fn.ellipsis = function(enableUpdating){
+          if($.browser.webkit) return false;
           var s = document.documentElement.style;
           if (!('textOverflow' in s || 'OTextOverflow' in s)) {
             return this.each(function(){
@@ -328,10 +332,16 @@
         $('a.irswexpanded').bind('click',function(){
           $('.irswitcher').hide();
           $('.irswcollapsed.switcher-button').show();
-        });
-        $('.irswitcher').bind('mouseout',function(){
-        //  $(this).hide();
-        //  $('.switcher-button.irswcollapsed').show();
+          });
+        var hideSwitcher;
+        $('div.irswitcher').bind('mouseleave',function(){
+          var switcher = $(this);
+          hideSwitcher = setTimeout(function(){
+            switcher.hide();
+            $('.switcher-button.irswcollapsed').show();
+          },500);
+        }).bind('mouseenter',function(){
+          clearTimeout(hideSwitcher);
         });
       });
 </script>
@@ -339,7 +349,7 @@
   <body>
     <div class="irsw">
       <div class="irswcollapsed switcher-button">
-        <a class="nav-button" href="#"><span>Home with a really long name</span></a>
+        <a class="nav-button" href="#"><span>Home with a really, really, super long name</span></a>
         <a class="switcher-control irswcollapsed" href="#"><span>&#x25BC;</span></a>
       </div>
 
@@ -349,7 +359,7 @@
             <div class="irswt"></div>
             <div class="irswhd">
               <div class="irswexpanded switcher-button">
-                <a class="nav-button" href="#"><span>Home with a really, really, really, really long name</span></a>
+                <a class="nav-button" href="#"><span>Home with a really, really, super long name</span></a>
                 <a class="switcher-control irswexpanded" href="#"><span>&#x25B2;</span></a>
               </div>
             </div>
@@ -406,6 +416,10 @@
         </div>
         <div class="irswb"><div></div></div>
       </div>
+    </div>
+    <div style="position:absolute;top:10px;right:10px">
+      <a href="#" onclick="$('.irswcol2').toggle(function(){$(this).show()},function(){$(this).hide()});return false;">Toggle second column</a> | 
+      <a href="#" onclick="$('.irswcol2,.irswcol3').toggle(show,hide);return false;">Toggle all columns</a>
     </div>
   </body>
 </html>
