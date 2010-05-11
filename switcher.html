@@ -261,7 +261,6 @@
       }
       .irswmyspaces {
         padding:0 5px;
-        display:none;
       }
       .irswcol3 {
         padding-top:20px;
@@ -347,6 +346,11 @@
 </script>
   </head>
   <body>
+    <div>
+      <a href="#" onclick="$('.irswcol2').removeClass('hide');return false;">Show second column</a> | 
+      <a href="#" onclick="$('.irswcol2,.irswcol3').removeClass('hide');return false;">Show third column</a>
+    </div>
+
     <div class="irsw">
       <div class="irswcollapsed switcher-button">
         <a class="nav-button" href="#"><span>Home with a really, really, super long name</span></a>
@@ -381,7 +385,7 @@
                 </ul>
 
               </div>
-              <div class="irswcol irswmyspaces irswcol2">
+              <div class="irswcol irswmyspaces irswcol2 hide">
                 <h5>My Spaces</h5>
                 <ul>
                   <li><a href="#">Group Space 1</a></li>
@@ -396,7 +400,7 @@
                   <li><a href="#">Group Space 10</a></li>
                 </ul>
               </div>
-              <div class="irswcol irswmyspaces irswcol3">
+              <div class="irswcol irswmyspaces irswcol3 hide">
                 <ul>
                   <li><a href="#">Group Space 11</a></li>
                   <li><a href="#">Group Space 12</a></li>
@@ -416,10 +420,6 @@
         </div>
         <div class="irswb"><div></div></div>
       </div>
-    </div>
-    <div style="position:absolute;top:10px;right:10px">
-      <a href="#" onclick="$('.irswcol2').toggle(function(){$(this).show()},function(){$(this).hide()});return false;">Toggle second column</a> | 
-      <a href="#" onclick="$('.irswcol2,.irswcol3').toggle(show,hide);return false;">Toggle all columns</a>
     </div>
   </body>
 </html>
