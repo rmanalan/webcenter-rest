@@ -222,6 +222,7 @@
 							return /\.ppt$|\.pptx$/i.test($(e).text())
 						});
 						if (ppt[0] && ! $.browser.msie) {
+              var curId = actId;
 							var ucmid = $(ppt[0]).attr('rel').split(':').splice( - 1);
 							var dynConvUrl = [webCenter.settings.dynConverterUri, ucmid].join('');
 							$.ajax({
@@ -237,9 +238,8 @@
 										slides = [slides,'<li><img class="slide" src="', $(slideImages[j]).attr('src'),
                       '" width="500" height="375" /></li>'].join('');
 									};
-									slides = ['<div id="det-', actId, '" class="swvp"><ul>', slides, '</ul></div>'].join();
-                  console.log(actId)
-									$(slides).appendTo(['#act-', actId,' div.detail'].join('')).slideViewerPro({
+									slides = ['<div id="det-', curId, '" class="swvp"><ul>', slides, '</ul></div>'].join();
+									$(slides).appendTo(['#act-', curId,' div.detail'].join('')).slideViewerPro({
 										galBorderWidth: 1,
 										galBorderColor: '#ccc',
 										thumbsBorderWidth: 1,
@@ -478,5 +478,6 @@
 /* 
  vim:ts=2:sw=2:expandtab
  */
+
 
 
