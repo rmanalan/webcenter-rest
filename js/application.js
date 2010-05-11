@@ -222,7 +222,7 @@
 							return /\.ppt$|\.pptx$/i.test($(e).text())
 						});
 						if (ppt[0] && ! $.browser.msie) {
-              var currentId = actId;
+              var currentId = webCenter.activityStream.currentActivityId();
 							var ucmid = $(ppt[0]).attr('rel').split(':').splice( - 1);
 							var dynConvUrl = [webCenter.settings.dynConverterUri, ucmid].join('');
 							$.ajax({
