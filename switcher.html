@@ -349,8 +349,8 @@
         $('div.irswitcher').bind('mouseleave',function(){
           var switcher = $(this);
           hideSwitcher = setTimeout(function(){
-            //switcher.hide();
-            //$('.switcher-button.irswcollapsed').show();
+            switcher.hide();
+            $('.switcher-button.irswcollapsed').show();
           },500);
         }).bind('mouseenter',function(){
           clearTimeout(hideSwitcher);
@@ -359,7 +359,7 @@
 </script>
   </head>
   <body>
-    <div>
+    <div style="background:#fff;-moz-border-radius:5px;padding:6px;opacity:.9;border:1px solid #999">
       <a href="#" onclick="$('.irswcol2').removeClass('hide');return false;">Show second column</a> | 
       <a href="#" onclick="$('.irswcol2,.irswcol3').removeClass('hide');return false;">Show third column</a>
     </div>
