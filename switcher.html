@@ -12,6 +12,7 @@
     <script src="js/jquery.js" type="text/javascript" charset="utf-8"></script>
     <style type="text/css" media="screen">
       body {
+        background:url(images/checkerboard.png);
         margin:10px;
         font-family:"Helvetica Neue", Arial, Helvetica, sans-serif;
         font-size:12px;
@@ -70,8 +71,13 @@
         overflow:hidden;
         text-overflow:ellipsis;
       }
-      .switcher-button a.nav-button:hover span {
+      .switcher-button a.nav-button:hover span{
         text-decoration:underline;
+      }
+      .switcher-button a.nav-button,
+      .switcher-button a.nav-button:hover,
+      .switcher-button a.nav-button:active {
+        outline:none;
       }
       a.switcher-control {
         position:absolute;
@@ -92,7 +98,7 @@
         position:relative;
         margin:0 auto;
         min-width:42px;
-        max-width:386px; /* based on image dimensions - not quite consistent with drip styles yet */
+        max-width:545px; /* based on image dimensions - not quite consistent with drip styles yet */
         color:#333;
         z-index:1;
         margin-left:12px; /* default, width of left corner */
@@ -141,6 +147,7 @@
       .irswitcher .irswb {
         background-position:bottom right;
         height:17px;
+        width:100%;
       }
 
       .irswitcher .irswb div {
@@ -174,12 +181,12 @@
       .irswitcher .irswb div,
       .irswitcher .irswbd,
       .irswitcher .irswwrapper {
-        margin-left:-176px;
-        width:176px;
+        margin-left:-17px;
+        width:17px;
       }
 
       .irswitcher {
-        margin-left:176px;
+        margin-left:17px;
       }
 
       .irswitcher .irswwrapper {
@@ -196,7 +203,7 @@
         padding:0px 5px 0px 20px;
       }
       .irswexpanded.switcher-button {
-        position:relative !important;
+        position:static !important;
       }
       .irswexpanded.switcher-button a.nav-button {
         height:auto;
@@ -209,6 +216,7 @@
       }
       .irswexpanded.switcher-button a.nav-button span {
         position:relative;
+        color:#666;
       }
 
 
@@ -317,11 +325,16 @@
       
       $(function(){
 
-        $('.nav-button').ellipsis()
+        $('.nav-button').ellipsis();
 
         $('.irswcollapsed.switcher-button').bind('click',function(){
           $('.irswcollapsed.switcher-button').hide();
           $('.irswitcher').show();
+
+          // shitty hack to make the rounded corners box work on IE
+          if($.browser.msie) {
+            $('.irswb').css('width',function(){return $('.irswcontent').outerWidth()});
+          }
           return false;
         });
         $('a.nav-button').bind('click',function(){
@@ -336,8 +349,8 @@
         $('div.irswitcher').bind('mouseleave',function(){
           var switcher = $(this);
           hideSwitcher = setTimeout(function(){
-            switcher.hide();
-            $('.switcher-button.irswcollapsed').show();
+            //switcher.hide();
+            //$('.switcher-button.irswcollapsed').show();
           },500);
         }).bind('mouseenter',function(){
           clearTimeout(hideSwitcher);
