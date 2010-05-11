@@ -233,8 +233,8 @@
 								success: function(d) {
 									var slideImages = $('img', $(d));
 									var slides = "";
-									for (var i = 0; i < slideImages.length; i++) {
-										slides = [slides,'<li><img class="slide" src="', $(slideImages[i]).attr('src'),
+									for (var j = 0; j < slideImages.length; j++) {
+										slides = [slides,'<li><img class="slide" src="', $(slideImages[j]).attr('src'),
                       '" width="500" height="375" /></li>'].join('');
 									};
 									slides = ['<div id="det-', actId, '" class="swvp"><ul>', slides, '</ul></div>'].join();

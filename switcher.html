@@ -45,6 +45,9 @@
       .switcher-button.irswcollapsed:hover {
         background:url(images/irswitcher-button-hover.png) no-repeat;
       }
+      .switcher-button.irswexpanded {
+        width:100%;
+      }
       .switcher-button img,
       .irswbd img {
         border:0;
@@ -56,11 +59,16 @@
         top:15px;
         left:18px;
         display:block;
-        width:130px;
+        width:107px;
         font-size:12px;
         font-weight:bold;
         color:#333;
         text-decoration:none;
+        padding-left:20px;
+        background:url(images/Home.png) no-repeat;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
       }
       .switcher-button a.nav-button:hover span {
         text-decoration:underline;
@@ -83,7 +91,7 @@
       .irswitcher {
         position:relative;
         margin:0 auto;
-        min-width:8em;
+        min-width:42px;
         max-width:386px; /* based on image dimensions - not quite consistent with drip styles yet */
         color:#333;
         z-index:1;
@@ -95,9 +103,8 @@
       .irswitcher .irswt,
       .irswitcher .irswb,
       .irswitcher .irswb div {
-        background:url(images/dialog2-dark-800x1200-alpha-drip.png) no-repeat top right;
-        background:url(images/irswitcher.png) no-repeat top right;
-        _background-image:url(images/dialog2-dark-alpha-drip.gif);
+        background:url(images/irswitcher-alt.png) no-repeat top right;
+        _background-image:url(images/irswitcher-alt.png);
       }
 
       .irswitcher .irswcontent {
@@ -149,10 +156,10 @@
       }
 
       .irswitcher .irswhd {
-        position: absolute;
+        position: relative;
       }
       .irswitcher .irswhd a.switcher-control {
-        left:149px;
+        right:8px;
         background:url(images/irswitcher-arrows.png) no-repeat 0 -13px;
       }
 
@@ -189,9 +196,17 @@
         padding:0px 5px 0px 20px;
         margin-top:39px;
       }
-      .irswitcher .switcher-button a.nav-button {
+      .irswexpanded.switcher-button a.nav-button {
+        height:auto;
         opacity:.5;
+        overflow:visible;
+        width:auto;
       }
+      .irswexpanded.switcher-button a.nav-button span {
+        position:relative;
+        margin-right:20px;
+      }
+
 
       /* switcher body */
       .irswbd a {
@@ -242,6 +257,7 @@
       }
       .irswmyspaces {
         padding:0 5px;
+        display:none;
       }
       .irswcol3 {
         padding-top:20px;
@@ -252,14 +268,70 @@
 
     </style>
     <script type="text/javascript" charset="utf-8">
+      (function($) {
+        if($.browser.webkit) return false;
+        $.fn.ellipsis = function(enableUpdating){
+          var s = document.documentElement.style;
+          if (!('textOverflow' in s || 'OTextOverflow' in s)) {
+            return this.each(function(){
+              var el = $(this);
+              if(el.css("overflow") == "hidden"){
+                var originalText = el.html();
+                var w = el.width();
+                
+                var t = $(this.cloneNode(true)).hide().css({
+                              'position': 'absolute',
+                              'width': 'auto',
+                              'overflow': 'visible',
+                              'max-width': 'inherit'
+                          });
+                el.after(t);
+                
+                var text = originalText;
+                while(text.length > 0 && t.width() > el.width()){
+                  text = text.substr(0, text.length - 1);
+                  t.html(text + "...");
+                }
+                el.html(t.html());
+                
+                t.remove();
+                
+                if(enableUpdating == true){
+                  var oldW = el.width();
+                  setInterval(function(){
+                    if(el.width() != oldW){
+                      oldW = el.width();
+                      el.html(originalText);
+                      el.ellipsis();
+                    }
+                  }, 200);
+                }
+              }
+            });
+          } else return this;
+        };
+      })(jQuery);
+      
       $(function(){
-        $('a.irswcollapsed').bind('click',function(){
+
+        $('.nav-button').ellipsis()
+
+        $('.irswcollapsed.switcher-button').bind('click',function(){
           $('.irswcollapsed.switcher-button').hide();
           $('.irswitcher').show();
+          return false;
+        });
+        $('a.nav-button').bind('click',function(){
+          window.location = this.href;
+          return false;
         });
         $('a.irswexpanded').bind('click',function(){
           $('.irswitcher').hide();
           $('.irswcollapsed.switcher-button').show();
+        });
+        $('.irswitcher').bind('mouseout',function(){
+        //  $(this).hide();
+        //  $('.switcher-button.irswcollapsed').show();
         });
       });
 </script>
@@ -267,7 +339,7 @@
   <body>
     <div class="irsw">
       <div class="irswcollapsed switcher-button">
-        <a class="nav-button" href="#"><img src="images/Home.png"/><span>Home</span></a>
+        <a class="nav-button" href="#"><span>Home with a really long name</span></a>
         <a class="switcher-control irswcollapsed" href="#"><span>&#x25BC;</span></a>
       </div>
 
@@ -277,7 +349,7 @@
             <div class="irswt"></div>
             <div class="irswhd">
               <div class="irswexpanded switcher-button">
-                <a class="nav-button" href="#"><img src="images/Home.png"/><span>Home</span></a>
+                <a class="nav-button" href="#"><span>Home with a really, really, really, really long name</span></a>
                 <a class="switcher-control irswexpanded" href="#"><span>&#x25B2;</span></a>
               </div>
             </div>
