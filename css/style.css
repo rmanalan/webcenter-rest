@@ -30,11 +30,12 @@ body {
 }
 a, a:active, a:visited, a:link {
 	text-decoration:none;
-	border-bottom:1px dotted #ccc;
+	border-bottom:1px dotted #999;
 	color:#000;
 }
 a:hover, a:focus {
 	border-bottom:1px solid #000;
+  background:#ffffcc;
 }
 a.no-underline, a.no-underline:active, a.no-underline:visited, a.no-underline:link {
 	text-decoration:none;
@@ -95,6 +96,14 @@ ul.headnav li {
 }
 table.results {
 	margin:-20px 0 0 0;
+}
+table.announcements {
+  -webkit-border-radius:10px;
+	background:#ffffcc;
+	border:1px solid #FFEE99;
+  margin:-25px 0 25px 0;
+  padding:5px;
+  -webkit-box-shadow:rgba(0,0,0,.4) 0 0 4px;
 }
 span.activity {
 	font-size:12px;

@@ -267,6 +267,7 @@
 			};
 			if (clearActivities) {
 				$('table.results').empty().append($(as));
+
         showAnnouncements();
 				$('table.results *').show();
 			} else {
@@ -301,7 +302,7 @@
             '</span> <span class="reltime">',utils.timeAgoInWords(item.updated),
             '</span><div class="detail">', utils.resolveURLs(item.description), '</div></td></tr>'].join('');
         }
-        $('table.results').prepend($(sticky));
+        $('table.announcements').html($(sticky)).removeClass('hide');
       }
     });
   }
