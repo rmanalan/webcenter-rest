@@ -238,7 +238,8 @@
                       '" width="500" height="375" /></li>'].join('');
 									};
 									slides = ['<div id="det-', actId, '" class="swvp"><ul>', slides, '</ul></div>'].join();
-									$(slides).appendTo(['#act-',actId,' div.detail'].join('')).slideViewerPro({
+                  console.log(actId)
+									$(slides).appendTo(['#act-', actId,' div.detail'].join('')).slideViewerPro({
 										galBorderWidth: 1,
 										galBorderColor: '#ccc',
 										thumbsBorderWidth: 1,
@@ -289,7 +290,6 @@
     $.getFeed({
       'url': '/owc_discussions/rss/rssannounce.jspa',
       'success': function(f) {
-        console.log(f);
         var sticky = "";
         for (var i=0;i<f.items.length;i++){
           var item = f.items[i];
