@@ -222,6 +222,8 @@
 							return /\.ppt$|\.pptx$/i.test($(e).text())
 						});
 						if (ppt[0] && ! $.browser.msie) {
+              // for some reason actId doesn't work in this scope because it appears to call the nextActivityId
+              // method rather than returning the latest
               var currentId = webCenter.activityStream.currentActivityId();
 							var ucmid = $(ppt[0]).attr('rel').split(':').splice( - 1);
 							var dynConvUrl = [webCenter.settings.dynConverterUri, ucmid].join('');
