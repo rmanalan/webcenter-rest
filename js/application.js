@@ -302,7 +302,7 @@
             '</span> <span class="reltime">',utils.timeAgoInWords(item.updated),
             '</span><div class="detail">', utils.resolveURLs(item.description), '</div></td></tr>'].join('');
         }
-        $('table.announcements').html($(sticky)).removeClass('hide');
+        if(sticky) $('table.announcements').html($(sticky)).removeClass('hide');
       }
     });
   }
