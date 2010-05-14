@@ -372,14 +372,14 @@ td.AFNoteWindow { display:none }*/
 
 /*** button ***/
 .switcher-button.irswcollapsed {
-  background:url(images/irswitcher-button.png) no-repeat;
+  background:url(../images/irswitcher-button.png) no-repeat;
   vertical-align:middle;
   width:182px;
   height:51px;
   position:relative;
 }
 .switcher-button.irswcollapsed:hover {
-  background:url(images/irswitcher-button-hover.png) no-repeat;
+  background:url(../images/irswitcher-button-hover.png) no-repeat;
 }
 .switcher-button.irswexpanded {
   width:100%;
@@ -401,7 +401,7 @@ td.AFNoteWindow { display:none }*/
   color:#333;
   text-decoration:none;
   padding-left:20px;
-  background:url(images/Home.png) no-repeat;
+  background:url(../images/Home.png) no-repeat;
   white-space:nowrap;
   overflow:hidden;
   text-overflow:ellipsis;
@@ -425,7 +425,7 @@ a.switcher-control span {
   display:none;
 }
 .irswcollapsed.switcher-control {
-  background:url(images/irswitcher-arrows.png) no-repeat;
+  background:url(../images/irswitcher-arrows.png) no-repeat;
 }
 
 /*** pane ***/
@@ -444,8 +444,8 @@ a.switcher-control span {
 .irswitcher .irswt,
 .irswitcher .irswb,
 .irswitcher .irswb div {
-  background:url(images/irswitcher-alt.png) no-repeat top right;
-  _background-image:url(images/irswitcher-alt.png);
+  background:url(../images/irswitcher-alt.png) no-repeat top right;
+  _background-image:url(../images/irswitcher-alt.png);
 }
 
 .irswitcher .irswcontent {
