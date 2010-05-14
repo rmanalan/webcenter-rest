@@ -54,9 +54,82 @@
       menu.height(a);
     }
     resizeMenuNav();
-
     $(window).bind('resize',resizeMenuNav);
 
+    $.fn.ellipsis = function(enableUpdating){
+      if($.browser.webkit) return false;
+      var s = document.documentElement.style;
+      if (!('textOverflow' in s || 'OTextOverflow' in s)) {
+        return this.each(function(){
+          var el = $(this);
+          if(el.css("overflow") == "hidden"){
+            var originalText = el.html();
+            var w = el.width();
+            
+            var t = $(this.cloneNode(true)).hide().css({
+                          'position': 'absolute',
+                          'width': 'auto',
+                          'overflow': 'visible',
+                          'max-width': 'inherit'
+                      });
+            el.after(t);
+            
+            var text = originalText;
+            while(text.length > 0 && t.width() > el.width()){
+              text = text.substr(0, text.length - 1);
+              t.html(text + "...");
+            }
+            el.html(t.html());
+            
+            t.remove();
+            
+            if(enableUpdating == true){
+              var oldW = el.width();
+              setInterval(function(){
+                if(el.width() != oldW){
+                  oldW = el.width();
+                  el.html(originalText);
+                  el.ellipsis();
+                }
+              }, 200);
+            }
+          }
+        });
+      } else return this;
+    };
+    
+    $('.nav-button').ellipsis();
+
+    $('.irswcollapsed.switcher-button').bind('click',function(){
+      $('.irswcollapsed.switcher-button').hide();
+      $('.irswitcher').show();
+
+      // shitty hack to make the rounded corners box work on IE
+      if($.browser.msie) {
+        $('.irswb').css('width',function(){return $('.irswcontent').outerWidth()});
+      }
+      return false;
+    });
+    $('a.nav-button').bind('click',function(){
+      window.location = this.href;
+      return false;
+    });
+    $('a.irswexpanded').bind('click',function(){
+      $('.irswitcher').hide();
+      $('.irswcollapsed.switcher-button').show();
+      });
+    var hideSwitcher;
+    $('div.irswitcher').bind('mouseleave',function(){
+      var switcher = $(this);
+      hideSwitcher = setTimeout(function(){
+        switcher.hide();
+        $('.switcher-button.irswcollapsed').show();
+      },500);
+    }).bind('mouseenter',function(){
+      clearTimeout(hideSwitcher);
+    });
+
+    /* old switcher
 		var switcher = $('div.irgroupswitcher');
 		var switcherPosn = switcher.offset();
 		switcher.appendTo('body:last').css({
@@ -150,6 +223,7 @@
 			clearTimeout(switcherEvent);
 			mainSwitcherContainer.hide();
 		});
+    */
 	});
 })(jQuery);
 /* 

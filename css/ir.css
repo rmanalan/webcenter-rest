@@ -353,6 +353,264 @@ tr[id='T:prefer:dynTF:j_id__ctru20pc12'] {display:none}
 a[id='T:irfaq'] {color:#003286 !important}
 /*td.AFNoteWindowConeBorder,
 td.AFNoteWindow { display:none }*/
+
+/*** new switcher styles */
+
+.irsw {
+  position:relative;
+}
+.switcher-button {
+  position:absolute !important;
+  top:0;
+  left:0;
+}
+.irswitcher {
+  position:absolute !important;
+  top:0;
+  left:0;
+}
+
+/*** button ***/
+.switcher-button.irswcollapsed {
+  background:url(images/irswitcher-button.png) no-repeat;
+  vertical-align:middle;
+  width:182px;
+  height:51px;
+  position:relative;
+}
+.switcher-button.irswcollapsed:hover {
+  background:url(images/irswitcher-button-hover.png) no-repeat;
+}
+.switcher-button.irswexpanded {
+  width:100%;
+}
+.switcher-button img,
+.irswbd img {
+  border:0;
+  vertical-align:text-bottom;
+  margin-right:5px;
+}
+.switcher-button a.nav-button {
+  position:absolute;
+  top:15px;
+  left:18px;
+  display:block;
+  width:107px;
+  font-size:12px;
+  font-weight:bold;
+  color:#333;
+  text-decoration:none;
+  padding-left:20px;
+  background:url(images/Home.png) no-repeat;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.switcher-button a.nav-button:hover span{
+  text-decoration:underline;
+}
+.switcher-button a.nav-button,
+.switcher-button a.nav-button:hover,
+.switcher-button a.nav-button:active {
+  outline:none;
+}
+a.switcher-control {
+  position:absolute;
+  top:19px;
+  right:18px;
+  width:15px;
+  height:10px;
+}
+a.switcher-control span {
+  display:none;
+}
+.irswcollapsed.switcher-control {
+  background:url(images/irswitcher-arrows.png) no-repeat;
+}
+
+/*** pane ***/
+.irswitcher {
+  position:relative;
+  margin:0 auto;
+  min-width:42px;
+  max-width:545px; /* based on image dimensions - not quite consistent with drip styles yet */
+  color:#333;
+  z-index:1;
+  margin-left:12px; /* default, width of left corner */
+  margin-bottom:0.5em; /* spacing under irswitcher */
+}
+
+.irswitcher .irswcontent,
+.irswitcher .irswt,
+.irswitcher .irswb,
+.irswitcher .irswb div {
+  background:url(images/irswitcher-alt.png) no-repeat top right;
+  _background-image:url(images/irswitcher-alt.png);
+}
+
+.irswitcher .irswcontent {
+  position:relative;
+  zoom:1;
+  _overflow-y:hidden;
+  padding:0px 12px 0px 0px;
+}
+
+.irswitcher .irswt {
+  /* top+left vertical slice */
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:12px; /* top slice width */
+  margin-left:-12px;
+  height:100%;
+  _height:1600px; /* arbitrary long height, IE 6 */
+  background-position:top left;
+}
+
+.irswitcher .irswb {
+  /* bottom */
+  position:relative;
+  width:100%;
+}
+
+.irswitcher .irswb,
+.irswitcher .irswb div {
+  height:30px; /* height of bottom cap/shade */
+  font-size:1px;
+}
+
+.irswitcher .irswb {
+  background-position:bottom right;
+  height:17px;
+  width:100%;
+}
+
+.irswitcher .irswb div {
+  position:relative;
+  width:12px; /* bottom corner width */
+  margin-left:-12px;
+  background-position:bottom left;
+  height:17px;
+}
+
+.irswitcher .irswbd {
+  position:relative;
+}
+
+.irswitcher .irswhd {
+  position: relative;
+}
+.irswitcher .irswhd a.switcher-control {
+  right:8px;
+  background:url(images/irswitcher-arrows.png) no-repeat 0 -13px;
+}
+
+.irswitcher .irswwrapper {
+  /* extra content protector - preventing vertical overflow (past background) */
+  position:static;
+  max-height:1000px;
+  overflow:auto; /* note that overflow:auto causes a rather annoying redraw "lag" in Firefox 2, and may degrade performance. Might be worth trying without if you aren't worried about height/overflow issues. */
+}
+
+.irswitcher .irswt,
+.irswitcher .irswb div,
+.irswitcher .irswbd,
+.irswitcher .irswwrapper {
+  margin-left:-17px;
+  width:17px;
+}
+
+.irswitcher {
+  margin-left:17px;
+}
+
+.irswitcher .irswwrapper {
+  width:auto;
+}
+
+.irswitcher .irswwrapper .irswbd {
+  margin-left:0px;
+}
+
+.irswitcher .irswbd {
+  zoom:1;
+  width:auto;
+  padding:0px 5px 0px 20px;
+}
+.irswexpanded.switcher-button {
+  position:static !important;
+}
+.irswexpanded.switcher-button a.nav-button {
+  height:auto;
+  opacity:.5;
+  overflow:visible;
+  width:auto;
+  position:static;
+  background-position:18px 15px;
+  padding:15px 37px 9px 38px;
+}
+.irswexpanded.switcher-button a.nav-button span {
+  position:relative;
+  color:#666;
+}
+
+
+/* switcher body */
+.irswbd a {
+  color:#333;
+  text-decoration:none;
+  text-shadow:#fff 1px 1px 0;
+}
+.irswbd a:hover {
+  text-decoration:underline;
+}
+.irswbd h5 {
+  font-size:12px;
+  margin:0 0 5px 0;
+  color:#000;
+}
+.irswitcher ul {
+  padding:0;
+  margin:0;
+}
+.irswitcher ul li {
+  list-style-type:none;
+  margin:0 5px 9px 20px;
+  line-height:100%;
+}
+ul.irswmain {
+  margin-top:12px;
+  padding-top:10px;
+  border-top:1px solid #999;
+}
+ul.irswmain li {
+  margin-left:0;
+  padding-left:0;
+}
+.irswmain a:hover {
+  text-decoration:none;
+}
+.irswmain a:hover span {
+  text-decoration:underline;
+}
+.irswcol {
+  float:left;
+  width:165px;
+  min-height:231px;
+  padding:0 10px
+}
+.irswcol1 {
+  padding-left:0;
+}
+.irswmyspaces {
+  padding:0 5px;
+}
+.irswcol3 {
+  padding-top:20px;
+}
+.irswmore {
+  float:right;
+}
 /*
 vim:ts=2:sw=2
  */
