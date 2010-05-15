@@ -140,7 +140,8 @@ div[id='T:pt_pgl8'] {
 div.irmenu {
 	position:absolute;
 	top:36px;
-	width:182px;
+  left:0;
+	width:187px;
   overflow-y:auto;
 }
 div.irmenu ul {
@@ -553,7 +554,7 @@ a.switcher-control span {
 }
 .irswexpanded.switcher-button a.nav-button span {
   position:relative;
-  color:#666;
+  color:#000;
 }
 
 
