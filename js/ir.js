@@ -98,6 +98,8 @@
       } else return this;
     };
     
+    $('div.irsw').appendTo('body').removeClass('hide');
+
     $('.nav-button').ellipsis();
 
     $('.irswcollapsed.switcher-button').bind('click',function(){
