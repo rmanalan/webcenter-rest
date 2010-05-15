@@ -505,7 +505,7 @@ a.switcher-control span {
 }
 .irswitcher .irswhd a.switcher-control {
   right:8px;
-  background:url(images/irswitcher-arrows.png) no-repeat 0 -13px;
+  background:url(../images/irswitcher-arrows.png) no-repeat 0 -13px;
 }
 
 .irswitcher .irswwrapper {
