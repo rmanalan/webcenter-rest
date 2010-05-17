@@ -567,7 +567,7 @@ a.switcher-control span {
 }
 .irswbd h5 {
   font-size:12px;
-  margin:0 0 5px 0;
+  margin:0 0 10px 0;
   color:#000;
 }
 .irswitcher ul {
@@ -576,7 +576,7 @@ a.switcher-control span {
 }
 .irswitcher ul li {
   list-style-type:none;
-  margin:0 5px 9px 20px;
+  margin:0 5px 9px 0;
   line-height:100%;
 }
 ul.irswmain {
