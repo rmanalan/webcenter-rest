@@ -98,7 +98,7 @@
       } else return this;
     };
     
-    $('div.irsw').appendTo('body').removeClass('hide');
+    $('div.irsw').appendTo('body').css({'margin-top': 36, 'margin-left':6});
 
     $('.nav-button').ellipsis();
 
