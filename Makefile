@@ -42,3 +42,6 @@ compile-ir-css:
 	java -jar lib/yuicompressor-2.4.2.jar\
 	  --type css -o css/base-ir.css\
 	  css/ir.css
+
+war:
+	jar -cf owccustom.war *
