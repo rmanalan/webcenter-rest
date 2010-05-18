@@ -1,3 +1,4 @@
 .DS_Store
 deploy.sh
 *.sqlite3
+*.war
