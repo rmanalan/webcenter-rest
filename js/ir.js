@@ -131,6 +131,11 @@
       clearTimeout(hideSwitcher);
     });
 
+    // manage pages link
+		$('<li id="managepages"></li>').appendTo('div.irmenu ul').append($('a[id*="managePagesLink"]'));
+		$('li#managepages a').show();
+		$($('a.irgroupsettings').parent()).insertAfter('li#managepages');
+
     /* old switcher
 		var switcher = $('div.irgroupswitcher');
 		var switcherPosn = switcher.offset();
@@ -138,9 +143,6 @@
 			'top': switcherPosn.top,
 			'left': switcherPosn.left + 5
 		});
-		$('<li id="managepages"></li>').appendTo('div.irmenu ul').append($('a[id*="managePagesLink"]'));
-		$('li#managepages a').show();
-		$($('a.irgroupsettings').parent()).insertAfter('li#managepages');
 
 		var allSpaces = $('div.irgroupspaces ul li a');
 		var recentSpaces = $('div.irrecentgroupspaces ul li a');
