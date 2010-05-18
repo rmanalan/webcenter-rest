@@ -426,7 +426,7 @@ a.switcher-control {
   top:19px;
   right:18px;
   width:15px;
-  height:10px;
+  height:13px;
 }
 a.switcher-control span {
   display:none;
@@ -509,7 +509,7 @@ a.switcher-control span {
 }
 .irswitcher .irswhd a.switcher-control {
   right:8px;
-  background:url(../images/irswitcher-arrows.png) no-repeat 0 -13px;
+  background:url(../images/close_ena.png) no-repeat;
 }
 
 .irswitcher .irswwrapper {
