@@ -359,6 +359,8 @@ td.AFNoteWindow { display:none }*/
 
 .irsw {
   position:relative;
+  margin-left:-5px;
+  margin-top:-6px;
 }
 .switcher-button {
   position:absolute !important;
