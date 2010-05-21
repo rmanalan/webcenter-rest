@@ -440,11 +440,13 @@ a.switcher-control span {
   position:relative;
   margin:0 auto;
   min-width:42px;
-  max-width:545px; /* based on image dimensions - not quite consistent with drip styles yet */
+  max-width:560px; /* based on image dimensions - not quite consistent with drip styles yet */
   color:#333;
   z-index:1;
   margin-left:12px; /* default, width of left corner */
   margin-bottom:0.5em; /* spacing under irswitcher */
+  height:254px;
+  overflow:visible;
 }
 
 .irswitcher .irswcontent,
