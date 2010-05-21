@@ -445,8 +445,6 @@ a.switcher-control span {
   z-index:1;
   margin-left:12px; /* default, width of left corner */
   margin-bottom:0.5em; /* spacing under irswitcher */
-  height:254px;
-  overflow:visible;
 }
 
 .irswitcher .irswcontent,
@@ -607,6 +605,8 @@ ul.irswmain li {
   width:165px;
   min-height:231px;
   padding:0 10px
+  height:254px;
+  overflow:visible;
 }
 .irswcol1 {
   padding-left:0;
