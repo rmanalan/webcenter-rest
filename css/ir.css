@@ -605,8 +605,6 @@ ul.irswmain li {
   width:165px;
   min-height:231px;
   padding:0 10px
-  height:254px;
-  overflow:visible;
 }
 .irswcol1 {
   padding-left:0;
@@ -618,7 +616,7 @@ ul.irswmain li {
   padding-top:20px;
 }
 .irswmore {
-  float:right;
+  margin-left:91px;
 }
 /*
 vim:ts=2:sw=2
