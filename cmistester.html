@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head> 
+    <meta charset="utf-8" />
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode com/svn/trunk/html5.js"></script> 
+    <![endif]-->
+    <script src="./js/jquery.js"></script>
+    <script src="./js/swfobject.js"></script>
+    <script src="./js/uploadify.js"></script>
+    <script src="./js/wcutils.js"></script>
+    <script src="./js/wcrest.js"></script>
+    <script>
+    var dump;
+    $(function(){
+      $('#log').ajaxError(function(e,r,s){
+	if(r.responseText!='') {
+	  var resp = '<textarea style="width:100%;height:80px">' + r.responseText + '</textarea>';
+	} else { 
+	  var resp = '';
+        }
+	if(r.status==0){
+	  $(this).html('You are not loged in... please <a href="/webcenter/wcAuthentication/?login=true&success_url=/../owccustom/cmistester.html">login</a> first').fadeIn(1000);
+	} else {
+          $(this).html('<strong>' + r.status + '</strong> on ' + s.url + '<br/>' + resp)
+	    .fadeIn(1000);
+          $('#cmispath').text('could not retrieve the CMIS path... try changing the UCM path');
+      	}
+      });
+
+      webCenter.init(function(success){
+	if(!success) {
+	  $('#log').html('You are not loged in... please <a href="/webcenter/wcAuthentication/?login=true&success_url=/../owccustom/cmistester.html">login</a> first').fadeIn(1000);
+	  return false;
+	}
+
+	$('#path').val(currentUser.getPublicFolderPath());
+	$('#contentid').val(utils.randBase32());
+
+	currentUser.getCmisFolderUrl(function(url){
+	  $('#cmispath').text(url);
+	  $('form').attr('action',url);
+
+	  //$('#fileupload').uploadify({
+	  //  'uploader'  : './js/uploadify.swf',
+	  //  'script'    : url.split("%").join("%25"),
+	  //  'fileDataName' : 'fileUpload',
+	  //  'scriptData' : {
+	  //    'contentId' : Math.floor(Math.random()*99999999999999999999),
+	  //    'comments' : 'test comment',
+	  //    'simpleResponse' : true
+	  //  },
+	  //  'cancelImg' : './images/cancel.png',
+	  //  'auto'      : true,
+	  //  'onComplete' : function(event,queueID,fileObj,response,data) {
+	  //    dump = {e:event, q:queueID, f:fileObj, r:response, d:data};
+	  //    console.log(dump);
+	  //  },
+	  //  'onError': function (event, queueID ,fileObj, errorObj) {
+	  //    dump = {evt:event, q:queueID, f:fileObj, e:errorObj};
+	  //    console.log(dump)
+	  //  }
+	  //});
+	});
+	if(currentUser.id) $('#user').html('Logged in as <strong>' + currentUser.id + '</strong>');
+      });
+
+      $('#path').bind('change',function(){
+	$('#log').hide();
+	var path = $(this);
+	if(path.val()!="") {
+	  currentUser.getCmisFolderUrl(path.val(),function(url){
+	    $('#cmispath').text(url);
+	    $('form').attr('action',url);
+	  })
+	}
+      });
+
+      $('form').submit(function(){
+	var strName = ("uploader" + (new Date()).getTime());
+	var iFrame = $('<iframe name="' + strName + '" src="about:blank" style="display:none" />');
+	iFrame.load(function(){
+	  // TODO need to parse out the response from successful creation
+	  var ifUploadBody = window.frames[strName].document;
+	  var ifBody = $(ifUploadBody);
+
+	  if(ifBody.text()=='') {
+	    var filePath = $('#path').val() + '/' + $('#fileupload').val().split('/').splice(-1);
+	    webCenter.getCmisObject(filePath,function(xml,meta){
+	      dump = meta;
+	      $('#log').html('File uploaded: ' 
+	        + '<a href="' + meta['edit-media'] +'" target="_blank">'
+		  + meta.dDocTitle
+		+ '</a> '
+	      	+ '<a href="' + webCenter.settings.dynConverterUri 
+		  + meta.ID.split('/').splice(-1) + ' target="_blank">'
+                  + 'Converted Version</a>'
+		+ '<textarea style="width:100%;height:80px">' 
+		+ (new XMLSerializer()).serializeToString(xml) + '</textarea>').fadeIn(100);
+            },true);
+	  } else {
+	    $('#log').html('<textarea style="width:100%;height:80px">' 
+	      + (new XMLSerializer()).serializeToString(ifUploadBody) 
+	      + '</textarea>').fadeIn(1000);     
+	  }
+	  setTimeout(function(){iFrame.remove()}, 100);
+	});
+	$('body:last').append(iFrame);
+	$(this).attr('target',strName);
+      });
+    })
+    </script>
+    <style>
+      #log {display:none;padding:10px;background:pink;border:1px solid red;margin-bottom:10px}
+      #cmispath {color:red}
+    </style>
+    <title>CMIS Upload Tester</title>
+  </head>
+  <body>
+    <h2>CMIS Upload Tester</h2>
+    <div id="log"></div>
+    <div id="user"></div>
+    </p>
+    <p>
+      <label for="path">UCM path to upload to:</label><br/>
+      <input id="path" type="input" name="path" value="" size="50"/><br/>
+      <small>CMIS path to post to: <span id="cmispath"></span></small>
+    </p>
+    <form action="http://webcenter-stage.us.oracle.com/cmisrestprelim/cmis/children/UCM/IDC:Folder%2F18503" 
+      method="POST"
+      enctype="multipart/form-data">
+      <p>
+      	<label for="fileUpload">Select a document to upload:</label><br/>
+      	<input id="fileupload" type="file" name="fileUpload" size="50"/>
+      </p>
+      <p>
+      	<label for="contentId">Content ID:</label><br/>
+	<input id="contentid" type="text" name="contentId" value="put_something_random_here" size="50"/>
+	<input type="hidden" name="simpleResponse" value="true"/>
+      </p>
+      <p>
+      	<label for="comments">Description:</label><br/>
+      	<textarea name="comments" cols="43"></textarea><br/>
+      </p>
+      <input type="submit" value="Submit"/><D-r>
+    </form>
+  </body>
+</html>
